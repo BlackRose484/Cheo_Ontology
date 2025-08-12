@@ -36,59 +36,65 @@ export default function Home() {
               🔍 Bắt đầu tìm kiếm
             </Link>
             <Link
-              href="/characters"
+              href="/library"
               className="border-2 border-primary-500 text-primary-600 font-medium py-4 px-8 rounded-traditional hover:bg-primary-50 transition-all duration-200 text-lg"
             >
-              👥 Xem nhân vật
+              � Thư viện
             </Link>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
+      {/* Giới thiệu Chèo Ontology */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-ancient-ink text-center mb-12 font-traditional">
-            Tính năng nổi bật
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="card">
-              <div className="text-4xl mb-4 text-center">👥</div>
-              <h3 className="text-xl font-semibold text-ancient-ink mb-3">
-                Nhân vật Chèo
-              </h3>
-              <p className="text-gray-600">
-                Khám phá các nhân vật kinh điển trong nghệ thuật Chèo với thông
-                tin chi tiết về tính cách, vai trò và ý nghĩa văn hóa.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="card">
-              <div className="text-4xl mb-4 text-center">💬</div>
-              <h3 className="text-xl font-semibold text-ancient-ink mb-3">
-                Trích dẫn nổi tiếng
-              </h3>
-              <p className="text-gray-600">
-                Tìm hiểu những câu thoại, lời ca đầy ý nghĩa từ các vở Chèo kinh
-                điển, phản ánh triết lý sống của người Việt.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="card">
-              <div className="text-4xl mb-4 text-center">🎭</div>
-              <h3 className="text-xl font-semibold text-ancient-ink mb-3">
-                Vở diễn truyền thống
-              </h3>
-              <p className="text-gray-600">
-                Tìm hiểu về các vở Chèo nổi tiếng, cốt truyện và thông điệp văn
-                hóa mà chúng mang lại cho cộng đồng.
-              </p>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-ancient-ink mb-4 font-traditional">
+              Giới thiệu Chèo Ontology
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-ancient-gold to-ancient-jade mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Hệ thống tra cứu toàn diện về nghệ thuật Chèo truyền thống Việt
+              Nam
+            </p>
           </div>
+          <section className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent mb-8">
+            <h3 className="text-2xl font-bold text-ancient-ink mb-6 font-traditional flex items-center">
+              <span className="text-3xl mr-3">🎭</span>
+              Về nghệ thuật Chèo
+            </h3>
+            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+              <p className="mb-4">
+                Chèo là một loại hình nghệ thuật sân khấu dân gian độc đáo của
+                Việt Nam, có lịch sử hàng nghìn năm phát triển. Nghệ thuật Chèo
+                không chỉ là hình thức giải trí mà còn là phương tiện giáo dục,
+                truyền đạt những giá trị đạo đức, văn hóa và triết lý sống của
+                dân tộc Việt Nam.
+              </p>
+              <p className="mb-4">
+                Chèo có nguồn gốc từ các nghi lễ tôn giáo cổ xưa và các hoạt
+                động văn hóa dân gian, dần phát triển thành một loại hình nghệ
+                thuật tổng hợp kết hợp nhiều yếu tố như hát, múa, diễn xuất, và
+                âm nhạc. Đặc biệt, Chèo luôn gắn liền với đời sống tinh thần của
+                người dân Việt Nam.
+              </p>
+            </div>
+          </section>
+          <section className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent mb-8">
+            <h3 className="text-2xl font-bold text-ancient-ink mb-6 font-traditional flex items-center">
+              <span className="text-3xl mr-3">💻</span>
+              Về dự án Chèo Ontology
+            </h3>
+            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+              <p className="mb-4">
+                Chèo Ontology là một hệ thống tra cứu số hóa nhằm bảo tồn và
+                chia sẻ kiến thức về nghệ thuật Chèo truyền thống. Dự án được
+                xây dựng với mục tiêu tạo ra một cơ sở dữ liệu toàn diện về các
+                nhân vật, vở diễn, nghệ sĩ, và các yếu tố liên quan đến Chèo.
+              </p>
+            </div>
+          </section>
         </div>
       </section>
 

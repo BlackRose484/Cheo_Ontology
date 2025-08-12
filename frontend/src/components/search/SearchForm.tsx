@@ -72,8 +72,6 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
   ];
 
   const tabs = [
-    { id: 1, label: "Thông tin nhân vật", icon: "👤" },
-    { id: 2, label: "Trích dẫn theo vở", icon: "📜" },
     { id: 3, label: "Xuất hiện nhân vật", icon: "🎭" },
     { id: 4, label: "Nét diễn", icon: "😊" },
     { id: 5, label: "Xem mô tả", icon: "📖" },
@@ -154,115 +152,11 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
 
       {/* Tab Content */}
       <div className="min-h-[300px]">
-        {/* Tab 1: Thông tin nhân vật trong trích dẫn thuộc vở chèo */}
-        {activeTab === 1 && (
-          <div className="bg-white p-8 rounded-lg border-2 border-primary-200">
-            <div className="mb-6">
-              <h3 className="text-xl font-bold text-primary-600 mb-2 flex items-center gap-2">
-                <span>👤</span>
-                <span>Thông tin nhân vật trong trích dẫn thuộc vở chèo</span>
-              </h3>
-              <p className="text-gray-600">
-                Tìm kiếm thông tin chi tiết về nhân vật cụ thể trong một vở chèo
-              </p>
-            </div>
-
-            <div className="space-y-4 mb-8">
-              <div className="flex flex-wrap items-center gap-3 text-lg">
-                <span className="text-gray-700">Tìm thông tin nhân vật</span>
-                <select
-                  value={filters.characterName || ""}
-                  onChange={(e) =>
-                    handleFilterChange("characterName", e.target.value)
-                  }
-                  className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[200px] text-base"
-                >
-                  {characterOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-                <span className="text-gray-700">thuộc vở chèo</span>
-                <select
-                  value={filters.performance || ""}
-                  onChange={(e) =>
-                    handleFilterChange("performance", e.target.value)
-                  }
-                  className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[220px] text-base"
-                >
-                  {playOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="flex justify-center">
-              <button
-                onClick={() => handleSearch(1)}
-                className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 shadow-lg hover:shadow-xl"
-              >
-                <span>🔍</span>
-                <span>Tìm kiếm</span>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 2: Danh sách trích dẫn thuộc vở chèo */}
-        {activeTab === 2 && (
-          <div className="bg-white p-8 rounded-lg border-2 border-primary-200">
-            <div className="mb-6">
-              <h3 className="text-xl font-bold text-primary-600 mb-2 flex items-center gap-2">
-                <span>📜</span>
-                <span>Danh sách trích dẫn thuộc vở chèo</span>
-              </h3>
-              <p className="text-gray-600">
-                Xem tất cả các trích dẫn nổi tiếng trong một vở chèo cụ thể
-              </p>
-            </div>
-
-            <div className="space-y-4 mb-8">
-              <div className="flex flex-wrap items-center gap-3 text-lg">
-                <span className="text-gray-700">
-                  Xem trích dẫn thuộc vở chèo
-                </span>
-                <select
-                  value={filters.performance || ""}
-                  onChange={(e) =>
-                    handleFilterChange("performance", e.target.value)
-                  }
-                  className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[220px] text-base"
-                >
-                  {playOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="flex justify-center">
-              <button
-                onClick={() => handleSearch(2)}
-                className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 shadow-lg hover:shadow-xl"
-              >
-                <span>📜</span>
-                <span>Xem trích dẫn</span>
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* Tab 3: Danh sách những lần có sự xuất hiện của nhân vật */}
         {activeTab === 3 && (
           <div className="bg-white p-8 rounded-lg border-2 border-primary-200">
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-primary-600 mb-2 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-[#4ade80]-600 mb-2 flex items-center gap-2">
                 <span>🎭</span>
                 <span>Danh sách xuất hiện của nhân vật</span>
               </h3>

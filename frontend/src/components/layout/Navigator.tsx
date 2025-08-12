@@ -65,17 +65,8 @@ const Navigator = () => {
               <Link href="/search" className={getLinkClasses("/search")}>
                 Tìm kiếm
               </Link>
-              <Link
-                href="/characters"
-                className={getLinkClasses("/characters")}
-              >
-                Nhân vật
-              </Link>
-              <Link href="/quotes" className={getLinkClasses("/quotes")}>
-                Trích dẫn
-              </Link>
-              <Link href="/about" className={getLinkClasses("/about")}>
-                Giới thiệu
+              <Link href="/library" className={getLinkClasses("/library")}>
+                Thư viện
               </Link>
             </div>
           </div>
@@ -142,25 +133,11 @@ const Navigator = () => {
               Tìm kiếm
             </Link>
             <Link
-              href="/characters"
-              className={getLinkClasses("/characters", true)}
+              href="/library"
+              className={getLinkClasses("/library", true)}
               onClick={() => setIsMenuOpen(false)}
             >
-              Nhân vật
-            </Link>
-            <Link
-              href="/quotes"
-              className={getLinkClasses("/quotes", true)}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Trích dẫn
-            </Link>
-            <Link
-              href="/about"
-              className={getLinkClasses("/about", true)}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Giới thiệu
+              Thư viện
             </Link>
           </div>
         </div>
