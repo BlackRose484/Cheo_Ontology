@@ -2,21 +2,27 @@
 
 import { useState } from "react";
 import SearchForm from "@/components/search/SearchForm";
-import SearchResultsDisplay from "@/components/results/SearchResultsDisplay";
-import { SearchFilters, SearchType, SearchResults } from "@/types";
-import { getCharacterByName } from "@/apis/search";
+import CharacterStateTable from "@/components/results/CharacterStateTable";
+import {
+  SearchType,
+  SearchResults,
+  CharacterStates,
+  CharacterState,
+  SearchStatesFilters,
+} from "@/types";
+import { getCharacterStates } from "@/apis/search";
 
 export default function SearchPage() {
-  const [results, setResults] = useState<SearchResults>({
-    characters: [],
-    quotes: [],
-    performances: [],
-  });
+  const [characterStateResults, setCharacterStateResults] =
+    useState<CharacterStates>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [searchMode, setSearchMode] = useState<"general" | "character-state">(
+    "character-state"
+  );
 
   const handleSearch = async (
-    filters: SearchFilters,
+    filters: SearchStatesFilters,
     searchType: SearchType
   ) => {
     setIsLoading(true);
@@ -31,10 +37,25 @@ export default function SearchPage() {
 
     if (searchType === "characters") {
       try {
-        const response = await getCharacterByName(filters.characterName ?? "");
-        const results = response.data.data;
+        const response = await getCharacterStates(
+          filters.character || "",
+          filters.play || "",
+          filters.emotion || ""
+        );
+        console.log(response);
+
+        const results = response.data;
         console.log("Search results:", results);
-        setResults({ characters: results, quotes: results, performances: [] });
+
+        if (searchMode === "character-state") {
+          const characterStateData: CharacterStates = results.map(
+            (char: CharacterState) => ({
+              ...char,
+            })
+          );
+          setCharacterStateResults(characterStateData);
+        } else {
+        }
       } catch (error) {
         console.error("Error fetching characters:", error);
       }
@@ -64,7 +85,14 @@ export default function SearchPage() {
         {/* Search Results */}
         {hasSearched && (
           <div className="mb-8">
-            <SearchResultsDisplay results={results} isLoading={isLoading} />
+            {searchMode === "character-state" ? (
+              <CharacterStateTable
+                results={characterStateResults}
+                isLoading={isLoading}
+              />
+            ) : (
+              <> </>
+            )}
           </div>
         )}
 

@@ -1,19 +1,14 @@
 export interface Character {
   id: string;
   name: string;
-  gender: "nam" | "nữ"; // Lowercase theo API
+  gender: "nam" | "nữ";
   description?: string;
   role?: "chính" | "phụ" | "quần chúng"; // Vai trò trong vở diễn
-  quotes?: Quote[];
   performances?: string[];
-}
-
-export interface Quote {
-  id: string;
-  content: string;
-  character: string;
-  performance?: string;
-  context?: string;
+  actor?: string; // Diễn viên
+  scene?: string; // Phân cảnh
+  expression?: string; // Nét biểu cảm
+  performance?: string; // Tên vở kịch
 }
 
 export interface Performance {
@@ -21,7 +16,6 @@ export interface Performance {
   title: string;
   description?: string;
   characters: Character[];
-  quotes: Quote[];
 }
 
 export interface SearchFilters {
@@ -29,17 +23,18 @@ export interface SearchFilters {
   gender?: "nam" | "nữ"; // Lowercase theo API
   role?: "chính" | "phụ" | "quần chúng";
   actorName?: string;
-  quoteContent?: string;
   performance?: string;
+  expression?: string; // Biểu cảm (optional)
+  category?: string; // Danh mục động cho mô tả
+  scene?: string; // Cảnh (nếu có)
 }
 
 export interface SearchResults {
   characters: Character[];
-  quotes: Quote[];
   performances: Performance[];
 }
 
-export type SearchType = "characters" | "quotes" | "performances" | "all";
+export type SearchType = "characters" | "performances" | "all";
 
 // API Response interfaces
 export interface ApiResponse<T> {
@@ -50,17 +45,14 @@ export interface ApiResponse<T> {
 }
 
 export type CharacterSearchResponse = ApiResponse<Character>;
-export type QuoteSearchResponse = ApiResponse<Quote>;
 export type PerformanceSearchResponse = ApiResponse<Performance>;
 
-// Error response interface
 export interface ApiErrorResponse {
   success: false;
   error: string;
   message: string;
 }
 
-// Helper functions for API handling
 interface UnknownApiResponse {
   success?: boolean;
   error?: string;
@@ -92,3 +84,23 @@ export const validateCharacterResponse = (
     typeof typed.message === "string"
   );
 };
+
+export type CharacterNames = string[];
+
+export interface CharacterState {
+  charName: string;
+  charGender: string;
+  playTitle: string;
+  sceneName: string;
+  actor: string;
+  emotion: string;
+  appearance: string;
+}
+
+export type CharacterStates = CharacterState[];
+
+export interface SearchStatesFilters {
+  character?: string;
+  play?: string;
+  emotion?: string;
+}

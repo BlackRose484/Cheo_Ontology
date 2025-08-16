@@ -118,7 +118,7 @@ export default function Home() {
               <div className="text-3xl font-bold text-primary-600 mb-2">
                 20+
               </div>
-              <div className="text-gray-600">Vở diễn</div>
+              <div className="text-gray-600">Vở chèo</div>
             </div>
             <div className="bg-white/80 rounded-lg p-6 border border-accent">
               <div className="text-3xl font-bold text-primary-600 mb-2">
