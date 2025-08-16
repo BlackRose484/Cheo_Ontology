@@ -5,7 +5,7 @@ dotenv.config();
 
 const GRAPHDB_ENDPOINT = process.env.GRAPHDB_ENDPOINT!;
 
-export const runSelectQuery = async (sparql: string) => {
+export const runSPARQLQuery = async (sparql: string) => {
   try {
     const res = await axios.post(
       GRAPHDB_ENDPOINT,
