@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { SearchFilters, SearchStatesFilters, SearchType } from "@/types";
+import {
+  GeneralDescriptionFilters,
+  SearchStatesFilters,
+  SearchType,
+} from "@/types";
 import CharacterStateSearch from "./CharacterStateSearch";
-import GeneralDescriptionSearch from "./GeneralDescriptionSearch";
+import GeneralDescriptionSearch from "./GeneralSearch";
 
 interface SearchFormProps {
-  onSearch: (filters: SearchStatesFilters, searchType: SearchType) => void;
+  onSearch: (
+    filters: SearchStatesFilters | GeneralDescriptionFilters,
+    searchType: SearchType
+  ) => void;
 }
 
 const SearchForm = ({ onSearch }: SearchFormProps) => {
@@ -21,9 +28,11 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
     onSearch(filters, "characters");
   };
 
-  // const handleGeneralDescriptionSearch = (filters: SearchFilters) => {
-  //   onSearch(filters, "performances");
-  // };
+  const handleGeneralDescriptionSearch = (
+    filters: GeneralDescriptionFilters
+  ) => {
+    onSearch(filters, "performances");
+  };
 
   const resetActiveTab = () => {
     // Logic to reset current tab if needed
@@ -63,7 +72,9 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
 
       {/* Tab Content */}
       <div className="min-h-[300px]">
-        {activeTab === 1 && <GeneralDescriptionSearch onSearch={() => {}} />}
+        {activeTab === 1 && (
+          <GeneralDescriptionSearch onSearch={handleGeneralDescriptionSearch} />
+        )}
 
         {activeTab === 2 && (
           <CharacterStateSearch onSearch={handleCharacterStateSearch} />

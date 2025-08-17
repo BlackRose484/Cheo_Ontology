@@ -25,3 +25,12 @@ export const DISPLAY_EMOTIONS = {
   Bored: "Chán nản",
   "...": "Chưa xác định",
 };
+
+export const CATEGORIES = ["Character", "Play", "Scene", "Actor"];
+
+export const DISPLAY_CATEGORIES = {
+  Character: "Nhân vật",
+  Play: "Vở chèo",
+  Scene: "Cảnh",
+  Actor: "Diễn viên",
+};

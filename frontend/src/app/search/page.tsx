@@ -3,26 +3,45 @@
 import { useState } from "react";
 import SearchForm from "@/components/search/SearchForm";
 import CharacterStateTable from "@/components/results/CharacterStateTable";
+import GeneralResultsDisplay from "@/components/results/GeneralResultsDisplay";
 import {
   SearchType,
-  SearchResults,
   CharacterStates,
   CharacterState,
   SearchStatesFilters,
+  GeneralDescriptionFilters,
+  CharacterGenerals,
+  PlayGenerals,
+  ActorGenerals,
 } from "@/types";
 import { getCharacterStates } from "@/apis/search";
+import {
+  searchCharacterGeneral,
+  searchPlayGeneral,
+  searchActorGeneral,
+} from "@/apis/search";
+
+// Define interface for general search results
+interface GeneralSearchResults {
+  category: string;
+  items: CharacterGenerals | PlayGenerals | ActorGenerals | string[];
+  totalCount: number;
+  searchCriteria: GeneralDescriptionFilters;
+}
 
 export default function SearchPage() {
   const [characterStateResults, setCharacterStateResults] =
     useState<CharacterStates>([]);
+  const [generalSearchResults, setGeneralSearchResults] =
+    useState<GeneralSearchResults | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
-  const [searchMode, setSearchMode] = useState<"general" | "character-state">(
-    "character-state"
-  );
+  const [currentSearchType, setCurrentSearchType] = useState<
+    "general" | "character-state"
+  >("general");
 
   const handleSearch = async (
-    filters: SearchStatesFilters,
+    filters: SearchStatesFilters | GeneralDescriptionFilters,
     searchType: SearchType
   ) => {
     setIsLoading(true);
@@ -35,29 +54,117 @@ export default function SearchPage() {
       searchType
     );
 
-    if (searchType === "characters") {
+    // Check if this is a character state search
+    if ("character" in filters || "play" in filters || "emotion" in filters) {
+      setCurrentSearchType("character-state");
+      const stateFilters = filters as SearchStatesFilters;
+
       try {
         const response = await getCharacterStates(
-          filters.character || "",
-          filters.play || "",
-          filters.emotion || ""
+          stateFilters.character || "",
+          stateFilters.play || "",
+          stateFilters.emotion || ""
         );
         console.log(response);
 
         const results = response.data;
-        console.log("Search results:", results);
+        console.log("Character state search results:", results);
 
-        if (searchMode === "character-state") {
-          const characterStateData: CharacterStates = results.map(
-            (char: CharacterState) => ({
-              ...char,
-            })
-          );
-          setCharacterStateResults(characterStateData);
-        } else {
-        }
+        const characterStateData: CharacterStates = results.map(
+          (char: CharacterState) => ({
+            ...char,
+          })
+        );
+        setCharacterStateResults(characterStateData);
+        setGeneralSearchResults(null); // Clear other results
       } catch (error) {
-        console.error("Error fetching characters:", error);
+        console.error("Error fetching character states:", error);
+      }
+    }
+    // Handle general description search
+    else if ("category" in filters) {
+      setCurrentSearchType("general");
+      const generalFilters = filters as GeneralDescriptionFilters;
+
+      try {
+        let items: CharacterGenerals | PlayGenerals | ActorGenerals | string[] =
+          [];
+
+        switch (generalFilters.category) {
+          case "Character":
+            if (generalFilters.selectedItem) {
+              // Search for specific character
+              const charResponse = await searchCharacterGeneral(
+                generalFilters.selectedItem
+              );
+              items = charResponse.data as CharacterGenerals;
+            } else {
+              // Return empty array if no specific character selected
+              items = [];
+            }
+            break;
+          case "Play":
+            if (generalFilters.selectedItem) {
+              // Search for specific play
+              const playResponse = await searchPlayGeneral(
+                generalFilters.selectedItem
+              );
+              items = playResponse.data as PlayGenerals;
+            } else {
+              // Return empty array if no specific play selected
+              items = [];
+            }
+            break;
+          case "Actor":
+            if (generalFilters.selectedItem) {
+              // Search for specific actor
+              const actorResponse = await searchActorGeneral(
+                generalFilters.selectedItem
+              );
+              items = actorResponse.data as ActorGenerals;
+            } else {
+              // Return empty array if no specific actor selected
+              items = [];
+            }
+            break;
+          case "Scene":
+            // Mock data for scenes until backend implementation
+            if (generalFilters.selectedItem) {
+              items = [
+                "Cảnh mở đầu",
+                "Cảnh gặp gỡ",
+                "Cảnh chia ly",
+                "Cảnh kết thúc",
+              ].filter((scene) =>
+                scene
+                  .toLowerCase()
+                  .includes(generalFilters.selectedItem!.toLowerCase())
+              );
+            } else {
+              items = [
+                "Cảnh mở đầu",
+                "Cảnh gặp gỡ",
+                "Cảnh chia ly",
+                "Cảnh kết thúc",
+              ];
+            }
+            break;
+          default:
+            items = [];
+        }
+
+        const results: GeneralSearchResults = {
+          category: generalFilters.category,
+          items,
+          totalCount: items.length,
+          searchCriteria: generalFilters,
+        };
+
+        console.log("General description search results:", results);
+        setGeneralSearchResults(results);
+        setCharacterStateResults([]); // Clear other results
+      } catch (error) {
+        console.error("Error fetching general description data:", error);
       }
     }
 
@@ -85,13 +192,16 @@ export default function SearchPage() {
         {/* Search Results */}
         {hasSearched && (
           <div className="mb-8">
-            {searchMode === "character-state" ? (
+            {currentSearchType === "character-state" ? (
               <CharacterStateTable
                 results={characterStateResults}
                 isLoading={isLoading}
               />
             ) : (
-              <> </>
+              <GeneralResultsDisplay
+                results={generalSearchResults}
+                isLoading={isLoading}
+              />
             )}
           </div>
         )}

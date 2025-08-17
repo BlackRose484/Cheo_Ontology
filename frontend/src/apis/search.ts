@@ -18,3 +18,12 @@ export const getCharacterStates = async (
   play: string,
   emotion: string
 ) => http.post("/search/by-char-play-emotion", { character, play, emotion });
+
+export const searchActorGeneral = async (actor: string) =>
+  http.post("/search/actor-general", { actor });
+
+export const searchPlayGeneral = async (play: string) =>
+  http.post("/search/play-general", { play });
+
+export const searchCharacterGeneral = async (character: string) =>
+  http.post("/search/character-general", { character });

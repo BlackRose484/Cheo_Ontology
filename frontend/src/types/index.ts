@@ -1,37 +1,17 @@
-export interface Character {
-  id: string;
-  name: string;
-  gender: "nam" | "nữ";
-  description?: string;
-  role?: "chính" | "phụ" | "quần chúng"; // Vai trò trong vở diễn
-  performances?: string[];
-  actor?: string; // Diễn viên
-  scene?: string; // Phân cảnh
-  expression?: string; // Nét biểu cảm
-  performance?: string; // Tên vở kịch
-}
-
-export interface Performance {
-  id: string;
-  title: string;
-  description?: string;
-  characters: Character[];
+export interface GeneralDescriptionFilters {
+  category: string;
+  selectedItem?: string;
 }
 
 export interface SearchFilters {
   characterName?: string;
-  gender?: "nam" | "nữ"; // Lowercase theo API
+  gender?: "nam" | "nữ";
   role?: "chính" | "phụ" | "quần chúng";
   actorName?: string;
   performance?: string;
-  expression?: string; // Biểu cảm (optional)
-  category?: string; // Danh mục động cho mô tả
-  scene?: string; // Cảnh (nếu có)
-}
-
-export interface SearchResults {
-  characters: Character[];
-  performances: Performance[];
+  expression?: string;
+  category?: string;
+  scene?: string;
 }
 
 export type SearchType = "characters" | "performances" | "all";
@@ -44,46 +24,11 @@ export interface ApiResponse<T> {
   message: string;
 }
 
-export type CharacterSearchResponse = ApiResponse<Character>;
-export type PerformanceSearchResponse = ApiResponse<Performance>;
-
 export interface ApiErrorResponse {
   success: false;
   error: string;
   message: string;
 }
-
-interface UnknownApiResponse {
-  success?: boolean;
-  error?: string;
-  data?: unknown[];
-  count?: number;
-  message?: string;
-}
-
-export const isApiError = (response: unknown): response is ApiErrorResponse => {
-  const typed = response as UnknownApiResponse;
-  return (
-    typeof response === "object" &&
-    response !== null &&
-    typed.success === false &&
-    typeof typed.error === "string"
-  );
-};
-
-export const validateCharacterResponse = (
-  response: unknown
-): response is CharacterSearchResponse => {
-  const typed = response as UnknownApiResponse;
-  return (
-    typeof response === "object" &&
-    response !== null &&
-    typeof typed.success === "boolean" &&
-    Array.isArray(typed.data) &&
-    typeof typed.count === "number" &&
-    typeof typed.message === "string"
-  );
-};
 
 export type CharacterNames = string[];
 
@@ -104,3 +49,52 @@ export interface SearchStatesFilters {
   play?: string;
   emotion?: string;
 }
+
+export interface GeneralDescriptionResults {
+  category: string;
+  items: string[];
+  totalCount: number;
+  searchCriteria: GeneralDescriptionFilters;
+}
+
+export interface Character {
+  description: string;
+  gender: string;
+  name: string;
+  role: string;
+  charGender: string;
+  charName: string;
+  mainType: string;
+  subType: string;
+}
+
+export interface Play {
+  author: string;
+  summary: string;
+  title: string;
+  sceneNumber: number;
+}
+
+export interface Actor {
+  name: string;
+  gender: "nam" | "nữ" | "khác";
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface PlayGeneral extends Play {
+  // additional information
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface CharacterGeneral extends Character {
+  // Additional fields for general character information
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface ActorGeneral extends Actor {}
+
+export type ActorGenerals = ActorGeneral[];
+
+export type CharacterGenerals = CharacterGeneral[];
+
+export type PlayGenerals = PlayGeneral[];
