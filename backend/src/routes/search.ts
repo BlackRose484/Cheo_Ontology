@@ -14,5 +14,6 @@ router.post("/character-general", searchController.searchCharacterGeneral);
 router.post("/play-general", searchController.searchPlayGeneral);
 router.post("/actor-general", searchController.searchActorGeneral);
 router.post("/appearances", searchController.searchAppearance);
+router.post("/scene-general", searchController.searchSceneGeneral);
 
 export default router;

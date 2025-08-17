@@ -13,9 +13,9 @@ export interface CharacterState {
 export type CharacterStates = CharacterState[];
 
 export interface Character {
+  char?: string;
   description?: string;
   gender?: string;
-  role?: string;
   charGender?: string;
   charName?: string;
   mainType?: string;
@@ -23,7 +23,7 @@ export interface Character {
 }
 
 export interface CharacterGeneral extends Character {
-  // Additional fields for general character information
+  inPlay?: string;
 }
 
 export type CharacterGenerals = CharacterGeneral[];

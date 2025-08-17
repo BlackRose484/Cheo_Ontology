@@ -39,3 +39,7 @@ export const formatNameForId = (name: string): string => {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+/g, "");
 };
+
+export const formatStringtoArray = (str: string): string[] => {
+  return str.split(",").map((item) => item.trim());
+};

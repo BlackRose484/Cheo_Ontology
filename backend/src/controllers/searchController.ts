@@ -2,11 +2,16 @@ import { Play } from "./../../../frontend/src/types/index";
 import { ActorGenerals } from "./../types/actor";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
-import { createErrorResponse, formatNameForId } from "../utils/formatters";
+import {
+  createErrorResponse,
+  formatNameForId,
+  formatStringtoArray,
+} from "../utils/formatters";
 import {
   Appearances,
   PlayGenerals,
   PlayTitlesByCharacter,
+  SceneGenerals,
 } from "../types/play";
 import { EmotionByCharacterAndPlays } from "../types/emotion";
 import { CharacterGenerals, CharacterStates } from "../types/character";
@@ -162,36 +167,37 @@ const searchController = {
     const { character } = req.body;
     const character_ = formatNameForId(character);
     const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-        SELECT DISTINCT ?character ?description ?gender ?name ?role ?charGender ?charName ?mainType ?subType
+        SELECT DISTINCT
+          ?char ?charName ?charGender ?mainType ?subType ?description
+          (?playTitle as ?inPlay)
         WHERE {
-            ?character rdf:type/rdfs:subClassOf* cheo:Character .
-          
-            FILTER CONTAINS(STR(?character), "${character_}") 
-            
-            # Lấy các thông tin liên quan
-            OPTIONAL { ?character cheo:description ?description . }
-            OPTIONAL { ?character cheo:gender ?gender . }
-            OPTIONAL { ?character cheo:role ?role . }
-            OPTIONAL { ?character cheo:charGender ?charGender . }
-            OPTIONAL { ?character cheo:charName ?charName . }
-            OPTIONAL { ?character cheo:mainType ?mainType . }
-            OPTIONAL { ?character cheo:subType ?subType . }
+          VALUES ?char { cheo:char_${character_} }   # ← IRI nhân vật
+
+          OPTIONAL { ?char cheo:charName   ?charName }
+          OPTIONAL { ?char cheo:charGender ?charGender }
+          OPTIONAL { ?char cheo:mainType   ?mainType }
+          OPTIONAL { ?char cheo:subType    ?subType }
+          OPTIONAL { ?char cheo:description ?description }
+
+          ?play_ a cheo:Play ; cheo:hasCharacter ?char .
+          OPTIONAL { ?play_ cheo:title ?playTitle }
         }
+        ORDER BY LCASE(STR(?charName)) LCASE(STR(?playTitle))
       `;
     try {
       const results = await runSPARQLQuery(sparql);
       const characterGenerals: CharacterGenerals = results.map(
         (result: any) => ({
+          char: result.char?.value || "",
           description: result.description?.value || "",
           gender: result.gender?.value || "",
-          role: result.role?.value || "",
           charGender: result.charGender?.value || "",
           charName: result.charName?.value || "",
           mainType: result.mainType?.value || "",
           subType: result.subType?.value || "",
+          inPlay: result.inPlay?.value || "",
         })
       );
       res.json(characterGenerals);
@@ -207,30 +213,53 @@ const searchController = {
 
   searchPlayGeneral: async (req: Request, res: Response) => {
     const { play } = req.body;
-
-    const play_ = formatNameForId(play);
     const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 
-      SELECT DISTINCT ?play ?author ?summary ?title ?sceneNumber 
+      SELECT 
+        (?playTitle as ?title) ?author ?summary ?sceneNum
+        (GROUP_CONCAT(DISTINCT ?sceneName; SEPARATOR=", ") AS ?allScenes)
+        (GROUP_CONCAT(DISTINCT ?charName; SEPARATOR=", ")  AS ?allCharacters)
       WHERE {
-          ?play a cheo:Play .
-          FILTER CONTAINS(STR(?play), "${play_}")
+        BIND("${play}" AS ?qPlay)   # ← điền tên vở
 
-          OPTIONAL {?play cheo:author ?author}
-          OPTIONAL {?play cheo:summary ?summary}
-          OPTIONAL {?play cheo:title ?title}
-          OPTIONAL {?play cheo:sceneNumber ?sceneNumber} 
+        # cá thể Play theo tên
+        ?play a cheo:Play ; cheo:title ?playTitle .
+        FILTER( regex(STR(?playTitle), ?qPlay, "i") )
+        OPTIONAL { ?play cheo:author  ?author }
+        OPTIONAL { ?play cheo:summary ?summary }
+        OPTIONAL { ?play cheo:sceneNumber ?sceneNumber }
+        BIND(STR(?sceneNumber) AS ?sceneNum)   # ép về string
+
+        # các trích đoạn (Scene)
+        OPTIONAL {
+          ?play cheo:hasScene ?scene .
+          OPTIONAL { ?scene cheo:sceneName ?sceneName }
+        }
+
+        # các nhân vật trong vở
+        OPTIONAL { ?play cheo:hasCharacter ?char . OPTIONAL { ?char cheo:charName ?charName } }
+        OPTIONAL {
+          ?play  cheo:hasScene ?s2 .
+          ?s2    cheo:hasVersion ?v2 .
+          ?ra2 a cheo:RoleAssignment ; cheo:inVersion ?v2 ; cheo:forCharacter ?char .
+          OPTIONAL { ?char cheo:charName ?charName }
+        }
       }
+      GROUP BY ?play ?playTitle ?author ?summary ?sceneNum
+      ORDER BY LCASE(STR(?playTitle))
     `;
     try {
       const results = await runSPARQLQuery(sparql);
       const playGenerals: PlayGenerals = results.map((result: any) => ({
+        play: result.play?.value || "",
         author: result.author?.value || "",
         summary: result.summary?.value || "",
         title: result.title?.value || "",
         sceneNumber: result.sceneNumber?.value || 0,
+        allScenes: formatStringtoArray(result.allScenes?.value) || [],
+        allCharacters: formatStringtoArray(result.allCharacters?.value) || [],
       }));
       res.json(playGenerals);
     } catch (error) {
@@ -245,27 +274,43 @@ const searchController = {
 
   searchActorGeneral: async (req: Request, res: Response) => {
     const { actor } = req.body;
-    const actor_ = formatNameForId(actor);
     const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT DISTINCT ?actor ?actorGender ?actorName 
-      WHERE {
-          ?actor a cheo:Actor .
-          FILTER CONTAINS(STR(?actor), "${actor_}")
+        SELECT ?actor (?actorName AS ?name) (?actorGender AS ?gender)
+              (GROUP_CONCAT(DISTINCT STR(?charName); separator=", ") AS ?charNames)
+              (GROUP_CONCAT(DISTINCT STR(?playTitle); separator=", ") AS ?playTitles)
+        WHERE {
+          BIND("${actor}" AS ?qActor)  # Tên diễn viên (regex, không phân biệt hoa thường)
 
-          OPTIONAL {?actor cheo:actorGender ?actorGender}
-          OPTIONAL {?actor cheo:actorName ?actorName}
-          
-    }`;
+          # Lấy actor
+          ?actor a cheo:Actor ; cheo:actorName ?actorName .
+          FILTER(regex(STR(?actorName), ?qActor, "i"))
+          OPTIONAL { ?actor cheo:actorGender ?actorGender }
+
+          # RoleAssignment → Character → Scene → Play
+          ?ra a cheo:RoleAssignment .
+          { ?ra cheo:performedBy ?actor } UNION { ?ra cheo:performBy ?actor }
+          ?ra cheo:forCharacter ?char ;
+              cheo:inVersion ?ver .
+          ?scene cheo:hasVersion ?ver .
+          ?play  cheo:hasScene ?scene .
+
+          OPTIONAL { ?char cheo:charName ?charName }
+          OPTIONAL { ?play cheo:title    ?playTitle }
+        }
+        GROUP BY ?actor ?actorName ?actorGender
+        ORDER BY LCASE(STR(?name))
+    `;
 
     try {
       const results = await runSPARQLQuery(sparql);
       const actorGenerals: ActorGenerals = results.map((result: any) => ({
         actor: result.actor?.value || "",
-        actorGender: result.actorGender?.value || "",
-        actorName: result.actorName?.value || "",
+        gender: result.gender?.value || "",
+        name: result.name?.value || "",
+        charNames: formatStringtoArray(result.charNames?.value || ""),
+        playTitles: formatStringtoArray(result.playTitles?.value || ""),
       }));
 
       res.json(actorGenerals);
@@ -332,6 +377,61 @@ const searchController = {
         vidVersion: result.vidVersion?.value || "",
       }));
       res.json(appearances);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      const errorResponse = createErrorResponse(
+        "Error running SPARQL query",
+        error
+      );
+      res.status(500).json(errorResponse);
+    }
+  },
+
+  searchSceneGeneral: async (req: Request, res: Response) => {
+    const { scene } = req.body;
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+        SELECT DISTINCT
+        ?scene (?sceneName as ?name) (?sceneSummary as ?summary)
+        (?playTitle as ?inPlay)
+          (GROUP_CONCAT(DISTINCT ?charName; SEPARATOR=", ") AS ?allCharacters)
+        WHERE {
+          BIND("${scene}" AS ?qScene)   # ← nhập tên trích đoạn
+
+          # --- Scene theo tên ---
+          ?scene a cheo:Scene ; cheo:sceneName ?sceneName .
+          FILTER(regex(STR(?sceneName), ?qScene, "i"))
+          OPTIONAL { ?scene cheo:sceneSummary ?sceneSummary }
+
+          # --- Scene thuộc Play nào ---
+          ?play cheo:hasScene ?scene .
+          OPTIONAL { ?play cheo:title ?playTitle }
+
+          # --- Các nhân vật xuất hiện trong Scene (qua Version → RoleAssignment) ---
+          OPTIONAL {
+            ?scene cheo:hasVersion ?ver .
+            ?ra a cheo:RoleAssignment ;
+                cheo:inVersion ?ver ;
+                cheo:forCharacter ?char .
+            OPTIONAL { ?char cheo:charName ?charName }
+          }
+        }
+        GROUP BY ?scene ?sceneName ?sceneSummary ?play ?playTitle
+        ORDER BY LCASE(STR(?sceneName))
+    `;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const sceneGenerals: SceneGenerals = results.map((result: any) => ({
+        scene: result.scene?.value || "",
+        name: result.name?.value || "",
+        summary: result.summary?.value || "",
+        inPlay: result.inPlay?.value || "",
+        allCharacters: formatStringtoArray(result.allCharacters?.value || ""),
+      }));
+
+      res.json(sceneGenerals);
     } catch (error) {
       console.error("Error running SPARQL query:", error);
       const errorResponse = createErrorResponse(

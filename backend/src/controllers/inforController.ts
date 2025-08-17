@@ -1,7 +1,7 @@
 import { Infor } from "../types";
 import { ActorNames } from "../types/actor";
 import { CharacterNames } from "../types/character";
-import { PlayTitles } from "../types/play";
+import { PlayTitles, SceneNames } from "../types/play";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
 
@@ -117,6 +117,34 @@ const inforController = {
         (result: any) => result.name.value
       );
       res.json(actorNames);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      res.status(500).json({ error: "Error running SPARQL query" });
+    }
+  },
+
+  getSceneNames: async (req: Request, res: Response) => {
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+      SELECT DISTINCT ?scene ?name
+      WHERE {
+          ?scene rdf:type/rdfs:subClassOf* cheo:Scene .
+          ?scene cheo:sceneName ?name .
+      }
+      `;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+      if (!results || results.length === 0) {
+        return res.status(404).json({ message: "No scenes found" });
+      }
+      // Extract scene names from results
+      const sceneNames: SceneNames = results.map(
+        (result: any) => result.name.value
+      );
+      res.json(sceneNames);
     } catch (error) {
       console.error("Error running SPARQL query:", error);
       res.status(500).json({ error: "Error running SPARQL query" });
