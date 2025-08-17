@@ -1,9 +1,10 @@
+import { ActorGenerals } from "./../types/actor";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
 import { createErrorResponse, formatNameForId } from "../utils/formatters";
-import { PlayTitlesByCharacter } from "../types/play";
+import { PlayGenerals, PlayTitlesByCharacter } from "../types/play";
 import { EmotionByCharacterAndPlays } from "../types/emotion";
-import { CharacterStates } from "../types/character";
+import { CharacterGenerals, CharacterStates } from "../types/character";
 
 const searchController = {
   searchPlayByCharacter: async (req: Request, res: Response) => {
@@ -142,6 +143,127 @@ const searchController = {
         appearance: result.appearance.value,
       }));
       res.json(characterStates);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      const errorResponse = createErrorResponse(
+        "Error running SPARQL query",
+        error
+      );
+      res.status(500).json(errorResponse);
+    }
+  },
+
+  searchCharacterGeneral: async (req: Request, res: Response) => {
+    const { character } = req.body;
+    const character_ = formatNameForId(character);
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT DISTINCT ?character ?description ?gender ?name ?role ?charGender ?charName ?mainType ?subType
+        WHERE {
+            ?character rdf:type/rdfs:subClassOf* cheo:Character .
+          
+            FILTER CONTAINS(STR(?character), "${character_}") 
+            
+            # Lấy các thông tin liên quan
+            OPTIONAL { ?character cheo:description ?description . }
+            OPTIONAL { ?character cheo:gender ?gender . }
+            OPTIONAL { ?character cheo:role ?role . }
+            OPTIONAL { ?character cheo:charGender ?charGender . }
+            OPTIONAL { ?character cheo:charName ?charName . }
+            OPTIONAL { ?character cheo:mainType ?mainType . }
+            OPTIONAL { ?character cheo:subType ?subType . }
+        }
+      `;
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const characterGenerals: CharacterGenerals = results.map(
+        (result: any) => ({
+          description: result.description?.value || "",
+          gender: result.gender?.value || "",
+          role: result.role?.value || "",
+          charGender: result.charGender?.value || "",
+          charName: result.charName?.value || "",
+          mainType: result.mainType?.value || "",
+          subType: result.subType?.value || "",
+        })
+      );
+      res.json(characterGenerals);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      const errorResponse = createErrorResponse(
+        "Error running SPARQL query",
+        error
+      );
+      res.status(500).json(errorResponse);
+    }
+  },
+
+  searchPlayGeneral: async (req: Request, res: Response) => {
+    const { play } = req.body;
+
+    const play_ = formatNameForId(play);
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+      SELECT DISTINCT ?play ?author ?summary ?title ?sceneNumber 
+      WHERE {
+          ?play a cheo:Play .
+          FILTER CONTAINS(STR(?play), "${play_}")
+
+          OPTIONAL {?play cheo:author ?author}
+          OPTIONAL {?play cheo:summary ?summary}
+          OPTIONAL {?play cheo:title ?title}
+          OPTIONAL {?play cheo:sceneNumber ?sceneNumber} 
+      }
+    `;
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const playGenerals: PlayGenerals = results.map((result: any) => ({
+        author: result.author?.value || "",
+        summary: result.summary?.value || "",
+        title: result.title?.value || "",
+        sceneNumber: result.sceneNumber?.value || 0,
+      }));
+      res.json(playGenerals);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      const errorResponse = createErrorResponse(
+        "Error running SPARQL query",
+        error
+      );
+      res.status(500).json(errorResponse);
+    }
+  },
+
+  searchActorGeneral: async (req: Request, res: Response) => {
+    const { actor } = req.body;
+    const actor_ = formatNameForId(actor);
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+      SELECT DISTINCT ?actor ?actorGender ?actorName 
+      WHERE {
+          ?actor a cheo:Actor .
+          FILTER CONTAINS(STR(?actor), "${actor_}")
+
+          OPTIONAL {?actor cheo:actorGender ?actorGender}
+          OPTIONAL {?actor cheo:actorName ?actorName}
+          
+    }`;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const actorGenerals: ActorGenerals = results.map((result: any) => ({
+        actor: result.actor?.value || "",
+        actorGender: result.actorGender?.value || "",
+        actorName: result.actorName?.value || "",
+      }));
+
+      res.json(actorGenerals);
     } catch (error) {
       console.error("Error running SPARQL query:", error);
       const errorResponse = createErrorResponse(

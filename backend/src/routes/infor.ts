@@ -6,5 +6,6 @@ const router = express.Router();
 router.get("/characters", inforController.getCharacterNames);
 router.get("/plays", inforController.getPlayTitles);
 router.get("/full-infor", inforController.getFullInfor);
+router.get("/actors", inforController.getActorNames);
 
 export default router;

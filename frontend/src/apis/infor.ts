@@ -15,3 +15,7 @@ export const getPlays = () => {
 export const getFullInformation = () => {
   return http.get(`/infor/full-infor`);
 };
+
+export const getActorNames = () => {
+  return http.get(`/infor/actors`);
+};
