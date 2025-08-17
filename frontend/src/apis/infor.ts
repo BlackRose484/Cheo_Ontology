@@ -19,3 +19,7 @@ export const getFullInformation = () => {
 export const getActorNames = () => {
   return http.get(`/infor/actors`);
 };
+
+export const getSceneNames = () => {
+  return http.get(`/infor/scenes`);
+};

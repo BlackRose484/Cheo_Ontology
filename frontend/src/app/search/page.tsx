@@ -14,7 +14,7 @@ import {
   PlayGenerals,
   ActorGenerals,
 } from "@/types";
-import { getCharacterStates } from "@/apis/search";
+import { getCharacterStates, searchSceneGeneral } from "@/apis/search";
 import {
   searchCharacterGeneral,
   searchPlayGeneral,
@@ -128,25 +128,14 @@ export default function SearchPage() {
             }
             break;
           case "Scene":
-            // Mock data for scenes until backend implementation
             if (generalFilters.selectedItem) {
-              items = [
-                "Cảnh mở đầu",
-                "Cảnh gặp gỡ",
-                "Cảnh chia ly",
-                "Cảnh kết thúc",
-              ].filter((scene) =>
-                scene
-                  .toLowerCase()
-                  .includes(generalFilters.selectedItem!.toLowerCase())
+              // Search for specific scene
+              const sceneResponse = await searchSceneGeneral(
+                generalFilters.selectedItem
               );
+              items = sceneResponse.data as string[];
             } else {
-              items = [
-                "Cảnh mở đầu",
-                "Cảnh gặp gỡ",
-                "Cảnh chia ly",
-                "Cảnh kết thúc",
-              ];
+              items = [];
             }
             break;
           default:

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { GeneralDescriptionFilters } from "@/types";
 import useSearchData from "@/hooks/useSearchData";
 import { CATEGORIES, DISPLAY_CATEGORIES } from "@/constants/base";
-import { getActorNames, getPlays } from "@/apis/infor";
+import { getActorNames, getPlays, getSceneNames } from "@/apis/infor";
 
 interface GeneralSearchProps {
   onSearch: (filters: GeneralDescriptionFilters) => void;
@@ -47,8 +47,8 @@ const GeneralSearch = ({
             setActors(actorsResponse.data || []);
             break;
           case "Scene":
-            // Placeholder for scenes - you might need to create this API
-            setScenes(["Cảnh 1", "Cảnh 2", "Cảnh 3"]); // Mock data
+            const scenesResponse = await getSceneNames();
+            setScenes(scenesResponse.data || []);
             break;
           default:
             break;

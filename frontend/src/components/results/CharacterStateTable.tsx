@@ -131,7 +131,11 @@ const CharacterStateTable = ({
                 </td>
                 <td className="border border-gray-300 px-4 py-3 text-center">
                   <Link
-                    href={`/character/${encodeURIComponent(character.charName)}/video?play=${encodeURIComponent(character.playTitle || "")}&emotion=${encodeURIComponent(character.emotion || "")}`}
+                    href={`/character/${encodeURIComponent(
+                      character.charName
+                    )}/video?play=${encodeURIComponent(
+                      character.playTitle || ""
+                    )}&emotion=${encodeURIComponent(character.emotion || "")}`}
                     className="inline-flex items-center px-3 py-1.5 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 text-sm font-medium"
                   >
                     <span className="mr-1">�</span>Video
@@ -205,7 +209,11 @@ const CharacterStateTable = ({
             <div className="pt-3 border-t border-gray-100">
               <div className="flex gap-2">
                 <Link
-                  href={`/character/${encodeURIComponent(character.charName)}/video?play=${encodeURIComponent(character.playTitle || "")}&emotion=${encodeURIComponent(character.emotion || "")}`}
+                  href={`/character/${encodeURIComponent(
+                    character.charName
+                  )}/video?play=${encodeURIComponent(
+                    character.playTitle || ""
+                  )}&emotion=${encodeURIComponent(character.emotion || "")}`}
                   className="flex-1 inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 text-sm font-medium justify-center"
                 >
                   <span className="mr-2">📹</span>

@@ -61,7 +61,6 @@ export interface Character {
   description: string;
   gender: string;
   name: string;
-  role: string;
   charGender: string;
   charName: string;
   mainType: string;
@@ -80,18 +79,19 @@ export interface Actor {
   gender: "nam" | "nữ" | "khác";
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PlayGeneral extends Play {
-  // additional information
+  allScenes?: string[];
+  allCharacter?: string[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CharacterGeneral extends Character {
-  // Additional fields for general character information
+  inPlay?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface ActorGeneral extends Actor {}
+export interface ActorGeneral extends Actor {
+  charNames?: string[];
+  playTitles?: string[];
+}
 
 export type ActorGenerals = ActorGeneral[];
 
@@ -107,3 +107,19 @@ export interface Appearance {
 }
 
 export type Appearances = Appearance[];
+
+export interface Scene {
+  scene?: string;
+  startTime?: string;
+  endTime?: string;
+  name?: string;
+  version?: string;
+  summary?: string;
+}
+
+export interface SceneGeneral extends Scene {
+  allCharacters?: string[];
+  inPlay?: string;
+}
+
+export type SceneGenerals = SceneGeneral[];

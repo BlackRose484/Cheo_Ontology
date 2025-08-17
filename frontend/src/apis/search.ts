@@ -33,3 +33,6 @@ export const searchAppearance = async (
   play: string,
   emotion: string
 ) => http.post("/search/appearances", { character, play, emotion });
+
+export const searchSceneGeneral = async (scene: string) =>
+  http.post("/search/scene-general", { scene });
