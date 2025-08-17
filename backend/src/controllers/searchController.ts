@@ -1,8 +1,13 @@
+import { Play } from "./../../../frontend/src/types/index";
 import { ActorGenerals } from "./../types/actor";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
 import { createErrorResponse, formatNameForId } from "../utils/formatters";
-import { PlayGenerals, PlayTitlesByCharacter } from "../types/play";
+import {
+  Appearances,
+  PlayGenerals,
+  PlayTitlesByCharacter,
+} from "../types/play";
 import { EmotionByCharacterAndPlays } from "../types/emotion";
 import { CharacterGenerals, CharacterStates } from "../types/character";
 
@@ -264,6 +269,69 @@ const searchController = {
       }));
 
       res.json(actorGenerals);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      const errorResponse = createErrorResponse(
+        "Error running SPARQL query",
+        error
+      );
+      res.status(500).json(errorResponse);
+    }
+  },
+
+  searchAppearance: async (req: Request, res: Response) => {
+    const { character, play, emotion } = req.body;
+    const play_ = formatNameForId(play);
+
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+        SELECT DISTINCT
+          ?start
+          ?end
+          ?emotion
+          (STR(?vidLink) AS ?vidVersion)
+        WHERE {
+          # ---- Tham số ----
+          VALUES ?play { cheo:play_${play_} }
+          BIND("${character}" AS ?charInput)
+          BIND("${emotion}" AS ?emoInput)
+
+          # Character theo tên
+          ?char a cheo:Character ; cheo:charName ?charName .
+          FILTER( regex(STR(?charName), ?charInput, "i") )
+
+          # Play → Scene → Version
+          ?play cheo:hasScene ?scene .
+          ?scene cheo:hasVersion ?ver .
+          OPTIONAL { ?ver cheo:vidVersion ?vidLink }
+
+          # RoleAssignment của nhân vật → Appearance
+          ?ra a cheo:RoleAssignment ;
+              cheo:inVersion    ?ver ;
+              cheo:forCharacter ?char ;
+              cheo:hasAppearance ?appearance .
+
+          # Các thuộc tính của Appearance
+          OPTIONAL { ?appearance cheo:start   ?start }
+          OPTIONAL { ?appearance cheo:end     ?end }
+          OPTIONAL { ?appearance cheo:emotion ?emotion }
+
+          # Lọc theo emotion
+          FILTER( regex(STR(?emotion), ?emoInput, "i") )
+        }
+        ORDER BY ?appearance
+    `;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const appearances: Appearances = results.map((result: any) => ({
+        start: result.start?.value || "",
+        end: result.end?.value || "",
+        emotion: result.emotion?.value || "",
+        vidVersion: result.vidVersion?.value || "",
+      }));
+      res.json(appearances);
     } catch (error) {
       console.error("Error running SPARQL query:", error);
       const errorResponse = createErrorResponse(

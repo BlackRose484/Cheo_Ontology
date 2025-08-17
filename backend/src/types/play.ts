@@ -14,3 +14,12 @@ export interface PlayGeneral extends Play {
 }
 
 export type PlayGenerals = PlayGeneral[];
+
+export interface Appearance {
+  start: string;
+  end: string;
+  emotion: string;
+  vidVersion: string;
+}
+
+export type Appearances = Appearance[];

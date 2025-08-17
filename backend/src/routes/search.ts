@@ -13,5 +13,6 @@ router.post("/by-char-play-emotion", searchController.searchByCharPlayEMo);
 router.post("/character-general", searchController.searchCharacterGeneral);
 router.post("/play-general", searchController.searchPlayGeneral);
 router.post("/actor-general", searchController.searchActorGeneral);
+router.post("/appearances", searchController.searchAppearance);
 
 export default router;
