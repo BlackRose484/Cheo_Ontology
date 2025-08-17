@@ -98,3 +98,12 @@ export type ActorGenerals = ActorGeneral[];
 export type CharacterGenerals = CharacterGeneral[];
 
 export type PlayGenerals = PlayGeneral[];
+
+export interface Appearance {
+  start: string;
+  end: string;
+  emotion: string;
+  vidVersion: string;
+}
+
+export type Appearances = Appearance[];

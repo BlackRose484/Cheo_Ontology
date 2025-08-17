@@ -27,3 +27,9 @@ export const searchPlayGeneral = async (play: string) =>
 
 export const searchCharacterGeneral = async (character: string) =>
   http.post("/search/character-general", { character });
+
+export const searchAppearance = async (
+  character: string,
+  play: string,
+  emotion: string
+) => http.post("/search/appearances", { character, play, emotion });
