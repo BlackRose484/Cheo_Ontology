@@ -84,14 +84,14 @@ const GeneralResultsDisplay = ({
             <div className="space-y-2">
               <p>
                 <strong className="text-red-700">Giới tính:</strong>
-                <span className="ml-1 capitalize text-red-600">
+                <span className="ml-1 capitalize text-gray-700">
                   {character.gender || character.charGender}
                 </span>
               </p>
               {character.mainType && (
                 <p>
                   <strong className="text-red-700">Loại chính:</strong>
-                  <span className="ml-1 text-red-600">
+                  <span className="ml-1 text-gray-700">
                     {character.mainType}
                   </span>
                 </p>
@@ -99,7 +99,9 @@ const GeneralResultsDisplay = ({
               {character.subType && (
                 <p>
                   <strong className="text-red-700">Loại phụ:</strong>
-                  <span className="ml-1 text-red-600">{character.subType}</span>
+                  <span className="ml-1 text-gray-700">
+                    {character.subType}
+                  </span>
                 </p>
               )}
             </div>
@@ -120,7 +122,7 @@ const GeneralResultsDisplay = ({
               {character.description && (
                 <p>
                   <strong className="text-red-700">Mô tả:</strong>
-                  <span className="ml-1 text-red-600">
+                  <span className="ml-1 text-gray-700">
                     {character.description}
                   </span>
                 </p>
@@ -208,13 +210,13 @@ const GeneralResultsDisplay = ({
                       {play.allScenes.slice(0, 3).map((scene, index) => (
                         <span
                           key={index}
-                          className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded"
+                          className="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded border border-yellow-300"
                         >
                           {scene}
                         </span>
                       ))}
                       {play.allScenes.length > 3 && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                        <span className="px-2 py-1 bg-red-100 text-red-600 text-xs rounded border border-red-300">
                           +{play.allScenes.length - 3} khác
                         </span>
                       )}
@@ -236,12 +238,12 @@ const GeneralResultsDisplay = ({
           </div>
         </div>
         <div className="ml-4 flex flex-col gap-2">
-          <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+          <span className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium border border-red-300">
             Vở diễn
           </span>
           <button
             onClick={() => handleNavigateToDetail("play", play.title)}
-            className="px-3 py-1 bg-green-500 text-white text-xs rounded hover:bg-green-600 transition-colors"
+            className="px-3 py-1 bg-gradient-to-r from-red-500 to-red-600 text-yellow-100 text-xs rounded hover:from-red-600 hover:to-red-700 transition-all duration-200 border border-yellow-400"
           >
             Xem chi tiết
           </button>
@@ -278,7 +280,7 @@ const GeneralResultsDisplay = ({
                           onClick={() =>
                             handleNavigateToDetail("character", charName)
                           }
-                          className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded hover:bg-blue-200 transition-colors"
+                          className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded hover:bg-red-200 transition-colors border border-red-300"
                         >
                           {charName}
                         </button>
@@ -305,7 +307,7 @@ const GeneralResultsDisplay = ({
                           onClick={() =>
                             handleNavigateToDetail("play", playTitle)
                           }
-                          className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded hover:bg-green-200 transition-colors"
+                          className="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded hover:bg-yellow-200 transition-colors border border-yellow-300"
                         >
                           {playTitle}
                         </button>
@@ -327,12 +329,12 @@ const GeneralResultsDisplay = ({
           </div>
         </div>
         <div className="ml-4 flex flex-col gap-2">
-          <span className="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">
+          <span className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium border border-red-300">
             Diễn viên
           </span>
           <button
             onClick={() => handleNavigateToDetail("actor", actor.name)}
-            className="px-3 py-1 bg-purple-500 text-white text-xs rounded hover:bg-purple-600 transition-colors"
+            className="px-3 py-1 bg-gradient-to-r from-red-500 to-red-600 text-yellow-100 text-xs rounded hover:from-red-600 hover:to-red-700 transition-all duration-200 border border-yellow-400"
           >
             Xem chi tiết
           </button>
@@ -384,7 +386,7 @@ const GeneralResultsDisplay = ({
                       onClick={() =>
                         handleNavigateToDetail("play", scene.inPlay!)
                       }
-                      className="ml-1 text-green-600 hover:text-green-800 hover:underline cursor-pointer"
+                      className="ml-1 text-yellow-700 hover:text-yellow-800 hover:underline cursor-pointer font-medium"
                     >
                       {scene.inPlay}
                     </button>
@@ -402,7 +404,7 @@ const GeneralResultsDisplay = ({
                           onClick={() =>
                             handleNavigateToDetail("character", char)
                           }
-                          className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded hover:bg-blue-200 transition-colors"
+                          className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded hover:bg-red-200 transition-colors border border-red-300"
                         >
                           {char}
                         </button>
@@ -499,14 +501,14 @@ const GeneralResultsDisplay = ({
         <h3 className="text-xl font-bold text-ancient-ink font-traditional flex items-center gap-2">
           <span className="text-2xl">📖</span>
           <span>Thông tin về {categoryDisplay}</span>
-          <span className="text-sm bg-primary-100 text-primary-700 px-2 py-1 rounded-full">
+          <span className="text-sm bg-red-100 text-red-700 px-2 py-1 rounded-full border border-red-300">
             {results.totalCount} kết quả
           </span>
         </h3>
 
         {/* Search criteria display */}
-        <div className="bg-blue-50 p-3 rounded-lg border border-blue-200 mt-3">
-          <div className="flex items-center gap-2 text-blue-800">
+        <div className="bg-red-50 p-3 rounded-lg border border-red-200 mt-3">
+          <div className="flex items-center gap-2 text-red-800">
             <span>🔍</span>
             <span className="text-sm">
               <strong>Đang xem:</strong> {categoryDisplay}
@@ -531,7 +533,7 @@ const GeneralResultsDisplay = ({
           <div className="flex gap-2">
             <button
               onClick={() => router.push("/search")}
-              className="text-primary-600 hover:text-primary-800 font-medium transition-colors"
+              className="text-red-600 hover:text-red-800 font-medium transition-colors"
             >
               Tìm kiếm mới →
             </button>

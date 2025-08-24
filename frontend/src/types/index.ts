@@ -135,3 +135,20 @@ export interface LibraryItem {
 }
 
 export type Library = LibraryItem[];
+
+export interface ActorInformation extends Actor {
+  plays?: string[];
+  characters?: string[];
+}
+
+export interface CharacterInformation extends Character {
+  plays?: string[];
+  scenes?: Scene[];
+  actors?: string[];
+}
+
+export interface PlayInformation extends Play {
+  scenes?: string[];
+  characters?: string[];
+  actors?: string[];
+}
