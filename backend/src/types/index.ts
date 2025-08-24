@@ -7,3 +7,15 @@ export interface ApiResponse<T> {
 }
 
 export type Infor = string[];
+
+export interface LibraryItem {
+  vidVersion?: string;
+  sceneName?: string;
+  duration?: string;
+  sceneSummary?: string;
+  playTitle?: string;
+  characters?: string[];
+  actors?: string[];
+}
+
+export type Library = LibraryItem[];
