@@ -1,14 +1,19 @@
+import Image from "next/image";
+
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-primary-50 to-accent border-t-2 border-ancient-gold mt-auto">
-      <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gradient-to-br from-red-600 via-red-700 to-red-600 border-t-4 border-yellow-400 mt-auto relative">
+      {/* Subtle cultural background */}
+      <div className="absolute inset-0 bg-[url('/trong-dong.jpg')] opacity-3 bg-cover bg-center"></div>
+
+      <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-lg font-semibold text-ancient-ink mb-4 font-traditional">
+            <h3 className="text-xl font-semibold text-white mb-4 font-traditional">
               Về Chèo Ontology
             </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-white/90 leading-relaxed">
               Hệ thống tra cứu thông tin về nghệ thuật Chèo truyền thống Việt
               Nam, lưu giữ và chia sẻ di sản văn hóa dân tộc.
             </p>
@@ -16,40 +21,24 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-ancient-ink mb-4 font-traditional">
+            <h3 className="text-xl font-semibold text-white mb-4 font-traditional">
               Liên kết nhanh
             </h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-3 text-sm">
               <li>
                 <a
                   href="/search"
-                  className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                  className="text-white hover:text-black hover:bg-yellow-400 transition-all duration-300 px-2 py-1 rounded"
                 >
                   Tìm kiếm
                 </a>
               </li>
               <li>
                 <a
-                  href="/characters"
-                  className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                  href="/library"
+                  className="text-white hover:text-black hover:bg-yellow-400 transition-all duration-300 px-2 py-1 rounded"
                 >
-                  Danh sách nhân vật
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/quotes"
-                  className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
-                >
-                  Trích dẫn nổi tiếng
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
-                >
-                  Giới thiệu dự án
+                  Thư viện video
                 </a>
               </li>
             </ul>
@@ -57,25 +46,31 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-ancient-ink mb-4 font-traditional">
+            <h3 className="text-xl font-semibold text-white mb-4 font-traditional">
               Thông tin liên hệ
             </h3>
-            <div className="text-sm text-gray-600 space-y-2">
-              <p>Email: info@cheo-ontology.vn</p>
-              <p>Điện thoại: (024) 1234 5678</p>
+            <div className="text-sm text-white/90 space-y-2">
+              <p>Email: hungnbc2@gmail.com</p>
+              <p>Điện thoại: 0848014259</p>
               <p>Địa chỉ: Hà Nội, Việt Nam</p>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 pt-6 border-t border-accent">
+        <div className="mt-10 pt-8 border-t border-yellow-400/50">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-6 h-6 bg-gradient-to-br from-ancient-gold to-ancient-jade rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xs">C</span>
+              {/* Company Logo */}
+              <div className="relative w-6 h-6 flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Chèo Ontology Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-white/90 leading-none">
                 © 2024 Chèo Ontology. Tất cả quyền được bảo lưu.
               </span>
             </div>
@@ -83,7 +78,7 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
+                className="text-white hover:text-black hover:bg-yellow-400 transition-all duration-300 p-2 rounded"
               >
                 <span className="sr-only">Facebook</span>
                 <svg
@@ -100,7 +95,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
+                className="text-white hover:text-black hover:bg-yellow-400 transition-all duration-300 p-2 rounded"
               >
                 <span className="sr-only">YouTube</span>
                 <svg

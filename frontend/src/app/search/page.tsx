@@ -161,15 +161,21 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-surface to-accent py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-yellow-50 to-red-100 py-8 relative overflow-hidden">
+      {/* Vietnamese cultural background */}
+      <div className="absolute inset-0 bg-[url('/cheo-2.jpg')] opacity-5 bg-cover bg-center"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/8 via-transparent to-yellow-400/8"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-ancient-ink mb-4 font-traditional">
+          <h1 className="text-3xl md:text-4xl font-bold text-red-800 mb-4 font-traditional">
             Tìm kiếm thông tin Chèo
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="w-32 h-2 bg-gradient-to-r from-red-600 to-yellow-400 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-red-700 max-w-2xl mx-auto">
             Khám phá kho tàng tri thức về nghệ thuật Chèo truyền thống Việt Nam
+            🇻🇳
           </p>
         </div>
 
@@ -197,13 +203,13 @@ export default function SearchPage() {
 
         {/* Help Section */}
         {!hasSearched && (
-          <div className="bg-surface rounded-lg shadow-ancient p-6 border-2 border-accent">
-            <h3 className="text-xl font-semibold text-ancient-ink mb-4 font-traditional">
+          <div className="bg-white/80 rounded-lg shadow-lg p-6 border-2 border-yellow-400 backdrop-blur-sm">
+            <h3 className="text-xl font-semibold text-red-800 mb-4 font-traditional">
               Hướng dẫn tìm kiếm
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-red-700">
               <div>
-                <h4 className="font-medium text-ancient-ink mb-2">
+                <h4 className="font-medium text-red-800 mb-2">
                   💡 Mẹo tìm kiếm:
                 </h4>
                 <ul className="space-y-1 text-sm">
@@ -216,7 +222,7 @@ export default function SearchPage() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-ancient-ink mb-2">
+                <h4 className="font-medium text-red-800 mb-2">
                   🎭 Ví dụ tìm kiếm:
                 </h4>
                 <ul className="space-y-1 text-sm">

@@ -139,22 +139,22 @@ const GeneralSearch = ({
   const categorySpecificOptions = getCategorySpecificOptions();
 
   return (
-    <div className="bg-white p-8 rounded-lg border-2 border-primary-200">
+    <div className="bg-white/90 p-8 rounded-lg border-2 border-red-300 backdrop-blur-sm">
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-primary-600 mb-2 flex items-center gap-2">
+        <h3 className="text-xl font-bold text-red-700 mb-2 flex items-center gap-2">
           <span>📖</span>
           <span>Xem mô tả chi tiết</span>
         </h3>
-        <p className="text-gray-600">
+        <p className="text-red-600">
           Chọn danh mục và thông tin cụ thể bạn muốn tìm hiểu về nghệ thuật Chèo
         </p>
       </div>
 
       <div className="space-y-4 mb-8">
         <div className="flex flex-wrap items-center gap-3 text-lg">
-          <span className="text-gray-700">Tìm hiểu về</span>
+          <span className="text-red-700">Tìm hiểu về</span>
           <select
-            className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[180px] text-base"
+            className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[180px] text-base"
             value={filters.category}
             onChange={(e) => handleFilterChange("category", e.target.value)}
           >
@@ -169,9 +169,9 @@ const GeneralSearch = ({
           {/* Dynamic dropdown based on selected category */}
           {filters.category && (
             <>
-              <span className="text-gray-700">cụ thể là</span>
+              <span className="text-red-700">cụ thể là</span>
               <select
-                className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[200px] text-base"
+                className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[200px] text-base"
                 value={filters.selectedItem}
                 onChange={(e) =>
                   handleFilterChange("selectedItem", e.target.value)
@@ -197,8 +197,8 @@ const GeneralSearch = ({
 
         {/* Additional information display */}
         {filters.category && filters.selectedItem && (
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <div className="flex items-center gap-2 text-blue-800">
+          <div className="bg-yellow-50 p-4 rounded-lg border-2 border-yellow-300">
+            <div className="flex items-center gap-2 text-red-800">
               <span>ℹ️</span>
               <span className="font-medium">
                 Bạn đang tìm hiểu về:{" "}
@@ -218,7 +218,7 @@ const GeneralSearch = ({
         <button
           onClick={handleSearch}
           disabled={!filters.category}
-          className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 text-yellow-200 rounded-lg hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed border-2 border-yellow-400"
         >
           <span>📖</span>
           <span>Tìm hiểu</span>
@@ -226,7 +226,7 @@ const GeneralSearch = ({
 
         <button
           onClick={resetFilters}
-          className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-300 transition-all duration-300 font-medium text-lg flex items-center gap-2"
+          className="px-6 py-3 bg-yellow-200 text-red-700 rounded-lg hover:bg-yellow-300 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 border-2 border-red-300"
         >
           <span>🔄</span>
           <span>Đặt lại</span>

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
 import Footer from "@/components/layout/Footer";
 
-const libreBaskerville = Libre_Baskerville({
-  weight: ["400", "700"],
+const beVietnamPro = Be_Vietnam_Pro({
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   variable: "--font-traditional",
 });
 
@@ -17,6 +17,21 @@ export const metadata: Metadata = {
     "Khám phá và tìm hiểu về nghệ thuật Chèo Việt Nam qua các nhân vật, trích dẫn và vở diễn nổi tiếng",
   keywords:
     "chèo, nghệ thuật truyền thống, văn hóa việt nam, nhân vật chèo, trích dẫn chèo",
+  icons: {
+    icon: [
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/logo.png",
+    apple: [{ url: "/logo.png", sizes: "180x180", type: "image/png" }],
+    other: [
+      {
+        rel: "icon",
+        url: "/logo.png",
+      },
+    ],
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -27,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body
-        className={`${libreBaskerville.variable} font-traditional antialiased min-h-screen flex flex-col`}
+        className={`${beVietnamPro.variable} font-traditional antialiased min-h-screen flex flex-col`}
       >
         <Layout>
           <main className="flex-1">{children}</main>

@@ -123,3 +123,15 @@ export interface SceneGeneral extends Scene {
 }
 
 export type SceneGenerals = SceneGeneral[];
+
+export interface LibraryItem {
+  vidVersion?: string; // Link Drive Video
+  sceneName?: string;
+  duration?: string;
+  sceneSummary?: string;
+  playTitle?: string;
+  characters?: string[];
+  actors?: string[];
+}
+
+export type Library = LibraryItem[];

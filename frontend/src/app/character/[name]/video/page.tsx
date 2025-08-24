@@ -59,12 +59,15 @@ export default function CharacterVideoPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-surface to-accent py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-yellow-50 py-8 relative">
+        <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-3 bg-cover bg-center"></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="bg-white/90 rounded-xl shadow-lg p-8 border border-red-100 backdrop-blur-sm">
             <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
-              <span className="ml-3 text-ancient-ink">Đang tải video...</span>
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-500 border-t-transparent"></div>
+              <span className="ml-3 text-red-700 font-medium">
+                Đang tải video...
+              </span>
             </div>
           </div>
         </div>
@@ -74,17 +77,18 @@ export default function CharacterVideoPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-surface to-accent py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent text-center">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-yellow-50 py-8 relative">
+        <div className="absolute inset-0 bg-[url('/cheo-2.jpg')] opacity-3 bg-cover bg-center"></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="bg-white/95 rounded-xl shadow-lg p-8 border border-red-200 text-center backdrop-blur-sm">
             <div className="text-6xl mb-4">❌</div>
-            <h3 className="text-xl font-medium text-ancient-ink mb-2">
+            <h3 className="text-xl font-medium text-red-800 mb-2">
               Lỗi tải video
             </h3>
-            <p className="text-gray-600 mb-4">{error}</p>
+            <p className="text-red-600 mb-4">{error}</p>
             <button
               onClick={handleBackToSearch}
-              className="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+              className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md"
             >
               Quay lại tìm kiếm
             </button>
@@ -95,50 +99,53 @@ export default function CharacterVideoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-surface to-accent py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-yellow-50 py-8 relative">
+      <div className="absolute inset-0 bg-[url('/trong-dong.jpg')] opacity-3 bg-cover bg-center"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
             <button
               onClick={handleBackToSearch}
-              className="flex items-center gap-2 text-primary-600 hover:text-primary-800 transition-colors"
+              className="flex items-center gap-2 text-red-600 hover:text-white hover:bg-red-600 px-3 py-2 rounded-lg transition-all duration-200 border border-red-600"
             >
               <span>←</span>
               <span>Quay lại tìm kiếm</span>
             </button>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold text-ancient-ink mb-2 font-traditional">
-            Video biểu diễn - {charName}
-          </h1>
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-red-200">
+            <h1 className="text-3xl md:text-4xl font-bold text-red-600 mb-4 font-traditional">
+              🎭 Video biểu diễn - {charName}
+            </h1>
 
-          <div className="flex flex-wrap gap-2 text-sm text-gray-600">
-            {playTitle && (
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
-                Vở: {playTitle}
+            <div className="flex flex-wrap gap-2 text-sm">
+              {playTitle && (
+                <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full border border-red-200">
+                  🎪 Vở: {playTitle}
+                </span>
+              )}
+              {emotion && (
+                <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full border border-yellow-200">
+                  😊 Cảm xúc:{" "}
+                  {DISPLAY_EMOTIONS[emotion as keyof typeof DISPLAY_EMOTIONS] ||
+                    emotion}
+                </span>
+              )}
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full border border-blue-200">
+                📹 {appearances.length} video
               </span>
-            )}
-            {emotion && (
-              <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full">
-                Cảm xúc:{" "}
-                {DISPLAY_EMOTIONS[emotion as keyof typeof DISPLAY_EMOTIONS] ||
-                  emotion}
-              </span>
-            )}
-            <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full">
-              {appearances.length} video
-            </span>
+            </div>
           </div>
         </div>
 
         {appearances.length === 0 ? (
-          <div className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent text-center">
+          <div className="bg-white/95 rounded-xl shadow-lg p-8 border border-red-200 text-center backdrop-blur-sm">
             <div className="text-6xl mb-4">📹</div>
-            <h3 className="text-xl font-medium text-ancient-ink mb-2">
+            <h3 className="text-xl font-medium text-red-800 mb-2">
               Chưa có video
             </h3>
-            <p className="text-gray-600">
+            <p className="text-red-600">
               Hiện tại chưa có video nào cho nhân vật này với các tiêu chí đã
               chọn.
             </p>
@@ -147,8 +154,8 @@ export default function CharacterVideoPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Video Player */}
             <div className="lg:col-span-2">
-              <div className="bg-surface rounded-lg shadow-ancient p-6 border-2 border-accent">
-                <h2 className="text-xl font-bold text-ancient-ink mb-4 flex items-center gap-2">
+              <div className="bg-white/95 rounded-xl shadow-lg p-6 border border-red-200 backdrop-blur-sm">
+                <h2 className="text-xl font-bold text-red-600 mb-4 flex items-center gap-2">
                   <span>🎬</span>
                   <span>Video hiện tại</span>
                 </h2>
@@ -167,14 +174,14 @@ export default function CharacterVideoPage() {
                     );
                   })()
                 ) : (
-                  <div className="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <p className="text-gray-500">Chọn video để xem</p>
+                  <div className="w-full h-64 bg-red-50 rounded-lg flex items-center justify-center border border-red-100">
+                    <p className="text-red-500">Chọn video để xem</p>
                   </div>
                 )}
 
                 {/* Current video info */}
                 {selectedVideo && (
-                  <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                     {(() => {
                       const currentAppearance = appearances.find(
                         (app) => app.vidVersion === selectedVideo
@@ -182,19 +189,19 @@ export default function CharacterVideoPage() {
                       return currentAppearance ? (
                         <div className="space-y-2 text-sm">
                           <div className="flex justify-between">
-                            <span className="font-medium text-blue-800">
+                            <span className="font-medium text-red-800">
                               Thời điểm:
                             </span>
-                            <span className="text-blue-600">
+                            <span className="text-red-600">
                               {convertSecondsToTime(currentAppearance.start)} -{" "}
                               {convertSecondsToTime(currentAppearance.end)}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="font-medium text-blue-800">
+                            <span className="font-medium text-red-800">
                               Cảm xúc:
                             </span>
-                            <span className="text-blue-600">
+                            <span className="text-red-600">
                               {DISPLAY_EMOTIONS[
                                 currentAppearance.emotion as keyof typeof DISPLAY_EMOTIONS
                               ] || currentAppearance.emotion}
@@ -210,8 +217,8 @@ export default function CharacterVideoPage() {
 
             {/* Video List */}
             <div className="lg:col-span-1">
-              <div className="bg-surface rounded-lg shadow-ancient p-6 border-2 border-accent">
-                <h3 className="text-lg font-bold text-ancient-ink mb-4 flex items-center gap-2">
+              <div className="bg-white/95 rounded-xl shadow-lg p-6 border border-red-200 backdrop-blur-sm">
+                <h3 className="text-lg font-bold text-red-600 mb-4 flex items-center gap-2">
                   <span>📋</span>
                   <span>Danh sách video ({appearances.length})</span>
                 </h3>
@@ -223,30 +230,30 @@ export default function CharacterVideoPage() {
                       onClick={() => setSelectedVideo(appearance.vidVersion)}
                       className={`p-3 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
                         selectedVideo === appearance.vidVersion
-                          ? "border-primary-500 bg-primary-50"
-                          : "border-gray-200 bg-white hover:border-primary-300 hover:bg-primary-25"
+                          ? "border-red-500 bg-red-50"
+                          : "border-red-200 bg-white hover:border-red-400 hover:bg-red-25"
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                        <div className="flex-shrink-0 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
                           {index + 1}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-sm space-y-1">
                             <div className="flex justify-between">
-                              <span className="font-medium text-gray-700">
+                              <span className="font-medium text-red-700">
                                 Thời gian:
                               </span>
-                              <span className="text-gray-600 text-xs">
+                              <span className="text-red-600 text-xs">
                                 {convertSecondsToTime(appearance.start)} -{" "}
                                 {convertSecondsToTime(appearance.end)}
                               </span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="font-medium text-gray-700">
+                              <span className="font-medium text-red-700">
                                 Cảm xúc:
                               </span>
-                              <span className="text-gray-600 text-xs">
+                              <span className="text-red-600 text-xs">
                                 {DISPLAY_EMOTIONS[
                                   appearance.emotion as keyof typeof DISPLAY_EMOTIONS
                                 ] || appearance.emotion}
@@ -255,7 +262,7 @@ export default function CharacterVideoPage() {
                           </div>
 
                           {selectedVideo === appearance.vidVersion && (
-                            <div className="mt-2 flex items-center gap-1 text-primary-600">
+                            <div className="mt-2 flex items-center gap-1 text-red-600">
                               <span className="text-xs">▶</span>
                               <span className="text-xs font-medium">
                                 Đang phát

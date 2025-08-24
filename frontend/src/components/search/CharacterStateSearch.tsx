@@ -47,22 +47,20 @@ const CharacterStateSearch = ({
 
   useEffect(() => {
     if (filters.character && filters.play) {
-      fetchExpressionsByCharacterAndPlay(
-        filters.character,
-        filters.play
-      ).then((expressions) => {
-        setCharacterExpressions(expressions);
-      });
+      fetchExpressionsByCharacterAndPlay(filters.character, filters.play).then(
+        (expressions) => {
+          setCharacterExpressions(expressions);
+        }
+      );
     } else {
       setCharacterExpressions([]);
     }
-  }, [
-    filters.character,
-    filters.play,
-    fetchExpressionsByCharacterAndPlay,
-  ]);
+  }, [filters.character, filters.play, fetchExpressionsByCharacterAndPlay]);
 
-  const handleFilterChange = (key: keyof SearchStatesFilters, value: string) => {
+  const handleFilterChange = (
+    key: keyof SearchStatesFilters,
+    value: string
+  ) => {
     setFilters((prev) => {
       const newFilters = {
         ...prev,
@@ -128,13 +126,13 @@ const CharacterStateSearch = ({
   ];
 
   return (
-    <div className="bg-white p-8 rounded-lg border-2 border-primary-200">
+    <div className="bg-white/90 p-8 rounded-lg border-2 border-red-300 backdrop-blur-sm">
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-primary-600 mb-2 flex items-center gap-2">
+        <h3 className="text-xl font-bold text-red-700 mb-2 flex items-center gap-2">
           <span>🎭</span>
           <span>Tìm kiếm nhân vật theo trích đoạn</span>
         </h3>
-        <p className="text-gray-600">
+        <p className="text-red-600">
           Chọn nhân vật, sau đó chọn vở chèo mà nhân vật tham gia, và biểu cảm
           (tùy chọn).
         </p>
@@ -142,13 +140,11 @@ const CharacterStateSearch = ({
 
       <div className="space-y-4 mb-8">
         <div className="flex flex-wrap items-center gap-3 text-lg">
-          <span className="text-gray-700">Nhân vật</span>
+          <span className="text-red-700">Nhân vật</span>
           <select
             value={filters.character || ""}
-            onChange={(e) =>
-              handleFilterChange("character", e.target.value)
-            }
-            className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[200px] text-base"
+            onChange={(e) => handleFilterChange("character", e.target.value)}
+            className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[200px] text-base"
           >
             {characterOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -160,13 +156,11 @@ const CharacterStateSearch = ({
           {/* Show play dropdown only when character is selected */}
           {filters.character && (
             <>
-              <span className="text-gray-700">trong vở chèo</span>
+              <span className="text-red-700">trong vở chèo</span>
               <select
                 value={filters.play || ""}
-                onChange={(e) =>
-                  handleFilterChange("play", e.target.value)
-                }
-                className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[220px] text-base"
+                onChange={(e) => handleFilterChange("play", e.target.value)}
+                className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[220px] text-base"
               >
                 {playOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -180,13 +174,11 @@ const CharacterStateSearch = ({
           {/* Show expression dropdown only when both character and play are selected */}
           {filters.character && filters.play && (
             <>
-              <span className="text-gray-700">với biểu cảm</span>
+              <span className="text-red-700">với biểu cảm</span>
               <select
                 value={filters.emotion || ""}
-                onChange={(e) =>
-                  handleFilterChange("emotion", e.target.value)
-                }
-                className="px-4 py-3 border-2 border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 bg-white min-w-[160px] text-base"
+                onChange={(e) => handleFilterChange("emotion", e.target.value)}
+                className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[160px] text-base"
               >
                 {expressionOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -203,7 +195,7 @@ const CharacterStateSearch = ({
         <button
           onClick={handleSearch}
           disabled={!filters.character}
-          className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 text-yellow-200 rounded-lg hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed border-2 border-yellow-400"
         >
           <span>🎭</span>
           <span>Tìm kiếm</span>
@@ -211,7 +203,7 @@ const CharacterStateSearch = ({
 
         <button
           onClick={resetFilters}
-          className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-300 transition-all duration-300 font-medium text-lg flex items-center gap-2"
+          className="px-6 py-3 bg-yellow-200 text-red-700 rounded-lg hover:bg-yellow-300 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-300 font-medium text-lg flex items-center gap-2 border-2 border-red-300"
         >
           <span>🔄</span>
           <span>Đặt lại</span>

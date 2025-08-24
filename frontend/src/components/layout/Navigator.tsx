@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -17,42 +18,45 @@ const Navigator = () => {
 
   const getLinkClasses = (path: string, isMobile = false) => {
     const baseClasses = isMobile
-      ? "block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-      : "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200";
+      ? "block px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
+      : "px-3 py-2 rounded-md text-sm font-medium transition-all duration-300";
 
     if (isActive(path)) {
-      return `${baseClasses} bg-green-300 text-white shadow-md`;
+      return `${baseClasses} bg-yellow-400 text-black shadow-md font-bold border border-red-800`;
     }
-    return `${baseClasses} text-white hover:text-green-200 hover:bg-white/10`;
+    return `${baseClasses} text-white hover:text-black hover:bg-yellow-400 hover:shadow-md`;
   };
 
   const getNavbarTheme = () => {
-    switch (pathname) {
-      // case "/":
-      //   return "bg-gradient-to-r from-green-400 to-green-500";
-      // case "/search":
-      //   return "bg-gradient-to-r from-emerald-400 to-green-500";
-      // case "/characters":
-      //   return "bg-gradient-to-r from-green-300 to-emerald-400";
-      // case "/quotes":
-      //   return "bg-gradient-to-r from-lime-400 to-green-400";
-      // case "/about":
-      //   return "bg-gradient-to-r from-teal-400 to-green-400";
-      default:
-        return "bg-gradient-to-r from-teal-500 to-green-500";
-    }
+    return "bg-gradient-to-r from-red-600 via-red-700 to-red-600";
   };
 
   return (
-    <nav className={`${getNavbarTheme()} border-b-2 border-white/20 shadow-lg`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav
+      className={`${getNavbarTheme()} border-b-4 border-yellow-400 shadow-lg relative overflow-hidden`}
+    >
+      {/* Vietnamese cultural pattern overlay */}
+      <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-5 bg-cover bg-center"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-red-600/90 via-red-700/90 to-red-600/90"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
-              <span className="text-2xl font-bold text-white font-traditional drop-shadow-md">
+            <Link href="/" className="flex items-center space-x-3 flex-row">
+              {/* Company Logo */}
+              <div className="relative w-8 h-8 flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Chèo Ontology Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="text-xl font-bold text-white font-traditional drop-shadow-md leading-none flex items-center h-8">
                 Chèo Ontology
-              </span>
+              </div>
             </Link>
           </div>
 
@@ -75,7 +79,7 @@ const Navigator = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-green-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white/50"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-black hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-400 transition-all duration-300"
             >
               <span className="sr-only">Mở menu chính</span>
               {!isMenuOpen ? (
@@ -116,8 +120,8 @@ const Navigator = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/20 backdrop-blur-sm border-t border-white/20">
+        <div className="md:hidden relative">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-red-800/95 backdrop-blur-sm border-t-2 border-yellow-400">
             <Link
               href="/"
               className={getLinkClasses("/", true)}

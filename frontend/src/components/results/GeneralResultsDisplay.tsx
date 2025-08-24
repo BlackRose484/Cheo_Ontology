@@ -44,10 +44,10 @@ const GeneralResultsDisplay = ({
   };
   if (isLoading) {
     return (
-      <div className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent">
+      <div className="bg-white/80 rounded-lg shadow-lg p-8 border-2 border-yellow-400 backdrop-blur-sm">
         <div className="flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
-          <span className="ml-3 text-ancient-ink">Đang tải thông tin...</span>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+          <span className="ml-3 text-red-800">Đang tải thông tin...</span>
         </div>
       </div>
     );
@@ -55,12 +55,12 @@ const GeneralResultsDisplay = ({
 
   if (!results || results.items.length === 0) {
     return (
-      <div className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent text-center">
+      <div className="bg-white/80 rounded-lg shadow-lg p-8 border-2 border-yellow-400 text-center backdrop-blur-sm">
         <div className="text-6xl mb-4">📖</div>
-        <h3 className="text-xl font-medium text-ancient-ink mb-2">
+        <h3 className="text-xl font-medium text-red-800 mb-2">
           Không tìm thấy thông tin
         </h3>
-        <p className="text-gray-600">
+        <p className="text-red-600">
           Hãy thử tìm kiếm với danh mục và thông tin khác.
         </p>
       </div>
@@ -73,43 +73,45 @@ const GeneralResultsDisplay = ({
 
   // Character Display Component
   const CharacterCard = ({ character }: { character: CharacterGeneral }) => (
-    <div className="bg-white rounded-lg p-6 border border-accent hover:shadow-soft transition-shadow duration-200">
+    <div className="bg-white/90 rounded-lg p-6 border-2 border-yellow-300 hover:shadow-lg transition-shadow duration-200 backdrop-blur-sm">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <h4 className="font-semibold text-ancient-ink mb-3 text-lg flex items-center gap-2">
+          <h4 className="font-semibold text-red-800 mb-3 text-lg flex items-center gap-2">
             <span className="text-2xl">🎭</span>
             {character.name || character.charName}
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="space-y-2">
               <p>
-                <strong className="text-gray-700">Giới tính:</strong>
-                <span className="ml-1 capitalize">
+                <strong className="text-red-700">Giới tính:</strong>
+                <span className="ml-1 capitalize text-red-600">
                   {character.gender || character.charGender}
                 </span>
               </p>
               {character.mainType && (
                 <p>
-                  <strong className="text-gray-700">Loại chính:</strong>
-                  <span className="ml-1">{character.mainType}</span>
+                  <strong className="text-red-700">Loại chính:</strong>
+                  <span className="ml-1 text-red-600">
+                    {character.mainType}
+                  </span>
                 </p>
               )}
               {character.subType && (
                 <p>
-                  <strong className="text-gray-700">Loại phụ:</strong>
-                  <span className="ml-1">{character.subType}</span>
+                  <strong className="text-red-700">Loại phụ:</strong>
+                  <span className="ml-1 text-red-600">{character.subType}</span>
                 </p>
               )}
             </div>
             <div className="space-y-2">
               {character.inPlay && (
                 <p>
-                  <strong className="text-gray-700">Vở chèo:</strong>
+                  <strong className="text-red-700">Vở chèo:</strong>
                   <button
                     onClick={() =>
                       handleNavigateToDetail("play", character.inPlay!)
                     }
-                    className="ml-1 text-blue-600 hover:text-blue-800 hover:underline cursor-pointer"
+                    className="ml-1 text-yellow-700 hover:text-yellow-800 hover:underline cursor-pointer font-medium"
                   >
                     {character.inPlay}
                   </button>
@@ -117,8 +119,8 @@ const GeneralResultsDisplay = ({
               )}
               {character.description && (
                 <p>
-                  <strong className="text-gray-700">Mô tả:</strong>
-                  <span className="ml-1 text-gray-600">
+                  <strong className="text-red-700">Mô tả:</strong>
+                  <span className="ml-1 text-red-600">
                     {character.description}
                   </span>
                 </p>
@@ -127,7 +129,7 @@ const GeneralResultsDisplay = ({
           </div>
         </div>
         <div className="ml-4 flex flex-col gap-2">
-          <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+          <span className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium border border-red-300">
             Nhân vật
           </span>
           <button
@@ -137,7 +139,7 @@ const GeneralResultsDisplay = ({
                 character.name || character.charName
               )
             }
-            className="px-3 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600 transition-colors"
+            className="px-3 py-1 bg-gradient-to-r from-red-500 to-red-600 text-yellow-100 text-xs rounded hover:from-red-600 hover:to-red-700 transition-all duration-200 border border-yellow-400"
           >
             Xem chi tiết
           </button>
@@ -148,10 +150,10 @@ const GeneralResultsDisplay = ({
 
   // Play Display Component
   const PlayCard = ({ play }: { play: PlayGeneral }) => (
-    <div className="bg-white rounded-lg p-6 border border-accent hover:shadow-soft transition-shadow duration-200">
+    <div className="bg-white/90 rounded-lg p-6 border-2 border-yellow-300 hover:shadow-lg transition-shadow duration-200 backdrop-blur-sm">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <h4 className="font-semibold text-ancient-ink mb-3 text-lg flex items-center gap-2">
+          <h4 className="font-semibold text-red-800 mb-3 text-lg flex items-center gap-2">
             <span className="text-2xl">🎪</span>
             {play.title}
           </h4>
@@ -160,21 +162,23 @@ const GeneralResultsDisplay = ({
               <div className="space-y-2">
                 {play.author && (
                   <p>
-                    <strong className="text-gray-700">Tác giả:</strong>
-                    <span className="ml-1">{play.author}</span>
+                    <strong className="text-red-700">Tác giả:</strong>
+                    <span className="ml-1 text-red-600">{play.author}</span>
                   </p>
                 )}
                 {play.sceneNumber && (
                   <p>
-                    <strong className="text-gray-700">Số cảnh:</strong>
-                    <span className="ml-1">{play.sceneNumber} cảnh</span>
+                    <strong className="text-red-700">Số cảnh:</strong>
+                    <span className="ml-1 text-red-600">
+                      {play.sceneNumber} cảnh
+                    </span>
                   </p>
                 )}
               </div>
               <div className="space-y-2">
                 {play.allCharacter && play.allCharacter.length > 0 && (
                   <div>
-                    <p className="font-semibold text-gray-700 mb-1">
+                    <p className="font-semibold text-red-700 mb-1">
                       Nhân vật chính:
                     </p>
                     <div className="flex flex-wrap gap-1">
@@ -184,13 +188,13 @@ const GeneralResultsDisplay = ({
                           onClick={() =>
                             handleNavigateToDetail("character", char)
                           }
-                          className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded hover:bg-blue-200 transition-colors"
+                          className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded hover:bg-red-200 transition-colors border border-red-300"
                         >
                           {char}
                         </button>
                       ))}
                       {play.allCharacter.length > 3 && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                        <span className="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded border border-yellow-300">
                           +{play.allCharacter.length - 3} khác
                         </span>
                       )}

@@ -15,10 +15,10 @@ const CharacterStateTable = ({
 }: CharacterStateTableProps) => {
   if (isLoading) {
     return (
-      <div className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent">
+      <div className="bg-white/80 rounded-lg shadow-lg p-8 border-2 border-yellow-400 backdrop-blur-sm">
         <div className="flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
-          <span className="ml-3 text-ancient-ink">Đang tìm kiếm...</span>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+          <span className="ml-3 text-red-800">Đang tìm kiếm...</span>
         </div>
       </div>
     );
@@ -26,12 +26,12 @@ const CharacterStateTable = ({
 
   if (!results || results.length === 0) {
     return (
-      <div className="bg-surface rounded-lg shadow-ancient p-8 border-2 border-accent text-center">
+      <div className="bg-white/80 rounded-lg shadow-lg p-8 border-2 border-yellow-400 text-center backdrop-blur-sm">
         <div className="text-6xl mb-4">🔍</div>
-        <h3 className="text-xl font-medium text-ancient-ink mb-2">
+        <h3 className="text-xl font-medium text-red-800 mb-2">
           Không tìm thấy kết quả
         </h3>
-        <p className="text-gray-600">
+        <p className="text-red-600">
           Hãy thử điều chỉnh bộ lọc để có kết quả tốt hơn.
         </p>
       </div>
@@ -39,9 +39,9 @@ const CharacterStateTable = ({
   }
 
   return (
-    <div className="bg-surface rounded-lg shadow-ancient p-6 border-2 border-accent">
+    <div className="bg-white/80 rounded-lg shadow-lg p-6 border-2 border-yellow-400 backdrop-blur-sm">
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-ancient-ink font-traditional flex items-center">
+        <h3 className="text-xl font-bold text-red-800 font-traditional flex items-center">
           <span className="text-2xl mr-2">🎭</span>
           Kết quả tìm kiếm theo trạng thái nhân vật ({results.length})
         </h3>
@@ -49,28 +49,28 @@ const CharacterStateTable = ({
 
       {/* Table for larger screens */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full border-collapse bg-white rounded-lg overflow-hidden shadow-sm">
+        <table className="w-full border-collapse bg-white/90 rounded-lg overflow-hidden shadow-lg backdrop-blur-sm">
           <thead>
-            <tr className="bg-accent">
-              <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-ancient-ink">
+            <tr className="bg-gradient-to-r from-red-600 to-red-700">
+              <th className="border border-yellow-400 px-4 py-3 text-left font-semibold text-yellow-200">
                 Tên Nhân vật
               </th>
-              <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-ancient-ink">
+              <th className="border border-yellow-400 px-4 py-3 text-left font-semibold text-yellow-200">
                 Vở chèo
               </th>
-              <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-ancient-ink">
+              <th className="border border-yellow-400 px-4 py-3 text-left font-semibold text-yellow-200">
                 Trích đoạn
               </th>
-              <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-ancient-ink">
+              <th className="border border-yellow-400 px-4 py-3 text-left font-semibold text-yellow-200">
                 Nét biểu cảm
               </th>
-              <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-ancient-ink">
+              <th className="border border-yellow-400 px-4 py-3 text-left font-semibold text-yellow-200">
                 Diễn viên
               </th>
-              <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-ancient-ink">
+              <th className="border border-yellow-400 px-4 py-3 text-left font-semibold text-yellow-200">
                 Xuất hiện
               </th>
-              <th className="border border-gray-300 px-4 py-3 text-center font-semibold text-ancient-ink">
+              <th className="border border-yellow-400 px-4 py-3 text-center font-semibold text-yellow-200">
                 Chi tiết
               </th>
             </tr>
@@ -79,21 +79,21 @@ const CharacterStateTable = ({
             {results.map((character, index) => (
               <tr
                 key={character.charName}
-                className={`hover:bg-gray-50 transition-colors duration-150 ${
-                  index % 2 === 0 ? "bg-white" : "bg-gray-25"
+                className={`hover:bg-red-50 transition-colors duration-150 ${
+                  index % 2 === 0 ? "bg-white/90" : "bg-yellow-50/50"
                 }`}
               >
-                <td className="border border-gray-300 px-4 py-3">
+                <td className="border border-red-200 px-4 py-3">
                   <div className="flex items-center">
                     <div>
-                      <div className="font-medium text-ancient-ink">
+                      <div className="font-medium text-red-800">
                         {character.charName}
                       </div>
                       <div
-                        className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                        className={`inline-block px-2 py-1 rounded-full text-xs font-medium border ${
                           character.charGender === "nam"
-                            ? "bg-blue-100 text-blue-800"
-                            : "bg-pink-100 text-pink-800"
+                            ? "bg-red-100 text-red-800 border-red-300"
+                            : "bg-yellow-100 text-yellow-800 border-yellow-300"
                         }`}
                       >
                         {character.charGender}
@@ -144,7 +144,7 @@ const CharacterStateTable = ({
                 <td className="border border-gray-300 px-4 py-3 text-center">
                   <Link
                     href={`/character/${character.charName}`}
-                    className="inline-flex items-center px-3 py-1.5 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors duration-200 text-sm font-medium"
+                    className="inline-flex items-center px-3 py-1.5 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 text-sm font-medium"
                   >
                     <span className="mr-1">👁</span>
                     Chi tiết
@@ -221,7 +221,7 @@ const CharacterStateTable = ({
                 </Link>
                 <Link
                   href={`/character/${encodeURIComponent(character.charName)}`}
-                  className="flex-1 inline-flex items-center px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors duration-200 text-sm font-medium justify-center"
+                  className="flex-1 inline-flex items-center px-4 py-2 bg-yellow-500 text-red-800 rounded-md hover:bg-yellow-600 transition-colors duration-200 text-sm font-medium justify-center"
                 >
                   <span className="mr-2">👁</span>
                   Chi tiết
