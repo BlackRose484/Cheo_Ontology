@@ -43,3 +43,10 @@ export interface Appearance {
 }
 
 export type Appearances = Appearance[];
+
+export interface PlayInformation extends Play {
+  scenes?: string[];
+  characters?: string[];
+  actors?: string[];
+  sceneNumber?: number;
+}

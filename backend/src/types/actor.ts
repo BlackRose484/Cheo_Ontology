@@ -12,3 +12,8 @@ export interface ActorGeneral extends Actor {
 }
 
 export type ActorGenerals = ActorGeneral[];
+
+export interface ActorInformation extends Actor {
+  plays?: string[];
+  characters?: string[];
+}

@@ -1,4 +1,3 @@
-import { Play } from "./../../../frontend/src/types/index";
 import { ActorGenerals } from "./../types/actor";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
