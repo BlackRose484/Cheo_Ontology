@@ -12,22 +12,15 @@ export const runSPARQLQuery = async (sparql: string) => {
       throw new Error(`OWL file not found at: ${OWL_FILE_PATH}`);
     }
 
-    // console.log("Executing SPARQL query on local OWL file...");
-    // console.log("Query:", sparql.substring(0, 200) + "...");
-
     const bindingsStream = await queryEngine.queryBindings(sparql, {
       sources: [OWL_FILE_PATH],
     });
 
     const bindings = await bindingsStream.toArray();
 
-    // console.log(`Found ${bindings.length} results`);
-
-    // Format lại kết quả để compatible với code hiện tại
     const results = bindings.map((binding) => {
       const result: any = {};
 
-      // Lấy tất cả các variables trong binding
       binding.forEach((term, variable) => {
         result[variable.value] = {
           type: term.termType === "Literal" ? "literal" : "uri",

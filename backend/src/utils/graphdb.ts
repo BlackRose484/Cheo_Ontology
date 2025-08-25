@@ -11,7 +11,6 @@ export const runSPARQLQuery = async (sparql: string) => {
   // Ưu tiên sử dụng OWL file local
   if (USE_LOCAL_OWL) {
     try {
-      console.log("Using local OWL file for SPARQL query...");
       return await runLocalSPARQLQuery(sparql);
     } catch (localError) {
       console.warn(
@@ -30,7 +29,6 @@ export const runSPARQLQuery = async (sparql: string) => {
   // Fallback hoặc sử dụng GraphDB nếu được cấu hình
   if (GRAPHDB_ENDPOINT) {
     try {
-      console.log("Using GraphDB endpoint for SPARQL query...");
       const res = await axios.post(
         GRAPHDB_ENDPOINT,
         `query=${encodeURIComponent(sparql)}`,
