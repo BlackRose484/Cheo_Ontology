@@ -173,7 +173,7 @@ export default function PlayDetailPage() {
 
                 {play.summary && (
                   <div className="bg-gradient-to-r from-red-50 to-yellow-50 rounded-lg p-6 border border-red-100">
-                    <label className="block text-lg font-traditional font-bold text-red-700 mb-3 flex items-center">
+                    <label className="block text-lg font-traditional font-bold text-red-700 mb-3 items-center">
                       <span className="text-yellow-600 mr-2">📖</span>
                       Tóm tắt nội dung
                     </label>
