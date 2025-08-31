@@ -19,10 +19,8 @@ export default function PlayDetailPage() {
       try {
         setLoading(true);
         setError(null);
-        console.log("Fetching play info for:", playTitle);
 
         const response = await getPlayInformation(playTitle);
-        console.log("Play API response:", response);
 
         // API view trả về AxiosResponse với data là PlayInformation
         if (response && response.data) {

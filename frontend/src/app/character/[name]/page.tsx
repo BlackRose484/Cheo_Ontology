@@ -19,10 +19,8 @@ export default function CharacterDetailPage() {
       try {
         setLoading(true);
         setError(null);
-        console.log("Fetching character info for:", characterName);
 
         const response = await getCharacterInformation(characterName);
-        console.log("Character API response:", response);
 
         // API view trả về AxiosResponse với data là CharacterInformation
         if (response && response.data) {

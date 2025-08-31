@@ -22,7 +22,6 @@ export default function SceneDetailPage() {
         setError(null);
 
         const response = await getSceneNames();
-        console.log("Scene list response:", response);
 
         if (response.data && Array.isArray(response.data)) {
           // Tìm scene có name khớp

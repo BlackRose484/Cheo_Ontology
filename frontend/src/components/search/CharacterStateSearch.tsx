@@ -34,9 +34,7 @@ const CharacterStateSearch = ({
 
   useEffect(() => {
     if (filters.character) {
-      console.log("Fetching plays for character:", filters.character);
       fetchPlaysByCharacter(filters.character).then((plays) => {
-        console.log("Received plays:", plays);
         setCharacterPlays(plays);
       });
     } else {
@@ -110,9 +108,6 @@ const CharacterStateSearch = ({
       label: play,
     })),
   ];
-
-  console.log("CharacterPlays:", characterPlays);
-  console.log("PlayOptions:", playOptions);
 
   const expressionOptions: { value: string; label: string }[] = [
     { value: "all", label: "Tất cả" },

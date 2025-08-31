@@ -65,10 +65,8 @@ export default function SearchPage() {
           stateFilters.play || "",
           stateFilters.emotion || ""
         );
-        console.log(response);
 
         const results = response.data;
-        console.log("Character state search results:", results);
 
         const characterStateData: CharacterStates = results.map(
           (char: CharacterState) => ({
@@ -149,7 +147,6 @@ export default function SearchPage() {
           searchCriteria: generalFilters,
         };
 
-        console.log("General description search results:", results);
         setGeneralSearchResults(results);
         setCharacterStateResults([]); // Clear other results
       } catch (error) {

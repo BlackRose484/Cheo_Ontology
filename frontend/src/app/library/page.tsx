@@ -20,7 +20,6 @@ export default function LibraryPage() {
         setError(null);
 
         const response = await getLibrary();
-        console.log("Library response:", response);
 
         if (response.data && Array.isArray(response.data)) {
           setLibrary(response.data);

@@ -22,7 +22,6 @@ export default function VideoDetailPage() {
         setError(null);
 
         const response = await getLibrary();
-        console.log("Library response:", response);
 
         if (response.data && Array.isArray(response.data)) {
           const foundVideo = response.data.find(

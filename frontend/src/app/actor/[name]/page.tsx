@@ -19,10 +19,8 @@ export default function ActorDetailPage() {
       try {
         setLoading(true);
         setError(null);
-        console.log("Fetching actor info for:", actorName);
 
         const response = await getActorInformation(actorName);
-        console.log("Actor API response:", response);
 
         // API view trả về AxiosResponse với data là ActorInformation
         if (response && response.data) {

@@ -16,6 +16,7 @@ export default function CharacterVideoPage() {
   const charName = decodeURIComponent(params.name as string);
   const playTitle = searchParams.get("play") || "";
   const emotion = searchParams.get("emotion") || "";
+  const uri = searchParams.get("uri") || "";
 
   const [appearances, setAppearances] = useState<Appearances>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,8 +29,12 @@ export default function CharacterVideoPage() {
         setIsLoading(true);
         setError(null);
 
-        const response = await searchAppearance(charName, playTitle, emotion);
-        console.log("Video search response:", response);
+        const response = await searchAppearance(
+          charName,
+          playTitle,
+          emotion,
+          uri
+        );
 
         if (response.data && Array.isArray(response.data)) {
           setAppearances(response.data);
@@ -51,7 +56,7 @@ export default function CharacterVideoPage() {
     if (charName) {
       fetchVideos();
     }
-  }, [charName, playTitle, emotion]);
+  }, [charName, playTitle, emotion, uri]);
 
   const handleBackToSearch = () => {
     router.push("/search");
