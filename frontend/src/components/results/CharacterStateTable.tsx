@@ -135,7 +135,9 @@ const CharacterStateTable = ({
                       character.charName
                     )}/video?play=${encodeURIComponent(
                       character.playTitle || ""
-                    )}&emotion=${encodeURIComponent(character.emotion || "")}`}
+                    )}&emotion=${encodeURIComponent(
+                      character.emotion || ""
+                    )}&uri=${encodeURIComponent(character.appearance || "")}`}
                     className="inline-flex items-center px-3 py-1.5 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 text-sm font-medium"
                   >
                     <span className="mr-1">�</span>Video
@@ -213,7 +215,9 @@ const CharacterStateTable = ({
                     character.charName
                   )}/video?play=${encodeURIComponent(
                     character.playTitle || ""
-                  )}&emotion=${encodeURIComponent(character.emotion || "")}`}
+                  )}&emotion=${encodeURIComponent(
+                    character.emotion || ""
+                  )}&uri=${encodeURIComponent(character.appearance || "")}`}
                   className="flex-1 inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 text-sm font-medium justify-center"
                 >
                   <span className="mr-2">📹</span>

@@ -4,12 +4,16 @@ export const EMOTIONS = [
   "happy",
   "sad",
   "Sad",
-  "Surprised",
+  "Surprise",
   "Excited",
   "Nervous",
   "Anxious",
   "Bored",
   "...",
+  "Fear",
+  "Other",
+  "Disgusting",
+  "Rage",
 ];
 
 export const DISPLAY_EMOTIONS = {
@@ -18,12 +22,16 @@ export const DISPLAY_EMOTIONS = {
   happy: "Hạnh phúc",
   Sad: "Buồn",
   sad: "Buồn",
-  Surprised: "Ngạc nhiên",
+  Surprise: "Ngạc nhiên",
   Excited: "Phấn khích",
   Nervous: "Nervous",
   Anxious: "Lo lắng",
   Bored: "Chán nản",
   "...": "Chưa xác định",
+  Fear: "Sợ hãi",
+  Other: "Khác",
+  Disgusting: "Ghê tởm",
+  Rage: "Phẫn nộ",
 };
 
 export const CATEGORIES = ["Character", "Play", "Scene", "Actor"];
