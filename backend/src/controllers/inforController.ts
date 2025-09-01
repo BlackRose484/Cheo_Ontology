@@ -18,6 +18,7 @@ const inforController = {
           ?type rdfs:subClassOf* cheo:Character .
           ?instance cheo:charName ?charName .
       }
+      ORDER BY LCASE(?charName)
     `;
 
     try {
@@ -49,6 +50,7 @@ const inforController = {
         ?type rdfs:subClassOf* cheo:Play .
         ?instance cheo:title ?title .
       }
+      ORDER BY LCASE(?title)
     `;
 
     try {
@@ -105,6 +107,7 @@ const inforController = {
           ?actor rdf:type/rdfs:subClassOf* cheo:Actor .
           ?actor cheo:actorName ?name .
       }
+      ORDER BY LCASE(?name)
       `;
 
     try {
@@ -133,6 +136,7 @@ const inforController = {
           ?scene rdf:type/rdfs:subClassOf* cheo:Scene .
           ?scene cheo:sceneName ?name .
       }
+      ORDER BY LCASE(?name)
       `;
 
     try {

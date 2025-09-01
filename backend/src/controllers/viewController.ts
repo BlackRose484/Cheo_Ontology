@@ -48,6 +48,7 @@ const ViewController = {
         }
       }
       GROUP BY ?charName ?description ?charGender ?mainType ?subType
+      ORDER BY LCASE(?charName)
 
   `;
 
@@ -132,6 +133,7 @@ const ViewController = {
         }
       }
       GROUP BY ?playTitle ?author ?summary ?sceneNumber
+      ORDER BY LCASE(?playTitle)
 
     `;
 
@@ -192,6 +194,7 @@ const ViewController = {
         }
       }
       GROUP BY ?actorName ?actorGender
+      ORDER BY LCASE(?actorName)
 `;
 
     try {
