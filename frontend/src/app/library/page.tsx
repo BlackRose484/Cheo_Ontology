@@ -1,51 +1,96 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getLibrary } from "@/apis/infor";
-import { Library } from "@/types/index";
+import {
+  getLibrary,
+  getCharacters,
+  getActorNames,
+  getPlays,
+} from "@/apis/infor";
+import { Library, LibraryItem } from "@/types/index";
 import LibraryVideoCard from "@/components/library/LibraryVideoCard";
+import Link from "next/link";
+
+type TabType = "videos" | "characters" | "actors" | "plays";
 
 export default function LibraryPage() {
   const [library, setLibrary] = useState<Library>([]);
+  const [characters, setCharacters] = useState<string[]>([]);
+  const [actors, setActors] = useState<string[]>([]);
+  const [plays, setPlays] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<TabType>("videos");
   const [currentPage, setCurrentPage] = useState(1);
-  const videosPerPage = 20;
-  const videosPerRow = 4;
+  const itemsPerPage = 20;
 
   useEffect(() => {
-    const fetchLibrary = async () => {
+    const fetchAllData = async () => {
       try {
         setIsLoading(true);
         setError(null);
 
-        const response = await getLibrary();
+        const [libraryRes, charactersRes, actorsRes, playsRes] =
+          await Promise.all([
+            getLibrary(),
+            getCharacters(),
+            getActorNames(),
+            getPlays(),
+          ]);
 
-        if (response.data && Array.isArray(response.data)) {
-          setLibrary(response.data);
-        } else {
-          setError("Không tìm thấy dữ liệu thư viện video.");
+        if (libraryRes.data && Array.isArray(libraryRes.data)) {
+          setLibrary(libraryRes.data);
+        }
+        if (charactersRes.data && Array.isArray(charactersRes.data)) {
+          setCharacters(charactersRes.data);
+        }
+        if (actorsRes.data && Array.isArray(actorsRes.data)) {
+          setActors(actorsRes.data);
+        }
+        if (playsRes.data && Array.isArray(playsRes.data)) {
+          setPlays(playsRes.data);
         }
       } catch (err) {
-        console.error("Error fetching library:", err);
+        console.error("Error fetching data:", err);
         setError("Lỗi khi tải dữ liệu thư viện. Vui lòng thử lại sau.");
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchLibrary();
+    fetchAllData();
   }, []);
 
-  // Calculate pagination
-  const totalPages = Math.ceil(library.length / videosPerPage);
-  const startIndex = (currentPage - 1) * videosPerPage;
-  const endIndex = startIndex + videosPerPage;
-  const currentVideos = library.slice(startIndex, endIndex);
+  // Calculate pagination for current tab
+  const getCurrentData = () => {
+    switch (activeTab) {
+      case "videos":
+        return library;
+      case "characters":
+        return characters;
+      case "actors":
+        return actors;
+      case "plays":
+        return plays;
+      default:
+        return [];
+    }
+  };
+
+  const currentData = getCurrentData();
+  const totalPages = Math.ceil(currentData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = currentData.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleTabChange = (tab: TabType) => {
+    setActiveTab(tab);
+    setCurrentPage(1);
   };
 
   if (isLoading) {
@@ -130,16 +175,64 @@ export default function LibraryPage() {
                 }}
               />
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 font-traditional flex items-center gap-3 relative z-10">
-                <span className="text-4xl">📺</span>
-                Thư viện Video Chèo
+                <span className="text-4xl">🏛️</span>
+                Thư viện Chèo
               </h1>
               <p className="text-yellow-100 text-lg relative z-10">
-                Khám phá bộ sưu tập video nghệ thuật Chèo truyền thống Việt Nam
+                Khám phá bộ sưu tập nghệ thuật Chèo truyền thống Việt Nam
               </p>
             </div>
 
+            {/* Navigation Tabs */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              <button
+                onClick={() => handleTabChange("videos")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeTab === "videos"
+                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                    : "bg-white text-red-600 border-2 border-red-300 hover:border-red-500 hover:bg-red-50"
+                }`}
+              >
+                <span>🎥</span>
+                <span>Video ({library.length})</span>
+              </button>
+              <button
+                onClick={() => handleTabChange("characters")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeTab === "characters"
+                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                    : "bg-white text-red-600 border-2 border-red-300 hover:border-red-500 hover:bg-red-50"
+                }`}
+              >
+                <span>🎭</span>
+                <span>Nhân vật ({characters.length})</span>
+              </button>
+              <button
+                onClick={() => handleTabChange("actors")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeTab === "actors"
+                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                    : "bg-white text-red-600 border-2 border-red-300 hover:border-red-500 hover:bg-red-50"
+                }`}
+              >
+                <span>👨‍🎤</span>
+                <span>Diễn viên ({actors.length})</span>
+              </button>
+              <button
+                onClick={() => handleTabChange("plays")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeTab === "plays"
+                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+                    : "bg-white text-red-600 border-2 border-red-300 hover:border-red-500 hover:bg-red-50"
+                }`}
+              >
+                <span>🎪</span>
+                <span>Vở diễn ({plays.length})</span>
+              </button>
+            </div>
+
             <div className="flex items-center gap-4 text-sm text-red-600">
-              <span>📊 {library.length} video</span>
+              <span>📊 {currentData.length} mục</span>
               <span>
                 📄 Trang {currentPage}/{totalPages}
               </span>
@@ -163,9 +256,70 @@ export default function LibraryPage() {
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {currentVideos.map((item, index) => (
-                <LibraryVideoCard key={index} item={item} />
-              ))}
+              {currentItems.map((item: LibraryItem | string, index: number) => {
+                if (
+                  activeTab === "videos" &&
+                  typeof item === "object" &&
+                  item !== null &&
+                  "vidVersion" in item
+                ) {
+                  return (
+                    <LibraryVideoCard
+                      key={item.vidVersion || index}
+                      item={item as LibraryItem}
+                    />
+                  );
+                } else {
+                  // For characters, actors, and plays
+                  const itemString = item as string;
+                  const getHref = () => {
+                    switch (activeTab) {
+                      case "characters":
+                        return `/character/${encodeURIComponent(itemString)}`;
+                      case "actors":
+                        return `/actor/${encodeURIComponent(itemString)}`;
+                      case "plays":
+                        return `/play/${encodeURIComponent(itemString)}`;
+                      default:
+                        return `/search?query=${encodeURIComponent(
+                          itemString
+                        )}`;
+                    }
+                  };
+
+                  return (
+                    <Link
+                      key={itemString || index}
+                      href={getHref()}
+                      className="group"
+                    >
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-red-200 p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-red-400 cursor-pointer">
+                        <div className="bg-gradient-to-br from-red-500 to-red-700 rounded-lg p-4 mb-4 text-white text-center">
+                          <span className="text-4xl mb-2 block">
+                            {activeTab === "characters"
+                              ? "🎭"
+                              : activeTab === "actors"
+                              ? "👨‍🎤"
+                              : "🎪"}
+                          </span>
+                          <h3 className="text-lg font-bold text-center text-white group-hover:text-yellow-200 transition-colors duration-300">
+                            {itemString}
+                          </h3>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-red-600 text-sm">
+                            {activeTab === "characters"
+                              ? "Nhân vật Chèo"
+                              : activeTab === "actors"
+                              ? "Diễn viên"
+                              : "Vở diễn"}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                }
+              })}
             </div>
 
             {/* Pagination */}
