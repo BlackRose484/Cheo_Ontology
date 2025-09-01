@@ -50,3 +50,10 @@ export interface PlayInformation extends Play {
   actors?: string[];
   sceneNumber?: number;
 }
+
+export interface SceneInformation extends Scene {
+  allCharacters?: string[];
+  allVideos?: string[];
+  allActors?: string[];
+  inPlay?: string;
+}

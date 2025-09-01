@@ -237,24 +237,27 @@ const searchController = {
         # cá thể Play theo tên
         ?play a cheo:Play ; cheo:title ?playTitle .
         FILTER( regex(STR(?playTitle), ?qPlay, "i") )
-        OPTIONAL { ?play cheo:author  ?author }
-        OPTIONAL { ?play cheo:summary ?summary }
-        OPTIONAL { ?play cheo:sceneNumber ?sceneNumber }
+
+        OPTIONAL { ?play cheo:author  ?author FILTER(STR(?author)  != "...") }
+        OPTIONAL { ?play cheo:summary ?summary FILTER(STR(?summary) != "...") }
         BIND(STR(?sceneNumber) AS ?sceneNum)   # ép về string
 
         # các trích đoạn (Scene)
         OPTIONAL {
           ?play cheo:hasScene ?scene .
-          OPTIONAL { ?scene cheo:sceneName ?sceneName }
+          OPTIONAL { ?scene cheo:sceneName ?sceneName FILTER(STR(?sceneName) != "...") }
         }
 
         # các nhân vật trong vở
-        OPTIONAL { ?play cheo:hasCharacter ?char . OPTIONAL { ?char cheo:charName ?charName } }
+        OPTIONAL { 
+          ?play cheo:hasCharacter ?char . 
+          OPTIONAL { ?char cheo:charName ?charName FILTER(STR(?charName) != "...") }
+        }
         OPTIONAL {
           ?play  cheo:hasScene ?s2 .
           ?s2    cheo:hasVersion ?v2 .
           ?ra2 a cheo:RoleAssignment ; cheo:inVersion ?v2 ; cheo:forCharacter ?char .
-          OPTIONAL { ?char cheo:charName ?charName }
+          OPTIONAL { ?char cheo:charName ?charName FILTER(STR(?charName) != "...") }
         }
       }
       GROUP BY ?play ?playTitle ?author ?summary ?sceneNum

@@ -151,6 +151,43 @@ const inforController = {
     }
   },
 
+  getSceneNamesByPlay: async (req: Request, res: Response) => {
+    const { play } = req.body;
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+      SELECT DISTINCT ?scene ?sceneName
+      WHERE {
+        BIND("${play}" AS ?qPlay)   # ← tên vở được truyền từ client
+
+        # Tìm đúng Play theo title
+        ?play a cheo:Play ;
+              cheo:title ?playTitle ;
+              cheo:hasScene ?scene .
+        FILTER( LCASE(STR(?playTitle)) = LCASE(?qPlay) )
+
+        # Lấy thông tin Scene
+        OPTIONAL { ?scene cheo:sceneName ?sceneName }
+      }
+      ORDER BY ?sceneName`;
+    try {
+      const results = await runSPARQLQuery(sparql);
+      if (!results || results.length === 0) {
+        return res.status(404).json({ message: "No scenes found" });
+      }
+      const sceneNames: SceneNames = results.map(
+        (result: any) => result.sceneName.value
+      );
+
+      const uniqueSceneNames = Array.from(new Set(sceneNames));
+
+      res.json(uniqueSceneNames);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      res.status(500).json({ error: "Error running SPARQL query" });
+    }
+  },
+
   getLibrary: async (req: Request, res: Response) => {
     const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
       PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>

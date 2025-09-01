@@ -9,5 +9,6 @@ router.get("/full-infor", inforController.getFullInfor);
 router.get("/actors", inforController.getActorNames);
 router.get("/scenes", inforController.getSceneNames);
 router.get("/library", inforController.getLibrary);
+router.post("/scenes-by-play", inforController.getSceneNamesByPlay);
 
 export default router;

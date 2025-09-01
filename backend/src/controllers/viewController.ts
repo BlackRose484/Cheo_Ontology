@@ -1,11 +1,7 @@
 import { ActorInformation } from "../types/actor";
 import { CharacterInformation } from "../types/character";
-import { PlayInformation } from "../types/play";
-import {
-  createErrorResponse,
-  formatNameForId,
-  formatStringtoArray,
-} from "../utils/formatters";
+import { PlayInformation, SceneInformation } from "../types/play";
+import { createErrorResponse, formatStringtoArray } from "../utils/formatters";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
 
@@ -207,6 +203,77 @@ const ViewController = {
         characters: formatStringtoArray(result.characters?.value) || [],
       }));
       res.json(actorInfo);
+    } catch (error) {
+      const errorResponse = createErrorResponse(
+        "Error running SPARQL query",
+        error
+      );
+      res.status(500).json(errorResponse);
+    }
+  },
+
+  getSceneInformation: async (req: Request, res: Response) => {
+    const { scene } = req.body;
+    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+      SELECT DISTINCT
+        ?scene
+        (STR(?sceneName) AS ?name)
+        (STR(?sceneSummary) AS ?summary)
+        (STR(?playTitle) AS ?inPlay)
+        (GROUP_CONCAT(DISTINCT ?charName; SEPARATOR=", ") AS ?allCharacters)
+        (GROUP_CONCAT(DISTINCT ?actorName; SEPARATOR=", ") AS ?allActors)
+        (GROUP_CONCAT(DISTINCT ?vidLink; SEPARATOR=", ") AS ?allVideos)
+      WHERE {
+        BIND(<${scene}> AS ?scene)
+
+        ?scene a cheo:Scene ;
+              cheo:sceneName ?sceneName .
+        OPTIONAL { ?scene cheo:sceneSummary ?sceneSummary }
+
+        # Scene thuộc Play nào
+        ?play cheo:hasScene ?scene .
+        OPTIONAL { 
+              ?play cheo:title ?playTitle .
+              ?play  Cheo:hasCharacter ?char .
+                ?ra    rdf:type Cheo:RoleAssignment ;
+                      Cheo:forCharacter ?char ;
+                      Cheo:performedBy  ?actor .
+                ?actor Cheo:actorName ?actorName .
+                FILTER(STR(?actorName) != "...")
+          }
+
+        # Video link từ Version
+        OPTIONAL {
+          ?scene cheo:hasVersion ?ver .
+          OPTIONAL { ?ver cheo:vidVersion ?vidLink }
+        }
+
+        # Character trong Scene qua RoleAssignment
+        OPTIONAL {
+          ?scene cheo:hasVersion ?ver2 .
+          ?ra a cheo:RoleAssignment ;
+              cheo:inVersion ?ver2 ;
+              cheo:forCharacter ?char .
+          OPTIONAL { ?char cheo:charName ?charName }
+        }
+      }
+      GROUP BY ?scene ?sceneName ?sceneSummary ?playTitle
+`;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const sceneInfo: SceneInformation = results.map((result: any) => ({
+        name: result.name?.value || "",
+        summary: result.summary?.value || "",
+        allCharacters: formatStringtoArray(result.allCharacters?.value) || [],
+        inPlay: result.inPlay?.value || "",
+        allVideos: formatStringtoArray(result.allVideos?.value) || [],
+        allActors: formatStringtoArray(result.allActors?.value) || [],
+      }));
+      res.json(sceneInfo);
     } catch (error) {
       const errorResponse = createErrorResponse(
         "Error running SPARQL query",
