@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { GeneralDescriptionFilters } from "@/types";
 import useSearchData from "@/hooks/useSearchData";
 import { CATEGORIES, DISPLAY_CATEGORIES } from "@/constants/base";
-import { getActorNames, getPlays, getSceneNames } from "@/apis/infor";
+import { getActorNames, getPlays, getSceneNamesByPlay } from "@/apis/infor";
 
 interface GeneralSearchProps {
   onSearch: (filters: GeneralDescriptionFilters) => void;
@@ -28,6 +28,7 @@ const GeneralSearch = ({
   const [plays, setPlays] = useState<string[]>([]);
   const [actors, setActors] = useState<string[]>([]);
   const [scenes, setScenes] = useState<string[]>([]);
+  const [play4Scenes, setPlay4Scenes] = useState<string>("");
   const [isLoadingCategoryData, setIsLoadingCategoryData] = useState(false);
 
   // Fetch category-specific data when category changes
@@ -47,8 +48,8 @@ const GeneralSearch = ({
             setActors(actorsResponse.data || []);
             break;
           case "Scene":
-            const scenesResponse = await getSceneNames();
-            setScenes(scenesResponse.data || []);
+            const playsForScenesResponse = await getPlays();
+            setPlays(playsForScenesResponse.data || []);
             break;
           default:
             break;
@@ -62,6 +63,28 @@ const GeneralSearch = ({
 
     fetchCategoryData();
   }, [filters.category]);
+
+  // Separate effect to fetch scenes when selectedPlay changes for Scene category
+  useEffect(() => {
+    const fetchScenesByPlay = async () => {
+      if (filters.category === "Scene" && play4Scenes) {
+        setIsLoadingCategoryData(true);
+        try {
+          const scenesByPlayResponse = await getSceneNamesByPlay(play4Scenes);
+          setScenes(scenesByPlayResponse.data || []);
+        } catch (error) {
+          console.error(
+            `Failed to fetch scenes for play ${play4Scenes}:`,
+            error
+          );
+        } finally {
+          setIsLoadingCategoryData(false);
+        }
+      }
+    };
+
+    fetchScenesByPlay();
+  }, [play4Scenes, filters.category]);
 
   const handleFilterChange = (
     key: keyof GeneralDescriptionFilters,
@@ -167,7 +190,7 @@ const GeneralSearch = ({
           </select>
 
           {/* Dynamic dropdown based on selected category */}
-          {filters.category && (
+          {filters.category && filters.category !== "Scene" && (
             <>
               <span className="text-red-700">cụ thể là</span>
               <select
@@ -193,6 +216,54 @@ const GeneralSearch = ({
               </select>
             </>
           )}
+
+          {/* Special handling for Scene category - first select play, then scene */}
+          {filters.category === "Scene" && (
+            <>
+              <span className="text-red-700">từ vở kịch</span>
+              <select
+                className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[200px] text-base"
+                value={play4Scenes}
+                onChange={(e) => setPlay4Scenes(e.target.value)}
+                disabled={isLoadingCategoryData}
+              >
+                <option value="">
+                  {isLoadingCategoryData ? "Đang tải..." : "Chọn vở kịch"}
+                </option>
+                {plays.map((play) => (
+                  <option key={play} value={play}>
+                    {play}
+                  </option>
+                ))}
+              </select>
+
+              {play4Scenes && (
+                <>
+                  <span className="text-red-700">cảnh</span>
+                  <select
+                    className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[200px] text-base"
+                    value={filters.selectedItem}
+                    onChange={(e) =>
+                      handleFilterChange("selectedItem", e.target.value)
+                    }
+                    disabled={isLoadingCategoryData}
+                  >
+                    <option value="">
+                      {isLoadingCategoryData ? "Đang tải..." : "Chọn cảnh"}
+                    </option>
+                    {categorySpecificOptions.map((option) => (
+                      <option
+                        key={option.value + Math.random()}
+                        value={option.value}
+                      >
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </>
+              )}
+            </>
+          )}
         </div>
 
         {/* Additional information display */}
@@ -207,7 +278,16 @@ const GeneralSearch = ({
                     filters.category as keyof typeof DISPLAY_CATEGORIES
                   ]
                 }
-                &quot;{filters.selectedItem}&quot;
+                {filters.category === "Scene" && play4Scenes && (
+                  <span>
+                    {" "}
+                    &quot;{filters.selectedItem}&quot; trong vở &quot;
+                    {play4Scenes}&quot;
+                  </span>
+                )}
+                {filters.category !== "Scene" && (
+                  <span> &quot;{filters.selectedItem}&quot;</span>
+                )}
               </span>
             </div>
           </div>

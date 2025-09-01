@@ -11,3 +11,7 @@ export const getCharacterInformation = (character: string) => {
 export const getPlayInformation = (play: string) => {
   return http.post(`/view/play-information`, { play });
 };
+
+export const getSceneInformation = (scene: string) => {
+  return http.post(`/view/scene-information`, { scene });
+};

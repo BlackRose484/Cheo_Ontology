@@ -24,6 +24,10 @@ export const getSceneNames = () => {
   return http.get(`/infor/scenes`);
 };
 
+export const getSceneNamesByPlay = (play: string) => {
+  return http.post(`/infor/scenes-by-play`, { play });
+};
+
 export const getLibrary = () => {
   return http.get(`/infor/library`);
 };

@@ -152,3 +152,10 @@ export interface PlayInformation extends Play {
   characters?: string[];
   actors?: string[];
 }
+
+export interface SceneInformation extends Scene {
+  allCharacters?: string[];
+  allVideos?: string[];
+  allActors?: string[];
+  inPlay?: string;
+}
