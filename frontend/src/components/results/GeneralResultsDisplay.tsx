@@ -165,14 +165,10 @@ const GeneralResultsDisplay = ({
                 {play.author && (
                   <p>
                     <strong className="text-red-700">Tác giả:</strong>
-                    <span className="ml-1 text-red-600">{play.author}</span>
-                  </p>
-                )}
-                {play.sceneNumber && (
-                  <p>
-                    <strong className="text-red-700">Số cảnh:</strong>
                     <span className="ml-1 text-red-600">
-                      {play.sceneNumber} cảnh
+                      {play.author !== "unknown"
+                        ? play.author
+                        : "Chưa có thông tin"}
                     </span>
                   </p>
                 )}
@@ -436,9 +432,7 @@ const GeneralResultsDisplay = ({
             Cảnh
           </span>
           <button
-            onClick={() =>
-              handleNavigateToDetail("scene", scene.scene || scene.name || "")
-            }
+            onClick={() => handleNavigateToDetail("scene", scene.scene || "")}
             className="px-3 py-1 bg-orange-500 text-white text-xs rounded hover:bg-orange-600 transition-colors"
           >
             Xem chi tiết

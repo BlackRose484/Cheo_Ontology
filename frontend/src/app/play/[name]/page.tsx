@@ -301,13 +301,6 @@ export default function PlayDetailPage() {
               </div>
               <div className="p-6 space-y-3">
                 <Link
-                  href={`/search?play=${encodeURIComponent(playTitle)}`}
-                  className="block w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-4 rounded-lg text-center font-traditional font-bold hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg"
-                >
-                  🔍 Tìm kiếm trong vở này
-                </Link>
-
-                <Link
                   href="/library"
                   className="block w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-red-800 py-3 px-4 rounded-lg text-center font-traditional font-bold hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300 shadow-lg"
                 >
@@ -419,13 +412,6 @@ export default function PlayDetailPage() {
                 >
                   <span className="mr-3">👥</span>
                   Danh sách nhân vật
-                </Link>
-                <Link
-                  href="/search"
-                  className="flex items-center text-red-600 hover:text-red-800 hover:bg-red-50 p-2 rounded-lg transition-all duration-200"
-                >
-                  <span className="mr-3">🔍</span>
-                  Tìm kiếm nâng cao
                 </Link>
               </div>
             </div>

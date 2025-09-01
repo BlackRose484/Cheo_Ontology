@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getCharacters, getActorNames, getPlays } from "@/apis/infor";
-import { CharacterGeneral, ActorGeneral, PlayGeneral } from "@/types";
 
 export default function CharactersPage() {
-  const [characters, setCharacters] = useState<CharacterGeneral[]>([]);
-  const [actors, setActors] = useState<ActorGeneral[]>([]);
-  const [plays, setPlays] = useState<PlayGeneral[]>([]);
+  const [characters, setCharacters] = useState<string[]>([]);
+  const [actors, setActors] = useState<string[]>([]);
+  const [plays, setPlays] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"characters" | "actors" | "plays">(
     "characters"
@@ -27,6 +26,11 @@ export default function CharactersPage() {
         if (charactersRes.data) setCharacters(charactersRes.data);
         if (actorsRes.data) setActors(actorsRes.data);
         if (playsRes.data) setPlays(playsRes.data);
+        console.log("Fetched data:", {
+          characters: charactersRes.data,
+          actors: actorsRes.data,
+          plays: playsRes.data,
+        });
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -118,24 +122,14 @@ export default function CharactersPage() {
                   {characters.map((character, index) => (
                     <Link
                       key={index}
-                      href={`/character/${encodeURIComponent(
-                        character.name || character.charName
-                      )}`}
+                      href={`/character/${encodeURIComponent(character)}`}
                       className="block p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 hover:border-blue-300 transition-all duration-200 group"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-800 group-hover:text-blue-800 mb-1">
-                            {character.name || character.charName}
-                          </h3>
-                          <p className="text-sm text-gray-600 capitalize">
-                            {character.gender || character.charGender}
-                          </p>
-                          {character.description && (
-                            <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-                              {character.description}
-                            </p>
-                          )}
+                          <h4 className="font-semibold text-gray-800 group-hover:text-blue-800 mb-1">
+                            {character}
+                          </h4>
                         </div>
                         <span className="text-blue-600 group-hover:translate-x-1 transition-transform ml-2">
                           →
@@ -157,25 +151,14 @@ export default function CharactersPage() {
                   {actors.map((actor, index) => (
                     <Link
                       key={index}
-                      href={`/actor/${encodeURIComponent(actor.name)}`}
+                      href={`/actor/${encodeURIComponent(actor)}`}
                       className="block p-4 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 hover:border-green-300 transition-all duration-200 group"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-800 group-hover:text-green-800 mb-1">
-                            {actor.name}
-                          </h3>
-                          <p className="text-sm text-gray-600 capitalize">
-                            {actor.gender}
-                          </p>
-                          <div className="flex space-x-4 mt-2 text-xs text-gray-500">
-                            {actor.charNames && (
-                              <span>Nhân vật: {actor.charNames.length}</span>
-                            )}
-                            {actor.playTitles && (
-                              <span>Vở diễn: {actor.playTitles.length}</span>
-                            )}
-                          </div>
+                          <h4 className="font-semibold text-gray-800 group-hover:text-green-800 mb-1">
+                            {actor}
+                          </h4>
                         </div>
                         <span className="text-green-600 group-hover:translate-x-1 transition-transform ml-2">
                           →
@@ -197,32 +180,14 @@ export default function CharactersPage() {
                   {plays.map((play, index) => (
                     <Link
                       key={index}
-                      href={`/play/${encodeURIComponent(play.title)}`}
+                      href={`/play/${encodeURIComponent(play)}`}
                       className="block p-6 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-200 group"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-800 group-hover:text-purple-800 mb-2 text-lg">
-                            {play.title}
-                          </h3>
-                          {play.author && (
-                            <p className="text-sm text-gray-600 mb-2">
-                              Tác giả: {play.author}
-                            </p>
-                          )}
-                          {play.summary && (
-                            <p className="text-sm text-gray-600 line-clamp-3">
-                              {play.summary}
-                            </p>
-                          )}
-                          <div className="flex space-x-4 mt-3 text-xs text-gray-500">
-                            {play.sceneNumber && (
-                              <span>Số cảnh: {play.sceneNumber}</span>
-                            )}
-                            {play.allCharacter && (
-                              <span>Nhân vật: {play.allCharacter.length}</span>
-                            )}
-                          </div>
+                          <h4 className="font-semibold text-gray-800 group-hover:text-purple-800 mb-2 text-lg">
+                            {play}
+                          </h4>
                         </div>
                         <span className="text-purple-600 group-hover:translate-x-1 transition-transform ml-2">
                           →
