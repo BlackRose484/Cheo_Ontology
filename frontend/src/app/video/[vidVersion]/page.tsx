@@ -201,7 +201,7 @@ export default function VideoDetailPage() {
                       </div>
                       <div>
                         <span className="font-semibold text-red-700 text-sm">
-                          Vở kịch
+                          Vở chèo
                         </span>
                         <p className="text-red-600">{video.playTitle}</p>
                       </div>

@@ -41,5 +41,9 @@ export const formatNameForId = (name: string): string => {
 };
 
 export const formatStringtoArray = (str: string): string[] => {
-  return str.split(",").map((item) => item.trim());
+  try {
+    return str.split(",").map((item) => item.trim());
+  } catch (error) {
+    return [];
+  }
 };

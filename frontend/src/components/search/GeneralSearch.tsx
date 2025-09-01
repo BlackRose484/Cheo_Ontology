@@ -220,7 +220,7 @@ const GeneralSearch = ({
           {/* Special handling for Scene category - first select play, then scene */}
           {filters.category === "Scene" && (
             <>
-              <span className="text-red-700">từ vở kịch</span>
+              <span className="text-red-700">từ vở chèo</span>
               <select
                 className="px-4 py-3 border-2 border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white min-w-[200px] text-base"
                 value={play4Scenes}
@@ -228,7 +228,7 @@ const GeneralSearch = ({
                 disabled={isLoadingCategoryData}
               >
                 <option value="">
-                  {isLoadingCategoryData ? "Đang tải..." : "Chọn vở kịch"}
+                  {isLoadingCategoryData ? "Đang tải..." : "Chọn vở chèo"}
                 </option>
                 {plays.map((play) => (
                   <option key={play} value={play}>
