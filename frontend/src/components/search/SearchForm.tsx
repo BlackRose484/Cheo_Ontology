@@ -39,18 +39,18 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
   };
 
   return (
-    <div className="bg-white/80 rounded-lg shadow-lg p-8 border-2 border-yellow-400 max-w-6xl mx-auto backdrop-blur-sm">
+    <div className="bg-white/80 rounded-lg shadow-lg p-8 border-2 border-amber-400 max-w-6xl mx-auto backdrop-blur-sm">
       <div className="mb-8 text-center">
         <h2 className="text-3xl font-bold text-red-800 mb-2 font-traditional">
           Tìm kiếm thông tin Chèo
         </h2>
-        <p className="text-red-700">
+        <p className="text-red-900">
           Chọn loại tìm kiếm và điền thông tin cần thiết
         </p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex flex-wrap justify-center gap-2 mb-8 border-b-2 border-yellow-400 pb-4">
+      <div className="flex flex-wrap justify-center gap-2 mb-8 border-b-2 border-amber-400 pb-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -60,8 +60,8 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
             }}
             className={`px-4 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 ${
               activeTab === tab.id
-                ? "bg-gradient-to-r from-red-600 to-red-700 text-yellow-200 shadow-lg transform scale-105 border-2 border-yellow-400"
-                : "bg-white text-red-800 border-2 border-red-300 hover:border-red-500 hover:bg-red-50"
+                ? "bg-gradient-to-r from-red-800 to-red-900 text-amber-200 shadow-lg transform scale-105 border-2 border-amber-400"
+                : "bg-white text-red-800 border-2 border-red-800 hover:border-red-900 hover:bg-red-50"
             }`}
           >
             <span className="text-lg">{tab.icon}</span>

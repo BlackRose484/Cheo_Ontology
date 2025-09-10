@@ -22,22 +22,22 @@ const Navigator = () => {
       : "px-3 py-2 rounded-md text-sm font-medium transition-all duration-300";
 
     if (isActive(path)) {
-      return `${baseClasses} bg-yellow-400 text-black shadow-md font-bold border border-red-800`;
+      return `${baseClasses} bg-amber-400 text-black shadow-md font-bold border border-red-900`;
     }
-    return `${baseClasses} text-white hover:text-black hover:bg-yellow-400 hover:shadow-md`;
+    return `${baseClasses} text-white hover:text-black hover:bg-amber-400 hover:shadow-md`;
   };
 
   const getNavbarTheme = () => {
-    return "bg-gradient-to-r from-red-600 via-red-700 to-red-600";
+    return "bg-gradient-to-r from-red-800 via-red-900 to-red-800";
   };
 
   return (
     <nav
-      className={`${getNavbarTheme()} border-b-4 border-yellow-400 shadow-lg relative overflow-hidden`}
+      className={`${getNavbarTheme()} border-b-4 border-amber-400 shadow-lg relative overflow-hidden`}
     >
       {/* Vietnamese cultural pattern overlay */}
       <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-5 bg-cover bg-center"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-red-600/90 via-red-700/90 to-red-600/90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-red-800/90 via-red-900/90 to-red-800/90"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">

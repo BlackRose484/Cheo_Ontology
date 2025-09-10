@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-yellow-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-orange-100 via-white to-red-100 relative overflow-hidden">
       {/* Vietnamese cultural background pattern */}
       <div className="absolute inset-0 bg-[url('/vietnam-flag.jpg')] opacity-3 bg-cover bg-center"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-yellow-400/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/5 via-transparent to-amber-600/5"></div>
 
       <div className="relative">
         {/* Hero Section */}
@@ -24,19 +24,19 @@ export default function Home() {
                     priority
                   />
                 </div>
-                <h1 className="text-5xl md:text-7xl font-bold text-red-600 font-traditional leading-none">
+                <h1 className="text-5xl md:text-7xl font-bold text-red-900 font-traditional leading-none">
                   Chèo Ontology
                 </h1>
               </div>
-              <div className="w-32 h-2 bg-gradient-to-r from-red-500 to-yellow-400 mx-auto mb-6 rounded-full"></div>
-              <p className="text-2xl md:text-3xl text-red-700 font-medium max-w-3xl mx-auto">
+              <div className="w-32 h-2 bg-gradient-to-r from-red-800 to-amber-500 mx-auto mb-6 rounded-full"></div>
+              <p className="text-2xl md:text-3xl text-red-800 font-medium max-w-3xl mx-auto">
                 Khám phá di sản nghệ thuật Chèo truyền thống Việt Nam 🇻🇳
               </p>
             </div>
 
             {/* Description */}
             <div className="mb-12 max-w-4xl mx-auto">
-              <p className="text-lg text-red-700 text-center leading-relaxed mb-6">
+              <p className="text-lg text-red-800 text-center leading-relaxed mb-6">
                 Hệ thống tra cứu toàn diện về nghệ thuật Chèo - một trong những
                 loại hình nghệ thuật sân khấu dân gian đặc sắc nhất của Việt
                 Nam. Tìm hiểu về các nhân vật, trích dẫn nổi tiếng và những vở
@@ -48,13 +48,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <Link
                 href="/search"
-                className="bg-gradient-to-r from-red-500 to-red-600 text-white font-medium py-4 px-8 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-lg text-lg border border-red-200"
+                className="bg-gradient-to-r from-red-800 to-red-900 text-white font-medium py-4 px-8 rounded-lg hover:from-red-900 hover:to-red-800 transition-all duration-200 shadow-lg text-lg border border-red-700"
               >
                 🔍 Bắt đầu tìm kiếm
               </Link>
               <Link
                 href="/library"
-                className="border-2 border-red-500 text-red-600 font-medium py-4 px-8 rounded-lg hover:bg-red-50 transition-all duration-200 text-lg"
+                className="border-2 border-red-800 text-red-900 font-medium py-4 px-8 rounded-lg hover:bg-red-100 transition-all duration-200 text-lg"
               >
                 📚 Thư viện
               </Link>
@@ -68,17 +68,17 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-5 bg-cover bg-center"></div>
           <div className="relative max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-red-600 mb-4 font-traditional">
+              <h2 className="text-3xl md:text-4xl font-bold text-red-900 mb-4 font-traditional">
                 Giới thiệu Chèo Ontology
               </h2>
-              <div className="w-32 h-2 bg-gradient-to-r from-red-500 to-yellow-400 mx-auto mb-6 rounded-full"></div>
+              <div className="w-32 h-2 bg-gradient-to-r from-red-800 to-amber-500 mx-auto mb-6 rounded-full"></div>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
                 Hệ thống tra cứu toàn diện về nghệ thuật Chèo truyền thống Việt
                 Nam
               </p>
             </div>
-            <section className="bg-white/90 rounded-xl shadow-lg p-8 border border-red-100 mb-8 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold text-red-600 mb-6 font-traditional flex items-center">
+            <section className="bg-white/90 rounded-xl shadow-lg p-8 border border-red-400 mb-8 backdrop-blur-sm">
+              <h3 className="text-2xl font-bold text-red-900 mb-6 font-traditional flex items-center">
                 <span className="text-3xl mr-3">🎭</span>
                 Về nghệ thuật Chèo
               </h3>
@@ -99,8 +99,8 @@ export default function Home() {
                 </p>
               </div>
             </section>
-            <section className="bg-white/90 rounded-xl shadow-lg p-8 border border-red-100 mb-8 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold text-red-600 mb-6 font-traditional flex items-center">
+            <section className="bg-white/90 rounded-xl shadow-lg p-8 border border-red-400 mb-8 backdrop-blur-sm">
+              <h3 className="text-2xl font-bold text-red-900 mb-6 font-traditional flex items-center">
                 <span className="text-3xl mr-3">💻</span>
                 Về dự án Chèo Ontology
               </h3>

@@ -43,9 +43,9 @@ export default function CharactersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-yellow-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-800 mx-auto mb-4"></div>
           <p className="text-gray-600">Đang tải danh sách...</p>
         </div>
       </div>
@@ -53,11 +53,11 @@ export default function CharactersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-100 via-white to-amber-100">
       {/* Header */}
-      <div className="relative bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white py-16">
+      <div className="relative bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-white py-16">
         <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-10 bg-cover bg-center"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/90 via-red-700/90 to-red-600/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-red-800/90 via-red-900/90 to-red-800/90"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -80,8 +80,8 @@ export default function CharactersPage() {
               onClick={() => setActiveTab("characters")}
               className={`flex-1 py-4 px-6 text-center font-medium transition-colors ${
                 activeTab === "characters"
-                  ? "bg-red-600 text-white border-b-2 border-red-600"
-                  : "text-gray-600 hover:text-red-600 hover:bg-red-50"
+                  ? "bg-red-800 text-white border-b-2 border-red-800"
+                  : "text-gray-600 hover:text-red-800 hover:bg-red-100"
               }`}
             >
               <span className="text-xl mr-2">🎭</span>
@@ -91,8 +91,8 @@ export default function CharactersPage() {
               onClick={() => setActiveTab("actors")}
               className={`flex-1 py-4 px-6 text-center font-medium transition-colors ${
                 activeTab === "actors"
-                  ? "bg-red-600 text-white border-b-2 border-red-600"
-                  : "text-gray-600 hover:text-red-600 hover:bg-red-50"
+                  ? "bg-red-800 text-white border-b-2 border-red-800"
+                  : "text-gray-600 hover:text-red-800 hover:bg-red-100"
               }`}
             >
               <span className="text-xl mr-2">🎬</span>
@@ -102,8 +102,8 @@ export default function CharactersPage() {
               onClick={() => setActiveTab("plays")}
               className={`flex-1 py-4 px-6 text-center font-medium transition-colors ${
                 activeTab === "plays"
-                  ? "bg-red-600 text-white border-b-2 border-red-600"
-                  : "text-gray-600 hover:text-red-600 hover:bg-red-50"
+                  ? "bg-red-800 text-white border-b-2 border-red-800"
+                  : "text-gray-600 hover:text-red-800 hover:bg-red-100"
               }`}
             >
               <span className="text-xl mr-2">🎪</span>

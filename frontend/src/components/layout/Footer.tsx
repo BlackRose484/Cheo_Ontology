@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-red-600 via-red-700 to-red-600 border-t-4 border-yellow-400 mt-auto relative">
+    <footer className="bg-gradient-to-br from-red-800 via-red-900 to-red-800 border-t-4 border-amber-400 mt-auto relative">
       {/* Subtle cultural background */}
       <div className="absolute inset-0 bg-[url('/trong-dong.jpg')] opacity-3 bg-cover bg-center"></div>
 
