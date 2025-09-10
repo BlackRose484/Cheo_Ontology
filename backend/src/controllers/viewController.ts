@@ -22,11 +22,10 @@ const ViewController = {
               Cheo:mainType ?mainType ;
               Cheo:subType ?subType .
 
-        FILTER(?charName = "${character}")    # lấy chính xác theo tên
+        FILTER(LCASE(STR(?charName)) = LCASE("${character}"))
 
         OPTIONAL { 
           ?char Cheo:description ?description .
-          FILTER(STRLEN(STR(?description)) > 0 && STR(?description) != "...")
         }
 
         OPTIONAL {
@@ -49,12 +48,10 @@ const ViewController = {
       }
       GROUP BY ?charName ?description ?charGender ?mainType ?subType
       ORDER BY LCASE(?charName)
-
   `;
 
     try {
       const results = await runSPARQLQuery(sparql);
-      // Trả về phần tử duy nhất
       const characterInfo: CharacterInformation = results.map(
         (result: any) => ({
           name: result.name?.value || "",
