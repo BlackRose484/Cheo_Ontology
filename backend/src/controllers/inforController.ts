@@ -300,7 +300,6 @@ const inforController = {
 
   filterCharactersByCategory: async (req: Request, res: Response) => {
     const { mainType, subType } = req.body;
-    console.log("Filtering characters with:", { mainType, subType });
     const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 

@@ -2466,7 +2466,7 @@
     <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_Khoeo">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
-        <Cheo:charName>Khèo</Cheo:charName>
+        <Cheo:charName>Khoèo</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
@@ -2481,8 +2481,8 @@
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Lý Trưởng</Cheo:charName>
         <Cheo:description>Là người đứng đầu làng, Lý Trưởng thể hiện sự quyền uy và luôn tìm cách giữ thể diện cho dòng họ. Ông ra lệnh cho Mẹ Mõ rao tin về việc Thị Mầu có thai nhưng muốn xử lý kín đáo. Nhân vật này đại diện cho tầng lớp cai trị bảo thủ, thường áp đặt quyền lực lên người dân.</Cheo:description>
-        <Cheo:mainType>Kép</Cheo:mainType>
-        <Cheo:subType>Lệch</Cheo:subType>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType>Áo dài</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2521,7 +2521,7 @@
         <Cheo:charName>Mụ Quán</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Mụ</Cheo:mainType>
-        <Cheo:subType>Ác</Cheo:subType>
+        <Cheo:subType>Quán</Cheo:subType>
     </rdf:Description>
     
 
@@ -2559,8 +2559,8 @@
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Phù thủy</Cheo:charName>
         <Cheo:description>...</Cheo:description>
-        <Cheo:mainType>...</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType>Áo dài</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2611,8 +2611,8 @@
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Thầy Đồ</Cheo:charName>
         <Cheo:description>...</Cheo:description>
-        <Cheo:mainType>...</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType>Áo dài</Cheo:subType>
     </rdf:Description>
     
 
@@ -2687,7 +2687,7 @@
     <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonTrong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
-        <Cheo:charName>Tôn Mạnh</Cheo:charName>
+        <Cheo:charName>Tôn Trọng</Cheo:charName>
         <Cheo:description>Con ruột của Tôn Dân và vợ hai là Trinh Nguyên. Hai anh em bị vu oan tội giết người khi chôn cất một xác người ven đường, nhưng may mắn được Quan Án sát đã giải oan cho hai anh em, để cho mẹ con Trinh Nguyên được đoàn tụ vẹn toàn.</Cheo:description>
         <Cheo:mainType>...</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
@@ -2703,7 +2703,7 @@
         <Cheo:charName>Trần Phương</Cheo:charName>
         <Cheo:description>Trần Phương, một gã nhà giàu đàng điếm ở Đông Ngàn, Bắc Ninh thông qua Mụ Quán tìm cách tán tỉnh Súy Vân, xui nàng giả điên dại để thoát khỏi người chồng là Kim Nham.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
-        <Cheo:subType>Lệch</Cheo:subType>
+        <Cheo:subType>Pha</Cheo:subType>
     </rdf:Description>
     
 
@@ -2742,7 +2742,7 @@
         <Cheo:charName>Tuần Ty</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
-        <Cheo:subType>Lệch</Cheo:subType>
+        <Cheo:subType>Pha</Cheo:subType>
     </rdf:Description>
     
 
@@ -2780,7 +2780,7 @@
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_TranPhuongVaoChua"/>
         <Cheo:author>GS.NSND Trần Bảng</Cheo:author>
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4</Cheo:sceneNumber>
-        <Cheo:summary>Vở chèo Kim Nham kể về cuộc đời của Kim Nham, một anh học trò nghèo, và người vợ Xúy Vân là con gái quan viên Huyện Tể. Sau khi cưới, Kim Nham lên kinh đô để theo đuổi công danh, bỏ lại Xúy Vân ở nhà. Xúy Vân buồn bã, nhớ nhung chồng và bị Trần Phương, một người giàu có, tán tỉnh. Để thoát khỏi cuộc sống buồn tẻ và tìm kiếm tình yêu, Xúy Vân nghe theo lời xui khiến của Trần Phương, giả điên để thoát khỏi Kim Nham. Kim Nham về quê, lo lắng cho vợ, nhưng không chữa khỏi bệnh. Cuối cùng, Kim Nham và Xúy Vân đành giải thoát cho nhau. Hoàn thành mục tiêu Xúy Vân về bên Trần Phương thì phát hiện ra rằng hắn đã ở bên một ả đàn bà khác, từ giả điên Xúy Vân trở thành kẻ điên dại thật. Trong khí đó Kim Nham quyết chí học hành, đỗ đạt cao, được bổ làm quan, khi thấy Xúy Vân xuất hiện với bộ dạng điên dại đi xin ăn chàng đã bỏ một nén bạc vào nắm cơm, sai người đem cho Xúy Vân, Xúy Vân biết chuyện, nàng hổn thẹn nhảy xuống sông tự vẫn.</Cheo:summary>
+        <Cheo:summary>Vở chèo Kim Nham kể về cuộc đời của Kim Nham, một anh học trò nghèo, và người vợ Súy Vân là con gái quan viên Huyện Tể. Sau khi cưới, Kim Nham lên kinh đô để theo đuổi công danh, bỏ lại Súy Vân ở nhà. Súy Vân buồn bã, nhớ nhung chồng và bị Trần Phương, một người giàu có, tán tỉnh. Để thoát khỏi cuộc sống buồn tẻ và tìm kiếm tình yêu, Súy Vân nghe theo lời xui khiến của Trần Phương, giả điên để thoát khỏi Kim Nham. Kim Nham về quê, lo lắng cho vợ, nhưng không chữa khỏi bệnh. Cuối cùng, Kim Nham và Súy Vân đành giải thoát cho nhau. Hoàn thành mục tiêu Súy Vân về bên Trần Phương thì phát hiện ra rằng hắn đã ở bên một ả đàn bà khác, từ giả điên Súy Vân trở thành kẻ điên dại thật. Trong khí đó Kim Nham quyết chí học hành, đỗ đạt cao, được bổ làm quan, khi thấy Súy Vân xuất hiện với bộ dạng điên dại đi xin ăn chàng đã bỏ một nén bạc vào nắm cơm, sai người đem cho Súy Vân, Súy Vân biết chuyện, nàng hổ thẹn nhảy xuống sông tự vẫn.</Cheo:summary>
         <Cheo:title>Kim Nham</Cheo:title>
     </owl:NamedIndividual>
     
@@ -4075,7 +4075,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(HTT)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
-        <Cheo:charName>Hề</Cheo:charName>
+        <Cheo:charName>Hề (Hề Theo Thầy)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
@@ -4088,7 +4088,7 @@
     <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(MQTP)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
-        <Cheo:charName>Hề</Cheo:charName>
+        <Cheo:charName>Hề (Mụ Quán Trần Phương)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
@@ -4101,7 +4101,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(TPVC)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
-        <Cheo:charName>Hề</Cheo:charName>
+        <Cheo:charName>Hề (Trần Phương vào chùa)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
