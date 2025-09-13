@@ -6,6 +6,9 @@ import {
   getCharacters,
   getActorNames,
   getPlays,
+  getMainTypeCategories,
+  getSubTypeCategories,
+  filterCharactersByCategory,
 } from "@/apis/infor";
 import { Library, LibraryItem } from "@/types/index";
 import LibraryVideoCard from "@/components/library/LibraryVideoCard";
@@ -16,13 +19,21 @@ type TabType = "videos" | "characters" | "actors" | "plays";
 export default function LibraryPage() {
   const [library, setLibrary] = useState<Library>([]);
   const [characters, setCharacters] = useState<string[]>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<string[]>([]);
   const [actors, setActors] = useState<string[]>([]);
   const [plays, setPlays] = useState<string[]>([]);
+  const [mainTypes, setMainTypes] = useState<string[]>([]);
+  const [subTypes, setSubTypes] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filterLoading, setFilterLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>("videos");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
+
+  // Filter states
+  const [selectedMainType, setSelectedMainType] = useState<string>("all");
+  const [selectedSubType, setSelectedSubType] = useState<string>("all");
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -30,25 +41,40 @@ export default function LibraryPage() {
         setIsLoading(true);
         setError(null);
 
-        const [libraryRes, charactersRes, actorsRes, playsRes] =
-          await Promise.all([
-            getLibrary(),
-            getCharacters(),
-            getActorNames(),
-            getPlays(),
-          ]);
+        const [
+          libraryRes,
+          charactersRes,
+          actorsRes,
+          playsRes,
+          mainTypesRes,
+          subTypesRes,
+        ] = await Promise.all([
+          getLibrary(),
+          getCharacters(),
+          getActorNames(),
+          getPlays(),
+          getMainTypeCategories(),
+          getSubTypeCategories(),
+        ]);
 
         if (libraryRes.data && Array.isArray(libraryRes.data)) {
           setLibrary(libraryRes.data);
         }
         if (charactersRes.data && Array.isArray(charactersRes.data)) {
           setCharacters(charactersRes.data);
+          setFilteredCharacters(charactersRes.data); // Initialize filtered list
         }
         if (actorsRes.data && Array.isArray(actorsRes.data)) {
           setActors(actorsRes.data);
         }
         if (playsRes.data && Array.isArray(playsRes.data)) {
           setPlays(playsRes.data);
+        }
+        if (mainTypesRes.data && Array.isArray(mainTypesRes.data)) {
+          setMainTypes(mainTypesRes.data);
+        }
+        if (subTypesRes.data && Array.isArray(subTypesRes.data)) {
+          setSubTypes(subTypesRes.data);
         }
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -61,13 +87,53 @@ export default function LibraryPage() {
     fetchAllData();
   }, []);
 
+  // Apply filter when selections change
+  useEffect(() => {
+    const applyFilterEffect = async () => {
+      if (characters.length === 0 || activeTab !== "characters") return;
+
+      if (selectedMainType === "all" && selectedSubType === "all") {
+        setFilteredCharacters(characters);
+        return;
+      }
+
+      try {
+        setFilterLoading(true);
+        const filterMainType =
+          selectedMainType === "all" ? "" : selectedMainType;
+        const filterSubType = selectedSubType === "all" ? "" : selectedSubType;
+
+        const result = await filterCharactersByCategory(
+          filterMainType,
+          filterSubType
+        );
+        if (result.data && Array.isArray(result.data)) {
+          setFilteredCharacters(result.data);
+        }
+      } catch (error) {
+        console.error("Error filtering characters:", error);
+        setFilteredCharacters(characters);
+      } finally {
+        setFilterLoading(false);
+      }
+    };
+
+    applyFilterEffect();
+  }, [selectedMainType, selectedSubType, characters, activeTab]);
+
+  // Reset filters
+  const resetFilters = () => {
+    setSelectedMainType("all");
+    setSelectedSubType("all");
+  };
+
   // Calculate pagination for current tab
   const getCurrentData = () => {
     switch (activeTab) {
       case "videos":
         return library;
       case "characters":
-        return characters;
+        return filteredCharacters;
       case "actors":
         return actors;
       case "plays":
@@ -91,6 +157,11 @@ export default function LibraryPage() {
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);
     setCurrentPage(1);
+    // Reset filters when switching away from characters tab
+    if (tab !== "characters") {
+      setSelectedMainType("all");
+      setSelectedSubType("all");
+    }
   };
 
   if (isLoading) {
@@ -205,7 +276,7 @@ export default function LibraryPage() {
                 }`}
               >
                 <span>🎭</span>
-                <span>Nhân vật ({characters.length})</span>
+                <span>Nhân vật ({filteredCharacters.length})</span>
               </button>
               <button
                 onClick={() => handleTabChange("actors")}
@@ -242,7 +313,79 @@ export default function LibraryPage() {
           </div>
         </div>
 
-        {/* Video Grid */}
+        {/* Filter Section - Only visible when on characters tab */}
+        {activeTab === "characters" && (
+          <div className="mb-6">
+            <div className="bg-white/95 backdrop-blur-sm border border-red-200 rounded-xl shadow-lg p-4">
+              <div className="flex flex-wrap items-center justify-end gap-3">
+                {/* Filter Status */}
+                {filterLoading && (
+                  <div className="flex items-center gap-2 text-red-600 text-xs">
+                    <div className="animate-spin rounded-full h-3 w-3 border border-red-600 border-t-transparent"></div>
+                    <span>Đang lọc...</span>
+                  </div>
+                )}
+
+                <div className="flex items-center gap-2">
+                  <span className="text-red-800 font-medium text-sm">🔍</span>
+                </div>
+
+                {/* Main Type Filter */}
+                <div className="flex items-center gap-2">
+                  <label className="text-sm font-medium text-red-800 whitespace-nowrap">
+                    Loại chính:
+                  </label>
+                  <select
+                    value={selectedMainType}
+                    onChange={(e) => setSelectedMainType(e.target.value)}
+                    className="px-2 py-1 border border-red-300 rounded-md bg-white text-red-800 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500 min-w-[100px]"
+                    style={{ fontSize: "0.9rem" }}
+                    disabled={isLoading}
+                  >
+                    <option value="all">Tất cả</option>
+                    {mainTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Sub Type Filter */}
+                <div className="flex items-center gap-2">
+                  <label className="text-sm font-medium text-red-800 whitespace-nowrap">
+                    Loại phụ:
+                  </label>
+                  <select
+                    value={selectedSubType}
+                    onChange={(e) => setSelectedSubType(e.target.value)}
+                    className="px-2 py-1 border border-red-300 rounded-md bg-white text-red-800 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500 min-w-[100px]"
+                    style={{ fontSize: "0.9rem" }}
+                    disabled={isLoading}
+                  >
+                    <option value="all">Tất cả</option>
+                    {subTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Reset Button */}
+                <button
+                  onClick={resetFilters}
+                  className="px-2 py-1 text-sm bg-red-800 text-white rounded-md hover:bg-red-900 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-200 whitespace-nowrap"
+                  disabled={isLoading}
+                >
+                  Đặt lại
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Content Grid */}
         {library.length === 0 ? (
           <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-8 border border-red-200 text-center">
             <div className="text-6xl mb-4">📹</div>

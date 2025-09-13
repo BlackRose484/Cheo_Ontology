@@ -31,3 +31,18 @@ export const getSceneNamesByPlay = (play: string) => {
 export const getLibrary = () => {
   return http.get(`/infor/library`);
 };
+
+export const getMainTypeCategories = () => {
+  return http.get(`/infor/maintype`);
+};
+
+export const getSubTypeCategories = () => {
+  return http.get(`/infor/subtype`);
+};
+
+export const filterCharactersByCategory = (
+  mainType: string,
+  subType: string
+) => {
+  return http.post(`/infor/filtered-characters`, { mainType, subType });
+};
