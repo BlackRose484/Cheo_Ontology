@@ -256,6 +256,79 @@ const inforController = {
       res.status(500).json({ error: "Error running SPARQL query" });
     }
   },
+
+  getMainTypeCategories: async (req: Request, res: Response) => {
+    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+      SELECT DISTINCT ?mainType
+      WHERE {
+        ?char rdf:type Cheo:Character ;
+              Cheo:mainType ?mainType .
+      }
+      ORDER BY ?mainType
+    `;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const mainTypes = results.map((result: any) => result?.mainType?.value);
+      res.json(mainTypes);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      res.status(500).json({ error: "Error running SPARQL query" });
+    }
+  },
+  getSubTypeCategories: async (req: Request, res: Response) => {
+    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      SELECT DISTINCT ?subType
+      WHERE {
+        ?char rdf:type Cheo:Character ;
+              Cheo:subType ?subType .
+      }
+      ORDER BY ?subType
+    `;
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const subTypes = results.map((result: any) => result?.subType?.value);
+      res.json(subTypes);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      res.status(500).json({ error: "Error running SPARQL query" });
+    }
+  },
+
+  filterCharactersByCategory: async (req: Request, res: Response) => {
+    const { mainType, subType } = req.body;
+    console.log("Filtering characters with:", { mainType, subType });
+    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+      SELECT DISTINCT ?charName
+      WHERE {
+        ?char rdf:type Cheo:Character ;
+              Cheo:charName ?charName ;
+              Cheo:mainType ?mainType ;
+              Cheo:subType ?subType .
+
+        # Nếu có mainType đầu vào
+        BIND("${mainType}" AS ?qMainType)
+        FILTER( ?qMainType = "" || LCASE(STR(?mainType)) = LCASE(?qMainType) )
+
+        # Nếu có subType đầu vào
+        BIND("${subType}" AS ?qSubType)
+        FILTER( ?qSubType = "" || LCASE(STR(?subType)) = LCASE(?qSubType) )
+      }
+      ORDER BY LCASE(?charName)`;
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const characters = results.map((result: any) => result?.charName?.value);
+      res.json(characters);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      res.status(500).json({ error: "Error running SPARQL query" });
+    }
+  },
 };
 
 export default inforController;
