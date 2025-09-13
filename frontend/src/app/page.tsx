@@ -18,14 +18,14 @@ export default function Home() {
                 <div className="relative w-16 h-16 mr-4">
                   <Image
                     src="/logo.png"
-                    alt="Chèo Ontology Logo"
+                    alt="Chèo Google Logo"
                     fill
                     className="object-contain"
                     priority
                   />
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold text-red-900 font-traditional leading-none">
-                  Chèo Ontology
+                  Chèo Google
                 </h1>
               </div>
               <div className="w-32 h-2 bg-gradient-to-r from-red-800 to-amber-500 mx-auto mb-6 rounded-full"></div>
@@ -63,13 +63,13 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        {/* Giới thiệu Chèo Ontology */}
+        {/* Giới thiệu Chèo Google */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm relative">
           <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-5 bg-cover bg-center"></div>
           <div className="relative max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-red-900 mb-4 font-traditional">
-                Giới thiệu Chèo Ontology
+                Giới thiệu Chèo Google
               </h2>
               <div className="w-32 h-2 bg-gradient-to-r from-red-800 to-amber-500 mx-auto mb-6 rounded-full"></div>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
@@ -102,11 +102,11 @@ export default function Home() {
             <section className="bg-white/90 rounded-xl shadow-lg p-8 border border-red-400 mb-8 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-red-900 mb-6 font-traditional flex items-center">
                 <span className="text-3xl mr-3">💻</span>
-                Về dự án Chèo Ontology
+                Về dự án Chèo Google
               </h3>
               <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                 <p className="mb-4">
-                  Chèo Ontology là một hệ thống tra cứu số hóa nhằm bảo tồn và
+                  Chèo Google là một hệ thống tra cứu số hóa nhằm bảo tồn và
                   chia sẻ kiến thức về nghệ thuật Chèo truyền thống. Dự án được
                   xây dựng với mục tiêu tạo ra một cơ sở dữ liệu toàn diện về
                   các nhân vật, vở diễn, nghệ sĩ, và các yếu tố liên quan đến
@@ -122,19 +122,19 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="bg-white rounded-xl p-6 border border-red-100 shadow-lg hover:shadow-xl transition-shadow duration-200">
-                <div className="text-3xl font-bold text-red-500 mb-2">50+</div>
+                <div className="text-3xl font-bold text-red-900 mb-2">50+</div>
                 <div className="text-gray-700">Nhân vật</div>
               </div>
               <div className="bg-white rounded-xl p-6 border border-red-100 shadow-lg hover:shadow-xl transition-shadow duration-200">
-                <div className="text-3xl font-bold text-red-500 mb-2">100+</div>
+                <div className="text-3xl font-bold text-red-900 mb-2">100+</div>
                 <div className="text-gray-700">Trích dẫn</div>
               </div>
               <div className="bg-white rounded-xl p-6 border border-red-100 shadow-lg hover:shadow-xl transition-shadow duration-200">
-                <div className="text-3xl font-bold text-red-500 mb-2">20+</div>
+                <div className="text-3xl font-bold text-red-900 mb-2">20+</div>
                 <div className="text-gray-700">Vở chèo</div>
               </div>
               <div className="bg-white rounded-xl p-6 border border-red-100 shadow-lg hover:shadow-xl transition-shadow duration-200">
-                <div className="text-3xl font-bold text-red-500 mb-2">500+</div>
+                <div className="text-3xl font-bold text-red-900 mb-2">500+</div>
                 <div className="text-gray-700">Năm lịch sử</div>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('/trong-dong-2.jpg')] opacity-5 bg-cover bg-center"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-yellow-400/10"></div>
           <div className="relative max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-red-600 mb-6 font-traditional">
+            <h2 className="text-4xl font-bold text-red-900 mb-6 font-traditional">
               Bắt đầu khám phá ngay
             </h2>
             <p className="text-lg text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto">
@@ -155,7 +155,7 @@ export default function Home() {
             </p>
             <Link
               href="/search"
-              className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold py-4 px-10 rounded-xl hover:from-red-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg text-lg border border-red-200"
+              className="inline-block bg-gradient-to-r from-red-800 to-red-900 text-white font-semibold py-4 px-10 rounded-xl hover:from-red-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg text-lg border border-red-200"
             >
               Khám phá ngay 🚀
             </Link>

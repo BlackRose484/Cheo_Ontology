@@ -12,7 +12,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Chèo Ontology - Hệ thống tra cứu nghệ thuật Chèo truyền thống",
+  title: "Chèo Google - Hệ thống tra cứu nghệ thuật Chèo truyền thống",
   description:
     "Khám phá và tìm hiểu về nghệ thuật Chèo Việt Nam qua các nhân vật, trích dẫn và vở diễn nổi tiếng",
   keywords:

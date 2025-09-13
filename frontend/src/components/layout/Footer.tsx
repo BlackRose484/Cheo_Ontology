@@ -11,7 +11,7 @@ const Footer = () => {
           {/* About Section */}
           <div>
             <h3 className="text-xl font-semibold text-white mb-4 font-traditional">
-              Về Chèo Ontology
+              Về Chèo Google
             </h3>
             <p className="text-sm text-white/90 leading-relaxed">
               Hệ thống tra cứu thông tin về nghệ thuật Chèo truyền thống Việt
@@ -65,13 +65,13 @@ const Footer = () => {
               <div className="relative w-6 h-6 flex-shrink-0">
                 <Image
                   src="/logo.png"
-                  alt="Chèo Ontology Logo"
+                  alt="Chèo Google Logo"
                   fill
                   className="object-contain"
                 />
               </div>
               <span className="text-sm text-white/90 leading-none">
-                © 2024 Chèo Ontology. Tất cả quyền được bảo lưu.
+                © 2024 Chèo Google. Tất cả quyền được bảo lưu.
               </span>
             </div>
 

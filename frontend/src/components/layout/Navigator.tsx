@@ -48,14 +48,14 @@ const Navigator = () => {
               <div className="relative w-8 h-8 flex-shrink-0">
                 <Image
                   src="/logo.png"
-                  alt="Chèo Ontology Logo"
+                  alt="Chèo Google Logo"
                   fill
                   className="object-contain"
                   priority
                 />
               </div>
               <div className="text-xl font-bold text-white font-traditional drop-shadow-md leading-none flex items-center h-8">
-                Chèo Ontology
+                Chèo Google
               </div>
             </Link>
           </div>
