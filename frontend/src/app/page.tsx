@@ -90,7 +90,7 @@ export default function Home() {
               </h2>
               <div className="w-32 h-2 bg-gradient-to-r from-red-800 to-amber-500 mx-auto mb-6 rounded-full"></div>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                Tám vở chèo cổ bất hủ - những viên ngọc quý của kho tàng văn hóa
+                Bảy vở chèo cổ bất hủ - những viên ngọc quý của kho tàng văn hóa
                 dân tộc
               </p>
             </div>
@@ -108,9 +108,12 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-red-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="font-bold text-lg mb-1">Thị Màu lên chùa</h3>
-                  <p className="text-sm opacity-90">
-                    Câu chuyện tình yêu bi thương
+                  <h3 className="font-bold text-lg mb-1 !text-red-800">
+                    Thị Màu lên chùa
+                  </h3>
+                  <p className="!text-sm opacity-90 !italic">
+                    Thị Màu đem lòng si mê Kính Tâm trong chùa, tìm cách dụ dỗ
+                    nhưng bị cự tuyệt.
                   </p>
                 </div>
               </div>
@@ -127,9 +130,13 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-red-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="font-bold text-lg mb-1">Súy Vân giả dại</h3>
-                  <p className="text-sm opacity-90">
-                    Lòng hiếu thảo và tình người
+                  <h3 className="font-bold text-lg mb-1 !text-red-800">
+                    Súy Vân giả dại
+                  </h3>
+                  <p className="!text-sm opacity-90 !italic">
+                    Súy Vân giả điên, than thở và diễn điên loạn để được Kim
+                    Nham giải thoát, khỏi thực tại, khỏi cuộc hôn nhân không
+                    hạnh phúc.
                   </p>
                 </div>
               </div>
@@ -138,7 +145,7 @@ export default function Home() {
               <div className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                 <div className="relative h-64 w-full">
                   <Image
-                    src="/home-5.jpg"
+                    src="/home-8.jpg"
                     alt="Nghệ sĩ Chèo"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
@@ -146,8 +153,13 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-red-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="font-bold text-lg mb-1">Hề Chèo</h3>
-                  <p className="text-sm opacity-90">Những tài năng siêu việt</p>
+                  <h3 className="font-bold text-lg mb-1 !text-red-800">
+                    Phù thủy sợ ma
+                  </h3>
+                  <p className="text-sm opacity-90 !italic">
+                    Mẹ của Kim Nham mời thầy phù thủy về làm phép chữa bệnh điên
+                    loạn cho Súy Vân.
+                  </p>
                 </div>
               </div>
             </div>
@@ -271,12 +283,12 @@ export default function Home() {
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-200">
                 <div className="text-3xl font-bold text-amber-300 mb-2">
-                  20+
+                  10+
                 </div>
                 <div className="text-red-100">Trích đoạn</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-200">
-                <div className="text-3xl font-bold text-amber-300 mb-2">8</div>
+                <div className="text-3xl font-bold text-amber-300 mb-2">7</div>
                 <div className="text-red-100">Vở chèo cổ</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-200">
