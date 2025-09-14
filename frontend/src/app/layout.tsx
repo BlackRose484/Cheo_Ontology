@@ -14,7 +14,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 export const metadata: Metadata = {
   title: "Chèo Google - Hệ thống tra cứu nghệ thuật Chèo truyền thống",
   description:
-    "Khám phá và tìm hiểu về nghệ thuật Chèo Việt Nam qua các nhân vật, trích dẫn và vở diễn nổi tiếng",
+    "Khám phá và tìm hiểu về nghệ thuật Chèo Việt Nam qua các nhân vật, trích dẫn và vở chèo nổi tiếng",
   keywords:
     "chèo, nghệ thuật truyền thống, văn hóa việt nam, nhân vật chèo, trích dẫn chèo",
   icons: {

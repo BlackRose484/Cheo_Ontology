@@ -132,7 +132,7 @@ export default function CharactersPage() {
               Thư viện Chèo
             </h1>
             <p className="text-xl md:text-2xl opacity-90">
-              Khám phá nhân vật, diễn viên và vở diễn trong nghệ thuật Chèo
+              Khám phá nhân vật, diễn viên và vở chèo trong nghệ thuật Chèo
             </p>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function CharactersPage() {
               }`}
             >
               <span className="text-xl mr-2">🎪</span>
-              Vở diễn ({plays.length})
+              Vở chèo ({plays.length})
             </button>
           </div>
 
@@ -317,7 +317,7 @@ export default function CharactersPage() {
             {activeTab === "plays" && (
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                  Danh sách vở diễn
+                  Danh sách vở chèo
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {plays.map((play, index) => (
@@ -367,7 +367,7 @@ export default function CharactersPage() {
             <div className="text-2xl font-bold text-gray-800">
               {plays.length}
             </div>
-            <div className="text-gray-600">Vở diễn</div>
+            <div className="text-gray-600">Vở chèo</div>
           </div>
         </div>
       </div>

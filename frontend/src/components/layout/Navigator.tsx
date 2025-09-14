@@ -43,9 +43,9 @@ const Navigator = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3 flex-row">
+            <Link href="/" className="!flex items-center space-x-3 flex-row">
               {/* Company Logo */}
-              <div className="relative w-8 h-8 flex-shrink-0">
+              <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Chèo Google Logo"

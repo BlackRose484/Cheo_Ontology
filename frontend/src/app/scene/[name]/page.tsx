@@ -27,11 +27,11 @@ export default function SceneDetailPage() {
           setScene(response.data[0]);
           console.log(response.data[0]);
         } else {
-          setError("Không tìm thấy thông tin cảnh này");
+          setError("Không tìm thấy thông tin trích đoạn này");
         }
       } catch (error) {
         console.error("Error fetching scene detail:", error);
-        setError("Lỗi khi tải thông tin cảnh. Vui lòng thử lại sau.");
+        setError("Lỗi khi tải thông tin trích đoạn. Vui lòng thử lại sau.");
       } finally {
         setIsLoading(false);
       }
@@ -54,7 +54,7 @@ export default function SceneDetailPage() {
             <div className="flex items-center justify-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-800"></div>
               <span className="ml-3 text-red-900 font-medium">
-                Đang tải thông tin cảnh...
+                Đang tải thông tin trích đoạn...
               </span>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function SceneDetailPage() {
           <div className="bg-white/90 rounded-lg shadow-lg p-8 border-2 border-red-400 backdrop-blur-sm text-center">
             <div className="text-6xl mb-4">🎭</div>
             <h3 className="text-xl font-bold text-red-900 mb-2">
-              Không tìm thấy thông tin cảnh
+              Không tìm thấy thông tin trích đoạn
             </h3>
             <p className="text-red-800 mb-4">{error}</p>
             <button
@@ -115,7 +115,7 @@ export default function SceneDetailPage() {
           </h1>
           <div className="w-24 h-1 bg-amber-400 mx-auto mb-6"></div>
           <p className="text-2xl md:text-3xl text-amber-200 font-traditional opacity-90">
-            Cảnh Chèo truyền thống Việt Nam
+            Trích đoạn Chèo truyền thống Việt Nam
           </p>
           {scene.inPlay && (
             <p className="text-xl text-amber-300 mt-4 font-traditional">
@@ -138,7 +138,7 @@ export default function SceneDetailPage() {
             </button>
             <div className="hidden md:flex items-center gap-4 text-red-800">
               <span className="text-2xl">🎭</span>
-              <span className="font-traditional text-lg">Cảnh Chèo</span>
+              <span className="font-traditional text-lg">Trích đoạn Chèo</span>
             </div>
           </div>
         </div>
@@ -154,14 +154,14 @@ export default function SceneDetailPage() {
               <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-8 py-6">
                 <h2 className="text-2xl font-traditional font-bold flex items-center">
                   <span className="text-amber-300 mr-3 text-3xl">📋</span>
-                  Thông tin cảnh
+                  Thông tin trích đoạn
                 </h2>
               </div>
 
               <div className="p-8 space-y-6">
                 <div className="border-b border-gray-100 pb-4">
                   <label className="block text-sm font-medium text-red-800 mb-2 font-traditional">
-                    Tên cảnh
+                    Tên trích đoạn
                   </label>
                   <p className="text-2xl font-traditional font-bold text-gray-800">
                     {scene.scene || scene.name}
@@ -357,7 +357,7 @@ export default function SceneDetailPage() {
                   >
                     <div className="flex items-center justify-center">
                       <span className="text-xl mr-2">🎪</span>
-                      <span>Xem vở diễn</span>
+                      <span>Xem vở chèo</span>
                     </div>
                   </Link>
                 )}
@@ -368,7 +368,7 @@ export default function SceneDetailPage() {
                 >
                   <div className="flex items-center justify-center">
                     <span className="text-xl mr-2">🔍</span>
-                    <span>Tìm kiếm trong cảnh</span>
+                    <span>Tìm kiếm trong trích đoạn</span>
                   </div>
                 </Link>
 

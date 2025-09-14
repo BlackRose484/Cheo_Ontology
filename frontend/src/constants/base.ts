@@ -39,6 +39,6 @@ export const CATEGORIES = ["Character", "Play", "Scene", "Actor"];
 export const DISPLAY_CATEGORIES = {
   Character: "Nhân vật",
   Play: "Vở chèo",
-  Scene: "Cảnh",
+  Scene: "Trích đoạn",
   Actor: "Diễn viên",
 };

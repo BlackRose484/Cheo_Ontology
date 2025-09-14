@@ -207,15 +207,21 @@ export default function SearchPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-red-800">
               <div>
                 <h4 className="font-medium text-red-800 mb-2">
-                  💡 Mẹo tìm kiếm:
+                  💡 Cách tìm kiếm:
                 </h4>
                 <ul className="space-y-1 text-sm">
-                  <li>• Sử dụng từ khóa đơn giản và chính xác</li>
-                  <li>• Kết hợp nhiều bộ lọc để thu hẹp kết quả</li>
                   <li>
-                    • Thử tìm kiếm theo tên nhân vật hoặc nội dung trích dẫn
+                    • <strong>Tìm kiếm chung:</strong> Chọn danh mục (Nhân vật,
+                    Diễn viên, Vở chèo, Trích đoạn) rồi chọn mục cụ thể
                   </li>
-                  <li>• Sử dụng các gợi ý tìm kiếm nhanh</li>
+                  <li>
+                    • <strong>Tìm kiếm trạng thái:</strong> Tìm trạng thái cảm
+                    xúc của nhân vật trong vở chèo
+                  </li>
+                  <li>
+                    • Sử dụng danh sách thả xuống để chọn từ các tùy chọn có sẵn
+                  </li>
+                  <li>• Có thể để trống một số trường để mở rộng kết quả</li>
                 </ul>
               </div>
               <div>
@@ -223,12 +229,22 @@ export default function SearchPage() {
                   🎭 Ví dụ tìm kiếm:
                 </h4>
                 <ul className="space-y-1 text-sm">
-                  <li>• Nhân vật: &quot;Thị Mầu&quot;, &quot;Chú Cuội&quot;</li>
                   <li>
-                    • Trích dẫn: &quot;trăng kia&quot;, &quot;làm người&quot;
+                    • <strong>Tìm nhân vật:</strong> Chọn &ldquo;Nhân vật&rdquo;
+                    → chọn tên nhân vật từ danh sách
                   </li>
-                  <li>• Vở diễn: &quot;Quan Âm&quot;, &quot;Tấm Cám&quot;</li>
-                  <li>• Giới tính: Chọn &quot;Nam&quot; hoặc &quot;Nữ&quot;</li>
+                  <li>
+                    • <strong>Tìm vở chèo:</strong> Chọn &ldquo;Vở chèo&rdquo; →
+                    chọn tên vở từ danh sách
+                  </li>
+                  <li>
+                    • <strong>Tìm trạng thái:</strong> Chọn nhân vật + vở chèo +
+                    cảm xúc
+                  </li>
+                  <li>
+                    • <strong>Tìm diễn viên:</strong> Chọn &ldquo;Diễn
+                    viên&rdquo; → chọn tên diễn viên
+                  </li>
                 </ul>
               </div>
             </div>

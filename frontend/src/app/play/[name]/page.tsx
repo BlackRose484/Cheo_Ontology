@@ -26,10 +26,10 @@ export default function PlayDetailPage() {
         if (response && response.data) {
           setPlay(response.data[0]);
         } else {
-          setError("Không tìm thấy thông tin vở diễn");
+          setError("Không tìm thấy thông tin vở chèo");
         }
       } catch (err) {
-        setError("Không thể tải thông tin vở diễn");
+        setError("Không thể tải thông tin vở chèo");
         console.error("Error fetching play info:", err);
       } finally {
         setLoading(false);
@@ -48,7 +48,7 @@ export default function PlayDetailPage() {
         <div className="relative text-center text-white">
           <div className="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent mx-auto mb-6"></div>
           <h2 className="text-2xl font-traditional font-bold mb-2">
-            Đang tải thông tin vở diễn...
+            Đang tải thông tin vở chèo...
           </h2>
           <p className="text-amber-200 font-traditional">
             Xin vui lòng chờ trong giây lát
@@ -68,7 +68,7 @@ export default function PlayDetailPage() {
             Không tìm thấy thông tin
           </h1>
           <p className="text-amber-200 mb-8 font-traditional">
-            {error || "Vở diễn này không tồn tại hoặc đã bị xóa"}
+            {error || "Vở chèo này không tồn tại hoặc đã bị xóa"}
           </p>
           <Link
             href="/search"
@@ -131,14 +131,14 @@ export default function PlayDetailPage() {
               <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-8 py-6">
                 <h2 className="text-2xl font-traditional font-bold flex items-center">
                   <span className="text-amber-300 mr-3 text-3xl">📚</span>
-                  Thông tin vở diễn
+                  Thông tin vở chèo
                 </h2>
               </div>
 
               <div className="p-8 space-y-6">
                 <div className="border-b border-gray-100 pb-4">
                   <label className="block text-sm font-medium text-red-800 mb-2 font-traditional">
-                    Tên vở diễn
+                    Tên vở chèo
                   </label>
                   <p className="text-2xl font-traditional font-bold text-gray-800">
                     {play.title}
@@ -160,11 +160,11 @@ export default function PlayDetailPage() {
                 {play.sceneNumber && (
                   <div className="border-b border-gray-100 pb-4">
                     <label className="block text-sm font-medium text-red-800 mb-2 font-traditional">
-                      Số cảnh
+                      Số trích đoạn
                     </label>
                     <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-100 to-amber-100 text-red-900 rounded-full text-lg font-traditional font-bold border border-red-300">
                       <span className="mr-2">🎬</span>
-                      {play.sceneNumber} cảnh
+                      {play.sceneNumber} trích đoạn
                     </span>
                   </div>
                 )}
@@ -253,13 +253,13 @@ export default function PlayDetailPage() {
               </div>
             )}
 
-            {/* Cảnh diễn */}
+            {/* Trích đoạn diễn */}
             {play.scenes && play.scenes.length > 0 && (
               <div className="bg-white rounded-xl shadow-lg overflow-hidden border-l-4 border-red-800">
                 <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-8 py-6">
                   <h2 className="text-2xl font-traditional font-bold flex items-center">
                     <span className="text-amber-300 mr-3 text-3xl">🎬</span>
-                    Danh sách cảnh ({play.scenes.length})
+                    Danh sách trích đoạn ({play.scenes.length})
                   </h2>
                 </div>
 
@@ -274,7 +274,7 @@ export default function PlayDetailPage() {
                           <div className="flex-1">
                             <div className="font-traditional font-bold text-red-900 mb-1 text-lg flex items-center">
                               <span className="text-amber-600 mr-2">🎪</span>
-                              Cảnh {index + 1}: {scene}
+                              Trích đoạn {index + 1}: {scene}
                             </div>
                           </div>
                           <span className="bg-red-800 text-white px-3 py-1 rounded-full text-sm font-traditional font-bold">
@@ -349,7 +349,7 @@ export default function PlayDetailPage() {
                 <div className="flex justify-between items-center p-4 bg-gradient-to-r from-red-100 to-amber-100 rounded-lg border border-red-300">
                   <span className="text-gray-700 font-traditional font-bold flex items-center">
                     <span className="text-red-800 mr-2">🎬</span>
-                    Số cảnh
+                    Số trích đoạn
                   </span>
                   <span className="font-traditional font-black text-2xl text-red-900">
                     {play.scenes?.length || play.sceneNumber || 0}

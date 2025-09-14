@@ -204,13 +204,13 @@ export default function ActorDetailPage() {
               </div>
             )}
 
-            {/* Vở diễn tham gia */}
+            {/* Vở chèo tham gia */}
             {actor.plays && actor.plays.length > 0 && (
               <div className="bg-white rounded-xl shadow-lg overflow-hidden border-l-4 border-red-800">
                 <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-8 py-6">
                   <h2 className="text-2xl font-traditional font-bold flex items-center">
                     <span className="text-amber-300 mr-3 text-3xl">🎪</span>
-                    Vở diễn tham gia ({actor.plays.length})
+                    Vở chèo tham gia ({actor.plays.length})
                   </h2>
                 </div>
 
@@ -289,7 +289,7 @@ export default function ActorDetailPage() {
                 <div className="flex justify-between items-center p-4 bg-gradient-to-r from-red-100 to-amber-100 rounded-lg border border-red-200">
                   <span className="text-gray-700 font-traditional font-bold flex items-center">
                     <span className="text-red-800 mr-2">🎭</span>
-                    Số vở diễn
+                    Số vở chèo
                   </span>
                   <span className="font-traditional font-black text-2xl text-red-900">
                     {actor.plays?.length || 0}

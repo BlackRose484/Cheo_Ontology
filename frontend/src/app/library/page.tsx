@@ -180,7 +180,7 @@ export default function LibraryPage() {
             <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-xl border border-red-400">
               <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-800 border-t-transparent mx-auto mb-4"></div>
               <span className="text-red-900 font-medium">
-                Đang tải thư viện video...
+                Đang tải thư viện ...
               </span>
             </div>
           </div>
@@ -298,7 +298,7 @@ export default function LibraryPage() {
                 }`}
               >
                 <span>🎪</span>
-                <span>Vở diễn ({plays.length})</span>
+                <span>Vở chèo ({plays.length})</span>
               </button>
             </div>
 
@@ -436,26 +436,38 @@ export default function LibraryPage() {
                       href={getHref()}
                       className="group"
                     >
-                      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-red-200 p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-red-400 cursor-pointer">
-                        <div className="bg-gradient-to-br from-red-700 to-red-900 rounded-lg p-4 mb-4 text-white text-center">
-                          <span className="text-4xl mb-2 block">
-                            {activeTab === "characters"
-                              ? "🎭"
-                              : activeTab === "actors"
-                              ? "👨‍🎤"
-                              : "🎪"}
-                          </span>
-                          <h3 className="text-lg font-bold text-center text-white group-hover:text-amber-200 transition-colors duration-300">
-                            {itemString}
-                          </h3>
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-red-200 p-6 h-64 flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-red-400 cursor-pointer">
+                        <div
+                          className="relative rounded-lg p-4 flex-1 text-white text-center overflow-hidden flex flex-col justify-center items-center"
+                          style={{
+                            backgroundImage: `url('/background.png')`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                          }}
+                        >
+                          {/* Dark overlay to make text readable */}
+                          <div className="absolute inset-0 bg-red-900/60 rounded-lg"></div>
+                          <div className="relative z-10 flex flex-col justify-center items-center h-full">
+                            <span className="text-4xl mb-3 block drop-shadow-lg">
+                              {activeTab === "characters"
+                                ? "🎭"
+                                : activeTab === "actors"
+                                ? "👨‍🎤"
+                                : "🎪"}
+                            </span>
+                            <h3 className="text-base font-bold text-center text-white group-hover:text-amber-200 transition-colors duration-300 drop-shadow-md leading-tight line-clamp-3 px-2">
+                              {itemString}
+                            </h3>
+                          </div>
                         </div>
-                        <div className="text-center">
-                          <p className="text-red-800 text-sm">
+                        <div className="text-center pt-3 mt-auto">
+                          <p className="text-red-800 text-sm font-medium">
                             {activeTab === "characters"
                               ? "Nhân vật Chèo"
                               : activeTab === "actors"
                               ? "Diễn viên"
-                              : "Vở diễn"}
+                              : "Vở chèo"}
                           </p>
                         </div>
                       </div>

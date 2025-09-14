@@ -207,13 +207,13 @@ export default function CharacterDetailPage() {
               </div>
             </div>
 
-            {/* Vở diễn */}
+            {/* Vở chèo */}
             {character.plays && character.plays.length > 0 && (
               <div className="bg-white rounded-xl shadow-lg overflow-hidden border-l-4 border-red-800">
                 <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-8 py-6">
                   <h2 className="text-2xl font-traditional font-bold flex items-center">
                     <span className="text-amber-300 mr-3 text-3xl">🎭</span>
-                    Vở diễn ({character.plays.length})
+                    Vở chèo ({character.plays.length})
                   </h2>
                 </div>
 
@@ -275,13 +275,13 @@ export default function CharacterDetailPage() {
               </div>
             )}
 
-            {/* Cảnh diễn */}
+            {/* Trích đoạn diễn */}
             {character.scenes && character.scenes.length > 0 && (
               <div className="bg-white rounded-xl shadow-lg overflow-hidden border-l-4 border-red-800">
                 <div className="bg-gradient-to-r from-red-800 to-red-900 text-white px-8 py-6">
                   <h2 className="text-2xl font-traditional font-bold flex items-center">
                     <span className="text-amber-300 mr-3 text-3xl">🎬</span>
-                    Danh sách cảnh ({character.scenes.length})
+                    Danh sách trích đoạn ({character.scenes.length})
                   </h2>
                 </div>
 
@@ -296,7 +296,7 @@ export default function CharacterDetailPage() {
                           <div className="flex-1">
                             <div className="font-traditional font-bold text-red-900 mb-1  text-lg flex items-center">
                               <span className="text-amber-600 mr-2">🎪</span>
-                              Cảnh {index + 1}: {String(scene)}
+                              Trích đoạn {index + 1}: {String(scene)}
                             </div>
                           </div>
                           <span className="bg-red-800 text-white px-3 py-1 rounded-full text-sm font-traditional font-bold">
@@ -351,7 +351,7 @@ export default function CharacterDetailPage() {
                 <div className="flex justify-between items-center p-4 bg-gradient-to-r from-red-100 to-amber-100 rounded-lg border border-red-300">
                   <span className="text-gray-700 font-traditional font-bold flex items-center">
                     <span className="text-red-800 mr-2">🎭</span>
-                    Số vở diễn
+                    Số vở chèo
                   </span>
                   <span className="font-traditional font-black text-2xl text-red-900">
                     {character.plays?.length || 0}
@@ -371,7 +371,7 @@ export default function CharacterDetailPage() {
                 <div className="flex justify-between items-center p-4 bg-gradient-to-r from-red-100 to-amber-100 rounded-lg border border-red-300">
                   <span className="text-gray-700 font-traditional font-bold flex items-center">
                     <span className="text-red-800 mr-2">🎪</span>
-                    Số cảnh diễn
+                    Số trích đoạn diễn
                   </span>
                   <span className="font-traditional font-black text-2xl text-red-900">
                     {character.scenes?.length || 0}

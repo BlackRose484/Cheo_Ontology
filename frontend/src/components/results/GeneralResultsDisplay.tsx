@@ -201,7 +201,9 @@ const GeneralResultsDisplay = ({
                 )}
                 {play.allScenes && play.allScenes.length > 0 && (
                   <div>
-                    <p className="font-semibold text-gray-700 mb-1">Cảnh:</p>
+                    <p className="font-semibold text-gray-700 mb-1">
+                      Trích đoạn:
+                    </p>
                     <div className="flex flex-wrap gap-1">
                       {play.allScenes.slice(0, 3).map((scene, index) => (
                         <span
@@ -235,7 +237,7 @@ const GeneralResultsDisplay = ({
         </div>
         <div className="ml-4 flex flex-col gap-2">
           <span className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium border border-red-300">
-            Vở diễn
+            Vở chèo
           </span>
           <button
             onClick={() => handleNavigateToDetail("play", play.title)}
@@ -429,7 +431,7 @@ const GeneralResultsDisplay = ({
         </div>
         <div className="ml-4 flex flex-col gap-2">
           <span className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium border border-red-300">
-            Cảnh
+            Trích đoạn
           </span>
           <button
             onClick={() => handleNavigateToDetail("scene", scene.scene || "")}

@@ -239,7 +239,7 @@ const GeneralSearch = ({
 
               {play4Scenes && (
                 <>
-                  <span className="text-red-900">cảnh</span>
+                  <span className="text-red-900">trích đoạn</span>
                   <select
                     className="px-4 py-3 border-2 border-red-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-900 focus:border-red-900 bg-white min-w-[200px] text-base"
                     value={filters.selectedItem}
@@ -249,7 +249,9 @@ const GeneralSearch = ({
                     disabled={isLoadingCategoryData}
                   >
                     <option value="">
-                      {isLoadingCategoryData ? "Đang tải..." : "Chọn cảnh"}
+                      {isLoadingCategoryData
+                        ? "Đang tải..."
+                        : "Chọn trích đoạn"}
                     </option>
                     {categorySpecificOptions.map((option) => (
                       <option
