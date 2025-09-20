@@ -40,6 +40,10 @@ export const getSubTypeCategories = () => {
   return http.get(`/infor/subtype`);
 };
 
+export const getSubTypesByMainType = (mainType: string) => {
+  return http.post(`/infor/subtype-by-maintype`, { mainType });
+};
+
 export const filterCharactersByCategory = (
   mainType: string,
   subType: string

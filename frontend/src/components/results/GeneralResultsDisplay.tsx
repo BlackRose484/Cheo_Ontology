@@ -501,22 +501,6 @@ const GeneralResultsDisplay = ({
             {results.totalCount} kết quả
           </span>
         </h3>
-
-        {/* Search criteria display */}
-        <div className="bg-red-50 p-3 rounded-lg border border-red-200 mt-3">
-          <div className="flex items-center gap-2 text-red-800">
-            <span>🔍</span>
-            <span className="text-sm">
-              <strong>Đang xem:</strong> {categoryDisplay}
-              {results.searchCriteria.selectedItem && (
-                <span>
-                  {" "}
-                  - &quot;{results.searchCriteria.selectedItem}&quot;
-                </span>
-              )}
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Results */}

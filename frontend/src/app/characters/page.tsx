@@ -7,15 +7,25 @@ import {
   getActorNames,
   getPlays,
   getMainTypeCategories,
-  getSubTypeCategories,
+  getSubTypesByMainType,
   filterCharactersByCategory,
 } from "@/apis/infor";
+import {
+  ActorName,
+  ActorNames,
+  CharacterName,
+  CharacterNames,
+  PlayTitle,
+  PlayTitles,
+} from "@/types";
 
 export default function CharactersPage() {
-  const [characters, setCharacters] = useState<string[]>([]);
-  const [filteredCharacters, setFilteredCharacters] = useState<string[]>([]);
-  const [actors, setActors] = useState<string[]>([]);
-  const [plays, setPlays] = useState<string[]>([]);
+  const [characters, setCharacters] = useState<CharacterNames>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<CharacterNames>(
+    []
+  );
+  const [actors, setActors] = useState<ActorNames>([]);
+  const [plays, setPlays] = useState<PlayTitles>([]);
   const [mainTypes, setMainTypes] = useState<string[]>([]);
   const [subTypes, setSubTypes] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,13 +42,12 @@ export default function CharactersPage() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const [charactersRes, actorsRes, playsRes, mainTypesRes, subTypesRes] =
+        const [charactersRes, actorsRes, playsRes, mainTypesRes] =
           await Promise.all([
             getCharacters(),
             getActorNames(),
             getPlays(),
             getMainTypeCategories(),
-            getSubTypeCategories(),
           ]);
 
         if (charactersRes.data) {
@@ -48,7 +57,6 @@ export default function CharactersPage() {
         if (actorsRes.data) setActors(actorsRes.data);
         if (playsRes.data) setPlays(playsRes.data);
         if (mainTypesRes.data) setMainTypes(mainTypesRes.data);
-        if (subTypesRes.data) setSubTypes(subTypesRes.data);
 
         // console.log("Fetched data:", {
         //   characters: charactersRes.data,
@@ -67,13 +75,39 @@ export default function CharactersPage() {
     fetchData();
   }, []);
 
+  // Fetch SubTypes when MainType changes
+  useEffect(() => {
+    const fetchSubTypes = async () => {
+      if (selectedMainType === "all") {
+        // Reset về trạng thái ban đầu khi MainType = "all"
+        setSubTypes([]);
+        setSelectedSubType("all");
+        setFilteredCharacters(characters); // Reset filtered characters về tất cả
+      } else {
+        try {
+          const subTypesRes = await getSubTypesByMainType(selectedMainType);
+          if (subTypesRes.data) {
+            setSubTypes(subTypesRes.data);
+          }
+        } catch (error) {
+          console.error("Error fetching subtypes:", error);
+          setSubTypes([]);
+        }
+        // Reset SubType selection when MainType changes to specific type
+        setSelectedSubType("all");
+      }
+    };
+
+    fetchSubTypes();
+  }, [selectedMainType, characters]);
+
   // Apply filter when selections change
   useEffect(() => {
     const applyFilterEffect = async () => {
       if (characters.length === 0) return;
 
-      if (selectedMainType === "all" && selectedSubType === "all") {
-        setFilteredCharacters(characters);
+      // Nếu MainType = "all" thì đã được reset trong useEffect trên, không cần làm gì thêm
+      if (selectedMainType === "all") {
         return;
       }
 
@@ -216,24 +250,47 @@ export default function CharactersPage() {
                   </div>
 
                   {/* Sub Type Filter */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 group">
                     <label className="text-sm font-medium text-red-800 whitespace-nowrap">
                       Loại phụ:
                     </label>
-                    <select
-                      value={selectedSubType}
-                      onChange={(e) => setSelectedSubType(e.target.value)}
-                      className="px-2 py-1 border border-red-300 rounded-md bg-white text-red-800 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500 min-w-[100px]"
-                      style={{ fontSize: "0.9rem" }}
-                      disabled={loading}
-                    >
-                      <option value="all">Tất cả</option>
-                      {subTypes.map((type) => (
-                        <option key={type} value={type}>
-                          {type}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative flex flex-col">
+                      <select
+                        value={selectedSubType}
+                        onChange={(e) => setSelectedSubType(e.target.value)}
+                        className={`px-2 py-1 border border-red-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500 min-w-[100px] ${
+                          loading || selectedMainType === "all"
+                            ? "bg-gray-100 text-gray-500 cursor-not-allowed"
+                            : "bg-white text-red-800"
+                        }`}
+                        style={{ fontSize: "0.9rem" }}
+                        disabled={loading || selectedMainType === "all"}
+                      >
+                        <option value="all">Tất cả</option>
+                        {selectedMainType !== "all" &&
+                          subTypes.map((type) => (
+                            <option key={type} value={type}>
+                              {type}
+                            </option>
+                          ))}
+                      </select>
+
+                      {/* Custom Tooltip */}
+                      {selectedMainType === "all" && (
+                        <div className="absolute top-full left-0 mt-1 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
+                          <div className="bg-gray-800 text-white text-xs rounded-md py-2 px-3 whitespace-nowrap shadow-lg">
+                            <div className="flex items-center gap-1">
+                              <span>💡</span>
+                              <span>
+                                Chọn loại chính trước để lọc theo loại phụ
+                              </span>
+                            </div>
+                            {/* Tooltip arrow */}
+                            <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-800 rotate-45"></div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   {/* Reset Button */}
@@ -256,16 +313,18 @@ export default function CharactersPage() {
                   Danh sách nhân vật Chèo ({filteredCharacters.length})
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {filteredCharacters.map((character, index) => (
+                  {filteredCharacters.map((character: CharacterName, index) => (
                     <Link
                       key={index}
-                      href={`/character/${encodeURIComponent(character)}`}
+                      href={`/character/${encodeURIComponent(
+                        character.charName
+                      )}`}
                       className="block p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-lg border border-red-300 hover:bg-gradient-to-br hover:from-red-100 hover:to-red-200 hover:border-red-400 transition-all duration-200 group shadow-md hover:shadow-lg"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <h4 className="font-semibold text-red-900 group-hover:text-red-800 mb-1">
-                            {character}
+                            {character.charName}
                           </h4>
                         </div>
                         <span className="text-red-700 group-hover:translate-x-1 transition-transform ml-2">
@@ -291,16 +350,16 @@ export default function CharactersPage() {
                   Danh sách diễn viên
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {actors.map((actor, index) => (
+                  {actors.map((actor: ActorName, index) => (
                     <Link
                       key={index}
-                      href={`/actor/${encodeURIComponent(actor)}`}
+                      href={`/actor/${encodeURIComponent(actor.name)}`}
                       className="block p-4 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 hover:border-green-300 transition-all duration-200 group"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-800 group-hover:text-green-800 mb-1">
-                            {actor}
+                            {actor.name}
                           </h4>
                         </div>
                         <span className="text-green-600 group-hover:translate-x-1 transition-transform ml-2">
@@ -320,16 +379,16 @@ export default function CharactersPage() {
                   Danh sách vở chèo
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {plays.map((play, index) => (
+                  {plays.map((play: PlayTitle, index) => (
                     <Link
                       key={index}
-                      href={`/play/${encodeURIComponent(play)}`}
+                      href={`/play/${encodeURIComponent(play.title)}`}
                       className="block p-6 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-200 group"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-800 group-hover:text-purple-800 mb-2 text-lg">
-                            {play}
+                            {play.title}
                           </h4>
                         </div>
                         <span className="text-purple-600 group-hover:translate-x-1 transition-transform ml-2">

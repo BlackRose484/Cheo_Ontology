@@ -90,38 +90,38 @@ export default function ActorDetailPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-amber-50">
       {/* Header với văn hóa Việt Nam */}
-      <div className="relative bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-white py-20">
+      <div className="relative bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-white py-8">
         <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-30 bg-cover bg-center"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-red-800/95 via-red-900/90 to-red-800/95"></div>
 
         {/* Họa tiết truyền thống */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <div className="absolute top-4 left-4 text-amber-400 opacity-30 text-6xl">
+          <div className="absolute top-2 left-4 text-amber-400 opacity-30 text-4xl">
             🏮
           </div>
-          <div className="absolute top-4 right-4 text-amber-400 opacity-30 text-6xl">
+          <div className="absolute top-2 right-4 text-amber-400 opacity-30 text-4xl">
             🏮
           </div>
-          <div className="absolute bottom-4 left-1/4 text-amber-400 opacity-20 text-4xl">
+          <div className="absolute bottom-2 left-1/4 text-amber-400 opacity-20 text-3xl">
             🌸
           </div>
-          <div className="absolute bottom-4 right-1/4 text-amber-400 opacity-20 text-4xl">
+          <div className="absolute bottom-2 right-1/4 text-amber-400 opacity-20 text-3xl">
             🌸
           </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="text-amber-300 text-8xl mb-6">
+          <div className="text-amber-300 text-5xl mb-3">
             {getGenderIcon(actor.gender)}
           </div>
-          <h1 className="text-5xl md:text-7xl font-traditional font-bold mb-6 drop-shadow-2xl tracking-wider">
+          <h1 className="text-3xl md:text-5xl font-traditional font-bold mb-3 drop-shadow-2xl tracking-wider">
             {actor.name}
           </h1>
-          <div className="w-24 h-1 bg-amber-400 mx-auto mb-6"></div>
-          <p className="text-2xl md:text-3xl text-amber-200 font-traditional opacity-90">
+          <div className="w-16 h-0.5 bg-amber-400 mx-auto mb-3"></div>
+          <p className="text-lg md:text-xl text-amber-200 font-traditional opacity-90">
             Nghệ sĩ Chèo truyền thống Việt Nam
           </p>
-          <p className="text-xl text-amber-300 mt-4 font-traditional">
+          <p className="text-base text-amber-300 mt-2 font-traditional">
             🎭 Diễn viên {actor.gender.toLowerCase() === "nam" ? "nam" : "nữ"}{" "}
             tài năng
           </p>
@@ -185,14 +185,16 @@ export default function ActorDetailPage() {
                         <Link
                           key={index}
                           href={`/character/${encodeURIComponent(character)}`}
-                          className="block p-4 bg-gradient-to-r from-red-50 to-amber-50 rounded-lg border-2 border-red-200 hover:border-amber-400 hover:shadow-lg transition-all duration-300 group"
+                          className="w-full block p-4 bg-gradient-to-r from-red-50 to-amber-50 rounded-lg border-2 border-red-200 hover:border-amber-400 hover:shadow-lg transition-all duration-300 group"
                         >
                           <div className="flex items-center justify-between">
-                            <span className="font-traditional font-semibold text-gray-800 group-hover:text-red-900 flex items-center">
-                              <span className="text-red-800 mr-2">👤</span>
-                              {character}
+                            <span className="font-traditional font-semibold text-gray-800 group-hover:text-red-900 flex items-center truncate">
+                              <span className="text-red-800 mr-2 flex-shrink-0">
+                                👤
+                              </span>
+                              <span className="truncate">{character}</span>
                             </span>
-                            <span className="text-amber-600 group-hover:translate-x-1 transition-transform text-lg">
+                            <span className="text-amber-600 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0 ml-2">
                               →
                             </span>
                           </div>
@@ -220,14 +222,16 @@ export default function ActorDetailPage() {
                       <Link
                         key={index}
                         href={`/play/${encodeURIComponent(play)}`}
-                        className="block p-4 bg-gradient-to-r from-red-50 to-amber-50 rounded-lg border-2 border-red-200 hover:border-amber-400 hover:shadow-lg transition-all duration-300 group"
+                        className="w-full block p-4 bg-gradient-to-r from-red-50 to-amber-50 rounded-lg border-2 border-red-200 hover:border-amber-400 hover:shadow-lg transition-all duration-300 group"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-traditional font-semibold text-gray-800 group-hover:text-red-900 flex items-center">
-                            <span className="text-red-800 mr-2">🎭</span>
-                            {play}
+                          <span className="font-traditional font-semibold text-gray-800 group-hover:text-red-900 flex items-center truncate">
+                            <span className="text-red-800 mr-2 flex-shrink-0">
+                              🎭
+                            </span>
+                            <span className="truncate">{play}</span>
                           </span>
-                          <span className="text-amber-600 group-hover:translate-x-1 transition-transform text-lg">
+                          <span className="text-amber-600 group-hover:translate-x-1 transition-transform text-lg flex-shrink-0 ml-2">
                             →
                           </span>
                         </div>

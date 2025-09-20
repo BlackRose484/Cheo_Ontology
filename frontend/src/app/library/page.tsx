@@ -7,10 +7,19 @@ import {
   getActorNames,
   getPlays,
   getMainTypeCategories,
-  getSubTypeCategories,
+  getSubTypesByMainType,
   filterCharactersByCategory,
 } from "@/apis/infor";
-import { Library, LibraryItem } from "@/types/index";
+import {
+  ActorName,
+  ActorNames,
+  CharacterName,
+  CharacterNames,
+  Library,
+  LibraryItem,
+  PlayTitle,
+  PlayTitles,
+} from "@/types/index";
 import LibraryVideoCard from "@/components/library/LibraryVideoCard";
 import Link from "next/link";
 
@@ -18,10 +27,12 @@ type TabType = "videos" | "characters" | "actors" | "plays";
 
 export default function LibraryPage() {
   const [library, setLibrary] = useState<Library>([]);
-  const [characters, setCharacters] = useState<string[]>([]);
-  const [filteredCharacters, setFilteredCharacters] = useState<string[]>([]);
-  const [actors, setActors] = useState<string[]>([]);
-  const [plays, setPlays] = useState<string[]>([]);
+  const [characters, setCharacters] = useState<CharacterNames>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<CharacterNames>(
+    []
+  );
+  const [actors, setActors] = useState<ActorNames>([]);
+  const [plays, setPlays] = useState<PlayTitles>([]);
   const [mainTypes, setMainTypes] = useState<string[]>([]);
   const [subTypes, setSubTypes] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +40,7 @@ export default function LibraryPage() {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>("videos");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20;
+  const itemsPerPage = 8;
 
   // Filter states
   const [selectedMainType, setSelectedMainType] = useState<string>("all");
@@ -41,21 +52,14 @@ export default function LibraryPage() {
         setIsLoading(true);
         setError(null);
 
-        const [
-          libraryRes,
-          charactersRes,
-          actorsRes,
-          playsRes,
-          mainTypesRes,
-          subTypesRes,
-        ] = await Promise.all([
-          getLibrary(),
-          getCharacters(),
-          getActorNames(),
-          getPlays(),
-          getMainTypeCategories(),
-          getSubTypeCategories(),
-        ]);
+        const [libraryRes, charactersRes, actorsRes, playsRes, mainTypesRes] =
+          await Promise.all([
+            getLibrary(),
+            getCharacters(),
+            getActorNames(),
+            getPlays(),
+            getMainTypeCategories(),
+          ]);
 
         if (libraryRes.data && Array.isArray(libraryRes.data)) {
           setLibrary(libraryRes.data);
@@ -73,9 +77,6 @@ export default function LibraryPage() {
         if (mainTypesRes.data && Array.isArray(mainTypesRes.data)) {
           setMainTypes(mainTypesRes.data);
         }
-        if (subTypesRes.data && Array.isArray(subTypesRes.data)) {
-          setSubTypes(subTypesRes.data);
-        }
       } catch (err) {
         console.error("Error fetching data:", err);
         setError("Lỗi khi tải dữ liệu thư viện. Vui lòng thử lại sau.");
@@ -87,13 +88,34 @@ export default function LibraryPage() {
     fetchAllData();
   }, []);
 
-  // Apply filter when selections change
+  useEffect(() => {
+    const fetchSubTypes = async () => {
+      if (selectedMainType === "all") {
+        setSubTypes([]);
+        setSelectedSubType("all");
+        setFilteredCharacters(characters); 
+      } else {
+        try {
+          const subTypesRes = await getSubTypesByMainType(selectedMainType);
+          if (subTypesRes.data) {
+            setSubTypes(subTypesRes.data);
+          }
+        } catch (error) {
+          console.error("Error fetching subtypes:", error);
+          setSubTypes([]);
+        }
+        setSelectedSubType("all");
+      }
+    };
+
+    fetchSubTypes();
+  }, [selectedMainType, characters]);
+
   useEffect(() => {
     const applyFilterEffect = async () => {
       if (characters.length === 0 || activeTab !== "characters") return;
 
-      if (selectedMainType === "all" && selectedSubType === "all") {
-        setFilteredCharacters(characters);
+      if (selectedMainType === "all") {
         return;
       }
 
@@ -352,27 +374,48 @@ export default function LibraryPage() {
                 </div>
 
                 {/* Sub Type Filter */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 group">
                   <label className="text-sm font-medium text-red-800 whitespace-nowrap">
                     Loại phụ:
                   </label>
-                  <select
-                    value={selectedSubType}
-                    onChange={(e) => setSelectedSubType(e.target.value)}
-                    className="px-2 py-1 border border-red-300 rounded-md bg-white text-red-800 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500 min-w-[100px]"
-                    style={{ fontSize: "0.9rem" }}
-                    disabled={isLoading}
-                  >
-                    <option value="all">Tất cả</option>
-                    {subTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                  <div className="relative flex flex-col">
+                    <select
+                      value={selectedSubType}
+                      onChange={(e) => setSelectedSubType(e.target.value)}
+                      className={`px-2 py-1 border border-red-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500 min-w-[100px] ${
+                        isLoading || selectedMainType === "all"
+                          ? "bg-gray-100 text-gray-500 cursor-not-allowed"
+                          : "bg-white text-red-800"
+                      }`}
+                      style={{ fontSize: "0.9rem" }}
+                      disabled={isLoading || selectedMainType === "all"}
+                    >
+                      <option value="all">Tất cả</option>
+                      {selectedMainType !== "all" &&
+                        subTypes.map((type) => (
+                          <option key={type} value={type}>
+                            {type}
+                          </option>
+                        ))}
+                    </select>
 
-                {/* Reset Button */}
+                    {/* Custom Tooltip */}
+                    {selectedMainType === "all" && (
+                      <div className="absolute top-full left-0 mt-1 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
+                        <div className="bg-gray-800 text-white text-xs rounded-md py-2 px-3 whitespace-nowrap shadow-lg">
+                          <div className="flex items-center gap-1">
+                            <span>💡</span>
+                            <span>
+                              Chọn loại chính trước để lọc theo loại phụ
+                            </span>
+                          </div>
+                          {/* Tooltip arrow */}
+                          <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-800 rotate-45"></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <button
                   onClick={resetFilters}
                   className="px-2 py-1 text-sm bg-red-800 text-white rounded-md hover:bg-red-900 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-200 whitespace-nowrap"
@@ -399,82 +442,91 @@ export default function LibraryPage() {
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {currentItems.map((item: LibraryItem | string, index: number) => {
-                if (
-                  activeTab === "videos" &&
-                  typeof item === "object" &&
-                  item !== null &&
-                  "vidVersion" in item
-                ) {
-                  return (
-                    <LibraryVideoCard
-                      key={item.vidVersion || index}
-                      item={item as LibraryItem}
-                    />
-                  );
-                } else {
-                  // For characters, actors, and plays
-                  const itemString = item as string;
-                  const getHref = () => {
-                    switch (activeTab) {
-                      case "characters":
-                        return `/character/${encodeURIComponent(itemString)}`;
-                      case "actors":
-                        return `/actor/${encodeURIComponent(itemString)}`;
-                      case "plays":
-                        return `/play/${encodeURIComponent(itemString)}`;
-                      default:
-                        return `/search?query=${encodeURIComponent(
-                          itemString
-                        )}`;
-                    }
-                  };
+              {currentItems.map(
+                (
+                  item: LibraryItem | CharacterName | ActorName | PlayTitle,
+                  index: number
+                ) => {
+                  if (
+                    activeTab === "videos" &&
+                    typeof item === "object" &&
+                    item !== null &&
+                    "vidVersion" in item
+                  ) {
+                    return (
+                      <LibraryVideoCard
+                        key={item.vidVersion || index}
+                        item={item as LibraryItem}
+                      />
+                    );
+                  } else {
+                    const getKeyLabel = () => {
+                      if (activeTab === "characters") {
+                        return (item as CharacterName).charName;
+                      } else if (activeTab === "actors") {
+                        return (item as ActorName).name;
+                      } else if (activeTab === "plays") {
+                        return (item as PlayTitle).title;
+                      }
+                      return "";
+                    };
 
-                  return (
-                    <Link
-                      key={itemString || index}
-                      href={getHref()}
-                      className="group"
-                    >
-                      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-red-200 p-6 h-64 flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-red-400 cursor-pointer">
-                        <div
-                          className="relative rounded-lg p-4 flex-1 text-white text-center overflow-hidden flex flex-col justify-center items-center"
-                          style={{
-                            backgroundImage: `url('/background.png')`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                          }}
-                        >
-                          {/* Dark overlay to make text readable */}
-                          <div className="absolute inset-0 bg-red-900/60 rounded-lg"></div>
-                          <div className="relative z-10 flex flex-col justify-center items-center h-full">
-                            <span className="text-4xl mb-3 block drop-shadow-lg">
-                              {activeTab === "characters"
-                                ? "🎭"
-                                : activeTab === "actors"
-                                ? "👨‍🎤"
-                                : "🎪"}
-                            </span>
-                            <h3 className="text-base font-bold text-center text-white group-hover:text-amber-200 transition-colors duration-300 drop-shadow-md leading-tight line-clamp-3 px-2">
-                              {itemString}
-                            </h3>
+                    const getHref = () => {
+                      if (activeTab === "characters") {
+                        return `/character/${encodeURIComponent(
+                          (item as CharacterName).charName
+                        )}`;
+                      } else if (activeTab === "actors") {
+                        return `/actor/${encodeURIComponent(
+                          (item as ActorName).name
+                        )}`;
+                      } else if (activeTab === "plays") {
+                        return `/play/${encodeURIComponent(
+                          (item as PlayTitle).title
+                        )}`;
+                      }
+                      return "#";
+                    };
+
+                    return (
+                      <Link
+                        key={getKeyLabel() || index}
+                        href={getHref()}
+                        className="group"
+                      >
+                        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-red-200 p-6 h-64 flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-red-400 cursor-pointer">
+                          <div
+                            className="relative rounded-lg p-4 flex-1 text-white text-center overflow-hidden flex flex-col justify-center items-center"
+                            style={{
+                              backgroundImage: `url('/background.png')`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                          >
+                            {/* Dark overlay to make text readable */}
+                            <div className="absolute inset-0 bg-red-900/60 rounded-lg"></div>
+                            <div className="relative z-10 flex flex-col justify-center items-center h-full">
+                              <span className="text-4xl mb-3 block drop-shadow-lg">
+                                {activeTab === "characters"
+                                  ? "🎭"
+                                  : activeTab === "actors"
+                                  ? "👨‍🎤"
+                                  : "🎪"}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-center text-center pt-3 mt-auto">
+                            <p className="text-red-800 text-sm !font-bold text-center w-full">
+                              {getKeyLabel()}
+                            </p>
                           </div>
                         </div>
-                        <div className="text-center pt-3 mt-auto">
-                          <p className="text-red-800 text-sm font-medium">
-                            {activeTab === "characters"
-                              ? "Nhân vật Chèo"
-                              : activeTab === "actors"
-                              ? "Diễn viên"
-                              : "Vở chèo"}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  );
+                      </Link>
+                    );
+                  }
                 }
-              })}
+              )}
             </div>
 
             {/* Pagination */}

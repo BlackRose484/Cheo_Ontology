@@ -62,8 +62,8 @@ export default function SearchPage() {
       try {
         const response = await getCharacterStates(
           stateFilters.character || "",
-          stateFilters.play || "",
-          stateFilters.emotion || ""
+          stateFilters.scene || "",
+          stateFilters.emotion || "all"
         );
 
         const results = response.data;

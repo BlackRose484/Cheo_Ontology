@@ -30,8 +30,6 @@ export interface ApiErrorResponse {
   message: string;
 }
 
-export type CharacterNames = string[];
-
 export interface CharacterState {
   charName: string;
   charGender: string;
@@ -46,7 +44,7 @@ export type CharacterStates = CharacterState[];
 
 export interface SearchStatesFilters {
   character?: string;
-  play?: string;
+  scene?: string;
   emotion?: string;
 }
 
@@ -148,7 +146,7 @@ export interface CharacterInformation extends Character {
 }
 
 export interface PlayInformation extends Play {
-  scenes?: string[];
+  scenes?: Scene[];
   characters?: string[];
   actors?: string[];
 }
@@ -159,3 +157,39 @@ export interface SceneInformation extends Scene {
   allActors?: string[];
   inPlay?: string;
 }
+
+export interface ActorName {
+  actor: string;
+  name: string;
+}
+
+export type ActorNames = ActorName[];
+
+export interface CharacterName {
+  char: string;
+  charName: string;
+}
+
+export type CharacterNames = CharacterName[];
+
+export interface PlayTitle {
+  play: string;
+  title: string;
+}
+
+export type PlayTitles = PlayTitle[];
+
+export interface SceneName {
+  scene: string;
+  name: string;
+}
+
+export type SceneNames = SceneName[];
+
+export interface SceneAndPlay {
+  scene: string;
+  sceneName: string;
+  playTitle: string;
+}
+
+export type SceneAndPlays = SceneAndPlay[];

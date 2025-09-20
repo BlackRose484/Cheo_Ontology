@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SearchStatesFilters } from "@/types";
+import { CharacterName, SearchStatesFilters, SceneAndPlays } from "@/types";
 import useSearchData from "@/hooks/useSearchData";
 import { DISPLAY_EMOTIONS, EMOTIONS } from "@/constants/base";
 
@@ -16,44 +16,62 @@ const CharacterStateSearch = ({
 }: CharacterStateSearchProps) => {
   const [filters, setFilters] = useState<SearchStatesFilters>({
     character: "",
-    play: "",
+    scene: "",
     emotion: "",
     ...initialFilters,
   });
 
   const {
     characters,
-    fetchPlaysByCharacter,
-    fetchExpressionsByCharacterAndPlay,
+    fetchSceneAndPlaysByCharacter,
+    fetchExpressionsByCharacterAndScene,
   } = useSearchData();
 
-  const [characterPlays, setCharacterPlays] = useState<string[]>([]);
+  const [characterScenes, setCharacterScenes] = useState<SceneAndPlays>([]);
+  const [selectedPlayTitle, setSelectedPlayTitle] = useState<string>("");
   const [characterExpressions, setCharacterExpressions] = useState<string[]>(
     []
   );
 
   useEffect(() => {
     if (filters.character) {
-      fetchPlaysByCharacter(filters.character).then((plays) => {
-        setCharacterPlays(plays);
-      });
-    } else {
-      setCharacterPlays([]);
-      setCharacterExpressions([]);
-    }
-  }, [filters.character, fetchPlaysByCharacter]);
-
-  useEffect(() => {
-    if (filters.character && filters.play) {
-      fetchExpressionsByCharacterAndPlay(filters.character, filters.play).then(
-        (expressions) => {
-          setCharacterExpressions(expressions);
+      fetchSceneAndPlaysByCharacter(filters.character).then(
+        (scenes: SceneAndPlays) => {
+          setCharacterScenes(scenes);
         }
       );
     } else {
+      setCharacterScenes([]);
+      setSelectedPlayTitle("");
       setCharacterExpressions([]);
     }
-  }, [filters.character, filters.play, fetchExpressionsByCharacterAndPlay]);
+  }, [filters.character, fetchSceneAndPlaysByCharacter]);
+
+  useEffect(() => {
+    if (filters.character && filters.scene) {
+      // Tìm play title từ scene được chọn
+      const selectedScene = characterScenes.find(
+        (scene) => scene.scene === filters.scene
+      );
+      if (selectedScene) {
+        setSelectedPlayTitle(selectedScene.playTitle);
+        fetchExpressionsByCharacterAndScene(
+          filters.character,
+          selectedScene.scene
+        ).then((expressions) => {
+          setCharacterExpressions(expressions);
+        });
+      }
+    } else {
+      setCharacterExpressions([]);
+      setSelectedPlayTitle("");
+    }
+  }, [
+    filters.character,
+    filters.scene,
+    characterScenes,
+    fetchExpressionsByCharacterAndScene,
+  ]);
 
   const handleFilterChange = (
     key: keyof SearchStatesFilters,
@@ -67,11 +85,12 @@ const CharacterStateSearch = ({
 
       // Reset dependent fields when parent field changes
       if (key === "character") {
-        newFilters.play = "";
+        newFilters.scene = "";
         newFilters.emotion = "";
         setCharacterExpressions([]);
-      } else if (key === "play") {
-        newFilters.emotion = "all";
+        setSelectedPlayTitle("");
+      } else if (key === "scene") {
+        newFilters.emotion = "";
       }
 
       return newFilters;
@@ -85,32 +104,33 @@ const CharacterStateSearch = ({
   const resetFilters = () => {
     setFilters({
       character: "",
-      play: "",
+      scene: "",
       emotion: "",
     });
-    setCharacterPlays([]);
+    setCharacterScenes([]);
+    setSelectedPlayTitle("");
     setCharacterExpressions([]);
   };
 
   // Generate dropdown options
   const characterOptions = [
     ...(!filters.character ? [{ value: "", label: "Chọn nhân vật" }] : []),
-    ...characters.map((character) => ({
-      value: character,
-      label: character,
+    ...characters.map((character: CharacterName) => ({
+      value: character.char,
+      label: character.charName,
     })),
   ];
 
-  const playOptions = [
-    ...(!filters.play ? [{ value: "", label: "Chọn vở chèo" }] : []),
-    ...characterPlays.map((play) => ({
-      value: play,
-      label: play,
+  const sceneOptions = [
+    ...(!filters.scene ? [{ value: "", label: "Chọn trích đoạn" }] : []),
+    ...characterScenes.map((sceneData) => ({
+      value: sceneData.scene,
+      label: sceneData.sceneName,
     })),
   ];
 
   const expressionOptions: { value: string; label: string }[] = [
-    { value: "all", label: "Tất cả" },
+    { value: "", label: "Tất cả" },
     ...EMOTIONS.filter((emotion) => characterExpressions.includes(emotion)).map(
       (emotion) => ({
         value: emotion,
@@ -128,8 +148,8 @@ const CharacterStateSearch = ({
           <span>Tìm kiếm nhân vật theo trích đoạn</span>
         </h3>
         <p className="text-red-800">
-          Chọn nhân vật, sau đó chọn vở chèo mà nhân vật tham gia, và biểu cảm
-          (tùy chọn).
+          Chọn nhân vật, sau đó chọn trích đoạn mà nhân vật tham gia, và biểu
+          cảm (tùy chọn).
         </p>
       </div>
 
@@ -139,7 +159,8 @@ const CharacterStateSearch = ({
           <select
             value={filters.character || ""}
             onChange={(e) => handleFilterChange("character", e.target.value)}
-            className="px-4 py-3 border-2 border-red-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-900 focus:border-red-900 bg-white min-w-[200px] text-base"
+            className="px-4 py-3 border-2 border-red-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-900 focus:border-red-900 bg-white min-w-[150px] text-base"
+            style={{ width: "180px" }}
           >
             {characterOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -148,16 +169,16 @@ const CharacterStateSearch = ({
             ))}
           </select>
 
-          {/* Show play dropdown only when character is selected */}
+          {/* Show scene dropdown only when character is selected */}
           {filters.character && (
             <>
-              <span className="text-red-900">trong vở chèo</span>
+              <span className="text-red-900">trong trích đoạn</span>
               <select
-                value={filters.play || ""}
-                onChange={(e) => handleFilterChange("play", e.target.value)}
+                value={filters.scene || ""}
+                onChange={(e) => handleFilterChange("scene", e.target.value)}
                 className="px-4 py-3 border-2 border-red-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-900 focus:border-red-900 bg-white min-w-[220px] text-base"
               >
-                {playOptions.map((option) => (
+                {sceneOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -166,14 +187,24 @@ const CharacterStateSearch = ({
             </>
           )}
 
-          {/* Show expression dropdown only when both character and play are selected */}
-          {filters.character && filters.play && (
+          {/* Show play title (fixed display) when scene is selected */}
+          {filters.scene && selectedPlayTitle && (
+            <>
+              <span className="text-red-900">của vở chèo</span>
+              <span className="px-4 py-3 border-2 border-gray-300 rounded-lg bg-gray-100 text-gray-700 min-w-[220px] text-base font-medium">
+                {selectedPlayTitle}
+              </span>
+            </>
+          )}
+
+          {/* Show expression dropdown only when both character and scene are selected */}
+          {filters.character && filters.scene && (
             <>
               <span className="text-red-900">với biểu cảm</span>
               <select
                 value={filters.emotion || ""}
                 onChange={(e) => handleFilterChange("emotion", e.target.value)}
-                className="px-4 py-3 border-2 border-red-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-900 focus:border-red-900 bg-white min-w-[160px] text-base"
+                className="px-4 py-3 border-2 border-red-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-900 focus:border-red-900 bg-white min-w-[160px] text-base max-h-40 overflow-y-auto"
               >
                 {expressionOptions.map((option) => (
                   <option key={option.value} value={option.value}>

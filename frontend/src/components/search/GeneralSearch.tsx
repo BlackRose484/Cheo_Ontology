@@ -1,7 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { GeneralDescriptionFilters } from "@/types";
+import {
+  ActorName,
+  ActorNames,
+  CharacterName,
+  GeneralDescriptionFilters,
+  PlayTitle,
+  PlayTitles,
+  SceneName,
+  SceneNames,
+} from "@/types";
 import useSearchData from "@/hooks/useSearchData";
 import { CATEGORIES, DISPLAY_CATEGORIES } from "@/constants/base";
 import { getActorNames, getPlays, getSceneNamesByPlay } from "@/apis/infor";
@@ -20,14 +29,12 @@ const GeneralSearch = ({
     selectedItem: "",
     ...initialFilters,
   });
-
   // Get basic data from hook
   const { characters, categories } = useSearchData();
-
-  // Local states for category-specific data
-  const [plays, setPlays] = useState<string[]>([]);
-  const [actors, setActors] = useState<string[]>([]);
-  const [scenes, setScenes] = useState<string[]>([]);
+  const [plays, setPlays] = useState<PlayTitles>([]);
+  const [actors, setActors] = useState<ActorNames>([]);
+  const [scenes, setScenes] = useState<SceneNames>([]);
+  const [itemLabel, setItemLabel] = useState<string>("");
   const [play4Scenes, setPlay4Scenes] = useState<string>("");
   const [isLoadingCategoryData, setIsLoadingCategoryData] = useState(false);
 
@@ -92,6 +99,13 @@ const GeneralSearch = ({
   ) => {
     setFilters((prev) => {
       const newFilters = { ...prev, [key]: value };
+      // Update item label based on selected item
+      if (key === "selectedItem") {
+        const selectedOption = categorySpecificOptions.find(
+          (option) => option.value === value
+        );
+        setItemLabel(selectedOption ? selectedOption.label : "");
+      }
 
       // Reset dependent fields when category changes
       if (key === "category") {
@@ -135,24 +149,24 @@ const GeneralSearch = ({
   const getCategorySpecificOptions = () => {
     switch (filters.category) {
       case "Character":
-        return characters.map((char) => ({
-          value: char,
-          label: char,
+        return characters.map((char: CharacterName) => ({
+          value: char.char,
+          label: char.charName,
         }));
       case "Play":
-        return plays.map((play) => ({
-          value: play,
-          label: play,
+        return plays.map((play: PlayTitle) => ({
+          value: play.play,
+          label: play.title,
         }));
       case "Actor":
-        return actors.map((actor) => ({
-          value: actor,
-          label: actor,
+        return actors.map((actor: ActorName) => ({
+          value: actor.actor,
+          label: actor.name,
         }));
       case "Scene":
-        return scenes.map((scene) => ({
-          value: scene,
-          label: scene,
+        return scenes.map((scene: SceneName) => ({
+          value: scene.scene,
+          label: scene.name,
         }));
       default:
         return [];
@@ -230,9 +244,9 @@ const GeneralSearch = ({
                 <option value="">
                   {isLoadingCategoryData ? "Đang tải..." : "Chọn vở chèo"}
                 </option>
-                {plays.map((play) => (
-                  <option key={play} value={play}>
-                    {play}
+                {plays.map((play: PlayTitle) => (
+                  <option key={play.play} value={play.play}>
+                    {play.title}
                   </option>
                 ))}
               </select>
@@ -280,16 +294,7 @@ const GeneralSearch = ({
                     filters.category as keyof typeof DISPLAY_CATEGORIES
                   ]
                 }
-                {filters.category === "Scene" && play4Scenes && (
-                  <span>
-                    {" "}
-                    &quot;{filters.selectedItem}&quot; trong vở &quot;
-                    {play4Scenes}&quot;
-                  </span>
-                )}
-                {filters.category !== "Scene" && (
-                  <span> &quot;{filters.selectedItem}&quot;</span>
-                )}
+                <span> &quot;{itemLabel}&quot;</span>
               </span>
             </div>
           </div>

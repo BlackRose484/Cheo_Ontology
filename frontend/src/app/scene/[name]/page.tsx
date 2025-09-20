@@ -25,7 +25,6 @@ export default function SceneDetailPage() {
 
         if (response.data) {
           setScene(response.data[0]);
-          console.log(response.data[0]);
         } else {
           setError("Không tìm thấy thông tin trích đoạn này");
         }
@@ -88,37 +87,37 @@ export default function SceneDetailPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-amber-50">
       {/* Header với văn hóa Việt Nam */}
-      <div className="relative bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-white py-20">
+      <div className="relative bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-white py-8">
         <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-30 bg-cover bg-center"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-red-800/95 via-red-900/90 to-red-800/95"></div>
 
         {/* Họa tiết truyền thống */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <div className="absolute top-4 left-4 text-amber-400 opacity-30 text-6xl">
+          <div className="absolute top-2 left-2 text-amber-400 opacity-20 text-3xl">
             🏮
           </div>
-          <div className="absolute top-4 right-4 text-amber-400 opacity-30 text-6xl">
+          <div className="absolute top-2 right-2 text-amber-400 opacity-20 text-3xl">
             🏮
           </div>
-          <div className="absolute bottom-4 left-1/4 text-amber-400 opacity-20 text-4xl">
+          <div className="absolute bottom-2 left-1/4 text-amber-400 opacity-15 text-2xl">
             🌸
           </div>
-          <div className="absolute bottom-4 right-1/4 text-amber-400 opacity-20 text-4xl">
+          <div className="absolute bottom-2 right-1/4 text-amber-400 opacity-15 text-2xl">
             🌸
           </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="text-amber-300 text-8xl mb-6">🎬</div>
-          <h1 className="text-5xl md:text-7xl font-traditional font-bold mb-6 drop-shadow-2xl tracking-wider">
+          <div className="text-amber-300 text-5xl mb-3">🎬</div>
+          <h1 className="text-3xl md:text-5xl font-traditional font-bold mb-3 drop-shadow-2xl tracking-wider">
             {scene.scene || scene.name}
           </h1>
-          <div className="w-24 h-1 bg-amber-400 mx-auto mb-6"></div>
-          <p className="text-2xl md:text-3xl text-amber-200 font-traditional opacity-90">
+          <div className="w-16 h-1 bg-amber-400 mx-auto mb-3"></div>
+          <p className="text-lg md:text-xl text-amber-200 font-traditional opacity-90">
             Trích đoạn Chèo truyền thống Việt Nam
           </p>
           {scene.inPlay && (
-            <p className="text-xl text-amber-300 mt-4 font-traditional">
+            <p className="text-base text-amber-300 mt-2 font-traditional">
               🎪 Thuộc vở: {scene.inPlay}
             </p>
           )}

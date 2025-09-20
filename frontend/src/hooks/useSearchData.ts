@@ -1,12 +1,11 @@
+import { getScenesAndPlayByCharacter } from "./../apis/search";
 import { useState, useEffect, useCallback } from "react";
 import { getCharacters, getFullInformation } from "@/apis/infor";
-import {
-  getPlaysByCharacter,
-  getEmotionsByCharacterAndPlay,
-} from "@/apis/search";
+import { getEmotionsByCharacterAndScene } from "@/apis/search";
+import { CharacterNames, SceneAndPlays } from "@/types";
 
 export const useSearchData = () => {
-  const [characters, setCharacters] = useState<string[]>([]);
+  const [characters, setCharacters] = useState<CharacterNames>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,25 +35,25 @@ export const useSearchData = () => {
     }
   };
 
-  const fetchPlaysByCharacter = useCallback(
-    async (characterName: string): Promise<string[]> => {
+  const fetchSceneAndPlaysByCharacter = useCallback(
+    async (characterName: string): Promise<SceneAndPlays> => {
       try {
-        const response = await getPlaysByCharacter(characterName);
+        const response = await getScenesAndPlayByCharacter(characterName);
         return response.data || [];
       } catch (error) {
-        console.error("Failed to fetch plays by character:", error);
+        console.error("Failed to fetch scenes and plays by character:", error);
         return [];
       }
     },
     []
   );
 
-  const fetchExpressionsByCharacterAndPlay = useCallback(
-    async (characterName: string, playName: string): Promise<string[]> => {
+  const fetchExpressionsByCharacterAndScene = useCallback(
+    async (characterName: string, sceneName: string): Promise<string[]> => {
       try {
-        const response = await getEmotionsByCharacterAndPlay(
+        const response = await getEmotionsByCharacterAndScene(
           characterName,
-          playName
+          sceneName
         );
         return response.data || [];
       } catch (error) {
@@ -74,8 +73,8 @@ export const useSearchData = () => {
     characters,
     categories,
     isLoading,
-    fetchPlaysByCharacter,
-    fetchExpressionsByCharacterAndPlay,
+    fetchSceneAndPlaysByCharacter,
+    fetchExpressionsByCharacterAndScene,
     refetchCharacters: fetchCharacters,
     refetchCategories: fetchCategories,
   };

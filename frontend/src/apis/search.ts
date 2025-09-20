@@ -8,16 +8,19 @@ export const getCharacterByName = async (name: string) =>
 export const getPlaysByCharacter = async (character: string) =>
   http.post("/search/play-by-character", { character });
 
-export const getEmotionsByCharacterAndPlay = async (
+export const getScenesAndPlayByCharacter = async (character: string) =>
+  http.post("/search/scenes-play-by-character", { character });
+
+export const getEmotionsByCharacterAndScene = async (
   character: string,
-  play: string
-) => http.post("/search/emotion-by-character-and-play", { character, play });
+  scene: string
+) => http.post("/search/emotion-by-character-and-scene", { character, scene });
 
 export const getCharacterStates = async (
   character: string,
-  play: string,
+  scene: string,
   emotion: string
-) => http.post("/search/by-char-play-emotion", { character, play, emotion });
+) => http.post("/search/by-char-scene-emotion", { character, scene, emotion });
 
 export const searchActorGeneral = async (actor: string) =>
   http.post("/search/actor-general", { actor });
