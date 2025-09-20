@@ -8,7 +8,6 @@
      xmlns:Cheo="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo">
-        <owl:imports rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/appearance_output"/>
         <rdfs:comment>Đây là Ontology về Chèo</rdfs:comment>
     </owl:Ontology>
     
@@ -447,6 +446,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoTuan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoTuan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.KimLien -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.KimLien">
@@ -457,12 +464,28 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.LeTuan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.LeTuan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.NgocMinh -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.NgocMinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
         <Cheo:actorGender>nam</Cheo:actorGender>
         <Cheo:actorName>Ngọc Minh</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.NguyenDuy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.NguyenDuy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
     </owl:NamedIndividual>
     
 
@@ -483,6 +506,14 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
         <Cheo:actorGender>nam</Cheo:actorGender>
         <Cheo:actorName>Trần Hải</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.TuDuong -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.TuDuong">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
     </owl:NamedIndividual>
     
 
@@ -543,6 +574,14 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
         <Cheo:actorGender>nam</Cheo:actorGender>
         <Cheo:actorName>Mạnh Phóng</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.NgocAnh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.NgocAnh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
     </owl:NamedIndividual>
     
 
@@ -1667,375 +1706,375 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app22 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app22">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app22">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Angry</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">363</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app23 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app23">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app23">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1556</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">515</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app24 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app24">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app24">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Sad</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">586</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">239</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app25 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app25">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app25">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Bored</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1437</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1227</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app26 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app26">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app26">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Anxious</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">586</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">390</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app27 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app27">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app27">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Excited</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1437</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1229</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app28 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app28">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app28">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Sad</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">888</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">453</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app29 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app29">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app29">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Nervous</Cheo:emotion>
+        <Cheo:emotion>...</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1505</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1500</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app30 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app30">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app30">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1556</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1513</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app31 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app31">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app31">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Excited</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1556</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">885</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app34 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app34">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app34">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Nervous</Cheo:emotion>
+        <Cheo:emotion>...</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">309</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app35 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app35">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app35">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Excited</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1031</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">335</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app36 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app36">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app36">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1240</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1079</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app37 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app37">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app37">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">856</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">405</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app38 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app38">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app38">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Anxious</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1151</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1035</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app39 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app39">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app39">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Nervous</Cheo:emotion>
+        <Cheo:emotion>...</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1466</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">27</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app40 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app40">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app40">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3300</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">251</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app41 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app41">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app41">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Sad</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1442</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1305</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app42 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app42">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app42">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Bored</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1442</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">193</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app43 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app43">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app43">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Bored</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1442</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">193</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app44 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app44">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app44">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Anxious</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">979</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">137</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app45 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app45">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app45">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Excited</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">452</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app46 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app46">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app46">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Nervous</Cheo:emotion>
+        <Cheo:emotion>...</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">918</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">810</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app47 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app47">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app47">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Angry</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">982</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">457</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app48 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app48">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app48">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Nervous</Cheo:emotion>
+        <Cheo:emotion>...</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1530</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">309</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app49 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app49">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app49">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1739</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1536</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app50 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app50">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app50">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Angry</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app51 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app51">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app51">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Excited</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1739</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">339</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app52 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app52">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app52">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Bored</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1522</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">310</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app53 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app53">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app53">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Angry</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">321</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app54 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app54">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app54">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Excited</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">723</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">520</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app55 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app55">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app55">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Sad</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1373</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1100</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app56 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app56">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app56">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1375</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">675</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app57 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app57">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app57">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
         <Cheo:emotion>Anxious</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1193</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">317</Cheo:start>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -2142,7 +2181,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app73">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>sad</Cheo:emotion>
+        <Cheo:emotion>Sad</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1669</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">956</Cheo:start>
     </owl:NamedIndividual>
@@ -2435,16 +2474,32 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ChauLong -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ChauLong">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DaoHue -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DaoHue">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DaoHue">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nữ</Cheo:charGender>
         <Cheo:charName>Đào Huế</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
         <Cheo:subType>Chín</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DuongLe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DuongLe">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+    </owl:NamedIndividual>
     
 
 
@@ -2463,14 +2518,22 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_Khoeo -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_Khoeo">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_Khoeo">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Khoèo</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+    </owl:NamedIndividual>
     
 
 
@@ -2489,14 +2552,14 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MangOng -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MangOng">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MangOng">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Mãng Ông (bố Thị Kính)</Cheo:charName>
         <Cheo:description>Là người nông dân hiền lành, thương con, nhưng bất lực trước số phận trớ trêu của nàng Thị Kính.</Cheo:description>
         <Cheo:mainType>Lão</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -2515,40 +2578,40 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MuQuan -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MuQuan">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MuQuan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nữ</Cheo:charGender>
         <Cheo:charName>Mụ Quán</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Mụ</Cheo:mainType>
         <Cheo:subType>Quán</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_No -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_No">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_No">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Nô</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_PhuOng -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_PhuOng">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_PhuOng">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Phú Ông</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
         <Cheo:subType>Pha</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -2606,14 +2669,14 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThayDo -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThayDo">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThayDo">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Thầy Đồ</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>Áo dài</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -2632,14 +2695,14 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiMau -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiMau">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiMau">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nữ</Cheo:charGender>
         <Cheo:charName>Thị Màu</Cheo:charName>
         <Cheo:description>Con gái của Phú Ông, nhà giàu, lẳng lơ, ham chơi. Thị Màu đem lòng mê sư Kính Tâm (tức Thị Kính giả trai). Khi không được đáp lại, nàng vu cho Kính Tâm là cha của đứa con hoang của mình, khiến Thị Kính phải gánh thêm nỗi oan.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
         <Cheo:subType>Lệch</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -2658,92 +2721,92 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThietThe -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThietThe">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThietThe">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nữ</Cheo:charGender>
         <Cheo:charName>Thiệt Thê</Cheo:charName>
         <Cheo:description>Nhân vật Thiệt Thê trong vở diễn được khắc họa một cách nông nổi, đứng núi này trông núi nọ, vì ham muốn vật chất tầm thường trước mắt nên đã phải trả giá cho những sai lầm.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
         <Cheo:subType>Pha</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonManh -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonManh">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonManh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Tôn Mạnh</Cheo:charName>
         <Cheo:description>Con riêng của Tôn Dân và vợ cả. Hai anh em bị vu oan tội giết người khi chôn cất một xác người ven đường, nhưng may mắn được Quan Án sát đã giải oan cho hai anh em, để cho mẹ con Trinh Nguyên được đoàn tụ vẹn toàn.</Cheo:description>
         <Cheo:mainType>...</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonTrong -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonTrong">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonTrong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Tôn Trọng</Cheo:charName>
         <Cheo:description>Con ruột của Tôn Dân và vợ hai là Trinh Nguyên. Hai anh em bị vu oan tội giết người khi chôn cất một xác người ven đường, nhưng may mắn được Quan Án sát đã giải oan cho hai anh em, để cho mẹ con Trinh Nguyên được đoàn tụ vẹn toàn.</Cheo:description>
         <Cheo:mainType>...</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TranPhuong -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TranPhuong">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TranPhuong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Trần Phương</Cheo:charName>
         <Cheo:description>Trần Phương, một gã nhà giàu đàng điếm ở Đông Ngàn, Bắc Ninh thông qua Mụ Quán tìm cách tán tỉnh Súy Vân, xui nàng giả điên dại để thoát khỏi người chồng là Kim Nham.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
         <Cheo:subType>Pha</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TrinhNguyen -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TrinhNguyen">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TrinhNguyen">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nữ</Cheo:charGender>
         <Cheo:charName>Trinh Nguyên</Cheo:charName>
         <Cheo:description>Trinh Nguyên là vợ hai của Tôn Dân, tuy nhiên chồng mất sớm để lại người vợ trẻ và hai đứa con. Nàng Trinh Nguyên ở vậy một mình nuôi dạy con chồng là Tôn Mạnh và con đẻ là Tôn Trọng. Trinh Nguyên là người tài đức vẹn toàn; một mình tảo tần nuôi hai con thơ trưởng thành không phân biệt máu mủ, yêu thương cả hai bằng tấm lòng bao dung và tình mẫu tử rộng lớn.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
         <Cheo:subType>Chín</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuThuc -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuThuc">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuThuc">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Từ Thức</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
         <Cheo:subType>Chín</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuanTy -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuanTy">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuanTy">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Tuần Ty</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
         <Cheo:subType>Pha</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -2782,6 +2845,24 @@
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4</Cheo:sceneNumber>
         <Cheo:summary>Vở chèo Kim Nham kể về cuộc đời của Kim Nham, một anh học trò nghèo, và người vợ Súy Vân là con gái quan viên Huyện Tể. Sau khi cưới, Kim Nham lên kinh đô để theo đuổi công danh, bỏ lại Súy Vân ở nhà. Súy Vân buồn bã, nhớ nhung chồng và bị Trần Phương, một người giàu có, tán tỉnh. Để thoát khỏi cuộc sống buồn tẻ và tìm kiếm tình yêu, Súy Vân nghe theo lời xui khiến của Trần Phương, giả điên để thoát khỏi Kim Nham. Kim Nham về quê, lo lắng cho vợ, nhưng không chữa khỏi bệnh. Cuối cùng, Kim Nham và Súy Vân đành giải thoát cho nhau. Hoàn thành mục tiêu Súy Vân về bên Trần Phương thì phát hiện ra rằng hắn đã ở bên một ả đàn bà khác, từ giả điên Súy Vân trở thành kẻ điên dại thật. Trong khí đó Kim Nham quyết chí học hành, đỗ đạt cao, được bổ làm quan, khi thấy Súy Vân xuất hiện với bộ dạng điên dại đi xin ăn chàng đã bỏ một nén bạc vào nắm cơm, sai người đem cho Súy Vân, Súy Vân biết chuyện, nàng hổ thẹn nhảy xuống sông tự vẫn.</Cheo:summary>
         <Cheo:title>Kim Nham</Cheo:title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#play_LuuBinhDuongLe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#play_LuuBinhDuongLe">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Play"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ChauLong"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DuongLe"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2"/>
+        <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuongLeTienChauLongDiNuoiBan"/>
+        <Cheo:author>unknown</Cheo:author>
+        <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:sceneNumber>
+        <Cheo:summary>fsbfjwf</Cheo:summary>
+        <Cheo:title>Lưu Bình - Dương Lễ</Cheo:title>
     </owl:NamedIndividual>
     
 
@@ -2826,6 +2907,14 @@
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:sceneNumber>
         <Cheo:summary>Vở chèo Trinh Nguyên là câu chuyện xoay quanh nhân vật Trinh Nguyên, một người phụ nữ tài sắc, đức hạnh nhưng sớm góa chồng. Với tấm lòng bao dung vô bờ bến, nàng một mình tảo tần nuôi dưỡng hai con thơ: Tôn Trọng (con ruột) và Tôn Mạnh (con riêng của chồng), yêu thương cả hai bằng tình mẫu tử rộng lớn, không phân biệt máu mủ. Bi kịch bắt đầu khi hai đứa trẻ vô tình vướng vào một vụ án oan. Trong phiên tòa xử án đầy căng thẳng, bà Trinh Nguyên đã có hành động hy sinh cao cả, xin chết thay con, thậm chí chấp nhận để con ruột lĩnh án để cứu con riêng. Chính sự hy sinh này đã khiến vị quan xử án cảm động và cuối cùng minh oan cho cả ba mẹ con.</Cheo:summary>
         <Cheo:title>Trinh Nguyên</Cheo:title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#play_TruongVien -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#play_TruongVien">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Play"/>
     </owl:NamedIndividual>
     
 
@@ -3629,15 +3718,27 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuongLeTienChauLongDiNuoiBan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuongLeTienChauLongDiNuoiBan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
+        <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
+        <Cheo:sceneName>Dương Lễ tiễn Châu Long đi nuôi bạn</Cheo:sceneName>
+        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_HeTheoThay -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_HeTheoThay">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_HeTheoThay">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_HTT_1"/>
         <Cheo:sceneName>Hề theo Thầy</Cheo:sceneName>
         <Cheo:sceneSummary>...</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -3656,7 +3757,7 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_MauNoPhuOng -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_MauNoPhuOng">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_MauNoPhuOng">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MNPO_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MNPO_2"/>
@@ -3664,20 +3765,20 @@
         <Cheo:sceneName>Mầu - Nô - Phú Ông</Cheo:sceneName>
         <Cheo:sceneSummary>Trích đoạn &quot;Màu - Nô - Phú ông&quot; trong vở chèo &quot;Quan Âm Thị Kính&quot; kể về một lần Thị Màu gian díu với Nô, người làm trong nhà và bị Phú ông bắt gặp. Phú ông, cha của Thị Màu, là một người giàu có, thế lực, nhưng lại nhu nhược, không dám làm gì khi biết chuyện của con gái. Sau này có thai, bị làng bắt vạ, Thị Màu đổ oan cho Thị Kính là cha của đứa bé.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3</Cheo:versionNumber>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_MuQuanTranPhuong -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_MuQuanTranPhuong">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_MuQuanTranPhuong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MQTP_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MQTP_2"/>
         <Cheo:sceneName>Mụ quán - Trần Phương</Cheo:sceneName>
         <Cheo:sceneSummary>Đoạn trích &quot;Mụ Quán Trần Phương&quot; được trích trong vở chèo Kim Nham, là đoạn kể về sự việc Trần Phương quyết định tung đòn tấn công cuối cùng để dụ dỗ nàng Xúy Vân giả dại bỏ chồng. Hắn tìm đến mụ Quán, một bà mối “có số má” trong làng, chuyên dắt mối, môi giới tình duyên.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -3710,13 +3811,13 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_ThayDoDayHoc -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_ThayDoDayHoc">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_ThayDoDayHoc">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TDDH_1"/>
         <Cheo:sceneName>Thầy đồ dạy học</Cheo:sceneName>
         <Cheo:sceneSummary>Trích đoạn &quot;Thầy đồ dạy học&quot; trong vở chèo Trinh Nguyên là một phân cảnh hài hước, phản ánh sự dốt nát của một thầy đồ nhưng lại tự phụ, thích khoe khoang.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -3735,39 +3836,39 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_TranPhuongVaoChua -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_TranPhuongVaoChua">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_TranPhuongVaoChua">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TPVC_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TPVC_2"/>
         <Cheo:sceneName>Trần Phương vào chùa</Cheo:sceneName>
         <Cheo:sceneSummary>...</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_TuanTyDaoHue -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_TuanTyDaoHue">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_TuanTyDaoHue">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TTDH_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TTDH_2"/>
         <Cheo:sceneName>Tuần Ty - Đào Huế</Cheo:sceneName>
         <Cheo:sceneSummary>Nội dung câu chuyện của trích đoạn “Tuần Ty Đào Huế” xoay quanh nhân vật Tuần Ty, một viên quan tuần được cử ra Bắc làm nhiệm vụ. Tại đây, ông có thêm vợ bé và quên vợ con ở Huế. Đào Huế, vợ của Tuần Ty bồng bế con thơ ra Bắc tìm chồng và những mâu thuẫn nảy sinh. Đây là trích đoạn hài nhẹ nhàng với tiếng cười châm biếm sâu sắc về nghĩa vợ đạo chồng.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_VuQuy -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_VuQuy">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_VuQuy">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_VQ_1"/>
         <Cheo:sceneName>Vu quy</Cheo:sceneName>
         <Cheo:sceneSummary>...</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
@@ -3779,7 +3880,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1688</Cheo:endTime>
         <Cheo:showDate>4/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1HcEu8sbfdFc2WCT-d1ZK3e4aPj5AKxfB/view?usp=sharing</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1Ybup1A32M3-lmcutxOlBIWqeRah9opxr/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3792,7 +3893,15 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1281</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1ll8qgK9y8ieuDIzOl3B8_h0-KKlXZePD/view?usp=sharing</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1oC8cMq_oifAWkcmrYcY_KpJgURg7_NI1/view?usp=drive_link</Cheo:vidVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Version"/>
     </owl:NamedIndividual>
     
 
@@ -3805,7 +3914,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">793</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1ypj2bvdFN5sDohp9t3skSKnMQEXLyNpg/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1txL0lwHlY5BPuC-FN0f6Uv2kSU5KwW1T/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3818,7 +3927,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">819</Cheo:endTime>
         <Cheo:showDate>4/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1_ZACQophljNvDvCN4bGq0RGR5Vgx3g8P/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1iuN6Kbulm6xDDGKpHr_BMLEpJiSHJPHn/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3831,7 +3940,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">795</Cheo:endTime>
         <Cheo:showDate>4/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1_8yTTv23dBYKRZaLLwJlsHnrz1cyJ0m5/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1rdorlUIw6l4MW9s3fO98BQOQ7Z954rP5/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3844,7 +3953,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">984</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1cTYBS0GRc6N7JRmdFP7yrcqR6Ps7l6Z4/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1DnvZyCsIm7FM-FYcKqRSruFcQhkIL0qf/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3857,7 +3966,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">921</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1305RY5Zwb0vkGwcrk70GqwiXXkgU8TKf/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1REzLwHgxfUej88EqLwRVWpuz_oz-Qln2/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3870,7 +3979,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">917</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/11my3BF0U_0xi1ip5vcviovJeUNNOZchj/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/12etjf7VudQitG1vN5eK8bWG16pCqRUB0/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3883,7 +3992,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1557</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1cttDBJ46hCVdctUYL5PvluYNcCWPYTKf/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1v0NS4CrwiXF1T_C9jKBYTfMywEned8M1/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3896,7 +4005,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1669</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/13CjoEuIr9iA4ikKIAARrNUZt5vaoEDys/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1omKfOYepyFUHJ3fq_fH84kSXz5eWY7E9/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3909,7 +4018,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1238</Cheo:endTime>
         <Cheo:showDate>4/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1uvHc5Bono1EEymnOgG1hN9ixFXeg7MBy/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1LNnidg2U9QDIIifyUf7kei1G4_-sKW6p/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3922,7 +4031,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1216</Cheo:endTime>
         <Cheo:showDate>4/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/11-RT7YIoe9JQK72lPvUHY8ZvJFXxkSw-/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1SQpfcl6p0bN0CHYbBs6Cb1IG4TEdvB5v/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3935,7 +4044,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1213</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1HjpWTT0JNzSfr8vF-DjYvsTKlOLf6PEH/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1pZcYy23_Tj4fwlkqssD8ts53QWgzk56N/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3948,7 +4057,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1083</Cheo:endTime>
         <Cheo:showDate>4/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1FGWSRO7W0o1CaVbcrMlWd2C1HUHTQWV2/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1Yg7ToRnyaMYnE3Xgw3jwC4xI3wYRGhDH/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3961,7 +4070,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1147</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1D2Wc-XPU6VTtCfOjvGjegIng4BvdJiou/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1yKahGWyk_TnYQEiVwvcTIUglUmGjxAQ-/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3974,7 +4083,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1466</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1DdBvM4bgw5tnExn_7PuEkHNyeKN73qRw/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1imQpJ11W0L7S72sivM2MMvez9dd0jTic/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3987,7 +4096,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1243</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1tFHhGR99vM2QTbt_n_rz7oqCwIjPTiXa/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1fYNDKNDZSJk-WlPdFqBshp0_uNuvEged/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -4000,7 +4109,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1133</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1t0NxZ7dF6sJOS3hLLObqVuOJZqBIk9_b/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1dpIK-ELX8nVrGNtyN2QVJyPfpa219QuL/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -4013,7 +4122,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">499</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1KXPM-aJl73wieUrMnB1gnVHuMM0o4MGj/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1_qiz615IOcXc5frikGvRRBiyFsQlrvkM/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -4026,7 +4135,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">503</Cheo:endTime>
         <Cheo:showDate>5/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1cG5r9yDTbQYIs18Y3idE9VUIMI_XHzJ0/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1gyPlVn5A3gqXa0TgTWLhX2xRbciQoJ60/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -4039,7 +4148,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1739</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1Lbh-B1l5-MbMYuIqwYAlXnCNQB7kGiJT/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1wKlw2PeXcv5IrrZSlULe2vIi9AafvVLA/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -4052,7 +4161,7 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1496</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1O7l3fXjVnw6G1B2RX8vN171jHZ0HhYOI/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1qFuLwzsy-5FCB3bSlrcJKLUKaNQ1o-rS/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -4065,7 +4174,23 @@
         <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1382</Cheo:endTime>
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
-        <Cheo:vidVersion>https://drive.google.com/file/d/1cXUmSccoa_caf-H8jW9cI1eDHvF2sfLf/view?usp=drive_link</Cheo:vidVersion>
+        <Cheo:vidVersion>https://drive.google.com/file/d/13lxzfjnqA7smrZg5FVWRY38UiNKlsL_p/view?usp=drive_link</Cheo:vidVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
     </owl:NamedIndividual>
     
 
@@ -4085,14 +4210,14 @@
 
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(MQTP) -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(MQTP)">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(MQTP)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>nam</Cheo:charGender>
         <Cheo:charName>Hề (Mụ Quán Trần Phương)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>...</Cheo:subType>
-    </rdf:Description>
+    </owl:NamedIndividual>
     
 
 
