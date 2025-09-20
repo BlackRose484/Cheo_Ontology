@@ -6,10 +6,14 @@ const router = express.Router();
 // Define the search route
 router.post("/play-by-character", searchController.searchPlayByCharacter);
 router.post(
-  "/emotion-by-character-and-play",
-  searchController.searchEmotionByCharacterAndPlay
+  "/scenes-play-by-character",
+  searchController.searchSceneAndPlayByCharacter
 );
-router.post("/by-char-play-emotion", searchController.searchByCharPlayEMo);
+router.post(
+  "/emotion-by-character-and-scene",
+  searchController.searchEmotionByCharacterAndScene
+);
+router.post("/by-char-scene-emotion", searchController.searchByCharSceneEMo);
 router.post("/character-general", searchController.searchCharacterGeneral);
 router.post("/play-general", searchController.searchPlayGeneral);
 router.post("/actor-general", searchController.searchActorGeneral);

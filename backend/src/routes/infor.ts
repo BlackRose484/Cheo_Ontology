@@ -12,6 +12,7 @@ router.get("/library", inforController.getLibrary);
 router.post("/scenes-by-play", inforController.getSceneNamesByPlay);
 router.get("/maintype", inforController.getMainTypeCategories);
 router.get("/subtype", inforController.getSubTypeCategories);
+router.post("/subtype-by-maintype", inforController.getSubTypesByMainType);
 router.post("/filtered-characters", inforController.filterCharactersByCategory);
 
 export default router;

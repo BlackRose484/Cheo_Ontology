@@ -1,6 +1,3 @@
-import { Scene } from "./../../../frontend/src/types/index";
-export type CharacterNames = string[];
-
 export interface CharacterState {
   charName: string;
   charGender: string;
@@ -30,6 +27,13 @@ export type CharacterGenerals = CharacterGeneral[];
 
 export interface CharacterInformation extends Character {
   plays?: string[];
-  scenes?: Scene[];
+  scenes?: string[];
   actors?: string[];
 }
+
+export interface CharacterName {
+  char: string;
+  charName: string;
+}
+
+export type CharacterNames = CharacterName[];

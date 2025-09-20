@@ -47,3 +47,18 @@ export const formatStringtoArray = (str: string): string[] => {
     return [];
   }
 };
+
+export const formatForScenes = (
+  str: string,
+  regex1: string,
+  regex2: string
+) => {
+  try {
+    return str.split(regex2).map((item) => {
+      const [scene, name] = item.split(regex1).map((part) => part.trim());
+      return { scene, name };
+    });
+  } catch (error) {
+    return [];
+  }
+};

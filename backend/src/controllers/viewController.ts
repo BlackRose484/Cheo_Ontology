@@ -1,7 +1,11 @@
 import { ActorInformation } from "../types/actor";
 import { CharacterInformation } from "../types/character";
 import { PlayInformation, SceneInformation } from "../types/play";
-import { createErrorResponse, formatStringtoArray } from "../utils/formatters";
+import {
+  createErrorResponse,
+  formatForScenes,
+  formatStringtoArray,
+} from "../utils/formatters";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
 
@@ -11,10 +15,18 @@ const ViewController = {
     const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT (?charName AS ?name) ?description (?charGender AS ?gender) ?mainType ?subType
-            (GROUP_CONCAT(DISTINCT ?playTitle; separator=", ") AS ?plays)
-            (GROUP_CONCAT(DISTINCT ?actorName; separator=", ") AS ?actors)
-            (GROUP_CONCAT(DISTINCT ?sceneName; separator=", ") AS ?scenes)
+      SELECT 
+        (?charName AS ?name) 
+        ?description 
+        (?charGender AS ?gender) 
+        ?mainType 
+        ?subType
+        (GROUP_CONCAT(DISTINCT ?playTitle; SEPARATOR=", ") AS ?plays)
+        (GROUP_CONCAT(DISTINCT ?actorName; SEPARATOR=", ") AS ?actors)
+        (GROUP_CONCAT(
+            DISTINCT CONCAT(STR(?scene), ",", COALESCE(?sceneName, "")); 
+            SEPARATOR="|xx|"
+        ) AS ?scenes)
       WHERE {
         ?char rdf:type Cheo:Character ;
               Cheo:charName ?charName ;
@@ -41,8 +53,11 @@ const ViewController = {
         }
 
         OPTIONAL {
-          ?play Cheo:hasCharacter ?char ;
-                Cheo:hasScene ?scene .
+          ?scene Cheo:hasVersion ?ver .
+          ?ra2 a Cheo:RoleAssignment ;
+              Cheo:inVersion ?ver ;
+              Cheo:forCharacter ?char .
+          ?play Cheo:hasScene ?scene .
           ?scene Cheo:sceneName ?sceneName .
         }
       }
@@ -61,7 +76,7 @@ const ViewController = {
           description: result.description?.value || "",
           plays: formatStringtoArray(result.plays?.value) || [],
           actors: formatStringtoArray(result.actors?.value) || [],
-          scenes: formatStringtoArray(result.scenes?.value) || [],
+          scenes: formatForScenes(result.scenes?.value, ",", "|xx|") || [],
         })
       );
       res.json(characterInfo);
@@ -85,14 +100,17 @@ const ViewController = {
         ?author
         ?summary
         ?sceneNumber
-        (GROUP_CONCAT(DISTINCT ?sceneName;  separator=", ") AS ?scenes)
-        (GROUP_CONCAT(DISTINCT ?charName;   separator=", ") AS ?characters)
-        (GROUP_CONCAT(DISTINCT ?actorName;  separator=", ") AS ?actors)
+        (GROUP_CONCAT(
+            DISTINCT CONCAT(STR(?scene), ",", COALESCE(?sceneName, "")); 
+            SEPARATOR="|xx|"
+        ) AS ?scenes)
+        (GROUP_CONCAT(DISTINCT ?charName;  SEPARATOR=", ") AS ?characters)
+        (GROUP_CONCAT(DISTINCT ?actorName; SEPARATOR=", ") AS ?actors)
       WHERE {
         # Play (lọc đúng tên)
         ?play rdf:type Cheo:Play ;
               Cheo:title ?playTitle .
-        FILTER(STR(?playTitle) = "${play}")
+        FILTER(LCASE(STR(?playTitle)) = LCASE("${play}"))
         FILTER(STR(?playTitle) != "...")
 
         OPTIONAL { 
@@ -108,18 +126,21 @@ const ViewController = {
           FILTER(STR(?sceneNumber) != "...")
         }
 
+        # Cảnh của vở
         OPTIONAL {
-          ?play  Cheo:hasScene  ?scene .
+          ?play  Cheo:hasScene ?scene .
           ?scene Cheo:sceneName ?sceneName .
           FILTER(STR(?sceneName) != "...")
         }
 
+        # Nhân vật
         OPTIONAL {
           ?play  Cheo:hasCharacter ?char .
-          ?char  Cheo:charName     ?charName .
+          ?char  Cheo:charName ?charName .
           FILTER(STR(?charName) != "...")
         }
 
+        # Diễn viên
         OPTIONAL {
           ?play  Cheo:hasCharacter ?char .
           ?ra    rdf:type Cheo:RoleAssignment ;
@@ -131,7 +152,6 @@ const ViewController = {
       }
       GROUP BY ?playTitle ?author ?summary ?sceneNumber
       ORDER BY LCASE(?playTitle)
-
     `;
 
     try {
@@ -141,7 +161,7 @@ const ViewController = {
         author: result.author?.value || "",
         summary: result.summary?.value || "",
         sceneNumber: result.sceneNumber?.value || "",
-        scenes: formatStringtoArray(result.scenes?.value) || [],
+        scenes: formatForScenes(result.scenes?.value, ",", "|xx|") || [],
         characters: formatStringtoArray(result.characters?.value) || [],
         actors: formatStringtoArray(result.actors?.value) || [],
       }));
@@ -230,7 +250,6 @@ const ViewController = {
         BIND(<${scene}> AS ?scene)
 
         OPTIONAL { ?scene cheo:sceneName    ?sceneName    FILTER(STR(?sceneName)    != "...") }
-        OPTIONAL { ?scene cheo:sceneSummary ?sceneSummary FILTER(STR(?sceneSummary) != "...") }
 
         # Play chứa scene
         ?play cheo:hasScene ?scene .

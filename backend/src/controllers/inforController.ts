@@ -12,11 +12,11 @@ const inforController = {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-      SELECT DISTINCT ?charName
+      SELECT DISTINCT ?character ?charName
       WHERE {
-          ?instance rdf:type ?type .
-          ?type rdfs:subClassOf* cheo:Character .
-          ?instance cheo:charName ?charName .
+        ?character rdf:type ?type .
+        ?type rdfs:subClassOf* cheo:Character .
+        ?character cheo:charName ?charName .
       }
       ORDER BY LCASE(?charName)
     `;
@@ -27,9 +27,10 @@ const inforController = {
         return res.status(404).json({ message: "No characters found" });
       }
       // Extract character names from results
-      const characterNames: CharacterNames = results.map(
-        (result: any) => result.charName.value
-      );
+      const characterNames: CharacterNames = results.map((result: any) => ({
+        char: result?.character.value,
+        charName: result?.charName.value,
+      }));
 
       res.json(characterNames);
     } catch (error) {
@@ -44,11 +45,11 @@ const inforController = {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-      SELECT DISTINCT ?title
+      SELECT DISTINCT ?play ?title
       WHERE {
-        ?instance rdf:type ?type .
+        ?play rdf:type ?type .
         ?type rdfs:subClassOf* cheo:Play .
-        ?instance cheo:title ?title .
+        ?play cheo:title ?title .
       }
       ORDER BY LCASE(?title)
     `;
@@ -58,10 +59,10 @@ const inforController = {
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No plays found" });
       }
-      // Extract play titles from results
-      const playTitles: PlayTitles = results.map(
-        (result: any) => result.title.value
-      );
+      const playTitles: PlayTitles = results.map((result: any) => ({
+        play: result?.play?.value,
+        title: result?.title?.value,
+      }));
 
       res.json(playTitles);
     } catch (error) {
@@ -115,10 +116,11 @@ const inforController = {
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No actors found" });
       }
-      // Extract actor names from results
-      const actorNames: ActorNames = results.map(
-        (result: any) => result.name.value
-      );
+      const actorNames: ActorNames = results.map((result: any) => ({
+        actor: result?.actor.value,
+        name: result?.name.value,
+      }));
+
       res.json(actorNames);
     } catch (error) {
       console.error("Error running SPARQL query:", error);
@@ -144,10 +146,12 @@ const inforController = {
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No scenes found" });
       }
-      // Extract scene names from results
-      const sceneNames: SceneNames = results.map(
-        (result: any) => result.name.value
-      );
+
+      const sceneNames: SceneNames = results.map((result: any) => ({
+        scene: result?.scene.value,
+        name: result?.name.value,
+      }));
+
       res.json(sceneNames);
     } catch (error) {
       console.error("Error running SPARQL query:", error);
@@ -162,26 +166,26 @@ const inforController = {
 
       SELECT DISTINCT ?scene ?sceneName
       WHERE {
-        BIND("${play}" AS ?qPlay)   # ← tên vở được truyền từ client
+        # Play theo URI
+        BIND(<${play}> AS ?play)
 
-        # Tìm đúng Play theo title
         ?play a cheo:Play ;
-              cheo:title ?playTitle ;
               cheo:hasScene ?scene .
-        FILTER( LCASE(STR(?playTitle)) = LCASE(?qPlay) )
 
         # Lấy thông tin Scene
         OPTIONAL { ?scene cheo:sceneName ?sceneName }
       }
-      ORDER BY ?sceneName`;
+      ORDER BY ?sceneName
+    `;
     try {
       const results = await runSPARQLQuery(sparql);
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No scenes found" });
       }
-      const sceneNames: SceneNames = results.map(
-        (result: any) => result.sceneName.value
-      );
+      const sceneNames: SceneNames = results.map((result: any) => ({
+        scene: result?.scene?.value,
+        name: result?.sceneName?.value,
+      }));
 
       const uniqueSceneNames = Array.from(new Set(sceneNames));
 
@@ -298,12 +302,37 @@ const inforController = {
     }
   },
 
+  getSubTypesByMainType: async (req: Request, res: Response) => {
+    const { mainType } = req.body;
+    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+      SELECT DISTINCT ?subType
+      WHERE {
+        ?char rdf:type Cheo:Character ;
+              Cheo:mainType ?mainType ;
+              Cheo:subType ?subType .
+        FILTER(LCASE(STR(?mainType)) = LCASE("${mainType}"))
+      }
+      ORDER BY ?subType
+    `;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+      const subTypes = results.map((result: any) => result?.subType?.value);
+      res.json(subTypes);
+    } catch (error) {
+      console.error("Error running SPARQL query:", error);
+      res.status(500).json({ error: "Error running SPARQL query" });
+    }
+  },
+
   filterCharactersByCategory: async (req: Request, res: Response) => {
     const { mainType, subType } = req.body;
     const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT DISTINCT ?charName
+      SELECT DISTINCT ?char ?charName
       WHERE {
         ?char rdf:type Cheo:Character ;
               Cheo:charName ?charName ;
@@ -321,7 +350,10 @@ const inforController = {
       ORDER BY LCASE(?charName)`;
     try {
       const results = await runSPARQLQuery(sparql);
-      const characters = results.map((result: any) => result?.charName?.value);
+      const characters: CharacterNames = results.map((result: any) => ({
+        char: result?.char?.value,
+        charName: result?.charName?.value,
+      }));
       res.json(characters);
     } catch (error) {
       console.error("Error running SPARQL query:", error);

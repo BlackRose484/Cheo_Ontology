@@ -1,8 +1,4 @@
-export type PlayTitles = string[];
-
 export type PlayTitlesByCharacter = string[];
-
-export type SceneNames = string[];
 
 export interface Play {
   play?: string;
@@ -57,3 +53,25 @@ export interface SceneInformation extends Scene {
   allActors?: string[];
   inPlay?: string;
 }
+
+export interface SceneAndPlay {
+  scene: string;
+  sceneName: string;
+  playTitle: string;
+}
+
+export type SceneAndPlays = SceneAndPlay[];
+
+export interface PlayTitle {
+  play: string;
+  title: string;
+}
+
+export type PlayTitles = PlayTitle[];
+
+export interface SceneName {
+  scene: string;
+  name: string;
+}
+
+export type SceneNames = SceneName[];
