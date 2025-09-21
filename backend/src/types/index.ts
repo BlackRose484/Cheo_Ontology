@@ -8,6 +8,9 @@ export interface ApiResponse<T> {
 
 export type Infor = string[];
 
+// AI Types
+export * from "./ai";
+
 export interface LibraryItem {
   vidVersion?: string;
   sceneName?: string;
