@@ -16,6 +16,34 @@ export interface SearchFilters {
 
 export type SearchType = "characters" | "performances" | "all";
 
+// AI Chatbot interfaces
+export interface ChatMessage {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+  timestamp: Date;
+}
+
+export interface ChatRequest {
+  message: string;
+  context?: string;
+  model?: string;
+}
+
+export interface ChatResponse {
+  response: string;
+  model: string;
+  timestamp: Date;
+  error?: string;
+}
+
+export interface AIModelInfo {
+  id: string;
+  name: string;
+  description: string;
+  available: boolean;
+}
+
 // API Response interfaces
 export interface ApiResponse<T> {
   success: boolean;

@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Navigator from "./Navigator";
+import ChatBot from "../ai/ChatBot";
+import ChatBotToggle from "../ai/ChatBotToggle";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,6 +12,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const pathname = usePathname();
+  const [isChatBotOpen, setIsChatBotOpen] = useState(false);
 
   const getPageBackground = () => {
     switch (pathname) {
@@ -61,6 +65,10 @@ const Layout = ({ children }: LayoutProps) => {
         <Navigator />
         <main className="relative">{children}</main>
       </div>
+
+      {/* AI Chatbot */}
+      <ChatBotToggle isOpen={isChatBotOpen} onToggle={setIsChatBotOpen} />
+      <ChatBot isOpen={isChatBotOpen} onClose={() => setIsChatBotOpen(false)} />
     </div>
   );
 };
