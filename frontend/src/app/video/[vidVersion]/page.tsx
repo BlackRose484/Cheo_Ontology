@@ -1,65 +1,41 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { getLibrary } from "@/apis/infor";
+import { useMemo } from "react";
 import { LibraryItem } from "@/types/index";
+import { useLibrary } from "@/hooks/useLibraryQueries";
 
 export default function VideoDetailPage() {
   const params = useParams();
   const router = useRouter();
   const vidVersion = decodeURIComponent(params.vidVersion as string);
 
-  const [video, setVideo] = useState<LibraryItem | null>(null);
-  const [relatedVideos, setRelatedVideos] = useState<LibraryItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // Use cached library data
+  const { data: libraryData, isLoading, error } = useLibrary();
 
-  useEffect(() => {
-    const fetchVideo = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
+  // Find video and related videos from cached data
+  const { video, relatedVideos } = useMemo(() => {
+    if (!libraryData) return { video: null, relatedVideos: [] };
 
-        const response = await getLibrary();
+    const foundVideo = libraryData.find(
+      (item: LibraryItem) => item.vidVersion === vidVersion
+    );
 
-        if (response.data && Array.isArray(response.data)) {
-          const foundVideo = response.data.find(
-            (item: LibraryItem) => item.vidVersion === vidVersion
-          );
+    if (!foundVideo) return { video: null, relatedVideos: [] };
 
-          if (foundVideo) {
-            setVideo(foundVideo);
-            // Get related videos (same play or similar characters)
-            const related = response.data
-              .filter(
-                (item: LibraryItem) =>
-                  item.vidVersion !== vidVersion &&
-                  (item.playTitle === foundVideo.playTitle ||
-                    item.characters?.some((char) =>
-                      foundVideo.characters?.includes(char)
-                    ))
-              )
-              .slice(0, 5);
-            setRelatedVideos(related);
-          } else {
-            setError("Không tìm thấy video này trong thư viện.");
-          }
-        } else {
-          setError("Không tìm thấy dữ liệu thư viện video.");
-        }
-      } catch (err) {
-        console.error("Error fetching video:", err);
-        setError("Lỗi khi tải dữ liệu video. Vui lòng thử lại sau.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    const related = libraryData
+      .filter(
+        (item: LibraryItem) =>
+          item.vidVersion !== vidVersion &&
+          (item.playTitle === foundVideo.playTitle ||
+            item.characters?.some((char) =>
+              foundVideo.characters?.includes(char)
+            ))
+      )
+      .slice(0, 5);
 
-    if (vidVersion) {
-      fetchVideo();
-    }
-  }, [vidVersion]);
+    return { video: foundVideo, relatedVideos: related };
+  }, [libraryData, vidVersion]);
 
   const handleBack = () => {
     router.push("/library");
@@ -114,7 +90,9 @@ export default function VideoDetailPage() {
               <h3 className="text-xl font-semibold text-red-900 mb-2">
                 Lỗi tải video
               </h3>
-              <p className="text-red-800 mb-6">{error}</p>
+              <p className="text-red-800 mb-6">
+                {error?.message || "Lỗi khi tải video"}
+              </p>
               <button
                 onClick={handleBack}
                 className="px-6 py-3 bg-gradient-to-r from-red-800 to-red-900 text-white rounded-lg hover:from-red-900 hover:to-red-800 transition-all duration-200 font-medium shadow-md"

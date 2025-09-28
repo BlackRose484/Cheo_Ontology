@@ -1,41 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
-  getLibrary,
-  getCharacters,
-  getActorNames,
-  getPlays,
   getMainTypeCategories,
   getSubTypesByMainType,
   filterCharactersByCategory,
 } from "@/apis/infor";
 import {
-  ActorName,
-  ActorNames,
-  CharacterName,
-  CharacterNames,
-  Library,
   LibraryItem,
+  CharacterName,
+  ActorName,
   PlayTitle,
-  PlayTitles,
+  Character,
 } from "@/types/index";
 import LibraryVideoCard from "@/components/library/LibraryVideoCard";
 import Link from "next/link";
+import { useLibraryData } from "@/hooks/useLibraryQueries";
 
 type TabType = "videos" | "characters" | "actors" | "plays";
 
 export default function LibraryPage() {
-  const [library, setLibrary] = useState<Library>([]);
-  const [characters, setCharacters] = useState<CharacterNames>([]);
-  const [filteredCharacters, setFilteredCharacters] = useState<CharacterNames>(
-    []
-  );
-  const [actors, setActors] = useState<ActorNames>([]);
-  const [plays, setPlays] = useState<PlayTitles>([]);
+  // Use cached library data
+  const {
+    library: libraryQuery,
+    characters: charactersQuery,
+    actors: actorsQuery,
+    plays: playsQuery,
+    isLoading: libraryDataLoading,
+  } = useLibraryData();
+
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
   const [mainTypes, setMainTypes] = useState<string[]>([]);
   const [subTypes, setSubTypes] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [filterLoading, setFilterLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>("videos");
@@ -46,46 +42,38 @@ export default function LibraryPage() {
   const [selectedMainType, setSelectedMainType] = useState<string>("all");
   const [selectedSubType, setSelectedSubType] = useState<string>("all");
 
+  // Derived state from cached data using useMemo
+  const library = useMemo(() => libraryQuery.data || [], [libraryQuery.data]);
+  const characters = useMemo(
+    () => charactersQuery.data || [],
+    [charactersQuery.data]
+  );
+  const actors = useMemo(() => actorsQuery.data || [], [actorsQuery.data]);
+  const plays = useMemo(() => playsQuery.data || [], [playsQuery.data]);
+  const isLoading = libraryDataLoading;
+
+  // Initialize filtered characters when characters data loads
   useEffect(() => {
-    const fetchAllData = async () => {
+    if (characters && characters.length > 0) {
+      setFilteredCharacters(characters);
+    }
+  }, [characters]);
+
+  // Load main types for filtering (only load categories, not main data)
+  useEffect(() => {
+    const fetchMainTypes = async () => {
       try {
-        setIsLoading(true);
-        setError(null);
-
-        const [libraryRes, charactersRes, actorsRes, playsRes, mainTypesRes] =
-          await Promise.all([
-            getLibrary(),
-            getCharacters(),
-            getActorNames(),
-            getPlays(),
-            getMainTypeCategories(),
-          ]);
-
-        if (libraryRes.data && Array.isArray(libraryRes.data)) {
-          setLibrary(libraryRes.data);
-        }
-        if (charactersRes.data && Array.isArray(charactersRes.data)) {
-          setCharacters(charactersRes.data);
-          setFilteredCharacters(charactersRes.data); // Initialize filtered list
-        }
-        if (actorsRes.data && Array.isArray(actorsRes.data)) {
-          setActors(actorsRes.data);
-        }
-        if (playsRes.data && Array.isArray(playsRes.data)) {
-          setPlays(playsRes.data);
-        }
+        const mainTypesRes = await getMainTypeCategories();
         if (mainTypesRes.data && Array.isArray(mainTypesRes.data)) {
           setMainTypes(mainTypesRes.data);
         }
       } catch (err) {
-        console.error("Error fetching data:", err);
-        setError("Lỗi khi tải dữ liệu thư viện. Vui lòng thử lại sau.");
-      } finally {
-        setIsLoading(false);
+        console.error("Error fetching main types:", err);
+        setError("Lỗi khi tải danh mục. Vui lòng thử lại sau.");
       }
     };
 
-    fetchAllData();
+    fetchMainTypes();
   }, []);
 
   useEffect(() => {
@@ -93,7 +81,7 @@ export default function LibraryPage() {
       if (selectedMainType === "all") {
         setSubTypes([]);
         setSelectedSubType("all");
-        setFilteredCharacters(characters); 
+        setFilteredCharacters(characters);
       } else {
         try {
           const subTypesRes = await getSubTypesByMainType(selectedMainType);

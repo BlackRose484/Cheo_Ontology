@@ -1,45 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getActorInformation } from "@/apis/view";
-import { ActorInformation } from "@/types";
+import { useActorInformation } from "@/hooks/useViewQueries";
 
 export default function ActorDetailPage() {
   const params = useParams();
   const actorName = decodeURIComponent(params.name as string);
 
-  const [actor, setActor] = useState<ActorInformation | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchActorInfo = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const response = await getActorInformation(actorName);
-
-        // API view trả về AxiosResponse với data là ActorInformation
-        if (response && response.data) {
-          setActor(response.data[0]);
-        } else {
-          setError("Không tìm thấy thông tin diễn viên");
-        }
-      } catch (err) {
-        setError("Không thể tải thông tin diễn viên");
-        console.error("Error fetching actor info:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (actorName) {
-      fetchActorInfo();
-    }
-  }, [actorName]);
+  // Use cached actor information
+  const {
+    data: actor,
+    isLoading: loading,
+    error,
+  } = useActorInformation(actorName);
 
   if (loading) {
     return (
@@ -68,7 +42,7 @@ export default function ActorDetailPage() {
             Không tìm thấy thông tin
           </h1>
           <p className="text-amber-200 mb-8 font-traditional">
-            {error || "Diễn viên này không tồn tại hoặc đã bị xóa"}
+            {error?.message || "Diễn viên này không tồn tại hoặc đã bị xóa"}
           </p>
           <Link
             href="/search"

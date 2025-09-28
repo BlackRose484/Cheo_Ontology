@@ -1,45 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getCharacterInformation } from "@/apis/view";
-import { CharacterInformation } from "@/types";
+import { useCharacterInformation } from "@/hooks/useViewQueries";
 
 export default function CharacterDetailPage() {
   const params = useParams();
   const characterName = decodeURIComponent(params.name as string);
 
-  const [character, setCharacter] = useState<CharacterInformation | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchCharacterInfo = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const response = await getCharacterInformation(characterName);
-
-        // API view trả về AxiosResponse với data là CharacterInformation
-        if (response && response.data) {
-          setCharacter(response.data[0]);
-        } else {
-          setError("Không tìm thấy thông tin nhân vật");
-        }
-      } catch (err) {
-        setError("Không thể tải thông tin nhân vật");
-        console.error("Error fetching character info:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (characterName) {
-      fetchCharacterInfo();
-    }
-  }, [characterName]);
+  // Use cached character information
+  const {
+    data: character,
+    isLoading: loading,
+    error,
+  } = useCharacterInformation(characterName);
 
   if (loading) {
     return (
@@ -68,7 +42,7 @@ export default function CharacterDetailPage() {
             Không tìm thấy thông tin
           </h1>
           <p className="text-amber-200 mb-8 font-traditional">
-            {error || "Nhân vật này không tồn tại hoặc đã bị xóa"}
+            {error?.message || "Nhân vật này không tồn tại hoặc đã bị xóa"}
           </p>
           <Link
             href="/characters"

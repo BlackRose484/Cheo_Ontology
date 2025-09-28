@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Navigator from "./Navigator";
 import ChatBot from "../ai/ChatBot";
 import ChatBotToggle from "../ai/ChatBotToggle";
+import QueryProvider from "@/providers/QueryProvider";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -49,27 +50,32 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div
-      className={`min-h-screen ${getPageBackground()} relative overflow-hidden`}
-    >
-      {/* Background Pattern */}
-      <div className={`absolute inset-0 opacity-5 ${getPagePattern()}`} />
+    <QueryProvider>
+      <div
+        className={`min-h-screen ${getPageBackground()} relative overflow-hidden`}
+      >
+        {/* Background Pattern */}
+        <div className={`absolute inset-0 opacity-5 ${getPagePattern()}`} />
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/5 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-green-200/20 to-transparent rounded-full transform translate-x-32 translate-y-32" />
-      <div className="absolute top-1/4 left-0 w-64 h-64 bg-gradient-radial from-emerald-200/20 to-transparent rounded-full transform -translate-x-32" />
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/5 to-transparent" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-green-200/20 to-transparent rounded-full transform translate-x-32 translate-y-32" />
+        <div className="absolute top-1/4 left-0 w-64 h-64 bg-gradient-radial from-emerald-200/20 to-transparent rounded-full transform -translate-x-32" />
 
-      {/* Content */}
-      <div className="relative z-10">
-        <Navigator />
-        <main className="relative">{children}</main>
+        {/* Content */}
+        <div className="relative z-10">
+          <Navigator />
+          <main className="relative">{children}</main>
+        </div>
+
+        {/* AI Chatbot */}
+        <ChatBotToggle isOpen={isChatBotOpen} onToggle={setIsChatBotOpen} />
+        <ChatBot
+          isOpen={isChatBotOpen}
+          onClose={() => setIsChatBotOpen(false)}
+        />
       </div>
-
-      {/* AI Chatbot */}
-      <ChatBotToggle isOpen={isChatBotOpen} onToggle={setIsChatBotOpen} />
-      <ChatBot isOpen={isChatBotOpen} onClose={() => setIsChatBotOpen(false)} />
-    </div>
+    </QueryProvider>
   );
 };
 

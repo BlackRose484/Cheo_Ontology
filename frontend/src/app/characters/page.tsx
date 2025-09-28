@@ -1,34 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import {
-  getCharacters,
-  getActorNames,
-  getPlays,
   getMainTypeCategories,
   getSubTypesByMainType,
   filterCharactersByCategory,
 } from "@/apis/infor";
-import {
-  ActorName,
-  ActorNames,
-  CharacterName,
-  CharacterNames,
-  PlayTitle,
-  PlayTitles,
-} from "@/types";
+import { Character, ActorName, Play } from "@/types";
+import { useLibraryData } from "@/hooks/useLibraryQueries";
 
 export default function CharactersPage() {
-  const [characters, setCharacters] = useState<CharacterNames>([]);
-  const [filteredCharacters, setFilteredCharacters] = useState<CharacterNames>(
-    []
-  );
-  const [actors, setActors] = useState<ActorNames>([]);
-  const [plays, setPlays] = useState<PlayTitles>([]);
+  // Use cached library data
+  const {
+    characters: charactersQuery,
+    actors: actorsQuery,
+    plays: playsQuery,
+    isLoading: loading,
+  } = useLibraryData();
+
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
   const [mainTypes, setMainTypes] = useState<string[]>([]);
   const [subTypes, setSubTypes] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
   const [filterLoading, setFilterLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<"characters" | "actors" | "plays">(
     "characters"
@@ -38,51 +31,44 @@ export default function CharactersPage() {
   const [selectedMainType, setSelectedMainType] = useState<string>("all");
   const [selectedSubType, setSelectedSubType] = useState<string>("all");
 
+  // Derived state from cached data using useMemo to prevent re-renders
+  const characters = useMemo(
+    () => charactersQuery.data || [],
+    [charactersQuery.data]
+  );
+  const actors = useMemo(() => actorsQuery.data || [], [actorsQuery.data]);
+  const plays = useMemo(() => playsQuery.data || [], [playsQuery.data]);
+
+  // Initialize filtered characters when characters data is loaded
   useEffect(() => {
-    const fetchData = async () => {
+    if (characters.length > 0 && filteredCharacters.length === 0) {
+      setFilteredCharacters(characters);
+    }
+  }, [characters, filteredCharacters.length]);
+
+  // Load main types on component mount
+  useEffect(() => {
+    const fetchMainTypes = async () => {
       try {
-        setLoading(true);
-        const [charactersRes, actorsRes, playsRes, mainTypesRes] =
-          await Promise.all([
-            getCharacters(),
-            getActorNames(),
-            getPlays(),
-            getMainTypeCategories(),
-          ]);
-
-        if (charactersRes.data) {
-          setCharacters(charactersRes.data);
-          setFilteredCharacters(charactersRes.data); // Initialize filtered list
+        const mainTypesRes = await getMainTypeCategories();
+        if (mainTypesRes.data) {
+          setMainTypes(mainTypesRes.data);
         }
-        if (actorsRes.data) setActors(actorsRes.data);
-        if (playsRes.data) setPlays(playsRes.data);
-        if (mainTypesRes.data) setMainTypes(mainTypesRes.data);
-
-        // console.log("Fetched data:", {
-        //   characters: charactersRes.data,
-        //   actors: actorsRes.data,
-        //   plays: playsRes.data,
-        //   mainTypes: mainTypesRes.data,
-        //   subTypes: subTypesRes.data,
-        // });
       } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
+        console.error("Error fetching main types:", error);
       }
     };
 
-    fetchData();
+    fetchMainTypes();
   }, []);
 
   // Fetch SubTypes when MainType changes
   useEffect(() => {
     const fetchSubTypes = async () => {
       if (selectedMainType === "all") {
-        // Reset về trạng thái ban đầu khi MainType = "all"
         setSubTypes([]);
         setSelectedSubType("all");
-        setFilteredCharacters(characters); // Reset filtered characters về tất cả
+        setFilteredCharacters(characters);
       } else {
         try {
           const subTypesRes = await getSubTypesByMainType(selectedMainType);
@@ -93,20 +79,18 @@ export default function CharactersPage() {
           console.error("Error fetching subtypes:", error);
           setSubTypes([]);
         }
-        // Reset SubType selection when MainType changes to specific type
         setSelectedSubType("all");
       }
     };
 
     fetchSubTypes();
-  }, [selectedMainType, characters]);
+  }, [selectedMainType, characters, setSelectedSubType]);
 
   // Apply filter when selections change
   useEffect(() => {
     const applyFilterEffect = async () => {
       if (characters.length === 0) return;
 
-      // Nếu MainType = "all" thì đã được reset trong useEffect trên, không cần làm gì thêm
       if (selectedMainType === "all") {
         return;
       }
@@ -313,7 +297,7 @@ export default function CharactersPage() {
                   Danh sách nhân vật Chèo ({filteredCharacters.length})
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {filteredCharacters.map((character: CharacterName, index) => (
+                  {filteredCharacters.map((character: Character, index) => (
                     <Link
                       key={index}
                       href={`/character/${encodeURIComponent(
@@ -379,7 +363,7 @@ export default function CharactersPage() {
                   Danh sách vở chèo
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {plays.map((play: PlayTitle, index) => (
+                  {plays.map((play: Play, index) => (
                     <Link
                       key={index}
                       href={`/play/${encodeURIComponent(play.title)}`}

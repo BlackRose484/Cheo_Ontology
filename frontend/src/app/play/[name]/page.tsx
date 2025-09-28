@@ -1,45 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getPlayInformation } from "@/apis/view";
-import { PlayInformation, Scene } from "@/types";
+import { Scene } from "@/types";
+import { usePlayInformation } from "@/hooks/useViewQueries";
 
 export default function PlayDetailPage() {
   const params = useParams();
   const playTitle = decodeURIComponent(params.name as string);
 
-  const [play, setPlay] = useState<PlayInformation | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchPlayInfo = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const response = await getPlayInformation(playTitle);
-
-        // API view trả về AxiosResponse với data là PlayInformation
-        if (response && response.data) {
-          setPlay(response.data[0]);
-        } else {
-          setError("Không tìm thấy thông tin vở chèo");
-        }
-      } catch (err) {
-        setError("Không thể tải thông tin vở chèo");
-        console.error("Error fetching play info:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (playTitle) {
-      fetchPlayInfo();
-    }
-  }, [playTitle]);
+  // Use cached play information
+  const {
+    data: play,
+    isLoading: loading,
+    error,
+  } = usePlayInformation(playTitle);
 
   if (loading) {
     return (
@@ -68,7 +43,7 @@ export default function PlayDetailPage() {
             Không tìm thấy thông tin
           </h1>
           <p className="text-amber-200 mb-8 font-traditional">
-            {error || "Vở chèo này không tồn tại hoặc đã bị xóa"}
+            {error?.message || "Vở chèo này không tồn tại hoặc đã bị xóa"}
           </p>
           <Link
             href="/search"

@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { getSceneInformation } from "@/apis/view";
-import { SceneInformation } from "@/types";
+import { useSceneInformation } from "@/hooks/useViewQueries";
 import Link from "next/link";
 
 export default function SceneDetailPage() {
@@ -11,35 +9,8 @@ export default function SceneDetailPage() {
   const router = useRouter();
   const sceneName = decodeURIComponent(params.name as string);
 
-  const [scene, setScene] = useState<SceneInformation | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchSceneDetail = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-
-        const response = await getSceneInformation(sceneName);
-
-        if (response.data) {
-          setScene(response.data[0]);
-        } else {
-          setError("Không tìm thấy thông tin trích đoạn này");
-        }
-      } catch (error) {
-        console.error("Error fetching scene detail:", error);
-        setError("Lỗi khi tải thông tin trích đoạn. Vui lòng thử lại sau.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    if (sceneName) {
-      fetchSceneDetail();
-    }
-  }, [sceneName]);
+  // Use cached scene information
+  const { data: scene, isLoading, error } = useSceneInformation(sceneName);
 
   const handleBackToSearch = () => {
     router.push("/search");
@@ -71,7 +42,9 @@ export default function SceneDetailPage() {
             <h3 className="text-xl font-bold text-red-900 mb-2">
               Không tìm thấy thông tin trích đoạn
             </h3>
-            <p className="text-red-800 mb-4">{error}</p>
+            <p className="text-red-800 mb-4">
+              {error?.message || "Lỗi khi tải thông tin trích đoạn"}
+            </p>
             <button
               onClick={handleBackToSearch}
               className="px-6 py-3 bg-gradient-to-r from-red-800 to-red-900 text-amber-200 rounded-lg hover:from-red-900 hover:to-red-800 transition-all duration-300 font-medium border-2 border-amber-400"

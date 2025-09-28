@@ -6,49 +6,84 @@ import CharacterStateTable from "@/components/results/CharacterStateTable";
 import GeneralResultsDisplay from "@/components/results/GeneralResultsDisplay";
 import {
   SearchType,
-  CharacterStates,
-  CharacterState,
   SearchStatesFilters,
   GeneralDescriptionFilters,
-  CharacterGenerals,
-  PlayGenerals,
-  ActorGenerals,
 } from "@/types";
-import { getCharacterStates, searchSceneGeneral } from "@/apis/search";
 import {
-  searchCharacterGeneral,
-  searchPlayGeneral,
-  searchActorGeneral,
-} from "@/apis/search";
-
-// Define interface for general search results
-interface GeneralSearchResults {
-  category: string;
-  items: CharacterGenerals | PlayGenerals | ActorGenerals | string[];
-  totalCount: number;
-  searchCriteria: GeneralDescriptionFilters;
-}
+  useCharacterStates,
+  useCharacterGeneral,
+  usePlayGeneral,
+  useActorGeneral,
+  useSceneGeneral,
+} from "@/hooks/useSearchQueries";
 
 export default function SearchPage() {
-  const [characterStateResults, setCharacterStateResults] =
-    useState<CharacterStates>([]);
-  const [generalSearchResults, setGeneralSearchResults] =
-    useState<GeneralSearchResults | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [currentSearchType, setCurrentSearchType] = useState<
     "general" | "character-state"
   >("general");
 
+  // State to control cached queries
+  const [characterSearchParams, setCharacterSearchParams] = useState<{
+    character: string;
+    scene: string;
+    emotion: string;
+  } | null>(null);
+
+  const [generalSearchParams, setGeneralSearchParams] = useState<{
+    category: string;
+    selectedItem: string;
+  } | null>(null);
+
+  // Cached queries - only enabled when we have search params
+  const { data: cachedCharacterStates, isLoading: isCharacterStatesLoading } =
+    useCharacterStates(
+      characterSearchParams?.character || "",
+      characterSearchParams?.scene || "",
+      characterSearchParams?.emotion || "all",
+      !!characterSearchParams && currentSearchType === "character-state"
+    );
+
+  const { data: cachedCharacterGeneral, isLoading: isCharacterGeneralLoading } =
+    useCharacterGeneral(
+      generalSearchParams?.selectedItem || "",
+      !!generalSearchParams &&
+        generalSearchParams.category === "Character" &&
+        currentSearchType === "general"
+    );
+
+  const { data: cachedPlayGeneral, isLoading: isPlayGeneralLoading } =
+    usePlayGeneral(
+      generalSearchParams?.selectedItem || "",
+      !!generalSearchParams &&
+        generalSearchParams.category === "Play" &&
+        currentSearchType === "general"
+    );
+
+  const { data: cachedActorGeneral, isLoading: isActorGeneralLoading } =
+    useActorGeneral(
+      generalSearchParams?.selectedItem || "",
+      !!generalSearchParams &&
+        generalSearchParams.category === "Actor" &&
+        currentSearchType === "general"
+    );
+
+  const { data: cachedSceneGeneral, isLoading: isSceneGeneralLoading } =
+    useSceneGeneral(
+      generalSearchParams?.selectedItem || "",
+      !!generalSearchParams &&
+        generalSearchParams.category === "Scene" &&
+        currentSearchType === "general"
+    );
+
   const handleSearch = async (
     filters: SearchStatesFilters | GeneralDescriptionFilters,
     searchType: SearchType
   ) => {
-    setIsLoading(true);
     setHasSearched(true);
 
     console.log(
-      "Search initiated with filters:",
+      "🔍 Search initiated with filters:",
       filters,
       "and searchType:",
       searchType
@@ -59,102 +94,30 @@ export default function SearchPage() {
       setCurrentSearchType("character-state");
       const stateFilters = filters as SearchStatesFilters;
 
-      try {
-        const response = await getCharacterStates(
-          stateFilters.character || "",
-          stateFilters.scene || "",
-          stateFilters.emotion || "all"
-        );
+      // Trigger cached query by setting params
+      setCharacterSearchParams({
+        character: stateFilters.character || "",
+        scene: stateFilters.scene || "",
+        emotion: stateFilters.emotion || "all",
+      });
 
-        const results = response.data;
-
-        const characterStateData: CharacterStates = results.map(
-          (char: CharacterState) => ({
-            ...char,
-          })
-        );
-        setCharacterStateResults(characterStateData);
-        setGeneralSearchResults(null); // Clear other results
-      } catch (error) {
-        console.error("Error fetching character states:", error);
-      }
+      // Clear other results
+      setGeneralSearchParams(null);
     }
     // Handle general description search
     else if ("category" in filters) {
       setCurrentSearchType("general");
       const generalFilters = filters as GeneralDescriptionFilters;
 
-      try {
-        let items: CharacterGenerals | PlayGenerals | ActorGenerals | string[] =
-          [];
+      // Trigger cached query by setting params
+      setGeneralSearchParams({
+        category: generalFilters.category,
+        selectedItem: generalFilters.selectedItem || "",
+      });
 
-        switch (generalFilters.category) {
-          case "Character":
-            if (generalFilters.selectedItem) {
-              // Search for specific character
-              const charResponse = await searchCharacterGeneral(
-                generalFilters.selectedItem
-              );
-              items = charResponse.data as CharacterGenerals;
-            } else {
-              // Return empty array if no specific character selected
-              items = [];
-            }
-            break;
-          case "Play":
-            if (generalFilters.selectedItem) {
-              // Search for specific play
-              const playResponse = await searchPlayGeneral(
-                generalFilters.selectedItem
-              );
-              items = playResponse.data as PlayGenerals;
-            } else {
-              // Return empty array if no specific play selected
-              items = [];
-            }
-            break;
-          case "Actor":
-            if (generalFilters.selectedItem) {
-              // Search for specific actor
-              const actorResponse = await searchActorGeneral(
-                generalFilters.selectedItem
-              );
-              items = actorResponse.data as ActorGenerals;
-            } else {
-              // Return empty array if no specific actor selected
-              items = [];
-            }
-            break;
-          case "Scene":
-            if (generalFilters.selectedItem) {
-              // Search for specific scene
-              const sceneResponse = await searchSceneGeneral(
-                generalFilters.selectedItem
-              );
-              items = sceneResponse.data as string[];
-            } else {
-              items = [];
-            }
-            break;
-          default:
-            items = [];
-        }
-
-        const results: GeneralSearchResults = {
-          category: generalFilters.category,
-          items,
-          totalCount: items.length,
-          searchCriteria: generalFilters,
-        };
-
-        setGeneralSearchResults(results);
-        setCharacterStateResults([]); // Clear other results
-      } catch (error) {
-        console.error("Error fetching general description data:", error);
-      }
+      // Clear other results
+      setCharacterSearchParams(null);
     }
-
-    setIsLoading(false);
   };
 
   return (
@@ -186,13 +149,53 @@ export default function SearchPage() {
           <div className="mb-8">
             {currentSearchType === "character-state" ? (
               <CharacterStateTable
-                results={characterStateResults}
-                isLoading={isLoading}
+                results={cachedCharacterStates || []}
+                isLoading={isCharacterStatesLoading}
               />
             ) : (
               <GeneralResultsDisplay
-                results={generalSearchResults}
-                isLoading={isLoading}
+                results={
+                  generalSearchParams
+                    ? {
+                        category: generalSearchParams.category,
+                        items:
+                          generalSearchParams.category === "Character"
+                            ? cachedCharacterGeneral || []
+                            : generalSearchParams.category === "Play"
+                            ? cachedPlayGeneral || []
+                            : generalSearchParams.category === "Actor"
+                            ? cachedActorGeneral || []
+                            : generalSearchParams.category === "Scene"
+                            ? cachedSceneGeneral || []
+                            : [],
+                        totalCount:
+                          generalSearchParams.category === "Character"
+                            ? (cachedCharacterGeneral || []).length
+                            : generalSearchParams.category === "Play"
+                            ? (cachedPlayGeneral || []).length
+                            : generalSearchParams.category === "Actor"
+                            ? (cachedActorGeneral || []).length
+                            : generalSearchParams.category === "Scene"
+                            ? (cachedSceneGeneral || []).length
+                            : 0,
+                        searchCriteria: {
+                          category: generalSearchParams.category,
+                          selectedItem: generalSearchParams.selectedItem,
+                        },
+                      }
+                    : null
+                }
+                isLoading={
+                  generalSearchParams?.category === "Character"
+                    ? isCharacterGeneralLoading
+                    : generalSearchParams?.category === "Play"
+                    ? isPlayGeneralLoading
+                    : generalSearchParams?.category === "Actor"
+                    ? isActorGeneralLoading
+                    : generalSearchParams?.category === "Scene"
+                    ? isSceneGeneralLoading
+                    : false
+                }
               />
             )}
           </div>
