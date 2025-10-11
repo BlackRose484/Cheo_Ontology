@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChatMessage } from "@/types";
 import { chatApi } from "@/apis/ai";
+import { markdownToHtml } from "@/utils/markdownToHtml";
 import {
   Send,
   X,
@@ -156,6 +157,76 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed bottom-6 right-4 z-50">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          .chat-content .markdown-h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0.5rem 0 0.25rem 0;
+            line-height: 1.3;
+          }
+          .chat-content .markdown-h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #374151;
+            margin: 0.4rem 0 0.2rem 0;
+            line-height: 1.3;
+          }
+          .chat-content .markdown-h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4b5563;
+            margin: 0.3rem 0 0.15rem 0;
+            line-height: 1.3;
+          }
+          .chat-content .markdown-code {
+            background-color: #f3f4f6;
+            color: #dc2626;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+          }
+          .chat-content .markdown-link {
+            color: #dc2626;
+            text-decoration: underline;
+            font-weight: 500;
+          }
+          .chat-content .markdown-link:hover {
+            color: #991b1b;
+          }
+          .chat-content .list-item {
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+          }
+          .chat-content .list-item.bullet {
+            margin-left: 0.5rem;
+          }
+          .chat-content .list-item.numbered {
+            font-weight: 400;
+          }
+          .chat-content .list-number {
+            color: #dc2626;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+          }
+          .chat-content strong {
+            font-weight: 600;
+            color: #1f2937;
+          }
+          .chat-content em {
+            font-style: italic;
+            color: #374151;
+          }
+        `,
+        }}
+      />
       <div className="bg-white rounded-lg shadow-2xl w-96 h-[32rem] flex flex-col border border-gray-200">
         {/* Header */}
         <div className="flex items-center justify-between px-3 py-1.5 border-b bg-gradient-to-r from-red-600 to-red-700 text-white rounded-t-lg">
@@ -212,9 +283,21 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, onClose }) => {
                     : "bg-white text-gray-800 rounded-bl-sm border border-gray-200"
                 }`}
               >
-                <div className="text-sm whitespace-pre-wrap">
-                  {message.content}
-                </div>
+                {message.role === "assistant" ? (
+                  <div
+                    className="text-sm prose prose-sm max-w-none chat-content"
+                    dangerouslySetInnerHTML={{
+                      __html: markdownToHtml(message.content),
+                    }}
+                    style={{
+                      lineHeight: "1.4",
+                    }}
+                  />
+                ) : (
+                  <div className="text-sm whitespace-pre-wrap">
+                    {message.content}
+                  </div>
+                )}
                 <div className="text-xs opacity-60 mt-1">
                   {message.timestamp.toLocaleTimeString("vi-VN", {
                     hour: "2-digit",

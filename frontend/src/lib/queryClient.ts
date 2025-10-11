@@ -103,6 +103,15 @@ export const queryKeys = {
       ] as const,
   },
 
+  // Information/Category queries
+  infor: {
+    all: ["infor"] as const,
+    mainTypes: () => [...queryKeys.infor.all, "main-types"] as const,
+    subTypes: (mainType: string) =>
+      [...queryKeys.infor.all, "sub-types", mainType] as const,
+    categories: () => [...queryKeys.infor.all, "categories"] as const,
+  },
+
   // AI Chat queries
   ai: {
     all: ["ai"] as const,
