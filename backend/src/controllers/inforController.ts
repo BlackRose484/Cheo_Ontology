@@ -2,34 +2,21 @@ import { Infor, Library } from "../types";
 import { ActorNames } from "../types/actor";
 import { CharacterNames } from "../types/character";
 import { PlayTitles, SceneNames } from "../types/play";
+import { queryAdapter } from "../services/cache/cacheAdapter";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
 
 const inforController = {
   getCharacterNames: async (req: Request, res: Response) => {
-    const sparql = `
-      PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-      SELECT DISTINCT ?character ?charName
-      WHERE {
-        ?character rdf:type ?type .
-        ?type rdfs:subClassOf* cheo:Character .
-        ?character cheo:charName ?charName .
-      }
-      ORDER BY LCASE(?charName)
-    `;
-
     try {
-      const results = await runSPARQLQuery(sparql);
+      const results = await queryAdapter.getAllCharacters();
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No characters found" });
       }
       // Extract character names from results
       const characterNames: CharacterNames = results.map((result: any) => ({
-        char: result?.character.value,
-        charName: result?.charName.value,
+        char: result?.char?.value || result?.char,
+        charName: result?.charName?.value || result?.charName,
       }));
 
       res.json(characterNames);
@@ -40,28 +27,14 @@ const inforController = {
   },
 
   getPlayTitles: async (req: Request, res: Response) => {
-    const sparql = `
-      PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-      SELECT DISTINCT ?play ?title
-      WHERE {
-        ?play rdf:type ?type .
-        ?type rdfs:subClassOf* cheo:Play .
-        ?play cheo:title ?title .
-      }
-      ORDER BY LCASE(?title)
-    `;
-
     try {
-      const results = await runSPARQLQuery(sparql);
+      const results = await queryAdapter.getAllPlays();
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No plays found" });
       }
       const playTitles: PlayTitles = results.map((result: any) => ({
-        play: result?.play?.value,
-        title: result?.title?.value,
+        play: result?.play?.value || result?.play,
+        title: result?.title?.value || result?.title,
       }));
 
       res.json(playTitles);
@@ -129,27 +102,15 @@ const inforController = {
   },
 
   getSceneNames: async (req: Request, res: Response) => {
-    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-      SELECT DISTINCT ?scene ?name
-      WHERE {
-          ?scene rdf:type/rdfs:subClassOf* cheo:Scene .
-          ?scene cheo:sceneName ?name .
-      }
-      ORDER BY LCASE(?name)
-      `;
-
     try {
-      const results = await runSPARQLQuery(sparql);
+      const results = await queryAdapter.getAllScenes();
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No scenes found" });
       }
 
       const sceneNames: SceneNames = results.map((result: any) => ({
-        scene: result?.scene.value,
-        name: result?.name.value,
+        scene: result?.scene?.value || result?.scene,
+        name: result?.name?.value || result?.name,
       }));
 
       res.json(sceneNames);
@@ -329,30 +290,21 @@ const inforController = {
 
   filterCharactersByCategory: async (req: Request, res: Response) => {
     const { mainType, subType } = req.body;
-    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-      SELECT DISTINCT ?char ?charName
-      WHERE {
-        ?char rdf:type Cheo:Character ;
-              Cheo:charName ?charName ;
-              Cheo:mainType ?mainType ;
-              Cheo:subType ?subType .
-
-        # Nếu có mainType đầu vào
-        BIND("${mainType}" AS ?qMainType)
-        FILTER( ?qMainType = "" || LCASE(STR(?mainType)) = LCASE(?qMainType) )
-
-        # Nếu có subType đầu vào
-        BIND("${subType}" AS ?qSubType)
-        FILTER( ?qSubType = "" || LCASE(STR(?subType)) = LCASE(?qSubType) )
-      }
-      ORDER BY LCASE(?charName)`;
     try {
-      const results = await runSPARQLQuery(sparql);
+      // Construct search query for character filtering
+      let searchQuery = "";
+      if (mainType && subType) {
+        searchQuery = `mainType:${mainType} subType:${subType}`;
+      } else if (mainType) {
+        searchQuery = `mainType:${mainType}`;
+      } else if (subType) {
+        searchQuery = `subType:${subType}`;
+      }
+
+      const results = await queryAdapter.searchCharacters(searchQuery || "");
       const characters: CharacterNames = results.map((result: any) => ({
-        char: result?.char?.value,
-        charName: result?.charName?.value,
+        char: result?.char?.value || result?.char,
+        charName: result?.charName?.value || result?.charName,
       }));
       res.json(characters);
     } catch (error) {

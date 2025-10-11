@@ -6,7 +6,7 @@ import {
   formatForScenes,
   formatStringtoArray,
 } from "../utils/formatters";
-import { CachedQueryService } from "../services/cache/cachedQueryService";
+import { queryAdapter } from "../services/cache/cacheAdapter";
 import { Request, Response } from "express";
 
 const ViewController = {
@@ -14,9 +14,7 @@ const ViewController = {
     const { character } = req.body;
 
     try {
-      const results = await CachedQueryService.getCharacterInformation(
-        character
-      );
+      const results = await queryAdapter.getCharacterInformation(character);
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Character not found"));
@@ -50,7 +48,7 @@ const ViewController = {
     const { play } = req.body;
 
     try {
-      const results = await CachedQueryService.getPlayInformation(play);
+      const results = await queryAdapter.getPlayInformation(play);
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Play not found"));
@@ -81,7 +79,7 @@ const ViewController = {
     const { actor } = req.body;
 
     try {
-      const results = await CachedQueryService.getActorInformation(actor);
+      const results = await queryAdapter.getActorInformation(actor);
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Actor not found"));
@@ -109,7 +107,7 @@ const ViewController = {
     const { scene } = req.body;
 
     try {
-      const results = await CachedQueryService.getSceneInformation(scene);
+      const results = await queryAdapter.getSceneInformation(scene);
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Scene not found"));
