@@ -47,7 +47,6 @@ export class GeminiService {
 
       // 1. Analyze intent and extract entities
       const analysis = await this.analyzeIntent(message, validModel);
-
       // 2. Query ontology based on intent
       let ontologyData = null;
       if (analysis.needsOntologyQuery) {
@@ -97,6 +96,12 @@ export class GeminiService {
     Phân tích ý định trong câu hỏi về nghệ thuật Chèo Việt Nam sau:
     "${message}"
     
+    NGUYÊN TẮC PHÂN TÍCH:
+    - Ưu tiên tìm kiếm thông tin chi tiết khi có tên cụ thể
+    - Tên nhân vật, vở kịch, diễn viên cụ thể → intent "find_character", "find_play", "find_actor"
+    - Các từ khóa chung như "nhân vật nữ", "diễn viên nam" → intent tương ứng với filter
+    - Câu hỏi chung về Chèo → "general_info"
+    
     Trả về JSON format chính xác (không thêm markdown):
     {
       "intent": "find_character|find_play|find_scene|find_actor|find_emotion|general_info|greeting|help",
@@ -107,15 +112,19 @@ export class GeminiService {
         "gender": "nam|nữ",
         "emotion": "vui|buồn|giận|sợ",
         "play": "tên vở",
-        "character": "tên nhân vật"
+        "character": "tên nhân vật",
+        "actor": "tên diễn viên"
       },
       "confidence": 0.9
     }
     
     Ví dụ:
-    - "Tìm nhân vật nữ" → intent: "find_character", entities: ["nữ"], needsOntologyQuery: true
+    - "Thị Mầu là ai?" → intent: "find_character", entities: ["Thị Mầu"], needsOntologyQuery: true
+    - "Tìm nhân vật nữ" → intent: "find_character", entities: [], filters: {"gender": "nữ"}
+    - "Vở Quan Âm Thị Kính" → intent: "find_play", entities: ["Quan Âm Thị Kính"]
+    - "Diễn viên Xuân Hinh" → intent: "find_actor", entities: ["Xuân Hinh"]
+    - "Nghệ thuật Chèo là gì" → intent: "general_info", entities: ["Chèo"]
     - "Xin chào" → intent: "greeting", needsOntologyQuery: false
-    - "Thị Mầu là ai" → intent: "find_character", entities: ["Thị Mầu"], needsOntologyQuery: true
     `;
 
     try {
@@ -130,7 +139,7 @@ export class GeminiService {
       return {
         intent: parsed.intent || "general_info",
         entities: parsed.entities || [],
-        needsOntologyQuery: parsed.needsOntologyQuery || false,
+        needsOntologyQuery: parsed.needsOntologyQuery !== false,
         queryType: parsed.queryType,
         filters: parsed.filters || {},
         confidence: parsed.confidence || 0.5,
@@ -140,7 +149,7 @@ export class GeminiService {
       return {
         intent: "general_info",
         entities: [],
-        needsOntologyQuery: false,
+        needsOntologyQuery: true,
         confidence: 0.3,
       };
     }
@@ -167,7 +176,12 @@ export class GeminiService {
     DỮ LIỆU TỪ ONTOLOGY:
     ${
       ontologyData
-        ? JSON.stringify(ontologyData, null, 2)
+        ? `
+Loại dữ liệu: ${ontologyData.type}
+Số lượng kết quả: ${ontologyData.count}
+Dữ liệu chi tiết: ${JSON.stringify(ontologyData.data, null, 2)}
+${ontologyData.error ? `Lỗi: ${ontologyData.error}` : ""}
+        `
         : "Không có dữ liệu cụ thể từ cơ sở dữ liệu."
     }
     
@@ -178,12 +192,15 @@ export class GeminiService {
         : "Đây là đầu cuộc trò chuyện"
     }
     
-    QUY TẮC:
-    - Nếu có dữ liệu từ ontology, ưu tiên sử dụng thông tin này
-    - Nếu không có dữ liệu, đưa ra thông tin chung về Chèo và gợi ý tìm kiếm cụ thể
+    QUY TẮC TRẢ LỜI:
+    - Nếu có dữ liệu chi tiết (character_details, play_details, actor_details, scene_details), ưu tiên trình bày thông tin đầy đủ
+    - Với thông tin nhân vật: tên, giới tính, loại vai, mô tả, các vở kịch, diễn viên đóng, cảnh xuất hiện
+    - Với thông tin vở kịch: tên, tác giả, tóm tắt, số cảnh, nhân vật, diễn viên, danh sách cảnh
+    - Với thông tin diễn viên: tên, giới tính, các vở đã đóng, nhân vật đã thể hiện
+    - Nếu không có dữ liệu hoặc có lỗi, đưa ra thông tin chung và gợi ý tìm kiếm cụ thể
     - Luôn đề xuất 2-3 câu hỏi tiếp theo để người dùng khám phá thêm
-    - Nếu không chắc chắn, thành thật thừa nhận và hướng dẫn cách tìm thông tin
-    - Trả lời bằng tiếng Việt, ngắn gọn nhưng đầy đủ thông tin
+    - Trả lời bằng tiếng Việt, rõ ràng và dễ hiểu
+    - Với dữ liệu danh sách, hãy trình bày có cấu trúc, dễ đọc
     `;
 
     const prompt = `
@@ -192,12 +209,12 @@ export class GeminiService {
     NGƯỜI DÙNG HỎI: "${message}"
     Ý ĐỊNH PHÂN TÍCH: ${analysis.intent}
     
-    Hãy trả lời câu hỏi của người dùng một cách hữu ích và thú vị.
+    Hãy trả lời câu hỏi của người dùng một cách hữu ích và thú vị dựa trên dữ liệu có sẵn.
     
     Trả về JSON format chính xác (không thêm markdown):
     {
-      "text": "Câu trả lời chính",
-      "suggestions": ["Gợi ý 1", "Gợi ý 2", "Gợi ý 3"]
+      "text": "Câu trả lời chính với thông tin chi tiết và có cấu trúc",
+      "suggestions": ["Gợi ý cụ thể 1", "Gợi ý cụ thể 2", "Gợi ý cụ thể 3"]
     }
     `;
 

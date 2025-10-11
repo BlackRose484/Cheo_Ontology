@@ -125,4 +125,23 @@ export class AIController {
     };
     return names[model] || model;
   }
+
+  static async checkHealth(req: Request, res: Response) {
+    try {
+      const services = AIModelFactory.getAvailableModels();
+      const isHealthy = services.length > 0;
+
+      res.json({
+        healthy: isHealthy,
+        services: services.length,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (error) {
+      res.status(500).json({
+        healthy: false,
+        error: "Health check failed",
+        timestamp: new Date().toISOString(),
+      });
+    }
+  }
 }
