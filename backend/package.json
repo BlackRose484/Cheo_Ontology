@@ -21,6 +21,7 @@
   "dependencies": {
     "@comunica/query-sparql-file": "^4.3.0",
     "@google/generative-ai": "^0.17.1",
+    "@types/node-cache": "^4.2.5",
     "@types/xml2js": "^0.4.14",
     "axios": "^1.11.0",
     "cors": "^2.8.5",
@@ -30,6 +31,7 @@
     "graphdb": "^3.1.0",
     "http": "^0.0.1-security",
     "n3": "^1.26.0",
+    "node-cache": "^5.1.2",
     "rdf-ext": "^2.5.2",
     "rdf-parser-rdfxml": "^0.3.1",
     "sparql-engine": "^0.8.3",

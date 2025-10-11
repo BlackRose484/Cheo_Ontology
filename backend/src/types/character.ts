@@ -27,7 +27,7 @@ export type CharacterGenerals = CharacterGeneral[];
 
 export interface CharacterInformation extends Character {
   plays?: string[];
-  scenes?: string[];
+  scenes?: object[];
   actors?: string[];
 }
 
