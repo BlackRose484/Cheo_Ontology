@@ -420,7 +420,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_BichVan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Bích Vân</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -430,7 +430,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_DangToan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Đăng Toàn</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -440,16 +440,38 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_KieuOanh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Kiều Oanh</Cheo:actorName>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoTuan -->
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoDung -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoTuan">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoDung">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
+        <Cheo:actorGender>Đào Dũng</Cheo:actorGender>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.HuyenTrang -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.HuyenTrang">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
+        <Cheo:actorName>Huyền Trang</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.KhacHuy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.KhacHuy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
+        <Cheo:actorName>Khắc Huy</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -458,7 +480,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.KimLien">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Kim Liên</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -468,6 +490,18 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.LeTuan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
+        <Cheo:actorName>Lê Tuấn</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.MinhNhan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.MinhNhan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
+        <Cheo:actorName>Minh Nhan</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -476,7 +510,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.NgocMinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Ngọc Minh</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -486,6 +520,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.NguyenDuy">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
+        <Cheo:actorName>Nguyễn Duy</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -494,8 +530,18 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.ThanhTung">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Thanh Tùng</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.ThuHoa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.ThuHoa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
+        <Cheo:actorName>Thu Hòa</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -504,7 +550,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.TranHai">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Trần Hải</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -514,6 +560,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.TuDuong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
+        <Cheo:actorName>Tử Dương</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -522,8 +570,28 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.VanQuan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Văn Quân</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSTNTre.HongNam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSTNTre.HongNam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
+        <Cheo:actorName>Hồng Nam</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSTNTre.PhuongMay -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSTNTre.PhuongMay">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
+        <Cheo:actorName>Phương Mây</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -532,7 +600,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.AnChinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>An Chinh</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -542,7 +610,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.BaDung">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Bá Dũng</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -552,7 +620,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.HuongDiu">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Hương Dịu</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -562,7 +630,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.HuyToan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Huy Toàn</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -572,7 +640,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ManhPhong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Mạnh Phóng</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -582,6 +650,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.NgocAnh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
+        <Cheo:actorName>Ngọc Ánh</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -590,7 +660,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.PhuKien">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Phú Kiên</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -600,7 +670,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThanhMan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Thanh Mạn</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -610,8 +680,18 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThanhNgoan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Thanh Ngoan</Cheo:actorName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThuHuyen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThuHuyen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
+        <Cheo:actorName>Thu Huyền</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -620,7 +700,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThuyNgan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Thúy Ngần</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -630,7 +710,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.TuanKha">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Tuấn Kha</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -640,7 +720,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.VanQuyen">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Vân Quyền</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -650,7 +730,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_TaThiKimLien">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Tạ Thị Kim Liên</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -660,7 +740,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_ThanhHuong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Thanh Hương</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -670,7 +750,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_ThanhMai">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Thanh Mai</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -680,7 +760,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_ThaoHien">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Thảo Hiền</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -690,7 +770,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_TranThiThan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nữ</Cheo:actorGender>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
         <Cheo:actorName>Trần Thị Thân</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -700,7 +780,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_TranVinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Trần Vinh</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -710,7 +790,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_TranXuanTai">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Trần Xuân Tài</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -720,7 +800,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_TuanCuong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Tuấn Cường</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -730,7 +810,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_TuanNghia">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
-        <Cheo:actorGender>nam</Cheo:actorGender>
+        <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorName>Tuấn Nghĩa</Cheo:actorName>
     </owl:NamedIndividual>
     
@@ -2478,6 +2558,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ChauLong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nữ</Cheo:charGender>
+        <Cheo:charName>Châu Long</Cheo:charName>
+        <Cheo:description>...</Cheo:description>
+        <Cheo:mainType>Đào</Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2486,7 +2571,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DaoHue">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Đào Huế</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
@@ -2499,6 +2584,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DuongLe">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nam</Cheo:charGender>
+        <Cheo:charName>Dương Lễ</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType></Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2507,7 +2597,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_HyDong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Hỷ đồng</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>...</Cheo:mainType>
@@ -2520,7 +2610,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_Khoeo">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Khoèo</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -2533,6 +2623,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nam</Cheo:charGender>
+        <Cheo:charName>Lưu Bình</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType></Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2541,7 +2636,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LyTruong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Lý Trưởng</Cheo:charName>
         <Cheo:description>Là người đứng đầu làng, Lý Trưởng thể hiện sự quyền uy và luôn tìm cách giữ thể diện cho dòng họ. Ông ra lệnh cho Mẹ Mõ rao tin về việc Thị Mầu có thai nhưng muốn xử lý kín đáo. Nhân vật này đại diện cho tầng lớp cai trị bảo thủ, thường áp đặt quyền lực lên người dân.</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -2554,7 +2649,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MangOng">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Mãng Ông (bố Thị Kính)</Cheo:charName>
         <Cheo:description>Là người nông dân hiền lành, thương con, nhưng bất lực trước số phận trớ trêu của nàng Thị Kính.</Cheo:description>
         <Cheo:mainType>Lão</Cheo:mainType>
@@ -2567,11 +2662,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MeMo">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Mẹ Mõ (Đốp)</Cheo:charName>
         <Cheo:description>Là vợ của người gõ mõ trong làng, mẹ Mõ nổi bật với sự thông minh, sắc sảo và đôi khi tinh quái. Bà không chỉ phản ứng hài hước và châm biếm trước mệnh lệnh của Lý Trưởng mà còn thể hiện tiếng nói phản kháng của người dân. Nhân vật này góp phần phơi bày bất công xã hội qua lối đối thoại sinh động, dân dã.</Cheo:description>
-        <Cheo:mainType>Đào</Cheo:mainType>
-        <Cheo:subType>Pha</Cheo:subType>
+        <Cheo:mainType>Mụ</Cheo:mainType>
+        <Cheo:subType>...</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2580,7 +2675,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_MuQuan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Mụ Quán</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Mụ</Cheo:mainType>
@@ -2593,7 +2688,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_No">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Nô</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -2606,7 +2701,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_PhuOng">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Phú Ông</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
@@ -2619,7 +2714,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_PhuThuy">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Phù thủy</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -2632,7 +2727,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_SungBa">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Sùng Bà</Cheo:charName>
         <Cheo:description>Mẹ của Thiện Sĩ. Khi nghe tin Thị Kính bị nghi ngờ định giết chồng, bà vội vàng mắng nhiếc, đuổi nàng ra khỏi nhà với lời lẽ cay nghiệt mà không hề điều tra đúng sai.</Cheo:description>
         <Cheo:mainType>Mụ</Cheo:mainType>
@@ -2645,7 +2740,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_SungOng">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Sùng Ông</Cheo:charName>
         <Cheo:description>Bố của Thiện Sĩ. Ông thường phụ họa với vợ, cũng lạnh lùng và cay nghiệt với Thị Kính. Thay vì cảm thông cho con dâu, ông nghi ngờ và trách móc, góp phần làm Thị Kính phải chịu oan ức.</Cheo:description>
         <Cheo:mainType>Lão</Cheo:mainType>
@@ -2658,7 +2753,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_SuyVan">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Súy Vân</Cheo:charName>
         <Cheo:description>Là con gái của huyện Tể, được gả cho Kim Nham. Sau khi cưới nhau, Kim Nham lại lên kinh đô theo đuổi công danh, còn Súy Vân lẻ bóng ở nhà và rất buồn trong cảnh chờ đợi. Bị Trần Phương xúi giục, Súy Vân giả điên để thoát khỏi Kim Nham, tìm kiếm hạnh phúc cho riêng mình.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
@@ -2671,7 +2766,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThayDo">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Thầy Đồ</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -2684,7 +2779,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiKinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Thị Kính</Cheo:charName>
         <Cheo:description>Nhân vật trung tâm của vở chèo Quan Âm Thị Kính. Thị Kính là người phụ nữ hiền thục, nết na, giàu đức hy sinh. Bị oan khi chồng nghi ngờ định giết mình, nàng phải giả trai vào chùa đi tu với tên gọi Kính Tâm. Dù chịu nhiều cay đắng, nàng vẫn giữ trọn lòng từ bi, cuối cùng hóa thành Phật Bà Quan Âm.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
@@ -2697,7 +2792,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiMau">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Thị Màu</Cheo:charName>
         <Cheo:description>Con gái của Phú Ông, nhà giàu, lẳng lơ, ham chơi. Thị Màu đem lòng mê sư Kính Tâm (tức Thị Kính giả trai). Khi không được đáp lại, nàng vu cho Kính Tâm là cha của đứa con hoang của mình, khiến Thị Kính phải gánh thêm nỗi oan.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
@@ -2706,11 +2801,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiPhuong -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiPhuong">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nữ</Cheo:charGender>
+        <Cheo:charName>Thị Phương</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType>Đào</Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThienSy -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThienSy">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Thiện Sỹ</Cheo:charName>
         <Cheo:description>Chồng của Thị Kính, con nhà Nho. Thiện Sĩ tính tình hẹp hòi, đa nghi. Khi thấy vợ cầm dao sửa râu cho mình thì tưởng là nàng có ý hại chồng, nên ruồng bỏ. Đây là nguyên nhân dẫn đến bi kịch của Thị Kính.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
@@ -2723,7 +2831,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThietThe">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Thiệt Thê</Cheo:charName>
         <Cheo:description>Nhân vật Thiệt Thê trong vở diễn được khắc họa một cách nông nổi, đứng núi này trông núi nọ, vì ham muốn vật chất tầm thường trước mắt nên đã phải trả giá cho những sai lầm.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
@@ -2732,11 +2840,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TienNu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TienNu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nữ</Cheo:charGender>
+        <Cheo:charName>Tiên Nữ</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType></Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonManh -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonManh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Tôn Mạnh</Cheo:charName>
         <Cheo:description>Con riêng của Tôn Dân và vợ cả. Hai anh em bị vu oan tội giết người khi chôn cất một xác người ven đường, nhưng may mắn được Quan Án sát đã giải oan cho hai anh em, để cho mẹ con Trinh Nguyên được đoàn tụ vẹn toàn.</Cheo:description>
         <Cheo:mainType>...</Cheo:mainType>
@@ -2749,7 +2870,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TonTrong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Tôn Trọng</Cheo:charName>
         <Cheo:description>Con ruột của Tôn Dân và vợ hai là Trinh Nguyên. Hai anh em bị vu oan tội giết người khi chôn cất một xác người ven đường, nhưng may mắn được Quan Án sát đã giải oan cho hai anh em, để cho mẹ con Trinh Nguyên được đoàn tụ vẹn toàn.</Cheo:description>
         <Cheo:mainType>...</Cheo:mainType>
@@ -2762,7 +2883,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TranPhuong">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Trần Phương</Cheo:charName>
         <Cheo:description>Trần Phương, một gã nhà giàu đàng điếm ở Đông Ngàn, Bắc Ninh thông qua Mụ Quán tìm cách tán tỉnh Súy Vân, xui nàng giả điên dại để thoát khỏi người chồng là Kim Nham.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
@@ -2775,7 +2896,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TrinhNguyen">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nữ</Cheo:charGender>
+        <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Trinh Nguyên</Cheo:charName>
         <Cheo:description>Trinh Nguyên là vợ hai của Tôn Dân, tuy nhiên chồng mất sớm để lại người vợ trẻ và hai đứa con. Nàng Trinh Nguyên ở vậy một mình nuôi dạy con chồng là Tôn Mạnh và con đẻ là Tôn Trọng. Trinh Nguyên là người tài đức vẹn toàn; một mình tảo tần nuôi hai con thơ trưởng thành không phân biệt máu mủ, yêu thương cả hai bằng tấm lòng bao dung và tình mẫu tử rộng lớn.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
@@ -2784,11 +2905,37 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongMau -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongMau">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nữ</Cheo:charGender>
+        <Cheo:charName>Trương Mẫu</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType></Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongVien -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongVien">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nam</Cheo:charGender>
+        <Cheo:charName>Trương Viên</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType>Kép</Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuThuc -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuThuc">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Từ Thức</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
@@ -2801,7 +2948,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TuanTy">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Tuần Ty</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
@@ -2856,12 +3003,14 @@
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ChauLong"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DuongLe"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DBDT)"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2"/>
+        <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuaBanDiThi"/>
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuongLeTienChauLongDiNuoiBan"/>
         <Cheo:author>unknown</Cheo:author>
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:sceneNumber>
-        <Cheo:summary>fsbfjwf</Cheo:summary>
+        <Cheo:summary>...</Cheo:summary>
         <Cheo:title>Lưu Bình - Dương Lễ</Cheo:title>
     </owl:NamedIndividual>
     
@@ -2915,6 +3064,16 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#play_TruongVien">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Play"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiPhuong"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TienNu"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongMau"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongVien"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(LTNDT)"/>
+        <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_LopTienNuDoanTu"/>
+        <Cheo:author>unknown</Cheo:author>
+        <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:sceneNumber>
+        <Cheo:summary>...</Cheo:summary>
+        <Cheo:title>Trương Viên</Cheo:title>
     </owl:NamedIndividual>
     
 
@@ -3245,6 +3404,61 @@
         <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app161"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TPVC_2"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.BaDung"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DBDT.01_ChauLong -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DBDT.01_ChauLong">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ChauLong"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DBDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSTNTre.PhuongMay"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DBDT.01_LuuBinh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DBDT.01_LuuBinh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DBDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSTNTre.HongNam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_ChauLong -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_ChauLong">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ChauLong"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.NgocAnh"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_DuongLe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_DuongLe">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DuongLe"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.TuDuong"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_LuuBinh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_LuuBinh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.NguyenDuy"/>
     </owl:NamedIndividual>
     
 
@@ -3705,6 +3919,50 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_ThiPhuong -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_ThiPhuong">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiPhuong"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThuHuyen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_TienNu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_TienNu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TienNu"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.ThuHoa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_TruongMau -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_TruongMau">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongMau"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.MinhNhan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_TruongVien -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_TruongVien">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TruongVien"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSTNTre.HongNam"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_CatRau -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_CatRau">
@@ -3714,6 +3972,18 @@
         <Cheo:sceneName>Cắt râu</Cheo:sceneName>
         <Cheo:sceneSummary>Trích đoạn &quot;Cắt râu&quot; trong vở chèo &quot;Quan Âm Thị Kính&quot; kể về nỗi oan của Thị Kính khi bị gán cho tội lăng loàn âm mưu giết chồng chỉ vì muốn cắt sợi râu mọc ngược trên cằm Thiện Sĩ. Bị Sùng ông, Sùng bà đánh mắng rồi đuổi về với cha. Sau đó nàng phẫn chí, giả trai để lên chùa tu hành với pháp danh là Kính Tâm.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuaBanDiThi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuaBanDiThi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
+        <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DBDT_1"/>
+        <Cheo:sceneName>Đưa bạn đi thi</Cheo:sceneName>
+        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
     
 
@@ -3736,6 +4006,18 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_HTT_1"/>
         <Cheo:sceneName>Hề theo Thầy</Cheo:sceneName>
+        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_LopTienNuDoanTu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_LopTienNuDoanTu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
+        <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1"/>
+        <Cheo:sceneName>Lớp &quot;Tiên Nữ - Đoàn tụ&quot;</Cheo:sceneName>
         <Cheo:sceneSummary>...</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
@@ -3898,10 +4180,26 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DBDT_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DBDT_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Version"/>
+        <Cheo:ID>LBDL.DBDT.01</Cheo:ID>
+        <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1183</Cheo:endTime>
+        <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1aRA27aJrNYO-IyYc0ByfB8w3_luueste/view?usp=drive_link</Cheo:vidVersion>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Version"/>
+        <Cheo:ID>LBDL.DLTCLDNB.01</Cheo:ID>
+        <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1918</Cheo:endTime>
+        <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1A19R2lJXTH51LIg8Vky368XqfO6ppeJf/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -3941,6 +4239,18 @@
         <Cheo:showDate>4/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
         <Cheo:vidVersion>https://drive.google.com/file/d/1rdorlUIw6l4MW9s3fO98BQOQ7Z954rP5/view?usp=drive_link</Cheo:vidVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Version"/>
+        <Cheo:ID>TV.LTNDT.01</Cheo:ID>
+        <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1153</Cheo:endTime>
+        <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
+        <Cheo:vidVersion>https://drive.google.com/file/d/16uMTlwVrtFq0xaVwbQp9XRBbcUqIQppy/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 
@@ -4179,10 +4489,28 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DBDT) -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DBDT)">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nữ</Cheo:charGender>
+        <Cheo:charName>Hề (Đưa bạn đi thi)</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nam</Cheo:charGender>
+        <Cheo:charName>Hề 1 (Dương Lễ tiễn Châu Long đi nuôi bạn)</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -4191,6 +4519,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nam</Cheo:charGender>
+        <Cheo:charName>Hề 2 (Dương Lễ tiễn Châu Long đi nuôi bạn)</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -4199,7 +4532,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(HTT)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Hề (Hề Theo Thầy)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -4208,11 +4541,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(LTNDT) -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(LTNDT)">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
+        <Cheo:charGender>Nam</Cheo:charGender>
+        <Cheo:charName>Hề (Lớp &quot;Tiên Nữ - Đoàn tụ)</Cheo:charName>
+        <Cheo:description></Cheo:description>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(MQTP) -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(MQTP)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Hề (Mụ Quán Trần Phương)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -4225,7 +4571,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(TPVC)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
-        <Cheo:charGender>nam</Cheo:charGender>
+        <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Hề (Trần Phương vào chùa)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
@@ -4260,6 +4606,39 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DBDT.01_He(DBDT) -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DBDT.01_He(DBDT)">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DBDT)"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DBDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.HuyenTrang"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_He(DLTCLDNB)1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_He(DLTCLDNB)1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.LeTuan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_He(DLTCLDNB)2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_He(DLTCLDNB)2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoDung"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TT.HTT.01_He(HTT) -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TT.HTT.01_He(HTT)">
@@ -4271,6 +4650,17 @@
         <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app175"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_HTT_1"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.VanQuan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_He(LTNDT) -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_TV.LTNDT.01_He(LTNDT)">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(LTNDT)"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.KhacHuy"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
