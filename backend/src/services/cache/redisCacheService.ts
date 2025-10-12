@@ -27,7 +27,8 @@ export class RedisCacheService {
   private hits: number = 0;
   private misses: number = 0;
   private autoRefreshTimer: NodeJS.Timeout | null = null;
-  private autoRefreshInterval: number = 24 * 60 * 60 * 1000;
+  private dailyRefreshTimer: NodeJS.Timeout | null = null;
+  private autoRefreshInterval: number = 24 * 60 * 60 * 1000; // 24 hours for fallback
   private config: RedisCacheConfig;
   private connected: boolean = false;
 
@@ -44,8 +45,16 @@ export class RedisCacheService {
         port: this.config.port,
         reconnectDelay: this.config.retryDelay || 1000,
         maxRetriesPerRequest: this.config.retryAttempts || 3,
+        // Redis optimizations
+        keepAlive: true,
+        family: 4, // Force IPv4
+        connectTimeout: 10000, // 10s timeout
+        commandTimeout: 5000, // 5s command timeout
       },
       database: this.config.db || 0,
+      // Additional Redis optimizations
+      pingInterval: 30000, // 30s ping to keep connection alive
+      lazyConnect: false, // Connect immediately
     };
 
     if (this.config.password) {
@@ -285,6 +294,104 @@ export class RedisCacheService {
     }
   }
 
+  // Schedule daily cache refresh at midnight (0:00 AM)
+  startDailyRefresh(): void {
+    if (this.dailyRefreshTimer) {
+      console.log("🕛 Daily refresh is already scheduled");
+      return;
+    }
+
+    // Calculate time until next midnight
+    const now = new Date();
+    const nextMidnight = new Date();
+    nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
+
+    const msUntilMidnight = nextMidnight.getTime() - now.getTime();
+
+    console.log(
+      `🕛 Scheduling daily cache refresh at midnight (in ${Math.round(
+        msUntilMidnight / 1000 / 60 / 60
+      )} hours)`
+    );
+
+    // Set initial timer to next midnight
+    this.dailyRefreshTimer = setTimeout(async () => {
+      console.log("🌙 Daily cache refresh triggered at midnight");
+      try {
+        await this.forceCacheRefresh();
+
+        // Schedule recurring daily refresh every 24 hours
+        this.dailyRefreshTimer = setInterval(async () => {
+          console.log("🌙 Daily cache refresh triggered at midnight");
+          await this.forceCacheRefresh();
+        }, 24 * 60 * 60 * 1000); // 24 hours
+      } catch (error) {
+        console.error("❌ Daily cache refresh failed:", error);
+      }
+    }, msUntilMidnight);
+  }
+
+  stopDailyRefresh(): void {
+    if (this.dailyRefreshTimer) {
+      clearTimeout(this.dailyRefreshTimer);
+      clearInterval(this.dailyRefreshTimer);
+      this.dailyRefreshTimer = null;
+      console.log("🛑 Daily cache refresh stopped");
+    }
+  }
+
+  // Public method for manual cache refresh
+  async manualCacheRefresh(): Promise<void> {
+    console.log("🔄 Manual cache refresh triggered...");
+    await this.forceCacheRefresh();
+  }
+
+  // Clear all cache keys with pattern matching
+  async clearAll(): Promise<void> {
+    if (!this.connected) {
+      console.log("⚠️ Redis not connected, skipping cache clear");
+      return;
+    }
+
+    try {
+      console.log("🧹 Clearing all cache entries...");
+
+      // Get all keys with our prefix
+      const pattern = this.prefixKey("*");
+      const keys = await this.client.keys(pattern);
+
+      if (keys.length > 0) {
+        await this.client.del(keys);
+        console.log(`✅ Cleared ${keys.length} cache entries`);
+      } else {
+        console.log("ℹ️ No cache entries to clear");
+      }
+    } catch (error) {
+      console.error("❌ Error clearing cache:", error);
+      throw error;
+    }
+  }
+
+  // Force cache refresh without checking expiry
+  private async forceCacheRefresh(): Promise<void> {
+    console.log("🔄 Force refreshing cache...");
+    const startTime = Date.now();
+
+    try {
+      // First clear all existing cache to prevent stale data
+      await this.clearAll();
+
+      // Execute the optimized cache refresh
+      await this.preWarmCacheOptimized();
+
+      const duration = (Date.now() - startTime) / 1000;
+      console.log(`✅ Force cache refresh completed in ${duration}s`);
+    } catch (error) {
+      console.error("❌ Force cache refresh failed:", error);
+      throw error;
+    }
+  }
+
   startAutoRefresh(): void {
     if (this.autoRefreshTimer) {
       console.log("🔄 Auto-refresh is already running");
@@ -314,6 +421,9 @@ export class RedisCacheService {
       this.autoRefreshTimer = null;
       console.log("⏹️ Auto-refresh stopped");
     }
+
+    // Also stop daily refresh
+    this.stopDailyRefresh();
   }
 
   async refreshCache(): Promise<void> {
@@ -396,63 +506,298 @@ export class RedisCacheService {
     }
   }
 
-  async preWarmCache(): Promise<void> {
-    console.log("🔥 Starting intelligent cache check...");
+  // Redis-specific bulk operations for better performance
+  async setMultiple<T>(
+    entries: Array<{ key: string; value: T; ttl?: number }>
+  ): Promise<void> {
+    if (!this.connected) return;
 
     try {
-      // Check if cache exists and is still valid
-      const shouldPreWarm = await this.shouldPreWarmCache();
+      const pipeline = this.client.multi();
 
-      if (!shouldPreWarm.needsPreWarming) {
-        console.log("✅ Cache is valid and up-to-date!");
-        console.log(`📊 Cache info: ${shouldPreWarm.message}`);
+      for (const { key, value, ttl } of entries) {
+        const serializedValue = JSON.stringify(value);
+        const prefixedKey = this.prefixKey(key);
 
-        // Still start auto-refresh if not running
-        if (!this.autoRefreshTimer) {
-          this.startAutoRefresh();
+        if (ttl && ttl > 0) {
+          pipeline.setEx(prefixedKey, ttl, serializedValue);
+        } else if (this.config.ttl && this.config.ttl > 0) {
+          pipeline.setEx(prefixedKey, this.config.ttl, serializedValue);
+        } else {
+          pipeline.set(prefixedKey, serializedValue);
         }
-        return;
       }
 
-      console.log(`🔄 ${shouldPreWarm.message}`);
-      console.log("🔥 Starting Chèo ontology cache pre-warming...");
-      const startTime = Date.now();
+      await pipeline.exec();
+      console.log(`📦 Bulk set ${entries.length} Redis keys`);
+    } catch (error) {
+      console.error("❌ Redis bulk SET error:", error);
+    }
+  }
 
-      console.log("📋 Phase 1: Pre-warming basic entity lists...");
-      await Promise.all([this.preWarmBasicLists()]);
+  async getMultiple<T>(keys: string[]): Promise<Map<string, T | undefined>> {
+    const result = new Map<string, T | undefined>();
 
-      console.log("🔍 Phase 2: Pre-warming detailed entity information...");
-      await Promise.all([
-        this.preWarmDetailedCharacters(),
-        this.preWarmDetailedPlays(),
-        this.preWarmDetailedActors(),
-        this.preWarmDetailedScenes(),
-      ]);
+    if (!this.connected || keys.length === 0) {
+      keys.forEach((key) => result.set(key, undefined));
+      return result;
+    }
 
-      const endTime = Date.now();
-      const duration = endTime - startTime;
+    try {
+      const prefixedKeys = keys.map((key) => this.prefixKey(key));
+      const values = await this.client.mGet(prefixedKeys);
 
-      console.log(`✅ Cache pre-warming completed in ${duration}ms`);
+      keys.forEach((key, index) => {
+        const value = values[index];
+        if (value !== null) {
+          try {
+            result.set(key, JSON.parse(value) as T);
+            this.hits++;
+          } catch (error) {
+            console.error(`❌ JSON parse error for key ${key}:`, error);
+            result.set(key, undefined);
+            this.misses++;
+          }
+        } else {
+          result.set(key, undefined);
+          this.misses++;
+        }
+      });
+
+      console.log(`📦 Bulk get ${keys.length} Redis keys`);
+    } catch (error) {
+      console.error("❌ Redis bulk GET error:", error);
+      keys.forEach((key) => result.set(key, undefined));
+    }
+
+    return result;
+  }
+
+  // Enhanced cache warming with Redis optimizations
+  async preWarmCacheOptimized(): Promise<void> {
+    console.log("🚀 Starting optimized Redis cache pre-warming...");
+
+    const shouldPreWarm = await this.shouldPreWarmCache();
+    if (!shouldPreWarm) {
+      console.log("✅ Cache is already up-to-date, skipping pre-warming");
+      return;
+    }
+
+    console.log("🔥 Cache needs refresh, proceeding with pre-warming...");
+
+    const startTime = Date.now();
+
+    try {
+      // Prepare all SPARQL queries for batch execution
+      const cacheEntries = await this.prepareAllCacheEntries();
+
+      // Use Redis pipeline for bulk operations
+      await this.setMultiple(cacheEntries);
+
+      // Set metadata
+      await this.set("cache_metadata", {
+        lastPreWarmed: new Date().toISOString(),
+        version: "1.0",
+        totalQueries: cacheEntries.length,
+      });
+
+      const duration = (Date.now() - startTime) / 1000;
+      console.log(`✅ Redis cache pre-warming completed in ${duration}s`);
+      console.log(`📊 Cached ${cacheEntries.length} queries`);
+    } catch (error) {
+      console.error("❌ Error during Redis cache pre-warming:", error);
+      throw error;
+    }
+  }
+
+  private async prepareAllCacheEntries(): Promise<
+    Array<{ key: string; value: any; ttl?: number }>
+  > {
+    const entries: Array<{ key: string; value: any; ttl?: number }> = [];
+
+    // Import the cached query service to ensure we use the same logic
+    const RedisCachedQueryService = (await import("./redisCachedQueryService"))
+      .default;
+
+    try {
+      console.log(`🔄 Caching basic list queries...`);
+
+      // 1. Cache all basic list queries (always needed)
+      const basicQueries = [
+        {
+          key: "list_characters",
+          method: () => RedisCachedQueryService.getAllCharacters(),
+        },
+        {
+          key: "list_plays",
+          method: () => RedisCachedQueryService.getAllPlays(),
+        },
+        {
+          key: "list_actors",
+          method: () => RedisCachedQueryService.getAllActors(),
+        },
+        {
+          key: "list_scenes",
+          method: () => RedisCachedQueryService.getAllScenes(),
+        },
+      ];
+
+      for (const { key, method } of basicQueries) {
+        try {
+          const results = await method();
+          entries.push({
+            key,
+            value: results,
+            ttl: this.config.ttl || 24 * 60 * 60,
+          });
+          console.log(
+            `✅ Cached ${key}: ${
+              Array.isArray(results) ? results.length : 0
+            } items`
+          );
+        } catch (error) {
+          console.error(`❌ Failed to cache ${key}:`, error);
+        }
+      }
+
+      // 2. Cache individual character, play, actor, scene information
+      console.log(`🔄 Caching individual entity information...`);
+
+      // Get all characters and cache their individual info
+      const characters = await RedisCachedQueryService.getAllCharacters();
+      for (const char of characters.slice(0, 50)) {
+        // Limit to prevent overload
+        try {
+          const charName = char.charName || char.name;
+          if (charName) {
+            const info = await RedisCachedQueryService.getCharacterInformation(
+              charName
+            );
+            entries.push({
+              key: `character_info_${charName.toLowerCase().trim()}`,
+              value: info,
+              ttl: this.config.ttl || 24 * 60 * 60,
+            });
+          }
+        } catch (error) {
+          console.error(`❌ Failed to cache character info:`, error);
+        }
+      }
+
+      // Get all plays and cache their individual info
+      const plays = await RedisCachedQueryService.getAllPlays();
+      for (const play of plays.slice(0, 50)) {
+        try {
+          const playTitle = play.title || play.name;
+          if (playTitle) {
+            const info = await RedisCachedQueryService.getPlayInformation(
+              playTitle
+            );
+            entries.push({
+              key: `play_info_${playTitle.toLowerCase().trim()}`,
+              value: info,
+              ttl: this.config.ttl || 24 * 60 * 60,
+            });
+          }
+        } catch (error) {
+          console.error(`❌ Failed to cache play info:`, error);
+        }
+      }
+
+      // Get all actors and cache their individual info
+      const actors = await RedisCachedQueryService.getAllActors();
+      for (const actor of actors.slice(0, 50)) {
+        try {
+          const actorName = actor.actorName || actor.name;
+          if (actorName) {
+            const info = await RedisCachedQueryService.getActorInformation(
+              actorName
+            );
+            entries.push({
+              key: `actor_info_${actorName.toLowerCase().trim()}`,
+              value: info,
+              ttl: this.config.ttl || 24 * 60 * 60,
+            });
+          }
+        } catch (error) {
+          console.error(`❌ Failed to cache actor info:`, error);
+        }
+      }
+
+      // Get all scenes and cache their individual info
+      const scenes = await RedisCachedQueryService.getAllScenes();
+      for (const scene of scenes.slice(0, 50)) {
+        try {
+          const sceneURI = scene.scene || scene.uri;
+          if (sceneURI) {
+            const info = await RedisCachedQueryService.getSceneInformation(
+              sceneURI
+            );
+            entries.push({
+              key: `scene_info_${encodeURIComponent(sceneURI)}`,
+              value: info,
+              ttl: this.config.ttl || 24 * 60 * 60,
+            });
+          }
+        } catch (error) {
+          console.error(`❌ Failed to cache scene info:`, error);
+        }
+      }
+
+      console.log(
+        `✅ Successfully prepared ${entries.length} cache entries for bulk refresh`
+      );
+    } catch (error) {
+      console.error(`❌ Error in prepareAllCacheEntries:`, error);
+    }
+
+    return entries;
+  }
+
+  async preWarmCache(): Promise<void> {
+    console.log("� Starting Redis-optimized cache pre-warming...");
+
+    try {
+      // Check if cache exists, if not initialize it
+      const cacheExists = await this.isCacheInitialized();
+
+      if (!cacheExists) {
+        console.log("🔥 Cache not found, initializing for first time...");
+        // Use the optimized Redis bulk operations for initial cache
+        await this.preWarmCacheOptimized();
+      } else {
+        console.log("✅ Cache already exists, using existing data");
+      }
+
       const stats = await this.getStats();
       console.log(`📊 Cache stats:`, stats);
 
-      await this.set(
-        "cache_prewarmed",
-        {
-          completed: true,
-          timestamp: new Date(),
-          duration: duration,
-          version: "1.0",
-        },
-        86400 // 24 hours TTL
+      // Start daily refresh at midnight
+      this.startDailyRefresh();
+    } catch (error) {
+      console.error("❌ Redis cache initialization failed:", error);
+      throw error;
+    }
+  }
+
+  // Check if cache is initialized (has basic data)
+  private async isCacheInitialized(): Promise<boolean> {
+    try {
+      const essentialKeys = [
+        "all_characters",
+        "all_plays",
+        "all_actors",
+        "all_scenes",
+      ];
+
+      const keyChecks = await Promise.all(
+        essentialKeys.map((key) => this.has(key))
       );
 
-      if (!this.autoRefreshTimer) {
-        this.startAutoRefresh();
-      }
+      return keyChecks.every((exists) => exists);
     } catch (error) {
-      console.error("❌ Cache pre-warming failed:", error);
-      throw error;
+      console.error("❌ Error checking cache initialization:", error);
+      return false;
     }
   }
 

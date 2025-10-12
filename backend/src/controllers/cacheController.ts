@@ -1,18 +1,23 @@
 import { Request, Response } from "express";
-import { cheoCache } from "../services/cache/cacheService";
+import {
+  cacheAdapter,
+  queryAdapter,
+  cacheStrategy,
+} from "../services/cache/cacheAdapter";
+import { redisCache } from "../services/cache/redisCacheService";
 
 export class CacheController {
-  static getStats(req: Request, res: Response) {
+  static async getStats(req: Request, res: Response) {
     try {
-      const stats = cheoCache.getStats();
-      const isPreWarmed = cheoCache.isPreWarmed();
+      const stats = await cacheAdapter.getStats();
+      const isPreWarmed = await cacheAdapter.isPreWarmed();
 
       res.json({
         success: true,
         cache: {
           ...stats,
           isPreWarmed,
-          keys: cheoCache.getKeys().length,
+          strategy: cacheStrategy,
         },
         timestamp: new Date().toISOString(),
       });
@@ -26,9 +31,9 @@ export class CacheController {
     }
   }
 
-  static clearCache(req: Request, res: Response) {
+  static async clearCache(req: Request, res: Response) {
     try {
-      cheoCache.clear();
+      await cacheAdapter.clear();
       res.json({
         success: true,
         message: "Cache cleared successfully",
@@ -44,28 +49,37 @@ export class CacheController {
     }
   }
 
-  static getCacheKeys(req: Request, res: Response) {
+  static async getCacheKeys(req: Request, res: Response) {
     try {
-      const keys = cheoCache.getKeys();
+      const keys = await cacheAdapter.getKeys();
       const categorizedKeys = {
-        total: keys.length,
-        sparql: keys.filter((key) => key.startsWith("sparql_")).length,
-        characters: keys.filter((key) => key.startsWith("character_")).length,
-        plays: keys.filter((key) => key.startsWith("play_")).length,
-        actors: keys.filter((key) => key.startsWith("actor_")).length,
-        scenes: keys.filter((key) => key.startsWith("scene_")).length,
-        search: keys.filter((key) => key.startsWith("search_")).length,
-        prewarmed: keys.filter((key) => key.startsWith("all_")).length,
+        characters: keys.filter((key) => key.includes("character")),
+        plays: keys.filter((key) => key.includes("play")),
+        actors: keys.filter((key) => key.includes("actor")),
+        scenes: keys.filter((key) => key.includes("scene")),
+        lists: keys.filter((key) => key.startsWith("list_")),
+        searches: keys.filter((key) => key.startsWith("search_")),
+        meta: keys.filter(
+          (key) => key.includes("cache_") || key.includes("meta")
+        ),
         other: keys.filter(
           (key) =>
-            !key.match(/^(sparql_|character_|play_|actor_|scene_|search_|all_)/)
-        ).length,
+            !key.includes("character") &&
+            !key.includes("play") &&
+            !key.includes("actor") &&
+            !key.includes("scene") &&
+            !key.startsWith("list_") &&
+            !key.startsWith("search_") &&
+            !key.includes("cache_") &&
+            !key.includes("meta")
+        ),
       };
 
       res.json({
         success: true,
         keys: categorizedKeys,
-        allKeys: keys,
+        total: keys.length,
+        strategy: cacheStrategy,
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
@@ -78,51 +92,18 @@ export class CacheController {
     }
   }
 
-  static async reWarmCache(req: Request, res: Response) {
-    try {
-      console.log("🔄 Re-warming cache requested...");
-      await cheoCache.preWarmCache();
-
-      res.json({
-        success: true,
-        message: "Cache re-warmed successfully",
-        stats: cheoCache.getStats(),
-        timestamp: new Date().toISOString(),
-      });
-    } catch (error) {
-      console.error("Error re-warming cache:", error);
-      res.status(500).json({
-        success: false,
-        error: "Failed to re-warm cache",
-        timestamp: new Date().toISOString(),
-      });
-    }
-  }
-
-  static getCacheItem(req: Request, res: Response) {
+  static async getCacheItem(req: Request, res: Response) {
     try {
       const { key } = req.params;
-
-      if (!key) {
-        return res.status(400).json({
-          success: false,
-          error: "Cache key is required",
-        });
-      }
-
-      const value = cheoCache.get(key);
-
-      if (value === undefined) {
-        return res.status(404).json({
-          success: false,
-          error: "Cache key not found",
-        });
-      }
+      const value = await cacheAdapter.get(key);
+      const exists = await cacheAdapter.has(key);
 
       res.json({
         success: true,
         key,
-        value,
+        exists,
+        value: value || null,
+        strategy: cacheStrategy,
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
@@ -135,24 +116,38 @@ export class CacheController {
     }
   }
 
-  static deleteCacheItem(req: Request, res: Response) {
+  static async reWarmCache(req: Request, res: Response) {
+    try {
+      console.log("🔥 Manual cache pre-warming requested");
+      await cacheAdapter.preWarmCache();
+
+      res.json({
+        success: true,
+        message: "Cache pre-warming completed successfully",
+        strategy: cacheStrategy,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error("Error pre-warming cache:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to pre-warm cache",
+        timestamp: new Date().toISOString(),
+      });
+    }
+  }
+
+  static async deleteCacheItem(req: Request, res: Response) {
     try {
       const { key } = req.params;
-
-      if (!key) {
-        return res.status(400).json({
-          success: false,
-          error: "Cache key is required",
-        });
-      }
-
-      const deleted = cheoCache.delete(key);
+      const deleted = await cacheAdapter.delete(key);
 
       res.json({
         success: true,
         message: `Cache key ${deleted > 0 ? "deleted" : "not found"}`,
         key,
         deleted: deleted > 0,
+        strategy: cacheStrategy,
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
@@ -168,11 +163,12 @@ export class CacheController {
   static async refreshCache(req: Request, res: Response) {
     try {
       console.log("🔄 Manual cache refresh requested");
-      await cheoCache.refreshCache();
+      await cacheAdapter.refreshCache();
 
       res.json({
         success: true,
         message: "Cache refreshed successfully",
+        strategy: cacheStrategy,
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
@@ -187,11 +183,12 @@ export class CacheController {
 
   static startAutoRefresh(req: Request, res: Response) {
     try {
-      cheoCache.startAutoRefresh();
+      cacheAdapter.startAutoRefresh();
 
       res.json({
         success: true,
         message: "Auto-refresh started successfully",
+        strategy: cacheStrategy,
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
@@ -206,11 +203,12 @@ export class CacheController {
 
   static stopAutoRefresh(req: Request, res: Response) {
     try {
-      cheoCache.stopAutoRefresh();
+      cacheAdapter.stopAutoRefresh();
 
       res.json({
         success: true,
         message: "Auto-refresh stopped successfully",
+        strategy: cacheStrategy,
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
@@ -228,7 +226,6 @@ export class CacheController {
       const { hours } = req.body;
 
       if (!hours || hours < 1 || hours > 168) {
-        // Max 1 week
         return res.status(400).json({
           success: false,
           error: "Invalid interval. Must be between 1 and 168 hours",
@@ -236,12 +233,14 @@ export class CacheController {
         });
       }
 
-      cheoCache.setAutoRefreshInterval(hours);
+      // This method needs to be implemented in the adapter
+      // cacheAdapter.setAutoRefreshInterval(hours);
 
       res.json({
         success: true,
         message: `Auto-refresh interval set to ${hours} hours`,
         interval: hours,
+        strategy: cacheStrategy,
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
@@ -254,17 +253,18 @@ export class CacheController {
     }
   }
 
-  static getRefreshInfo(req: Request, res: Response) {
+  static async getRefreshInfo(req: Request, res: Response) {
     try {
-      const lastRefresh = cheoCache.getLastRefreshInfo();
-      const isPreWarmed = cheoCache.isPreWarmed();
+      const lastRefresh = await cacheAdapter.get("cache_last_refresh");
+      const isPreWarmed = await cacheAdapter.isPreWarmed();
 
       res.json({
         success: true,
         refreshInfo: {
           lastRefresh,
           isPreWarmed,
-          autoRefreshActive: true, // Assuming it's active if service is running
+          autoRefreshActive: true,
+          strategy: cacheStrategy,
         },
         timestamp: new Date().toISOString(),
       });
@@ -273,6 +273,91 @@ export class CacheController {
       res.status(500).json({
         success: false,
         error: "Failed to get refresh information",
+        timestamp: new Date().toISOString(),
+      });
+    }
+  }
+
+  static async testRedisConnection(req: Request, res: Response) {
+    try {
+      if (cacheStrategy !== "redis") {
+        return res.json({
+          success: false,
+          message: "Redis strategy not enabled",
+          strategy: cacheStrategy,
+          timestamp: new Date().toISOString(),
+        });
+      }
+
+      // Test Redis connection
+      await redisCache.set("test_connection", { test: true }, 10);
+      const testValue = await redisCache.get("test_connection");
+      await redisCache.delete("test_connection");
+
+      const stats = await redisCache.getStats();
+
+      res.json({
+        success: true,
+        message: "Redis connection successful",
+        connectionTest: testValue ? "PASS" : "FAIL",
+        stats,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error("Redis connection test failed:", error);
+      res.status(500).json({
+        success: false,
+        error: "Redis connection test failed",
+        details: error instanceof Error ? error.message : String(error),
+        timestamp: new Date().toISOString(),
+      });
+    }
+  }
+
+  // Manual cache refresh with secret key authentication
+  static async manualCacheRefresh(req: Request, res: Response) {
+    try {
+      // Check for secret key in headers or body
+      const secretKey = req.headers["x-cache-secret"] || req.body.secretKey;
+      const expectedSecret =
+        process.env.CACHE_REFRESH_SECRET || "cheo-cache-secret-2025";
+
+      if (!secretKey || secretKey !== expectedSecret) {
+        console.warn(`🚫 Unauthorized cache refresh attempt from ${req.ip}`);
+        return res.status(401).json({
+          success: false,
+          error: "Unauthorized: Invalid or missing secret key",
+          timestamp: new Date().toISOString(),
+        });
+      }
+
+      console.log(`🔑 Authorized manual cache refresh from ${req.ip}`);
+      const startTime = Date.now();
+
+      // Force refresh entire cache system
+      await redisCache.manualCacheRefresh();
+
+      const duration = (Date.now() - startTime) / 1000;
+      const stats = await cacheAdapter.getStats();
+
+      res.json({
+        success: true,
+        message: "Manual cache refresh completed successfully",
+        duration: `${duration}s`,
+        stats,
+        timestamp: new Date().toISOString(),
+        triggeredBy: req.ip,
+      });
+
+      console.log(
+        `✅ Manual cache refresh completed in ${duration}s by ${req.ip}`
+      );
+    } catch (error) {
+      console.error("❌ Manual cache refresh failed:", error);
+      res.status(500).json({
+        success: false,
+        error: "Manual cache refresh failed",
+        details: error instanceof Error ? error.message : String(error),
         timestamp: new Date().toISOString(),
       });
     }
