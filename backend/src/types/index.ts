@@ -8,6 +8,9 @@ export interface ApiResponse<T> {
 
 export type Infor = string[];
 
+// Export contribution types
+export * from "./contribution";
+
 // AI Types
 export * from "./ai";
 

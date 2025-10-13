@@ -5,6 +5,7 @@ import viewRouter from "./view";
 import aiRouter from "./ai";
 import cacheRouter from "./cache";
 import pingRouter from "./ping";
+import contributionRouter from "./contribution";
 
 const router = (app: Application) => {
   app.use("/search", searchRouter);
@@ -13,6 +14,7 @@ const router = (app: Application) => {
   app.use("/ai", aiRouter);
   app.use("/cache", cacheRouter);
   app.use("/ping", pingRouter);
+  app.use("/contribution", contributionRouter);
 };
 
 export default router;
