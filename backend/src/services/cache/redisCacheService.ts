@@ -71,27 +71,14 @@ export class RedisCacheService {
         rejectUnauthorized: false, // Allow self-signed certificates
         secureProtocol: "TLSv1_2_method", // Specific TLS version
       };
-      console.log("🔐 TLS enabled for Redis connection");
-    } else {
-      console.log("🔓 Using plain connection to Redis");
     }
-
-    console.log(
-      `🔗 Redis config: ${this.config.host}:${this.config.port} (TLS: ${
-        this.config.tls ? "ON" : "OFF"
-      })`
-    );
 
     return createClient(clientConfig);
   }
 
   private setupEventHandlers(): void {
-    this.client.on("connect", () => {
-      console.log("🔗 Redis connecting...");
-    });
-
     this.client.on("ready", () => {
-      console.log("✅ Redis connected and ready");
+      console.log("✅ Redis connected");
       this.connected = true;
     });
 
@@ -101,34 +88,22 @@ export class RedisCacheService {
     });
 
     this.client.on("end", () => {
-      console.log("🔌 Redis connection closed");
       this.connected = false;
-    });
-
-    this.client.on("reconnecting", () => {
-      console.log("🔄 Redis reconnecting...");
     });
   }
 
   async connect(): Promise<void> {
     try {
       if (!this.client.isOpen) {
-        console.log(
-          `🔗 Attempting Redis connection to ${this.config.host}:${this.config.port}...`
-        );
         await this.client.connect();
-        console.log("✅ Redis connected successfully!");
       }
     } catch (error) {
-      console.error("❌ Redis connection failed:", error);
-
       // Try fallback without TLS if TLS was enabled
       if (
         this.config.tls &&
         error instanceof Error &&
         error.message.includes("SSL")
       ) {
-        console.log("🔄 Retrying without TLS...");
         try {
           // Disconnect current client
           if (this.client.isOpen) {
@@ -142,10 +117,10 @@ export class RedisCacheService {
           this.setupEventHandlers();
 
           await this.client.connect();
-          console.log("✅ Redis connected successfully without TLS!");
+          console.log("✅ Redis connected without TLS");
           return;
         } catch (fallbackError) {
-          console.error("❌ Fallback connection also failed:", fallbackError);
+          console.error("❌ Fallback connection failed:", fallbackError);
         }
       }
 
@@ -238,7 +213,6 @@ export class RedisCacheService {
 
       if (keys.length > 0) {
         await this.client.del(keys);
-        console.log(`🗑️ Cleared ${keys.length} cache keys`);
       }
 
       this.hits = 0;
@@ -297,7 +271,6 @@ export class RedisCacheService {
   // Schedule daily cache refresh at midnight (0:00 AM)
   startDailyRefresh(): void {
     if (this.dailyRefreshTimer) {
-      console.log("🕛 Daily refresh is already scheduled");
       return;
     }
 
@@ -308,21 +281,15 @@ export class RedisCacheService {
 
     const msUntilMidnight = nextMidnight.getTime() - now.getTime();
 
-    console.log(
-      `🕛 Scheduling daily cache refresh at midnight (in ${Math.round(
-        msUntilMidnight / 1000 / 60 / 60
-      )} hours)`
-    );
+    console.log(`🕛 Daily cache refresh scheduled for midnight`);
 
     // Set initial timer to next midnight
     this.dailyRefreshTimer = setTimeout(async () => {
-      console.log("🌙 Daily cache refresh triggered at midnight");
       try {
         await this.forceCacheRefresh();
 
         // Schedule recurring daily refresh every 24 hours
         this.dailyRefreshTimer = setInterval(async () => {
-          console.log("🌙 Daily cache refresh triggered at midnight");
           await this.forceCacheRefresh();
         }, 24 * 60 * 60 * 1000); // 24 hours
       } catch (error) {
@@ -336,13 +303,11 @@ export class RedisCacheService {
       clearTimeout(this.dailyRefreshTimer);
       clearInterval(this.dailyRefreshTimer);
       this.dailyRefreshTimer = null;
-      console.log("🛑 Daily cache refresh stopped");
     }
   }
 
   // Public method for manual cache refresh
   async manualCacheRefresh(): Promise<void> {
-    console.log("🔄 Manual cache refresh triggered...");
     await this.forceCacheRefresh();
   }
 
@@ -491,7 +456,6 @@ export class RedisCacheService {
 
     const cached = await this.get<any[]>(cacheKey);
     if (cached !== undefined) {
-      console.log(`🔥 Cache HIT: ${cacheKey}`);
       return cached;
     }
 
@@ -629,22 +593,22 @@ export class RedisCacheService {
         {
           key: "list_characters",
           method: () => RedisCachedQueryService.getAllCharacters(),
-          description: "All characters list"
+          description: "All characters list",
         },
         {
-          key: "list_plays", 
+          key: "list_plays",
           method: () => RedisCachedQueryService.getAllPlays(),
-          description: "All plays list"
+          description: "All plays list",
         },
         {
           key: "list_actors",
-          method: () => RedisCachedQueryService.getAllActors(), 
-          description: "All actors list"
+          method: () => RedisCachedQueryService.getAllActors(),
+          description: "All actors list",
         },
         {
           key: "list_scenes",
           method: () => RedisCachedQueryService.getAllScenes(),
-          description: "All scenes list"
+          description: "All scenes list",
         },
       ];
 
@@ -658,13 +622,17 @@ export class RedisCacheService {
             value: results,
             ttl: this.config.ttl || 24 * 60 * 60,
           });
-          console.log(`   ✅ ${key}: ${Array.isArray(results) ? results.length : 0} items`);
+          console.log(
+            `   ✅ ${key}: ${Array.isArray(results) ? results.length : 0} items`
+          );
           basicQueryCount++;
         } catch (error) {
           console.error(`   ❌ Failed to cache ${key}:`, error);
         }
       }
-      console.log(`📊 PHASE 1 Complete: ${basicQueryCount}/4 basic queries cached`);
+      console.log(
+        `📊 PHASE 1 Complete: ${basicQueryCount}/4 basic queries cached`
+      );
 
       // PHASE 2: Cache ALL individual character information
       console.log(`🔄 PHASE 2: Caching individual character information...`);
@@ -672,85 +640,112 @@ export class RedisCacheService {
       try {
         const characters = await RedisCachedQueryService.getAllCharacters();
         console.log(`   Found ${characters.length} characters to cache...`);
-        
+
         for (let i = 0; i < characters.length; i++) {
           const char = characters[i];
           try {
             // Extract character name with multiple fallbacks
             let charName = null;
             if (char.name) {
-              charName = typeof char.name === 'object' && char.name.value ? char.name.value : char.name;
+              charName =
+                typeof char.name === "object" && char.name.value
+                  ? char.name.value
+                  : char.name;
             } else if (char.charName) {
-              charName = typeof char.charName === 'object' && char.charName.value ? char.charName.value : char.charName;
+              charName =
+                typeof char.charName === "object" && char.charName.value
+                  ? char.charName.value
+                  : char.charName;
             }
 
-            if (charName && typeof charName === 'string' && charName.trim()) {
+            if (charName && typeof charName === "string" && charName.trim()) {
               const cleanName = charName.trim();
-              console.log(`   [${i+1}/${characters.length}] Caching character: ${cleanName}`);
-              
-              const info = await RedisCachedQueryService.getCharacterInformation(cleanName);
-              const cacheKey = `character_info_${cleanName.toLowerCase().replace(/\s+/g, '_')}`;
-              
+              console.log(
+                `   [${i + 1}/${
+                  characters.length
+                }] Caching character: ${cleanName}`
+              );
+
+              const info =
+                await RedisCachedQueryService.getCharacterInformation(
+                  cleanName
+                );
+              const cacheKey = `character_info_${cleanName
+                .toLowerCase()
+                .replace(/\s+/g, "_")}`;
+
               entries.push({
                 key: cacheKey,
                 value: info,
                 ttl: this.config.ttl || 24 * 60 * 60,
               });
               characterCacheCount++;
-            } else {
-              console.log(`   [${i+1}/${characters.length}] Skipping invalid character name:`, char);
             }
           } catch (error) {
-            console.error(`   ❌ Failed to cache character ${i+1}:`, error);
+            console.error(`   ❌ Failed to cache character ${i + 1}:`, error);
           }
         }
       } catch (error) {
         console.error(`❌ Error in character caching phase:`, error);
       }
-      console.log(`📊 PHASE 2 Complete: ${characterCacheCount} character detail entries cached`);
+      console.log(
+        `📊 PHASE 2 Complete: ${characterCacheCount} character detail entries cached`
+      );
 
-      // PHASE 3: Cache ALL individual play information  
+      // PHASE 3: Cache ALL individual play information
       console.log(`🔄 PHASE 3: Caching individual play information...`);
       let playCacheCount = 0;
       try {
         const plays = await RedisCachedQueryService.getAllPlays();
         console.log(`   Found ${plays.length} plays to cache...`);
-        
+
         for (let i = 0; i < plays.length; i++) {
           const play = plays[i];
           try {
             // Extract play title with multiple fallbacks
             let playTitle = null;
             if (play.title) {
-              playTitle = typeof play.title === 'object' && play.title.value ? play.title.value : play.title;
+              playTitle =
+                typeof play.title === "object" && play.title.value
+                  ? play.title.value
+                  : play.title;
             } else if (play.name) {
-              playTitle = typeof play.name === 'object' && play.name.value ? play.name.value : play.name;
+              playTitle =
+                typeof play.name === "object" && play.name.value
+                  ? play.name.value
+                  : play.name;
             }
 
-            if (playTitle && typeof playTitle === 'string' && playTitle.trim()) {
+            if (
+              playTitle &&
+              typeof playTitle === "string" &&
+              playTitle.trim()
+            ) {
               const cleanTitle = playTitle.trim();
-              console.log(`   [${i+1}/${plays.length}] Caching play: ${cleanTitle}`);
-              
-              const info = await RedisCachedQueryService.getPlayInformation(cleanTitle);
-              const cacheKey = `play_info_${cleanTitle.toLowerCase().replace(/\s+/g, '_')}`;
-              
+              const info = await RedisCachedQueryService.getPlayInformation(
+                cleanTitle
+              );
+              const cacheKey = `play_info_${cleanTitle
+                .toLowerCase()
+                .replace(/\s+/g, "_")}`;
+
               entries.push({
                 key: cacheKey,
                 value: info,
                 ttl: this.config.ttl || 24 * 60 * 60,
               });
               playCacheCount++;
-            } else {
-              console.log(`   [${i+1}/${plays.length}] Skipping invalid play title:`, play);
             }
           } catch (error) {
-            console.error(`   ❌ Failed to cache play ${i+1}:`, error);
+            console.error(`   ❌ Failed to cache play ${i + 1}:`, error);
           }
         }
       } catch (error) {
         console.error(`❌ Error in play caching phase:`, error);
       }
-      console.log(`📊 PHASE 3 Complete: ${playCacheCount} play detail entries cached`);
+      console.log(
+        `📊 PHASE 3 Complete: ${playCacheCount} play detail entries cached`
+      );
 
       // PHASE 4: Cache ALL individual actor information
       console.log(`🔄 PHASE 4: Caching individual actor information...`);
@@ -758,42 +753,55 @@ export class RedisCacheService {
       try {
         const actors = await RedisCachedQueryService.getAllActors();
         console.log(`   Found ${actors.length} actors to cache...`);
-        
+
         for (let i = 0; i < actors.length; i++) {
           const actor = actors[i];
           try {
             // Extract actor name with multiple fallbacks
             let actorName = null;
             if (actor.actorName) {
-              actorName = typeof actor.actorName === 'object' && actor.actorName.value ? actor.actorName.value : actor.actorName;
+              actorName =
+                typeof actor.actorName === "object" && actor.actorName.value
+                  ? actor.actorName.value
+                  : actor.actorName;
             } else if (actor.name) {
-              actorName = typeof actor.name === 'object' && actor.name.value ? actor.name.value : actor.name;
+              actorName =
+                typeof actor.name === "object" && actor.name.value
+                  ? actor.name.value
+                  : actor.name;
             }
 
-            if (actorName && typeof actorName === 'string' && actorName.trim()) {
+            if (
+              actorName &&
+              typeof actorName === "string" &&
+              actorName.trim()
+            ) {
               const cleanName = actorName.trim();
-              console.log(`   [${i+1}/${actors.length}] Caching actor: ${cleanName}`);
-              
-              const info = await RedisCachedQueryService.getActorInformation(cleanName);
-              const cacheKey = `actor_info_${cleanName.toLowerCase().replace(/\s+/g, '_')}`;
-              
+
+              const info = await RedisCachedQueryService.getActorInformation(
+                cleanName
+              );
+              const cacheKey = `actor_info_${cleanName
+                .toLowerCase()
+                .replace(/\s+/g, "_")}`;
+
               entries.push({
                 key: cacheKey,
                 value: info,
                 ttl: this.config.ttl || 24 * 60 * 60,
               });
               actorCacheCount++;
-            } else {
-              console.log(`   [${i+1}/${actors.length}] Skipping invalid actor name:`, actor);
             }
           } catch (error) {
-            console.error(`   ❌ Failed to cache actor ${i+1}:`, error);
+            console.error(`   ❌ Failed to cache actor ${i + 1}:`, error);
           }
         }
       } catch (error) {
         console.error(`❌ Error in actor caching phase:`, error);
       }
-      console.log(`📊 PHASE 4 Complete: ${actorCacheCount} actor detail entries cached`);
+      console.log(
+        `📊 PHASE 4 Complete: ${actorCacheCount} actor detail entries cached`
+      );
 
       // PHASE 5: Cache ALL individual scene information
       console.log(`🔄 PHASE 5: Caching individual scene information...`);
@@ -801,42 +809,47 @@ export class RedisCacheService {
       try {
         const scenes = await RedisCachedQueryService.getAllScenes();
         console.log(`   Found ${scenes.length} scenes to cache...`);
-        
+
         for (let i = 0; i < scenes.length; i++) {
           const scene = scenes[i];
           try {
             // Extract scene URI with multiple fallbacks
             let sceneURI = scene.scene || scene.uri || scene.sceneURI;
 
-            if (sceneURI && typeof sceneURI === 'string' && sceneURI.trim()) {
+            if (sceneURI && typeof sceneURI === "string" && sceneURI.trim()) {
               const cleanURI = sceneURI.trim();
-              console.log(`   [${i+1}/${scenes.length}] Caching scene: ${cleanURI}`);
-              
-              const info = await RedisCachedQueryService.getSceneInformation(cleanURI);
+
+              const info = await RedisCachedQueryService.getSceneInformation(
+                cleanURI
+              );
               const cacheKey = `scene_info_${encodeURIComponent(cleanURI)}`;
-              
+
               entries.push({
                 key: cacheKey,
                 value: info,
                 ttl: this.config.ttl || 24 * 60 * 60,
               });
               sceneCacheCount++;
-            } else {
-              console.log(`   [${i+1}/${scenes.length}] Skipping invalid scene URI:`, scene);
             }
           } catch (error) {
-            console.error(`   ❌ Failed to cache scene ${i+1}:`, error);
+            console.error(`   ❌ Failed to cache scene ${i + 1}:`, error);
           }
         }
       } catch (error) {
         console.error(`❌ Error in scene caching phase:`, error);
       }
-      console.log(`📊 PHASE 5 Complete: ${sceneCacheCount} scene detail entries cached`);
+      console.log(
+        `📊 PHASE 5 Complete: ${sceneCacheCount} scene detail entries cached`
+      );
 
       // FINAL SUMMARY
       const duration = (Date.now() - startTime) / 1000;
-      const totalDetailEntries = characterCacheCount + playCacheCount + actorCacheCount + sceneCacheCount;
-      
+      const totalDetailEntries =
+        characterCacheCount +
+        playCacheCount +
+        actorCacheCount +
+        sceneCacheCount;
+
       console.log(`🎉 COMPREHENSIVE CACHE PREPARATION COMPLETE!`);
       console.log(`⏱️  Total time: ${duration.toFixed(2)}s`);
       console.log(`📊 FINAL BREAKDOWN:`);
@@ -845,14 +858,19 @@ export class RedisCacheService {
       console.log(`   • Play details: ${playCacheCount}`);
       console.log(`   • Actor details: ${actorCacheCount}`);
       console.log(`   • Scene details: ${sceneCacheCount}`);
-      console.log(`   • TOTAL ENTRIES: ${entries.length} (${basicQueryCount} lists + ${totalDetailEntries} details)`);
+      console.log(
+        `   • TOTAL ENTRIES: ${entries.length} (${basicQueryCount} lists + ${totalDetailEntries} details)`
+      );
 
       if (entries.length < 50) {
-        console.warn(`⚠️  Warning: Only ${entries.length} total entries. Expected 100+. Check data availability.`);
+        console.warn(
+          `⚠️  Warning: Only ${entries.length} total entries. Expected 100+. Check data availability.`
+        );
       } else {
-        console.log(`✅ SUCCESS: ${entries.length} entries ready for Redis bulk insert!`);
+        console.log(
+          `✅ SUCCESS: ${entries.length} entries ready for Redis bulk insert!`
+        );
       }
-
     } catch (error) {
       console.error(`❌ CRITICAL ERROR in prepareAllCacheEntries:`, error);
     }
