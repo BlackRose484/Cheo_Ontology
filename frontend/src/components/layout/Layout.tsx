@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Navigator from "./Navigator";
 import ChatBot from "../ai/ChatBot";
 import ChatBotToggle from "../ai/ChatBotToggle";
+import ContributionManager from "../contribution/ContributionManager";
 import QueryProvider from "@/providers/QueryProvider";
 import { useServerKeepAlive } from "@/hooks/useServerKeepAlive";
 
@@ -55,6 +56,9 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <QueryProvider>
+      {/* Navigator outside of overflow-hidden container */}
+      <Navigator />
+
       <div
         className={`min-h-screen ${getPageBackground()} relative overflow-hidden`}
       >
@@ -68,7 +72,6 @@ const Layout = ({ children }: LayoutProps) => {
 
         {/* Content */}
         <div className="relative z-10">
-          <Navigator />
           <main className="relative">{children}</main>
         </div>
 
@@ -78,6 +81,9 @@ const Layout = ({ children }: LayoutProps) => {
           isOpen={isChatBotOpen}
           onClose={() => setIsChatBotOpen(false)}
         />
+
+        {/* Contribution System */}
+        <ContributionManager />
       </div>
     </QueryProvider>
   );

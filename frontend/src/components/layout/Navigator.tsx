@@ -33,7 +33,7 @@ const Navigator = () => {
 
   return (
     <nav
-      className={`${getNavbarTheme()} border-b-4 border-amber-400 shadow-lg relative overflow-hidden`}
+      className={`sticky top-0 z-50 ${getNavbarTheme()} border-b-4 border-amber-400 shadow-lg relative overflow-hidden`}
     >
       {/* Vietnamese cultural pattern overlay */}
       <div className="absolute inset-0 bg-[url('/cheo-1.jpg')] opacity-5 bg-cover bg-center"></div>
