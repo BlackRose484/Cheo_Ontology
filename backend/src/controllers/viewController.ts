@@ -6,18 +6,26 @@ import {
   formatForScenes,
   formatStringtoArray,
 } from "../utils/formatters";
-import { universalQueryAdapter } from "../services/query/universalQueryAdapter";
+import { DirectQueryService } from "../services/cache/directQueryService";
+import { RedisCachedQueryService } from "../services/cache/redisCachedQueryService";
 import { Request, Response } from "express";
+
+const CACHE_ENABLED = process.env.CACHE_ENABLED === "true";
 
 const ViewController = {
   getCharacterInformation: async (req: Request, res: Response) => {
     const { character } = req.body;
 
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.getCharacterInformation(
-        character
-      );
+      let results;
+
+      if (CACHE_ENABLED) {
+        results = await RedisCachedQueryService.getCharacterInformation(
+          character
+        );
+      } else {
+        results = await DirectQueryService.getCharacterInformation(character);
+      }
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Character not found"));
@@ -51,8 +59,13 @@ const ViewController = {
     const { play } = req.body;
 
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.getPlayInformation(play);
+      let results;
+
+      if (CACHE_ENABLED) {
+        results = await RedisCachedQueryService.getPlayInformation(play);
+      } else {
+        results = await DirectQueryService.getPlayInformation(play);
+      }
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Play not found"));
@@ -83,8 +96,13 @@ const ViewController = {
     const { actor } = req.body;
 
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.getActorInformation(actor);
+      let results;
+
+      if (CACHE_ENABLED) {
+        results = await RedisCachedQueryService.getActorInformation(actor);
+      } else {
+        results = await DirectQueryService.getActorInformation(actor);
+      }
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Actor not found"));
@@ -112,8 +130,13 @@ const ViewController = {
     const { scene } = req.body;
 
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.getSceneInformation(scene);
+      let results;
+
+      if (CACHE_ENABLED) {
+        results = await RedisCachedQueryService.getSceneInformation(scene);
+      } else {
+        results = await DirectQueryService.getSceneInformation(scene);
+      }
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Scene not found"));

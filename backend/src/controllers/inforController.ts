@@ -2,15 +2,23 @@ import { Infor, Library } from "../types";
 import { ActorNames } from "../types/actor";
 import { CharacterNames } from "../types/character";
 import { PlayTitles, SceneNames } from "../types/play";
-import { universalQueryAdapter } from "../services/query/universalQueryAdapter";
 import { runSPARQLQuery } from "../utils/graphdb";
+import { DirectQueryService } from "../services/cache/directQueryService";
+import { RedisCachedQueryService } from "../services/cache/redisCachedQueryService";
 import { Request, Response } from "express";
+
+const CACHE_ENABLED = process.env.CACHE_ENABLED === "true";
 
 const inforController = {
   getCharacterNames: async (req: Request, res: Response) => {
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.getAllCharacters();
+      let results;
+
+      if (CACHE_ENABLED) {
+        results = await RedisCachedQueryService.getAllCharacters();
+      } else {
+        results = await DirectQueryService.getAllCharacters();
+      }
 
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No characters found" });
@@ -30,8 +38,13 @@ const inforController = {
 
   getPlayTitles: async (req: Request, res: Response) => {
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.getAllPlays();
+      let results;
+
+      if (CACHE_ENABLED) {
+        results = await RedisCachedQueryService.getAllPlays();
+      } else {
+        results = await DirectQueryService.getAllPlays();
+      }
 
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No plays found" });
@@ -59,11 +72,7 @@ const inforController = {
     `;
 
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.runSPARQLQuery(
-        sparql,
-        "infor:full-classes"
-      );
+      const results = await runSPARQLQuery(sparql);
 
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No classes found" });
@@ -94,11 +103,7 @@ const inforController = {
       `;
 
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.runSPARQLQuery(
-        sparql,
-        "infor:actor-names"
-      );
+      const results = await runSPARQLQuery(sparql);
 
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No actors found" });
@@ -117,8 +122,13 @@ const inforController = {
 
   getSceneNames: async (req: Request, res: Response) => {
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.getAllScenes();
+      let results;
+
+      if (CACHE_ENABLED) {
+        results = await RedisCachedQueryService.getAllScenes();
+      } else {
+        results = await DirectQueryService.getAllScenes();
+      }
 
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No scenes found" });
@@ -126,7 +136,7 @@ const inforController = {
 
       const sceneNames: SceneNames = results.map((result: any) => ({
         scene: result?.scene?.value || result?.scene,
-        name: result?.name?.value || result?.name,
+        name: result?.sceneName?.value || result?.sceneName,
       }));
 
       res.json(sceneNames);
@@ -155,11 +165,8 @@ const inforController = {
       ORDER BY ?sceneName
     `;
     try {
-      // Use Universal Query Adapter - automatically chooses strategy
-      const results = await universalQueryAdapter.runSPARQLQuery(
-        sparql,
-        `infor:scenes-by-play:${play}`
-      );
+      const results = await runSPARQLQuery(sparql);
+
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No scenes found" });
       }
@@ -310,19 +317,7 @@ const inforController = {
 
   filterCharactersByCategory: async (req: Request, res: Response) => {
     const { mainType, subType } = req.body;
-    try {
-      // Construct search query for character filtering
-      let searchQuery = "";
-      if (mainType && subType) {
-        searchQuery = `mainType:${mainType} subType:${subType}`;
-      } else if (mainType) {
-        searchQuery = `mainType:${mainType}`;
-      } else if (subType) {
-        searchQuery = `subType:${subType}`;
-      }
-
-      const results = await universalQueryAdapter.runSPARQLQuery(
-        `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
          
          SELECT ?char ?charName
@@ -333,9 +328,11 @@ const inforController = {
            ${mainType ? `?char Cheo:mainType "${mainType}" .` : ""}
            ${subType ? `?char Cheo:subType "${subType}" .` : ""}
          }
-         ORDER BY LCASE(STR(?charName))`,
-        `infor:filtered-characters:${mainType || "any"}-${subType || "any"}`
-      );
+         ORDER BY LCASE(STR(?charName))`;
+
+    try {
+      const results = await runSPARQLQuery(sparql);
+
       const characters: CharacterNames = results.map((result: any) => ({
         char: result?.char?.value || result?.char,
         charName: result?.charName?.value || result?.charName,

@@ -109,34 +109,30 @@ export class DirectQueryService {
 
   static async getActorInformation(actorName: string): Promise<any[]> {
     const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT 
-        ?actorName 
-        ?origin 
-        ?lifespan 
-        ?description
-        (GROUP_CONCAT(DISTINCT ?playTitle; SEPARATOR=", ") AS ?plays)
-        (GROUP_CONCAT(DISTINCT ?charName; SEPARATOR=", ") AS ?characters)
-        (GROUP_CONCAT(
-            DISTINCT CONCAT(STR(?scene), ",", COALESCE(?sceneName, "")); 
-            SEPARATOR="|xx|"
-        ) AS ?scenes)
+      SELECT
+        (?actorName AS ?name)
+        (?actorGender AS ?gender)
+        (GROUP_CONCAT(DISTINCT ?playTitle;  separator=", ") AS ?plays)
+        (GROUP_CONCAT(DISTINCT ?charName;   separator=", ") AS ?characters)
       WHERE {
         ?actor rdf:type Cheo:Actor ;
-               Cheo:actorName ?actorName .
+              Cheo:actorName ?actorName .
+        FILTER(STR(?actorName) = "${actorName}")
+        FILTER(STR(?actorName) != "...")
 
-        FILTER(LCASE(STR(?actorName)) = LCASE("${actorName}"))
-
-        OPTIONAL { ?actor Cheo:origin ?origin . }
-        OPTIONAL { ?actor Cheo:lifespan ?lifespan . }
-        OPTIONAL { ?actor Cheo:description ?description . }
+        OPTIONAL {
+          ?actor Cheo:actorGender ?actorGender .
+          FILTER(STR(?actorGender) != "...")
+        }
 
         OPTIONAL {
           ?ra a Cheo:RoleAssignment ;
               Cheo:performedBy ?actor ;
               Cheo:inPlay ?play .
           ?play Cheo:title ?playTitle .
+          FILTER(STR(?playTitle) != "...")
         }
 
         OPTIONAL {
@@ -144,62 +140,57 @@ export class DirectQueryService {
               Cheo:performedBy ?actor ;
               Cheo:forCharacter ?char .
           ?char Cheo:charName ?charName .
-        }
-
-        OPTIONAL {
-          ?ra a Cheo:RoleAssignment ;
-              Cheo:performedBy ?actor ;
-              Cheo:inVersion ?ver .
-          ?ver Cheo:inScene ?scene .
-          OPTIONAL { ?scene Cheo:sceneName ?sceneName . }
+          FILTER(STR(?charName) != "...")
         }
       }
-      GROUP BY ?actorName ?origin ?lifespan ?description
+      GROUP BY ?actorName ?actorGender
     `;
 
     return await runSPARQLQuery(sparql);
   }
 
   static async getSceneInformation(sceneURI: string): Promise<any[]> {
-    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+      PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT 
-        ?sceneName 
-        ?sceneDescription 
-        ?playTitle
-        (GROUP_CONCAT(DISTINCT ?charName; SEPARATOR=", ") AS ?characters)
-        (GROUP_CONCAT(DISTINCT ?actorName; SEPARATOR=", ") AS ?actors)
+      SELECT
+        ?scene
+        (STR(?sceneName)    AS ?name)
+        (STR(?sceneSummary) AS ?summary)
+        ?play
+        (STR(?playTitle)    AS ?inPlay)
+        (GROUP_CONCAT(DISTINCT ?charName;  SEPARATOR=", ") AS ?allCharacters)
+        (GROUP_CONCAT(DISTINCT ?actorName; SEPARATOR=", ") AS ?allActors)
+        (GROUP_CONCAT(DISTINCT ?vidLink;   SEPARATOR=", ") AS ?allVideos)
       WHERE {
         BIND(<${sceneURI}> AS ?scene)
-        
-        ?scene rdf:type Cheo:Scene .
-        
-        OPTIONAL { ?scene Cheo:sceneName ?sceneName . }
-        OPTIONAL { ?scene Cheo:sceneDescription ?sceneDescription . }
+
+        OPTIONAL { ?scene cheo:sceneName    ?sceneName    FILTER(STR(?sceneName)    != "...") }
+        OPTIONAL { ?scene cheo:sceneSummary ?sceneSummary FILTER(STR(?sceneSummary) != "...") }
+
+        ?play cheo:hasScene ?scene .
+        OPTIONAL { ?play cheo:title ?playTitle FILTER(STR(?playTitle) != "...") }
 
         OPTIONAL {
-          ?play Cheo:hasScene ?scene ;
-                Cheo:title ?playTitle .
-        }
+          ?scene cheo:hasVersion ?ver .
+          OPTIONAL { ?ver cheo:vidVersion ?vidLink FILTER(STR(?vidLink) != "...") }
 
-        OPTIONAL {
-          ?ver Cheo:inScene ?scene .
-          ?ra a Cheo:RoleAssignment ;
-              Cheo:inVersion ?ver ;
-              Cheo:forCharacter ?char .
-          ?char Cheo:charName ?charName .
-        }
+          OPTIONAL {
+            ?ra rdf:type cheo:RoleAssignment ;
+                cheo:inVersion ?ver ;
+                cheo:forCharacter ?char .
 
-        OPTIONAL {
-          ?ver Cheo:inScene ?scene .
-          ?ra a Cheo:RoleAssignment ;
-              Cheo:inVersion ?ver ;
-              Cheo:performedBy ?actor .
-          ?actor Cheo:actorName ?actorName .
+            OPTIONAL { ?char cheo:charName ?charName FILTER(STR(?charName) != "...") }
+
+            OPTIONAL {
+              { ?ra cheo:performedBy ?actor } UNION { ?ra cheo:performBy ?actor }
+              OPTIONAL { ?actor cheo:actorName ?actorName FILTER(STR(?actorName) != "...") }
+            }
+          }
         }
       }
-      GROUP BY ?sceneName ?sceneDescription ?playTitle
+      GROUP BY ?scene ?sceneName ?sceneSummary ?play ?playTitle
+      ORDER BY LCASE(STR(?playTitle)) LCASE(STR(?sceneName))
     `;
 
     return await runSPARQLQuery(sparql);
@@ -210,15 +201,16 @@ export class DirectQueryService {
     const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT DISTINCT ?charName ?charGender ?mainType ?subType
+      SELECT DISTINCT ?char ?charName ?charGender ?mainType ?subType
       WHERE {
         ?char rdf:type Cheo:Character ;
               Cheo:charName ?charName ;
               Cheo:charGender ?charGender ;
               Cheo:mainType ?mainType ;
               Cheo:subType ?subType .
+        FILTER(STR(?charName) != "...")
       }
-      ORDER BY ?charName
+      ORDER BY LCASE(?charName)
     `;
 
     return await runSPARQLQuery(sparql);
@@ -228,13 +220,26 @@ export class DirectQueryService {
     const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT DISTINCT ?title ?author
+      SELECT DISTINCT ?play ?title ?author ?summary ?sceneNumber
       WHERE {
         ?play rdf:type Cheo:Play ;
               Cheo:title ?title .
-        OPTIONAL { ?play Cheo:author ?author . }
+        FILTER(STR(?title) != "...")
+        
+        OPTIONAL { 
+          ?play Cheo:author ?author .
+          FILTER(STR(?author) != "...")
+        }
+        OPTIONAL { 
+          ?play Cheo:summary ?summary .
+          FILTER(STR(?summary) != "...")
+        }
+        OPTIONAL { 
+          ?play Cheo:sceneNumber ?sceneNumber .
+          FILTER(STR(?sceneNumber) != "...")
+        }
       }
-      ORDER BY ?title
+      ORDER BY LCASE(?title)
     `;
 
     return await runSPARQLQuery(sparql);
@@ -258,19 +263,20 @@ export class DirectQueryService {
   }
 
   static async getAllScenes(): Promise<any[]> {
-    const sparql = `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+    const sparql = `PREFIX cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-      SELECT DISTINCT ?scene ?sceneName ?playTitle
+      SELECT DISTINCT ?scene ?sceneName ?play ?playTitle
       WHERE {
-        ?scene rdf:type Cheo:Scene .
-        OPTIONAL { ?scene Cheo:sceneName ?sceneName . }
-        OPTIONAL {
-          ?play Cheo:hasScene ?scene ;
-                Cheo:title ?playTitle .
-        }
+        ?scene rdf:type cheo:Scene ;
+               cheo:sceneName ?sceneName .
+        FILTER(STR(?sceneName) != "...")
+        
+        ?play cheo:hasScene ?scene ;
+              cheo:title ?playTitle .
+        FILTER(STR(?playTitle) != "...")
       }
-      ORDER BY ?playTitle ?sceneName
+      ORDER BY LCASE(?playTitle) LCASE(?sceneName)
     `;
 
     return await runSPARQLQuery(sparql);
