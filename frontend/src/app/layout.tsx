@@ -3,7 +3,6 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
 import Footer from "@/components/layout/Footer";
-import { ServerKeepAlive } from "@/components/common/ServerKeepAlive";
 
 const beVietnamPro = Be_Vietnam_Pro({
   weight: ["300", "400", "500", "600", "700"],
@@ -45,9 +44,6 @@ export default function RootLayout({
       <body
         className={`${beVietnamPro.variable} font-traditional antialiased min-h-screen flex flex-col`}
       >
-        {/* Server Keep-Alive Service Worker - Optimized for Render (5 min interval) */}
-        <ServerKeepAlive intervalMinutes={5} enabled={true} />
-
         <Layout>
           <main className="flex-1">{children}</main>
           <Footer />

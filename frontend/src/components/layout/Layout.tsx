@@ -7,7 +7,6 @@ import ChatBot from "../ai/ChatBot";
 import ChatBotToggle from "../ai/ChatBotToggle";
 import ContributionManager from "../contribution/ContributionManager";
 import QueryProvider from "@/providers/QueryProvider";
-import { useServerKeepAlive } from "@/hooks/useServerKeepAlive";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,9 +15,6 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const pathname = usePathname();
   const [isChatBotOpen, setIsChatBotOpen] = useState(false);
-
-  // Keep server alive with ping every 10 minutes
-  useServerKeepAlive(10);
 
   const getPageBackground = () => {
     switch (pathname) {
