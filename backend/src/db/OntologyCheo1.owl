@@ -1007,7 +1007,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app117">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:end>Surprise</Cheo:end>
+        <Cheo:emotion>Surprise</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">762</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">760</Cheo:start>
     </owl:NamedIndividual>
@@ -1260,7 +1260,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app140">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:end>Angry</Cheo:end>
+        <Cheo:emotion>Angry</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">220</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">215</Cheo:start>
     </owl:NamedIndividual>
@@ -1271,7 +1271,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app141">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:end>Happy</Cheo:end>
+        <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">633</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">456</Cheo:start>
     </owl:NamedIndividual>
@@ -1282,7 +1282,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app142">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:end>Other</Cheo:end>
+        <Cheo:emotion>Other</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">690</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">682</Cheo:start>
     </owl:NamedIndividual>
@@ -2560,9 +2560,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Châu Long</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Vợ ba của Dương Lễ. Nàng giàu lòng vị tha, chấp nhận rời chồng để âm thầm nuôi dưỡng bạn của chồng ăn học. Trong ba năm, nàng tận tụy lo toan, giữ trọn tiết hạnh, là biểu tượng cho đức hy sinh, thủy chung và nhân nghĩa.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:subType>Chín</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2573,7 +2573,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Đào Huế</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Là người con gái xứ Huế, vợ của quan Tuần Ty, trong một lần ra Bắc tìm chồng đã bắt gặp cảnh chồng gian díu với tình nhân. Và một trận “cuồng phong” dữ dội của sự ghen tuông đã nổi lên trong lòng cô Đào xứ Huế.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
         <Cheo:subType>Chín</Cheo:subType>
     </owl:NamedIndividual>
@@ -2586,9 +2586,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Dương Lễ</Cheo:charName>
-        <Cheo:description></Cheo:description>
-        <Cheo:mainType></Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:description>Người con xứ Sơn Tây, ham học, đỗ Trạng nguyên và ra làm quan. Tuy ngoài mặt lạnh lùng, thậm chí tỏ ra hắt hủi bạn, nhưng thực tâm ông muốn thử chí khí Lưu Bình. Dương Lễ là người bạn nghĩa tình, dùng mưu kế để giúp bạn có cơ hội vươn lên.</Cheo:description>
+        <Cheo:mainType>Kép</Cheo:mainType>
+        <Cheo:subType>Chín</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2600,8 +2600,8 @@
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Hỷ đồng</Cheo:charName>
         <Cheo:description>...</Cheo:description>
-        <Cheo:mainType>...</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:mainType>Hề</Cheo:mainType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2614,7 +2614,7 @@
         <Cheo:charName>Khoèo</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2625,9 +2625,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Lưu Bình</Cheo:charName>
-        <Cheo:description></Cheo:description>
-        <Cheo:mainType></Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:description>Người tài hoa nhưng gặp cảnh lận đận, thi hỏng, đời sống cơ cực, lại gặp cảnh loạn lạc. Nhờ sự dìu dắt và hy sinh thầm lặng của Châu Long, chàng quyết chí học hành, cuối cùng đỗ Trạng nguyên. Nhân vật thể hiện ý chí vượt khó, khát vọng lập thân.</Cheo:description>
+        <Cheo:mainType>Kép</Cheo:mainType>
+        <Cheo:subType>Chính</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2653,7 +2653,7 @@
         <Cheo:charName>Mãng Ông (bố Thị Kính)</Cheo:charName>
         <Cheo:description>Là người nông dân hiền lành, thương con, nhưng bất lực trước số phận trớ trêu của nàng Thị Kính.</Cheo:description>
         <Cheo:mainType>Lão</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType>Say</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2666,7 +2666,7 @@
         <Cheo:charName>Mẹ Mõ (Đốp)</Cheo:charName>
         <Cheo:description>Là vợ của người gõ mõ trong làng, mẹ Mõ nổi bật với sự thông minh, sắc sảo và đôi khi tinh quái. Bà không chỉ phản ứng hài hước và châm biếm trước mệnh lệnh của Lý Trưởng mà còn thể hiện tiếng nói phản kháng của người dân. Nhân vật này góp phần phơi bày bất công xã hội qua lối đối thoại sinh động, dân dã.</Cheo:description>
         <Cheo:mainType>Mụ</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2677,7 +2677,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Mụ Quán</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Một bà mối “có số má” trong làng, chuyên dắt mối, môi giới tình duyên.</Cheo:description>
         <Cheo:mainType>Mụ</Cheo:mainType>
         <Cheo:subType>Quán</Cheo:subType>
     </owl:NamedIndividual>
@@ -2690,9 +2690,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Nô</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Người ở trong nhà Phú Ông, gian díu với Thị Màu làm ả có bầu.</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2703,9 +2703,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Phú Ông</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
-        <Cheo:mainType>Kép</Cheo:mainType>
-        <Cheo:subType>Pha</Cheo:subType>
+        <Cheo:description>Phú ông là người giàu có trong làng, nhưng lúc nào cũng uống rượu say xỉn.</Cheo:description>
+        <Cheo:mainType>Lão</Cheo:mainType>
+        <Cheo:subType>Say</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2716,7 +2716,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Phù thủy</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Phù thủy là một nhân vật hề trong vở chèo Kim Nham, mang dáng vẻ diêm dúa, hóa trang cầu kỳ với cờ tướng, gậy phép và những cử chỉ khoa trương. Ông ta tự xưng là “thầy phù thủy cao tay”, thờ bà Chúa Con Cua – một “thánh” do chính mình bịa ra – để lừa gạt dân làng. Dưới lớp vỏ quyền phép và đạo mạo, Phù thủy hiện lên là một kẻ bịp bợm, ngu muội và hám lợi. Nhân vật này không chỉ đem lại tiếng cười sảng khoái mà còn góp phần giáo dục, nhắc nhở con người phải tỉnh táo, phân biệt giữa niềm tin tâm linh đúng đắn và sự mê tín mù quáng.</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>Áo dài</Cheo:subType>
     </owl:NamedIndividual>
@@ -2742,9 +2742,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Sùng Ông</Cheo:charName>
-        <Cheo:description>Bố của Thiện Sĩ. Ông thường phụ họa với vợ, cũng lạnh lùng và cay nghiệt với Thị Kính. Thay vì cảm thông cho con dâu, ông nghi ngờ và trách móc, góp phần làm Thị Kính phải chịu oan ức.</Cheo:description>
+        <Cheo:description>Sùng Ông - bố của Thiện Sĩ, là trụ cột gia đình nhưng không hơn gì một hình nộm bù nhìn. Trước những nghi hoặc của con trai, những oan trái của con dâu và sự lộng hành cay nghiệt của mụ vợ diễn ra ngay trước mắt nhưng Sùng Ông vẫn nửa tỉnh nửa mê : &quot;thế đầu đuôi câu chuyện bây giờ nó ra thế nào hả bà?&quot; góp phần làm Thị Kính phải chịu nỗi oan ức.</Cheo:description>
         <Cheo:mainType>Lão</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType>Say</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2768,7 +2768,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Thầy Đồ</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Thầy đồ tên Công Cốc, người huyện La Trà, là hình tượng tiêu biểu cho kiểu “thầy đồ dỏm” trong xã hội xưa – miệng tự xưng văn hay chữ tốt, nhưng thực chất dốt nát và giả dối. Thi trượt, thầy đổ lỗi cho “học tài thi phận”, rồi quay về quê mở trường dạy học, tự cho rằng “dòng họ có số làm thầy”. Trường học của thầy chỉ lèo tèo vài ba học trò, song cái tâm người dạy lại chẳng có: “sống chết mặc bay, thầy cóc biết”, miễn sao “tiền nộp đủ túi thầy to”. Đến khi gặp Trinh Nguyên, bản chất đê tiện, háo sắc của thầy bộc lộ trọn vẹn qua lời nói và hành động lố bịch. Nhân vật Công Cốc vì thế vừa gây cười, vừa khiến người xem khinh bỉ – là tấm gương phản diện điển hình phê phán thói giả danh trí thức, ham tiền, háo sắc và đạo đức suy đồi trong xã hội phong kiến.</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
         <Cheo:subType>Áo dài</Cheo:subType>
     </owl:NamedIndividual>
@@ -2794,7 +2794,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Thị Màu</Cheo:charName>
-        <Cheo:description>Con gái của Phú Ông, nhà giàu, lẳng lơ, ham chơi. Thị Màu đem lòng mê sư Kính Tâm (tức Thị Kính giả trai). Khi không được đáp lại, nàng vu cho Kính Tâm là cha của đứa con hoang của mình, khiến Thị Kính phải gánh thêm nỗi oan.</Cheo:description>
+        <Cheo:description>Thị Mầu là con gái phú ông trong làng, ả năm lần bảy lượt cưa cẩm Kính Tâm không thành, lại nhỡ ăn nằm cùng gia nhân trong nhà mà có chửa. Lúc này, Thị Mầu bị làng phạt vạ, ả bèn đổ cái thai cho Kính Tâm,  khiến Thị Kính phải gánh thêm nỗi oan.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
         <Cheo:subType>Lệch</Cheo:subType>
     </owl:NamedIndividual>
@@ -2807,9 +2807,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Thị Phương</Cheo:charName>
-        <Cheo:description></Cheo:description>
+        <Cheo:description>Là một người vợ hiền, con dâu thảo. Trên hành trình lánh nạn cùng mẹ chồng là Trương Mẫu, nàng từng tình nguyện hiến miếng thịt cánh tay để cứu mẹ khỏi hổ dữ, rồi dâng đôi mắt cho Sơn Thần để chữa bệnh cho mẹ. Từ đó nàng mù lòa, nhưng vẫn bền gan giữ đạo làm dâu, làm vợ. Nhờ Tiên nữ dạy nghề đàn hát, Thị Phương có thể nuôi mẹ chồng và nuôi thân trong khi chờ ngày đoàn tụ cùng chồng.</Cheo:description>
         <Cheo:mainType>Đào</Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:subType>Chín</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2846,7 +2846,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Tiên Nữ</Cheo:charName>
-        <Cheo:description></Cheo:description>
+        <Cheo:description>Các nàng tiên từ chốn Cung thiền, cảm mến đức hạnh và lòng thủy chung của Thị Phương nên giáng trần truyền nghề đàn hát, dẫn lối để nàng có cơ duyên đoàn tụ cùng chồng.</Cheo:description>
         <Cheo:mainType></Cheo:mainType>
         <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
@@ -2860,8 +2860,8 @@
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Tôn Mạnh</Cheo:charName>
         <Cheo:description>Con riêng của Tôn Dân và vợ cả. Hai anh em bị vu oan tội giết người khi chôn cất một xác người ven đường, nhưng may mắn được Quan Án sát đã giải oan cho hai anh em, để cho mẹ con Trinh Nguyên được đoàn tụ vẹn toàn.</Cheo:description>
-        <Cheo:mainType>...</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:mainType></Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2873,8 +2873,8 @@
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Tôn Trọng</Cheo:charName>
         <Cheo:description>Con ruột của Tôn Dân và vợ hai là Trinh Nguyên. Hai anh em bị vu oan tội giết người khi chôn cất một xác người ven đường, nhưng may mắn được Quan Án sát đã giải oan cho hai anh em, để cho mẹ con Trinh Nguyên được đoàn tụ vẹn toàn.</Cheo:description>
-        <Cheo:mainType>...</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:mainType></Cheo:mainType>
+        <Cheo:subType></Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2885,7 +2885,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Trần Phương</Cheo:charName>
-        <Cheo:description>Trần Phương, một gã nhà giàu đàng điếm ở Đông Ngàn, Bắc Ninh thông qua Mụ Quán tìm cách tán tỉnh Súy Vân, xui nàng giả điên dại để thoát khỏi người chồng là Kim Nham.</Cheo:description>
+        <Cheo:description>Trần Phương, một gã nhà giàu đàng điếm ở Đông Ngàn, Bắc Ninh. Đem lòng yêu thích, luôn tìm cách tán tỉnh Súy Vân, xui nàng giả điên dại để thoát khỏi người chồng là Kim Nham.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
         <Cheo:subType>Pha</Cheo:subType>
     </owl:NamedIndividual>
@@ -2911,9 +2911,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nữ</Cheo:charGender>
         <Cheo:charName>Trương Mẫu</Cheo:charName>
-        <Cheo:description></Cheo:description>
-        <Cheo:mainType></Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:description>Mẹ của Trương Viên, dắt con dâu mù lòa lưu lạc suốt bao năm. Bà tấu trống cho Thị Phương hát, cả hai nương tựa vào nhau mà sống qua ngày.</Cheo:description>
+        <Cheo:mainType>Mụ</Cheo:mainType>
+        <Cheo:subType>Thiện</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2924,9 +2924,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Trương Viên</Cheo:charName>
-        <Cheo:description></Cheo:description>
+        <Cheo:description>Người con hiếu nghĩa, người chồng thủy chung. Văn võ song toàn, được vua tin tưởng sai đi dẹp loạn giặc. Sau mười tám năm xa quê, chàng trở về trong nỗi cô quạnh, rồi nhờ tiếng hát xẩm mà nhận ra vợ và mẹ. Khi đôi ngọc lưu ly hợp lại, Thị Phương sáng mắt, gia đình trọn vẹn sum vầy.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:subType>Chính</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -2937,7 +2937,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Từ Thức</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Từ Thức là một viên quan trẻ, quê ở vùng Tống Sơn ,Thanh Hóa. Ông nổi tiếng là người phong nhã, yêu thiên nhiên, thích ngao du sơn thủy. Từ Thức từng chuộc tội cho một thiếu nữ bị phạt vì làm gãy cành hoa mẫu đơn, được mọi người tán thưởng. Chán cảnh quan trường, ông từ quan về quê, rồi trong một chuyến du ngoạn đã gặp tiên nữ Giáng Hương, mở đầu cho câu chuyện huyền ảo và trữ tình trong vở chèo Từ Thức gặp tiên.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
         <Cheo:subType>Chín</Cheo:subType>
     </owl:NamedIndividual>
@@ -2950,7 +2950,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Tuần Ty</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Tuần Ty là viên quan quê miền Trung được bổ nhiệm trên đất Bắc, tằng tịu với người vợ cũ của Chu Mãi Thần, định lấy làm “vợ hai”.</Cheo:description>
         <Cheo:mainType>Kép</Cheo:mainType>
         <Cheo:subType>Pha</Cheo:subType>
     </owl:NamedIndividual>
@@ -3004,13 +3004,23 @@
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_DuongLe"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_LuuBinh"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DBDT)"/>
-        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1"/>
-        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Do"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Xanh"/>
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuaBanDiThi"/>
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_DuongLeTienChauLongDiNuoiBan"/>
-        <Cheo:author>unknown</Cheo:author>
+        <Cheo:author>Hàn Thế Du</Cheo:author>
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:sceneNumber>
-        <Cheo:summary>...</Cheo:summary>
+        <Cheo:summary>Ngày xưa, ở xứ Sơn Tây có chàng Dương Lễ, tình cờ gặp gỡ Lưu Bình. Cả hai đều say mê văn chương nên kết nghĩa bạn bè, rồi cùng nhau lên kinh đô theo học. Dưới sự chỉ dạy tận tình của thầy, cả hai chuyên tâm rèn luyện chữ nghĩa và đạo lý làm người.
+
+Sau nhiều năm dùi mài kinh sử, Dương Lễ đỗ Trạng nguyên, được bổ nhiệm làm quan. Trái lại, Lưu Bình lận đận thi hỏng, phải sống lang thang rồi trở về quê trong cảnh cơ hàn, loạn lạc. Đường cùng, chàng tìm đến người bạn cũ. Nhưng Dương Lễ không tiếp mà sai gia nhân mang ra bát cơm nguội, quả cà thiu để đón bạn. Lưu Bình tủi phận, tuyệt vọng, nghĩ quẩn muốn tìm đến cái chết. Thực ra, Dương Lễ muốn thử chí bạn, bèn nhờ người vợ ba là Châu Long thay chàng ra sức giúp đỡ bạn học hành. Châu Long cảm động trước tấm lòng của chồng, liền nhận lời.
+
+Từ biệt Dương Lễ, Châu Long một mình lên đường. Trên lối ghé quán Nghinh Hương, nàng gặp Lưu Bình đang trên đường về quê. Họ hàn huyên tâm sự: Lưu Bình kể lại những năm tháng cơ cực, còn Châu Long nói dối rằng mình bị ép gả vào nhà giàu sang mà không cam chịu, nên bỏ đi. Thấy Lưu Bình quyết chí đèn sách, nàng đồng ý theo chàng về quê, dốc lòng nuôi chàng ăn học.
+
+Với số tiền Dương Lễ trao, Châu Long dựng lại mái nhà, mời thầy về dạy chữ cho Lưu Bình. Nàng lui về một gian nhỏ, ngày đêm quán xuyến việc nhà, tận tụy chăm lo, giữ trọn tiết hạnh. Châu Long nuôi bạn thay chồng 3 năm dòng, đã ở danh phận “vợ chồng” với Lưu Bình, phải chịu 3 lần thử thách mỗi khi chàng đòi giao hoà, và phải có cách từ chối khôn khéo làm sao không làm mất lòng, trái lại càng tâm phục, xứng đáng là người phụ nữ “dạ sắt gan vàng”.
+
+Gặp kỳ mở khoa thi, Lưu Bình lên kinh ứng thí và đỗ Trạng nguyên. Trong khi ấy, Châu Long hay tin liền thu xếp nhà cửa đâu vào đấy, gửi gắm xóm làng rồi trở về phủ Dương Lễ. Khi Lưu Bình khải hoàn trở lại, không còn thấy Châu Long, bèn tìm đến nhà quan Dương Lễ. Lần này, Dương Lễ ân cần tiếp đãi, hỏi han tường tận.
+
+Trong bữa rượu, Dương Lễ cho lần lượt ba người vợ ra hầu khách. Khi Châu Long bước ra, Lưu Bình bàng hoàng nhận ra sự thật. Tất cả những năm tháng nàng ở bên, hy sinh thầm lặng để nuôi chàng ăn học, đều là tấm lòng son sắt mà Dương Lễ đã sắp đặt cho bạn.</Cheo:summary>
         <Cheo:title>Lưu Bình - Dương Lễ</Cheo:title>
     </owl:NamedIndividual>
     
@@ -3037,7 +3047,7 @@
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_VuQuy"/>
         <Cheo:author>Vũ Khắc Khoan</Cheo:author>
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5</Cheo:sceneNumber>
-        <Cheo:summary>Vở chèo Quan Âm Thị Kính kể về cuộc đời oan trái của Thị Kính – một người phụ nữ hiền thục bị vu oan, phải giả trai đi tu để trốn tránh bất công. Dù chịu nhiều thử thách và hiểu lầm, cô vẫn giữ lòng từ bi và chí hướng tu hành. Cuối cùng, Thị Kính được Phật bà hiển linh giải oan và trở thành Quan Âm, truyền tải thông điệp Phật giáo về khổ đau, nhẫn nhục và giải thoát.</Cheo:summary>
+        <Cheo:summary>Quan Âm Thị Kính kể về nàng Thị Kính thùy mị, nết na, đẹp người, đẹp nết, vừa thắm duyên chồng vợ với chàng Thiện Sĩ làng bên. Đêm mùa thu trăng thanh gió mát, chàng đèn sách, vợ vá may, tình chồng vợ mặn nồng son ấm, chàng thiếp trên ghế đệm lòng nàng. Thị Kính cắt sợi râu mọc ngược để làm đẹp cho chồng thì vô tình chồng tỉnh giấc. Mẹ chồng kết tội Thị Kính mưu toan giết chồng. Tủi phận má đào, lỗi đạo sinh thành, Thị Kính xấu hổ không biết bày tỏ cùng ai, đành giả trai đi tu, gọi là Kính Tâm. Khi ở chùa, nàng bị Thị Màu phải lòng, đổ oan tội thông dâm, khiến ả chửa hoang. Thị Kính bị nhà chùa đuổi ra ở mái tam quan, bị làng phạt vạ đánh đòn. Thị Màu đem con lên chùa trả lại cho chú tiểu Kính Tâm. Không một lời oán trách, phân trần, chú tiểu chăm lo, yêu thương hài nhi như bản thân. Ba năm khốn khổ, tủi nhục trước miệng lưỡi khinh miệt, lạnh ghẻ của thế gian, chú tiểu kiệt sức chết. Khi sự tình được bày tỏ phân minh, Thị Kính hóa thân thành đức phật Quan Thế Âm.</Cheo:summary>
         <Cheo:title>Quan Âm Thị Kính</Cheo:title>
     </owl:NamedIndividual>
     
@@ -3072,7 +3082,11 @@
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_LopTienNuDoanTu"/>
         <Cheo:author>unknown</Cheo:author>
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:sceneNumber>
-        <Cheo:summary>...</Cheo:summary>
+        <Cheo:summary>Trương Viên sinh ra trong một gia đình bần nông ở đất võ Lăng. Cha sớm thác nhưng Trương Viên tu trí học hành, văn, võ song toàn, tiếng vang khắp nơi, đồn đến tận kinh thành. Trương Viên cùng mẹ là Trương Mẫu sang hỏi cưới Thị Phương, người con gái của Tể tướng đã hồi hưu. Thấy chàng học giỏi, cha Thị phương đồng ý và còn trao cho con trẻ đôi ngọc lưu ly làm của hồi môn. Đạo vợ chồng chăn gối vừa êm. Trương Viên gấp gấp lên đường dẹp giặc theo lệnh Vua. Đôi ngọc lưu ly đành chia đôi.
+
+Chốn quê nhà giặc dã tràn qua, Trương Mẫu cùng Thị Phương phải vào rừng lánh nạn. Dọc đường chạy giặc bị đói, nàng cắt thịt cánh tay đem nấu cháo dâng mẹ. Kiếp nạn tiếp theo, trong một lần lạc vào động Quỷ bị Quỷ đòi ăn thịt, nàng kể lệ sự tình, được Quỷ vợ thương, xin Quỷ chồng tha và cho vàng. Tiếp đó họ lại bị hổ dữ đòi ăn thịt, mẹ và con đều dành nhau xin chết, làm Hổ thông cảm mà tha cả hai. Mẹ ốm, nàng dâng đôi mắt mình để Sơn Thần làm thang thuốc chữa cho mẹ.
+
+Thương thay cảnh mẹ già dắt con trẻ. Các nàng Tiên hạ phàm dạy Thị Phương đàn hát kiếm ăn nuôi thân nuôi mẹ. Mười tám năm tròn dẹp giặc, giặc tan, Trương Viên Trở về quê cũ không thấy mẹ và vợ đâu, chỉ còn lại rêu phong thềm cũ. Đang trong cơn muôn thảm ngàn sầu thì Thị Phương cùng Trương Mẫu trở về cùng tiếng hát xẩm. Mẹ gặp con, vợ lại gặp chồng, ngọc ghép thành đôi. Ngọc nhảy vào, mắt được phong quang, gia đình lại đoàn tụ như xưa.</Cheo:summary>
         <Cheo:title>Trương Viên</Cheo:title>
     </owl:NamedIndividual>
     
@@ -3087,7 +3101,7 @@
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_HeTheoThay"/>
         <Cheo:author>NSND Trần Bảng và các nghệ nhân</Cheo:author>
         <Cheo:sceneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:sceneNumber>
-        <Cheo:summary>Vở chèo Từ Thức kể về câu chuyện tình yêu giữa Từ Thức, một người trần mắt thịt, và Giáng Hương, một tiên nữ. Từ Thức, một vị quan thanh liêm và phóng khoáng, vì không thích sự bon chen, hối lộ và ganh đua chốn quan trường, đã từ quan để ngao du sơn thủy. Trong một lần tình cờ, chàng lạc vào động Từ Thức và gặp Giáng Hương, người con gái chàng đã từng cứu giúp trước đó. Họ kết duyên và Từ Thức được sống ở chốn bồng lai, nhưng sau một năm, chàng nhớ nhà và xin phép về thăm quê. Khi trở lại, chàng bàng hoàng nhận ra đã 80 năm trôi qua, không ai nhận ra chàng. Buồn bã, Từ Thức muốn trở lại cõi tiên nhưng không thể, và cuối cùng chàng ôm nỗi cô đơn, tiếc nuối</Cheo:summary>
+        <Cheo:summary>Vở chèo Từ Thức kể về câu chuyện tình yêu giữa Từ Thức, một người trần mắt thịt, và Giáng Hương, một tiên nữ. Từ Thức, một vị quan thanh liêm thuộc huyện Tiên Du, Bắc Ninh. Vì không thích sự bon chen chốn quan trường, đã từ quan về quê để ngao du sơn thủy. Quê nhà Tống Sơn, Thanh Hóa của ông có một ngôi chùa danh tiếng, khi Từ Thức đến thăm chùa có nhìn thấy một thiếu nữ xinh đẹp đến xem hoa nhỡ tay vịn gãy một cành hoa mẫu đơn, không có gì để đền, nên bị các chú tiểu nhà chùa bắt giữ lại để phạt vạ. Từ Thức liền cởi áo mặc ngoài bán lấy tiền chuộc cho cô gái. Mọi người đứng xem đều khen Từ Thức là người nhân đức. Trong một lần tình cờ, chàng lạc vào động Từ Thức và gặp Giáng Hương, người con gái chàng đã từng cứu giúp trước đó. Mang ơn của Từ Thức nên đem lòng cảm kích, họ kết duyên và Từ Thức được sống ở chốn bồng lai. Nhưng sau một năm, chàng nhớ nhà và xin phép về thăm quê. Khi trở lại, chàng bàng hoàng nhận ra đã 80 năm trôi qua, không ai nhận ra chàng. Buồn bã, Từ Thức muốn trở lại cõi tiên nhưng không thể, và cuối cùng chàng ôm nỗi cô đơn, tiếc nuối.</Cheo:summary>
         <Cheo:title>Từ Thức</Cheo:title>
     </owl:NamedIndividual>
     
@@ -3982,7 +3996,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DBDT_1"/>
         <Cheo:sceneName>Đưa bạn đi thi</Cheo:sceneName>
-        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Khi khoa thi đến gần, Châu Long hết lời động viên và dặn dò Lưu Bình giữ vững chí khí. Trước lúc lên đường, Lưu Bình mời nàng uống rượu dưới trăng: chén đầu mừng tuổi giai nhân, chén thứ hai cảm tạ công lao nuôi dưỡng, chén thứ ba muốn gửi gắm tình ý lứa đôi. Châu Long khéo léo từ chối chén thứ ba, khuyên Lưu Bình hãy tập trung lập nghiệp, giữ mình thanh khiết, cầu thánh hiền phù trợ cho con đường công danh. Nhận ra chỉ vì men rượu mà mình suýt thất lễ, Lưu Bình hối hận và thề rằng khi chưa thành đạt quyết không dám ngỏ lời ái ân. Thời gian thấm thoát, đến giờ lên đường, Châu Long tiễn biệt Lưu Bình trong niềm hy vọng và tin tưởng.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -3994,7 +4008,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
         <Cheo:sceneName>Dương Lễ tiễn Châu Long đi nuôi bạn</Cheo:sceneName>
-        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Sau khi đỗ đạt làm quan, Dương Lễ gặp lại người bạn cũ Lưu Bình nhưng giả vờ lạnh nhạt, sai gia nhân mang cơm nguội, cà thiu ra tiếp đãi. Lưu Bình tủi thân, đau khổ định tìm đến cái chết. Thực chất, Dương Lễ chỉ muốn thử chí và giúp bạn. Ông bàn với vợ ba là Châu Long, nhờ nàng thay mình nuôi bạn ăn học nên người. Hiểu thấu tấm lòng chồng, Châu Long đồng ý gánh vác trọng trách. Dương Lễ tiễn vợ lên đường, gửi gắm nàng thay chồng chăm sóc, khích lệ để Lưu Bình có cơ hội lập công danh.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4006,7 +4020,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_HTT_1"/>
         <Cheo:sceneName>Hề theo Thầy</Cheo:sceneName>
-        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Từ Thức nghe danh cửa Thần Phù huyện Tống Sơn có nhiều núi đẹp, liền đem theo một tiểu đồng và một túi đàn đến dựng một gian nhà nhỏ ở chân núi để ở. Một hôm, dậy sớm, trông ra cửa Thần Phù thấy có mây ngũ sắc kết thành hình hoa sen, Từ Thức cùng tiều đồng (Hề) chèo thuyền ra phía ấy. Trích đoạn &quot;Hề theo thầy&quot; kể về hành trình lênh đênh trên thuyền của hai người.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4018,7 +4032,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_LTNDT_1"/>
         <Cheo:sceneName>Lớp &quot;Tiên Nữ - Đoàn tụ&quot;</Cheo:sceneName>
-        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Trích đoạn kể về Thị Phương – người con dâu hiền thảo trong cảnh ngộ mù lòa sau khi hiến đôi mắt cho Sơn Thần để cứu mẹ chồng, Thị Phương cùng Trương Mẫu nương nhờ nhau nơi rừng sâu. Thấu hiểu tấm lòng hiếu nghĩa và đức hạnh của nàng, các Tiên nữ giáng trần, truyền dạy cho Thị Phương nghề đàn hát để vừa nuôi thân, vừa phụng dưỡng mẹ, lại có thể lần tìm chồng. Mười tám năm trôi qua, Trương Viên sau khi hoàn thành sứ mệnh dẹp giặc trở về, chỉ còn thấy mái nhà xưa phủ rêu phong, không hay tin tức mẹ và vợ. Đúng lúc ấy, ông được nghe tiếng hát xẩm bi thương của hai mẹ con, liền mời về hát cho nghe. Trong lời ca chứa chan tình nghĩa, chàng nhận ra chính là vợ và mẹ mình. Ngọc lưu ly ngày trước ghép lại thành đôi, tự nhảy vào mắt, giúp Thị Phương sáng trở lại. Gia đình sum họp, vợ chồng đoàn viên, mẹ con đoàn tụ trong niềm hạnh phúc vỡ òa.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4045,7 +4059,7 @@
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MNPO_2"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MNPO_3"/>
         <Cheo:sceneName>Mầu - Nô - Phú Ông</Cheo:sceneName>
-        <Cheo:sceneSummary>Trích đoạn &quot;Màu - Nô - Phú ông&quot; trong vở chèo &quot;Quan Âm Thị Kính&quot; kể về một lần Thị Màu gian díu với Nô, người làm trong nhà và bị Phú ông bắt gặp. Phú ông, cha của Thị Màu, là một người giàu có, thế lực, nhưng lại nhu nhược, không dám làm gì khi biết chuyện của con gái. Sau này có thai, bị làng bắt vạ, Thị Màu đổ oan cho Thị Kính là cha của đứa bé.</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Trích đoạn &quot;Màu - Nô - Phú ông&quot; trong vở chèo &quot;Quan Âm Thị Kính&quot; kể về một lần Thị Màu gian díu với Nô, người làm trong nhà và bị Phú ông đang say xỉn bắt gặp. Phú ông, cha của Thị Màu, là một người giàu có, thế lực, nhưng lại nhu nhược, không dám làm gì khi biết chuyện của con gái. Sau này có thai, bị làng bắt vạ, Thị Màu đổ oan cho Thị Kính là cha của đứa bé.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4058,7 +4072,7 @@
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MQTP_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_MQTP_2"/>
         <Cheo:sceneName>Mụ quán - Trần Phương</Cheo:sceneName>
-        <Cheo:sceneSummary>Đoạn trích &quot;Mụ Quán Trần Phương&quot; được trích trong vở chèo Kim Nham, là đoạn kể về sự việc Trần Phương quyết định tung đòn tấn công cuối cùng để dụ dỗ nàng Xúy Vân giả dại bỏ chồng. Hắn tìm đến mụ Quán, một bà mối “có số má” trong làng, chuyên dắt mối, môi giới tình duyên.</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Đoạn trích &quot;Mụ Quán Trần Phương&quot; được trích trong vở chèo Kim Nham, là đoạn kể về sự việc Trần Phương quyết định tung đòn tấn công cuối cùng để dụ dỗ nàng Súy Vân giả dại bỏ chồng. Hắn tìm đến mụ Quán để tính kế tiếp cận tán tỉnh Súy Vân.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4072,7 +4086,7 @@
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_PTSM_2"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_PTSM_3"/>
         <Cheo:sceneName>Phù thủy sợ ma</Cheo:sceneName>
-        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Trích đoạn “Phù thủy sợ ma” trong vở chèo Kim Nham là một cảnh diễn mang đậm tính châm biếm. Nhân vật Phù thủy – kẻ tự nhận có tài trừ tà, trấn ma – được mời về để giải trừ yêu quái. Ông ta huênh hoang khoe mình được Phật bà ban cho ba mươi sáu tay ấn quyết, nhắm mắt cũng bước qua núi, chưa kịp đến ma quỷ phải tìm đường chạy hết. Tuy nhiên, khi Hỷ đồng giả làm ma xuất hiện dọa, Phù thủy liền khiếp vía, sợ hãi đến mức không dám nhận mình là thầy phù thủy nữa mà khai là người “bán cối”. Qua tình huống hài hước ấy, trích đoạn phê phán sâu sắc thói mê tín dị đoan và những kẻ lợi dụng lòng tin của nhân dân để trục lợi.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4097,7 +4111,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TDDH_1"/>
         <Cheo:sceneName>Thầy đồ dạy học</Cheo:sceneName>
-        <Cheo:sceneSummary>Trích đoạn &quot;Thầy đồ dạy học&quot; trong vở chèo Trinh Nguyên là một phân cảnh hài hước, phản ánh sự dốt nát của một thầy đồ nhưng lại tự phụ, thích khoe khoang.</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Trích đoạn &quot;Thầy đồ dạy học&quot; trong vở chèo Trinh Nguyên khắc họa hình ảnh ông thầy đồ dốt nát, giả nhân giả nghĩa và đê tiện, mượn danh dạy học để ve vãn Trinh Nguyên – người phụ nữ đoan trang đưa con đến xin học. Qua những lời nói ngô nghê, thầy để lộ sự kém hiểu biết, lại thêm thói háo sắc, tìm đủ cách giữ chân Trinh Nguyên. Trước sự khéo léo, cứng rắn của nàng, âm mưu của thầy tan biến, để lại lời than tục tĩu “phí của trời” phơi bày trọn vẹn tâm địa xấu xa. Bằng tiếng cười châm biếm sâu cay, trích đoạn phê phán những kẻ giả danh trí thức, đồng thời đề cao hình tượng người phụ nữ Trinh Nguyên thông minh, đoan chính, ứng xử khéo léo, biết giữ gìn phẩm hạnh giữa những cám dỗ tầm thường.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4123,7 +4137,7 @@
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TPVC_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TPVC_2"/>
         <Cheo:sceneName>Trần Phương vào chùa</Cheo:sceneName>
-        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Trần Phương – một người nhà giàu ở Đông Ngàn, buôn bán giỏi và ham mê cờ bạc – tìm đến cửa Phật với danh nghĩa làm thơ lễ chùa, nhưng thực chất là để gặp gỡ cô thục nữ Suý Vân. Cùng theo hầu là Hề gậy – kẻ hầu cận tinh nghịch và lắm lời. Trong khi Trần Phương cố tỏ ra tao nhã, ngâm thơ nơi cửa thiền, thì Hề gậy lại liên tục châm chọc, giễu cợt những lời hoa mỹ và ý đồ không trong sáng của chủ. Bị Hề trêu chọc, Trần Phương tức giận dọa nạt, sợ y bép xép chuyện gặp gỡ Suý Vân nên dúi cho vài đồng bạc để đuổi đi chợ.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4136,7 +4150,7 @@
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TTDH_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TTDH_2"/>
         <Cheo:sceneName>Tuần Ty - Đào Huế</Cheo:sceneName>
-        <Cheo:sceneSummary>Nội dung câu chuyện của trích đoạn “Tuần Ty Đào Huế” xoay quanh nhân vật Tuần Ty, một viên quan tuần được cử ra Bắc làm nhiệm vụ. Tại đây, ông có thêm vợ bé và quên vợ con ở Huế. Đào Huế, vợ của Tuần Ty bồng bế con thơ ra Bắc tìm chồng và những mâu thuẫn nảy sinh. Đây là trích đoạn hài nhẹ nhàng với tiếng cười châm biếm sâu sắc về nghĩa vợ đạo chồng.</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Nội dung câu chuyện của trích đoạn “Tuần Ty Đào Huế” xoay quanh nhân vật Tuần Ty, một viên quan tuần quê miền Trung được cử ra Bắc làm nhiệm vụ. Tại đây, ông tằng tịu với người vợ cũ của Chu Mãi Thần là Thiệt Thê, định lấy làm “vợ hai” mà quên luôn vợ con ở Huế. Đào Huế, vợ của Tuần Ty ra Bắc tìm chồng, bất chợt bắt gặp “đức ông” đang cặp kè với cô nhân tình ngoài đường. Và một trận “cuồng phong” dữ dội của sự ghen tuông đã nổi lên trong lòng cô Đào xứ Huế. Trích đoạn là sự diễn tiến đầy kịch tính tâm lý giữa sự chì chiết đáo để, đay nghiến cay đắng của Đào Huế và sự chống đỡ, giấu giếm, bao che uyển chuyển và hài hước của Tuần Ty. Còn Đào Nấp chỉ là cái bóng luôn luôn lẩn trốn để tránh đòn. Đây là trích đoạn vừa hài hước vừa châm biếm sâu sắc về nghĩa vợ đạo chồng.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4148,7 +4162,8 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_VQ_1"/>
         <Cheo:sceneName>Vu quy</Cheo:sceneName>
-        <Cheo:sceneSummary>...</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Mãng ông muốn cho con gái mình là Thị Kính cưới Thiện Sỹ. Thị Kính lo cưới xa không được về với cha mẹ nhiều. Nhưng Mãng Ông động viên thì cũng bằng lòng, sau đó hai người dắt nhau về vu quy.</Cheo:sceneSummary>
+        <Cheo:sceneSummary>Mãng ông muốn cho con gái mình là Thị kính cưới Thiện Sĩ. Thị Kính lo cưới xa không được về với cha mẹ nhiều. Nhưng Mãng Ông động viên thì cũng bằng lòng, sau đó hai người dắt nhau về vu quy.</Cheo:sceneSummary>
         <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Cheo:versionNumber>
     </owl:NamedIndividual>
     
@@ -4497,33 +4512,33 @@
         <Cheo:charName>Hề (Đưa bạn đi thi)</Cheo:charName>
         <Cheo:description></Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1 -->
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Do -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Do">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
-        <Cheo:charName>Hề 1 (Dương Lễ tiễn Châu Long đi nuôi bạn)</Cheo:charName>
+        <Cheo:charName>Hề áo đỏ (Dương Lễ tiễn Châu Long đi nuôi bạn)</Cheo:charName>
         <Cheo:description></Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2 -->
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Xanh -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Xanh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
-        <Cheo:charName>Hề 2 (Dương Lễ tiễn Châu Long đi nuôi bạn)</Cheo:charName>
+        <Cheo:charName>Hề áo xanh (Dương Lễ tiễn Châu Long đi nuôi bạn)</Cheo:charName>
         <Cheo:description></Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -4533,10 +4548,10 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(HTT)">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
-        <Cheo:charName>Hề (Hề Theo Thầy)</Cheo:charName>
+        <Cheo:charName>Hề gậy (Hề Theo Thầy)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -4547,9 +4562,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Hề (Lớp &quot;Tiên Nữ - Đoàn tụ)</Cheo:charName>
-        <Cheo:description></Cheo:description>
+        <Cheo:description>Nhân vật phụ mang màu sắc hài hước, đồng thời là cầu nối cho biến cố đoàn tụ. Chính nhờ mời hai mẹ con phó xẩm về hát cho quan nghe để bớt u sầu, mà Trương Viên mới có cơ duyên nhận lại vợ hiền và mẹ già.</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType></Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -4562,7 +4577,7 @@
         <Cheo:charName>Hề (Mụ Quán Trần Phương)</Cheo:charName>
         <Cheo:description>...</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -4573,9 +4588,9 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Character"/>
         <Cheo:charGender>Nam</Cheo:charGender>
         <Cheo:charName>Hề (Trần Phương vào chùa)</Cheo:charName>
-        <Cheo:description>...</Cheo:description>
+        <Cheo:description>Là người hầu của Trần Phương, xuất hiện như một nhân vật hài hước tinh nghịch và lắm lời. Hề  trở thành tấm gương phản chiếu bộ mặt thật của Trần Phương – kẻ giả nhân giả nghĩa, mượn cửa thiền để toan tính chuyện tình ái</Cheo:description>
         <Cheo:mainType>Hề</Cheo:mainType>
-        <Cheo:subType>...</Cheo:subType>
+        <Cheo:subType>Áo ngắn</Cheo:subType>
     </owl:NamedIndividual>
     
 
@@ -4621,7 +4636,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_He(DLTCLDNB)1">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
-        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_1"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Do"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.LeTuan"/>
     </owl:NamedIndividual>
@@ -4632,7 +4647,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_LBDL.DLTCLDNB.01_He(DLTCLDNB)2">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
-        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_2"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(DLTCLDNB)_Xanh"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_DLTCLDNB_1"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.DaoDung"/>
     </owl:NamedIndividual>
