@@ -5,10 +5,24 @@ import {
   cacheStrategy,
 } from "../services/cache/cacheAdapter";
 import { redisCache } from "../services/cache/redisCacheService";
+import { isCacheEnabled } from "../utils/cacheUtils";
 
 export class CacheController {
   static async getStats(req: Request, res: Response) {
     try {
+      if (!isCacheEnabled()) {
+        return res.json({
+          success: true,
+          message: "Cache is disabled",
+          cache: {
+            enabled: false,
+            strategy: "disabled",
+            connected: false,
+          },
+          timestamp: new Date().toISOString(),
+        });
+      }
+
       const stats = await cacheAdapter.getStats();
       const isPreWarmed = await cacheAdapter.isPreWarmed();
 
@@ -16,6 +30,7 @@ export class CacheController {
         success: true,
         cache: {
           ...stats,
+          enabled: true,
           isPreWarmed,
           strategy: cacheStrategy,
         },
@@ -33,6 +48,14 @@ export class CacheController {
 
   static async clearCache(req: Request, res: Response) {
     try {
+      if (!isCacheEnabled()) {
+        return res.status(400).json({
+          success: false,
+          error: "Cache is disabled",
+          timestamp: new Date().toISOString(),
+        });
+      }
+
       await cacheAdapter.clear();
       res.json({
         success: true,

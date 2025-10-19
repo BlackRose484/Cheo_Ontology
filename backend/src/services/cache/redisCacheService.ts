@@ -343,10 +343,7 @@ export class RedisCacheService {
     const startTime = Date.now();
 
     try {
-      // First clear all existing cache to prevent stale data
-      await this.clearAll();
-
-      // Execute the optimized cache refresh
+      // Execute the optimized cache refresh (without clearing existing cache)
       await this.preWarmCacheOptimized();
 
       const duration = (Date.now() - startTime) / 1000;
@@ -395,7 +392,7 @@ export class RedisCacheService {
     console.log("🔄 Starting cache refresh...");
     const startTime = Date.now();
 
-    await this.clear();
+    // Only pre-warm cache without clearing existing data
     await this.preWarmCache();
 
     const endTime = Date.now();
@@ -1535,9 +1532,9 @@ export class RedisCacheService {
   }
 
   async destroy(): Promise<void> {
+    // Simply disconnect without any cleanup actions
     this.stopAutoRefresh();
     await this.disconnect();
-    console.log("🗑️ Redis cache service destroyed");
   }
 }
 
@@ -1549,7 +1546,7 @@ export function createRedisCacheService(): RedisCacheService {
     password: process.env.REDIS_PASSWORD || undefined,
     username: process.env.REDIS_USERNAME || undefined,
     db: parseInt(process.env.REDIS_DB || "0"),
-    ttl: parseInt(process.env.REDIS_TTL_DEFAULT || "7200"),
+    ttl: parseInt(process.env.REDIS_TTL_DEFAULT || "86400"), // 24 hours default TTL
     tls: process.env.REDIS_TLS === "true",
     retryAttempts: 3,
     retryDelay: 1000,

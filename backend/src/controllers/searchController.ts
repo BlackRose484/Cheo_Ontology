@@ -10,6 +10,7 @@ import {
 } from "../types/play";
 import { EmotionByCharacterAndPlays } from "../types/emotion";
 import { CharacterGenerals, CharacterStates } from "../types/character";
+import { universalQueryAdapter } from "../services/query/universalQueryAdapter";
 
 const searchController = {
   searchPlayByCharacter: async (req: Request, res: Response) => {
@@ -32,7 +33,12 @@ const searchController = {
     `;
 
     try {
-      const results = await runSPARQLQuery(sparql);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.runSPARQLQuery(
+        sparql,
+        `search:play-by-character:${character}`
+      );
+
       const plays: PlayTitlesByCharacter = results.map((result: any) => {
         return result.title ? result.title.value : "Unknown Title";
       });
@@ -74,7 +80,11 @@ const searchController = {
       ORDER BY ?playTitle ?sceneName
     `;
     try {
-      const results = await runSPARQLQuery(sparql);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.runSPARQLQuery(
+        sparql,
+        `search:scene-play-by-character:${character}`
+      );
       const sceneAndPlays = results.map((result: any) => ({
         scene: result.scene?.value || "",
         sceneName: result.sceneName?.value || "",

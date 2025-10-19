@@ -2,14 +2,16 @@ import { Infor, Library } from "../types";
 import { ActorNames } from "../types/actor";
 import { CharacterNames } from "../types/character";
 import { PlayTitles, SceneNames } from "../types/play";
-import { queryAdapter } from "../services/cache/cacheAdapter";
+import { universalQueryAdapter } from "../services/query/universalQueryAdapter";
 import { runSPARQLQuery } from "../utils/graphdb";
 import { Request, Response } from "express";
 
 const inforController = {
   getCharacterNames: async (req: Request, res: Response) => {
     try {
-      const results = await queryAdapter.getAllCharacters();
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.getAllCharacters();
+
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No characters found" });
       }
@@ -28,7 +30,9 @@ const inforController = {
 
   getPlayTitles: async (req: Request, res: Response) => {
     try {
-      const results = await queryAdapter.getAllPlays();
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.getAllPlays();
+
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No plays found" });
       }
@@ -55,7 +59,12 @@ const inforController = {
     `;
 
     try {
-      const results = await runSPARQLQuery(sparql);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.runSPARQLQuery(
+        sparql,
+        "infor:full-classes"
+      );
+
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No classes found" });
       }
@@ -85,7 +94,12 @@ const inforController = {
       `;
 
     try {
-      const results = await runSPARQLQuery(sparql);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.runSPARQLQuery(
+        sparql,
+        "infor:actor-names"
+      );
+
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No actors found" });
       }
@@ -103,7 +117,9 @@ const inforController = {
 
   getSceneNames: async (req: Request, res: Response) => {
     try {
-      const results = await queryAdapter.getAllScenes();
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.getAllScenes();
+
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No scenes found" });
       }
@@ -139,7 +155,11 @@ const inforController = {
       ORDER BY ?sceneName
     `;
     try {
-      const results = await runSPARQLQuery(sparql);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.runSPARQLQuery(
+        sparql,
+        `infor:scenes-by-play:${play}`
+      );
       if (!results || results.length === 0) {
         return res.status(404).json({ message: "No scenes found" });
       }
@@ -301,7 +321,21 @@ const inforController = {
         searchQuery = `subType:${subType}`;
       }
 
-      const results = await queryAdapter.searchCharacters(searchQuery || "");
+      const results = await universalQueryAdapter.runSPARQLQuery(
+        `PREFIX Cheo: <http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#>
+         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+         
+         SELECT ?char ?charName
+         WHERE {
+           ?char a Cheo:Character ;
+                 Cheo:charName ?charName .
+           FILTER(STR(?charName) != "...")
+           ${mainType ? `?char Cheo:mainType "${mainType}" .` : ""}
+           ${subType ? `?char Cheo:subType "${subType}" .` : ""}
+         }
+         ORDER BY LCASE(STR(?charName))`,
+        `infor:filtered-characters:${mainType || "any"}-${subType || "any"}`
+      );
       const characters: CharacterNames = results.map((result: any) => ({
         char: result?.char?.value || result?.char,
         charName: result?.charName?.value || result?.charName,

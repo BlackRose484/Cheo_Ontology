@@ -6,7 +6,7 @@ import {
   formatForScenes,
   formatStringtoArray,
 } from "../utils/formatters";
-import { queryAdapter } from "../services/cache/cacheAdapter";
+import { universalQueryAdapter } from "../services/query/universalQueryAdapter";
 import { Request, Response } from "express";
 
 const ViewController = {
@@ -14,7 +14,10 @@ const ViewController = {
     const { character } = req.body;
 
     try {
-      const results = await queryAdapter.getCharacterInformation(character);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.getCharacterInformation(
+        character
+      );
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Character not found"));
@@ -48,7 +51,8 @@ const ViewController = {
     const { play } = req.body;
 
     try {
-      const results = await queryAdapter.getPlayInformation(play);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.getPlayInformation(play);
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Play not found"));
@@ -79,7 +83,8 @@ const ViewController = {
     const { actor } = req.body;
 
     try {
-      const results = await queryAdapter.getActorInformation(actor);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.getActorInformation(actor);
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Actor not found"));
@@ -107,7 +112,8 @@ const ViewController = {
     const { scene } = req.body;
 
     try {
-      const results = await queryAdapter.getSceneInformation(scene);
+      // Use Universal Query Adapter - automatically chooses strategy
+      const results = await universalQueryAdapter.getSceneInformation(scene);
 
       if (!results || results.length === 0) {
         return res.status(404).json(createErrorResponse("Scene not found"));
