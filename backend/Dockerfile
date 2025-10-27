@@ -33,10 +33,14 @@ RUN npm ci --only=production && \
 
 # Copy built files from builder stage
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/.env* ./
 
-# Copy OWL file if exists
-COPY src/db/*.owl ./dist/db/ 2>/dev/null || true
+# Copy OWL database file
+COPY src/db/OntologyCheo1.owl ./dist/db/OntologyCheo1.owl
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=5000
+ENV USE_LOCAL_OWL=true
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
@@ -45,7 +49,7 @@ RUN addgroup -g 1001 -S nodejs && \
 
 USER nodejs
 
-# Expose port (Cloud Run uses PORT env variable)
+# Expose port
 EXPOSE 5000
 
 # Start the application
