@@ -58,6 +58,8 @@ export default function CharacterVideoPage() {
     }
   }, [charName, playTitle, emotion, uri]);
 
+  console.log(appearances);
+
   const handleBackToSearch = () => {
     router.push("/search");
   };
@@ -220,66 +222,103 @@ export default function CharacterVideoPage() {
               </div>
             </div>
 
-            {/* Video List */}
-            <div className="lg:col-span-1">
+            {/* Emotional Development & Subtitle */}
+            <div className="lg:col-span-1 space-y-6">
+              {/* Diễn biến tâm lý */}
               <div className="bg-white/95 rounded-xl shadow-lg p-6 border border-red-200 backdrop-blur-sm">
                 <h3 className="text-lg font-bold text-red-600 mb-4 flex items-center gap-2">
-                  <span>📋</span>
-                  <span>Danh sách video ({appearances.length})</span>
+                  <span>🧠</span>
+                  <span>Diễn biến tâm lý</span>
                 </h3>
 
-                <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {appearances.map((appearance, index) => (
-                    <div
-                      key={index}
-                      onClick={() => setSelectedVideo(appearance.vidVersion)}
-                      className={`p-3 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
-                        selectedVideo === appearance.vidVersion
-                          ? "border-red-500 bg-red-50"
-                          : "border-red-200 bg-white hover:border-red-400 hover:bg-red-25"
-                      }`}
-                    >
-                      <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                          {index + 1}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm space-y-1">
-                            <div className="flex justify-between">
-                              <span className="font-medium text-red-700">
-                                Thời gian:
-                              </span>
-                              <span className="text-red-600 text-xs">
-                                {convertSecondsToTime(appearance.start)} -{" "}
-                                {convertSecondsToTime(appearance.end)}
-                              </span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span className="font-medium text-red-700">
-                                Cảm xúc:
-                              </span>
-                              <span className="text-red-600 text-xs">
-                                {DISPLAY_EMOTIONS[
-                                  appearance.emotion as keyof typeof DISPLAY_EMOTIONS
-                                ] || appearance.emotion}
-                              </span>
-                            </div>
-                          </div>
-
-                          {selectedVideo === appearance.vidVersion && (
-                            <div className="mt-2 flex items-center gap-1 text-red-600">
-                              <span className="text-xs">▶</span>
-                              <span className="text-xs font-medium">
-                                Đang phát
-                              </span>
-                            </div>
-                          )}
-                        </div>
+                {selectedVideo ? (
+                  (() => {
+                    const currentAppearance = appearances.find(
+                      (app) => app.vidVersion === selectedVideo
+                    );
+                    return currentAppearance?.ED ? (
+                      <div className="prose prose-sm max-w-none">
+                        <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                          {currentAppearance.ED}
+                        </p>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ) : (
+                      <div className="text-center py-8 text-gray-500">
+                        <div className="text-4xl mb-2">🤔</div>
+                        <p className="text-sm">
+                          Chưa có thông tin diễn biến tâm lý
+                        </p>
+                      </div>
+                    );
+                  })()
+                ) : (
+                  <div className="text-center py-8 text-gray-400">
+                    <div className="text-4xl mb-2">🎭</div>
+                    <p className="text-sm">
+                      Chọn video để xem diễn biến tâm lý
+                    </p>
+                  </div>
+                )}
               </div>
+
+              {/* Lời thoại */}
+              <div className="bg-white/95 rounded-xl shadow-lg p-6 border border-red-200 backdrop-blur-sm">
+                <h3 className="text-lg font-bold text-red-600 mb-4 flex items-center gap-2">
+                  <span>💬</span>
+                  <span>Lời thoại</span>
+                </h3>
+
+                {selectedVideo ? (
+                  (() => {
+                    const currentAppearance = appearances.find(
+                      (app) => app.vidVersion === selectedVideo
+                    );
+                    return currentAppearance?.subtitle ? (
+                      <div className="prose prose-sm max-w-none">
+                        <p className="text-gray-700 leading-relaxed italic whitespace-pre-wrap bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                          &ldquo;{currentAppearance.subtitle}&rdquo;
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="text-center py-8 text-gray-500">
+                        <div className="text-4xl mb-2">📝</div>
+                        <p className="text-sm">Chưa có lời thoại</p>
+                      </div>
+                    );
+                  })()
+                ) : (
+                  <div className="text-center py-8 text-gray-400">
+                    <div className="text-4xl mb-2">🎤</div>
+                    <p className="text-sm">Chọn video để xem lời thoại</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Video selector dropdown */}
+              {appearances.length > 1 && (
+                <div className="bg-white/95 rounded-xl shadow-lg p-4 border border-red-200 backdrop-blur-sm">
+                  <label className="block text-sm font-medium text-red-700 mb-2">
+                    Chọn video khác ({appearances.length} video)
+                  </label>
+                  <select
+                    value={selectedVideo || ""}
+                    onChange={(e) => setSelectedVideo(e.target.value)}
+                    className="w-full px-3 py-2 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white text-gray-700"
+                  >
+                    {appearances.map((appearance, index) => (
+                      <option key={index} value={appearance.vidVersion}>
+                        Video {index + 1} -{" "}
+                        {convertSecondsToTime(appearance.start)} đến{" "}
+                        {convertSecondsToTime(appearance.end)} (
+                        {DISPLAY_EMOTIONS[
+                          appearance.emotion as keyof typeof DISPLAY_EMOTIONS
+                        ] || appearance.emotion}
+                        )
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </div>
           </div>
         )}
