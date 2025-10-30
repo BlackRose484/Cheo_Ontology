@@ -105,6 +105,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ED -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ED">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <rdfs:comment>emotional development - Diễn biến tâm lý</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ID -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ID">
@@ -288,6 +297,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#subtitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#subtitle">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <rdfs:comment>Lời thoại</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#summary -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#summary">
@@ -452,6 +470,16 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
         <Cheo:actorGender>Nam</Cheo:actorGender>
         <Cheo:actorGender>Đào Dũng</Cheo:actorGender>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.HongTham -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.HongTham">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Actor"/>
+        <Cheo:actorGender>Nữ</Cheo:actorGender>
+        <Cheo:actorName>Hồng Thắm</Cheo:actorName>
     </owl:NamedIndividual>
     
 
@@ -1773,6 +1801,136 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app183 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app183">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Kính Tâm thể hiện sự thành tâm và chuyên chú trong việc tu hành, đối lập với tính cách táo bạo, trần tục của Thị Mầu trong phần đối thoại kế tiếp.</Cheo:ED>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">470</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">403</Cheo:start>
+        <Cheo:subtitle>Mô Phật! A di đà Phật!
+Tam Bảo Như Lai của ai phúc nấy
+A di đà Phật!
+(Thị Mầu: A di đà…. Phật)
+=======================
+Khấn nguyện thập phương 
+Kính trình tam bảo
+Lòng người có đạo
+Đem của cúng dường
+Trăm nén cũng biên
+Một đồng cũng kể
+Tuy vân bạc lễ
+Đãn kiến thành tâm
+Phật Tổ giáng lâm
+Quỷ thần chứng chiếu
+A di đà Phật!
+Tôi đã đèn nhang xong, mời cô vào lễ Phật!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app184 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app184">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Trong khi Thị Mầu say mê vẻ đẹp của chú tiểu, lời nói bông đùa, tán tỉnh, thì Kính Tâm vẫn giữ thái độ điềm đạm, không lung lay. Thể hiện sự thuần khiết, một lòng hướng Phật của bậc tu hành.</Cheo:ED>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">597</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">585</Cheo:start>
+        <Cheo:subtitle>Niệm Nam Mô A Di Ðà Phật
+Niệm Nam Mô A Di Ðà Phật
+(Nền: Mầu ơi! Nhà mày mất bò rồi đấy!)
+(Thị Mầu: Mất bò ấy à, Nhà tao còn ối trâu!)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app185 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app185">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>“Ngẫm oan trái nhiều phen muốn khóc. Thấy nhân duyên nghĩ lại nực cười”Thị Kính thể hiện sự buồn bã và nỗi đau âm ỉ của người mang tiếng oan, bị đời hắt hủi phải che giấu thân phận nữ nhi. “À, thôi phải rồi! Hẳn vô tình thế mới trêu ngươi. Vì hữu ý nên rằng hoảng mắt. Chứ có biết đâu, tôi đây cũng chỉ là …” ngầm nói lên sự bốc đồng, nhất thời nhưng chân thật tự nhiên và đầy sức sống của cảm xúc Thị Mầu khi quá si mê chú tiểu Kính Tâm mà không nhận ra nàng là một cô gái.</Cheo:ED>
+        <Cheo:emotion>Sad</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1099</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1036</Cheo:start>
+        <Cheo:subtitle>Ngẫm oan trái nhiều phen muốn khóc
+Thấy nhân duyên nghĩ lại nực cười
+À, thôi phải rồi! Hẳn vô tình thế mới trêu ngươi
+Vì hữu ý nên rằng hoảng mắt
+Chứ có biết đâu, tôi đây cũng chỉ là…</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app186 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app186">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:emotion>Surprise</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1106</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1101</Cheo:start>
+        <Cheo:subtitle>Mô Phật!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app187 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app187">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1150</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1108</Cheo:start>
+        <Cheo:subtitle>A Di Đà Phật! Cô buông ra để tôi quét chùa kẻo sư phụ người quở chết!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app188 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app188">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu lên chùa khác với lệ thường, người ta lên chùa vào mười tư, rằm; còn Thị Mầu lên sớm hơn lẽ thường “từ mười ba” thể hiện tâm lý háo hức, rất mong ngóng ngày rằm.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">105</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">38</Cheo:start>
+        <Cheo:subtitle>Này chị em ơi! (Nền: Sao?)
+Nay mười tư mai đã là rằm
+Ai muốn ăn oản thì năng lên chùa.
+Các giả lên chùa từ bao giờ nhỉ? (Nền: Mười tư, rằm)
+=================
+Ấy thế mà Mầu tôi mang tiếng lẳng lơ
+Đò đưa cấm gió …
+Tôi lên chùa từ mười ba
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app189 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app189">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu bông đùa, bỡn cợt. Chốn cửa chùa linh thiêng, thanh tịnh, nghiêm ngặt nhưng Thị Mầu nhìn người tu hành nào cũng thấy tuổi trẻ, tràn ngập tình yêu. Thể hiện tâm hồn tươi trẻ tràn đầy sức sống của Thị Mầu.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">300</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">106</Cheo:start>
+        <Cheo:subtitle>Này chị em ơi! (Nền: Sao?)
+Tôi lên chùa thấy tiểu mười ba
+Thấy sư mười bốn, … , vãi già mười lăm
+(Nhạc nền)
+===========
+Này chị em ơi! (Nền: Sao?)
+Tôi, tôi muốn cho một tháng
+Đôi rằm
+Ðể, để tôi trước vào lễ Phật
+Sau thăm vãi già.
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app19 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app19">
@@ -1780,6 +1938,640 @@
         <Cheo:emotion>...</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1332</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1036</Cheo:start>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app190 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app190">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu đã tự tin xưng danh, không giấu giếm thân phận, thậm chí còn khoe vẻ giàu có, sang trọng (con gái phú ông, tiền cùng gạo lên chùa cúng tiến). Thể hiện tính cách cởi mở, hồn nhiên, thậm chí táo bạo – khác hẳn với khuôn mẫu “phụ nữ đoan trang” thời phong kiến.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">402</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">335</Cheo:start>
+        <Cheo:subtitle>A di đà Phật! … 
+Tôi Thị Mầu con gái phú ông
+Thầy mẹ tôi, tôn kính một lòng
+Tiền cùng gạo, tôi lên chùa tiến cúng.
+A di đà Phật!
+==================
+A di đà Phật!
+Bạch nhà sư trong ấy, cho chú tiểu ra nhận lễ, để cho tôi còn về nào.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app191 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app191">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu không quan tâm đến việc vào lễ Phật. Thị Mầu khen chú Tiểu: “Người đâu mà đẹp như sao băng thế nhỉ … Mầu thẳng thắn thể hiện sự yêu thích, say mê, và ngưỡng mộ của mình trước vẻ đẹp của chú tiểu Kính Tâm. Cách so sánh “đẹp như sao băng” là một hình ảnh mới lạ, đầy sức gợi, biểu hiện trí tưởng tượng phong phú và cảm xúc mãnh liệt của người con gái đang yêu.
+Hai hình ảnh “cổ cao ba ngấn” và “lông mày nét ngang” vốn là chuẩn mực dân gian để miêu tả người có vẻ đẹp thanh tú, phúc hậu. Khi đem những đặc điểm ấy áp vào chú tiểu, Thị Mầu đã vô tình “trần thế hóa” hình ảnh nhà sư, biến không gian chùa vốn thanh tịnh thành chốn tràn đầy sức sống, tình cảm. Chính sự “lẫn lộn” giữa vẻ đẹp tu hành – trần tục, nam – nữ ấy đã tạo nên chất hài chèo độc đáo và làm nổi bật tính cách hồn nhiên, táo bạo.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">584</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">470</Cheo:start>
+        <Cheo:subtitle>Mô Phật! 
+(Nhạc nền)
+Này chị em ơi! (Nền: Sao?) Người đâu đến tu chùa mà đẹp như sao băng thế nhỉ?
+(Nền: Ai lại khen chú tiểu đẹp thế Mầu ơi!)
+Ðẹp thì người ta khen chứ sao …
+Này chị em ơi! (Nền: Sao?)
+Người đâu đến ở chùa này
+Mà cổ kiêu ba ngấn, lông mày nét ngang
+Thầy tiểu y y ơi
+Ðến ở ấy mấy chùa
+Thế mà chùa này
+Người, người ở đâu
+Ðến ý ở ấy mấy chùa
+Thế mà chùa này
+Cổ y ý ý cao a thế mà này cổ ý cao ba ngấn ý
+Ơi y a Ơi y a Ơi y
+Ðể lông ừ mày chứ đôi lông mày nét ngang
+Ấy mấy thầy tiểu ơi!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app192 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app192">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lối nói ví von so sánh thể hiện khát khao yêu đương của Thị Mầu. “Thầy như táo rụng sân đình – Em như gái rở, đi rình của chua”. Cây táo mọc ở sân đình thường cao, sau mùa xuân chín rụng. Vì ít được chăm sóc lại già cỗi nên táo vừa chua, vừa chát. Người đàn bà ăn rở (nghén vì mang thai) mà gặp quả táo, hơn nữa lại là rụng mà rụng ở sân đình thì nỗi khát khao thèm muốn càng tăng thêm gấp bội. Nhặt quả táo lên chắc người con gái ăn dở ấy phải nhai nuốt ngấu nghiến. Việc Thị Mầu ví mình như gái rở, ví tiểu Kính như táo rụng sân đình thì hình ảnh vừa thật vừa rõ nét mà vừa dễ hiểu cho người xem.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">732</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">615</Cheo:start>
+        <Cheo:subtitle>Thầy tiểu ơi! Ra đây ăn với em một miếng trầu nào …
+(Thị Kính: Nam Mô A Di Đà Phật …)
+Này thầy tiểu ơi!
+Thầy như táo rụng sân đình
+Còn em như gái rở, đi rình của chua...
+Chứ thầy tiểu ơi!
+Táo rụng ấy mấy đình thế mà sân đình
+Thầy, thầy tiểu ơi!
+Táo rụng ấy mấy đình ấy mà sân đình
+Em ý như a thế mà này em như gái rở ơ ớ
+Em đi tìm ối y a
+Ối y để em đi tìm, chứ em đi tìm của chua
+Ấy mấy thầy, thầy tiểu ơi !
+(Thị Kính: Nam Mô A Di Đà Phật …)
+Chỉ Mô Phật mãi thôi!
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app193 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app193">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lời đối đáp giữa Thị Mầu và tiếng đế ngắn gọn nhưng đầy dí dỏm, phản ứng nhanh và thông minh, cho thấy Thị Mầu là người không hề bị động, biết tự bảo vệ mình và thậm chí biết đùa lại một cách khéo léo. Qua những lời đáp ấy, ta thấy Thị Mầu không hề xấu hổ hay sợ hãi trước dư luận. Nàng không quan tâm đến những quy tắc lễ giáo gò bó, cũng chẳng che giấu lòng mình — đó là biểu hiện của một người phụ nữ bản lĩnh, dám sống thật. Thái độ sống phóng khoáng, đi ngược định kiến xã hội của Thị Mầu.
+
+Hành động mời giầu: ăn với em miếng trầu đã nào – một nghi thức giao duyên, chủ động tỏ tình → Hành động vừa táo bạo vừa duyên dáng bộc lộ khao khát kết đôi của Thị Mầu.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">857</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">734</Cheo:start>
+        <Cheo:subtitle>(Nền: Mầu ơi! Nhà mày có mấy chị em?)
+Nhà tao có chín chị em
+(Nền: Thế có ai như mày không?)
+Chỉ có mỗi mình tao là chín chắn nhất nhà thôi đấy!
+(Nền: Ôi dào ơi!)
+Mặc kệ tao!
+Thầy tiểu ơi! Ra đây ăn với em miếng trầu đã nào…
+Này thầy tiểu ơi!
+Cau non em tiện chũm lòng đào
+Mà trầu têm cánh phượng để thiếp trao cho chàng
+Chứ thầy tiểu ơi!
+(Nhạc nền)
+(Thị Kính: Niệm Nam Mô A Di Ðà Phật …)
+Thầy tiểu ơi ! Bỏ mõ em gõ cho nào…
+(Thị Kính bỏ đi)
+Thầy tiểu, thầy tiểu…</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app194 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app194">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Tiếng gọi “thầy tiểu ơi!” lặp lại nhiều lần như buộc đối tượng phải quan tâm đến mình, quyết thực hiện bằng được khao khát tỏ bày tình cảm của mình. Tiếng gọi như muốn bộc bạch tất cả sự mê đắm, bật ra tất cả nỗi nhớ nhung, niềm khao khát.</Cheo:ED>
+        <Cheo:emotion>Sad</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1000</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">860</Cheo:start>
+        <Cheo:subtitle>Phải gió ở đâu ấy.
+Người đâu trông thấy gái lại cứ chạy. Chỉ Mô Phật mãi thôi!
+Này thầy tiểu ơi! Ra đây ăn với em một miếng trầu đã nào...
+Lại Mô Phật nữa đi nhớ (???)
+Này thầy tiểu ơi! Bỏ em đứng trước cửa chùa
+Em gọi thầy tiểu. Chả thưa, em buồn đấy Thầy tiểu ơi!
+=============
+Trúc xinh trúc mọc sân đình
+Em xinh em đứng một mình chẳng xinh!
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app195 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app195">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Khi phát hiện kinh mõ của chú tiểu còn để lại, Mầu lập tức suy đoán rằng Kính Tâm sẽ quay lại, và ngay lập tức nảy ra ý định lén đi nấp để tìm cách gặp gỡ. Hành động lén nấp chờ thể hiện sự chủ động và tinh nghịch, cho thấy Thị Mầu đang rất háo hức và nôn nóng muốn được tiếp cận người mình thích.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1033</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1001</Cheo:start>
+        <Cheo:subtitle>À, phải rồi! kinh mõ của Thầy tiểu còn bỏ đây, thể nào mà Thầy tiểu chẳng phải ra cất kinh cất mõ.
+Chi cho bằng …Tôi ra tìm chỗ nấp, tôi đợi thầy tiểu ra đây, tôi phải nắm được tận tay thầy tiểu thì tôi mới nghe!
+(Thị Mầu nấp)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app196 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app196">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Đòi quét sân chùa cho thầy tiểu, Thị Mầu lấy cớ làm việc giúp để hợp thức hóa mong muốn được tiếp xúc, được gần gũi người mình thương. Chuỗi hành động “nắm tận tay”, “quét sân chùa thay thầy tiểu”, “mời thầy tiểu ăn giầu” là sự táo bạo, sỗ sàng của người đang yêu thật lòng, khao khát được kết duyên.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1158</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1100</Cheo:start>
+        <Cheo:subtitle>Đây rồi đừng hòng trốn em nữa!
+(Thị Kính: Mô Phật!)
+Thôi, bỏ Mô Phật đi!
+(Thị Kính: A Di Đà Phật! Cô buông ra để tôi quét chùa kẻo sư phụ người quở chết!)
+Đưa chổi đây em quét rồi em nói chuyện này cho mà nghe!
+(Thị Kính: Mô Phật!)
+Này chú tiểu ơi! 
+Quét sao cho sách trần duyên
+Tu chi cho bận mầu thiền ai ơi !
+Tuổi xanh sao vội chán đời ?
+Thầy tiểu ! Thầy tiểu !
+(Thị Kính: buông chổi)
+Thầy tiểu ơi! Ăn với em một miếng chầu rồi!
+Đưa chổi em quét cho nào! Này!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app197 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app197">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu khi 5 lần 7 lượt bị từ chối, ả vừa giận dỗi, vừa nũng nịu, thể hiện sự thất vọng nhưng vẫn rất hóm hỉnh, duyên dáng.</Cheo:ED>
+        <Cheo:emotion>Angry</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1176</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1159</Cheo:start>
+        <Cheo:subtitle>(Thị Mầu quay mặt lại đã thấy Thị Kính bỏ đi. Thị Mầu tức giận ném chổi)
+Phải gió ở đâu ấy! Chạy từ bao giờ rồi ấy! Thế có tức không cơ chứ!
+Mình đã nắm được tận tay thầy tiểu rồi thế mà còn chạy được.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app198 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app198">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lời đáp lại tiếng đế của Thị Mầu là sự tung hê những thứ khuôn phép đạo đức “chính chuyên” luôn được “sơn son để thờ” và “tuyên bố” quyền được sống, quyền được yêu bằng cả phần hồn, phần xác của người phụ nữ. Thị Mầu bộc lộ suy nghĩ tự nhiên, bản năng sống chất phác, khoẻ khoắn của mình.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1201</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1179</Cheo:start>
+        <Cheo:subtitle>Này thầy tiểu ơi!
+Muốn rằng cây cải cho xanh
+Thài lài, rau rệu, tám thành bờ tre
+Lắng tai tôi nói cho mà nghe…
+Tri âm chưa tỏ tri âm
+Để tôi mong vụng nhớ thầm sầu riêng!
+====================
+(Nền: Lẳng lơ mặt dạn mày dày. Ði đêm rồi cũng có ngày gặp ma đấy Mầu ơi!)
+Đây cũng chẳng mòn lẳng lơ
+Chính chuyên cũng chẳng sơn son để thờ.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app199 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app199">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Kính Tâm thể hiện sự thành tâm và chuyên chú trong việc tu hành, đối lập với tính cách táo bạo, trần tục của Thị Mầu trong phần đối thoại kế tiếp.</Cheo:ED>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">425</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">372</Cheo:start>
+        <Cheo:subtitle>Mô Phật! A di đà Phật!
+Tam Bảo Như Lai của ai phúc nấy
+A di đà Phật!
+(Thị Mầu: A di đà…. Phật)
+=======================
+Khấn nguyện thập phương 
+Kính trình tam bảo
+Lòng người có đạo
+Đem của cúng dường
+Trăm nén cũng biên
+Một đồng cũng kể
+Tuy vân bạc lễ
+Đãn kiến thành tâm
+Phật Tổ giáng lâm
+Quỷ thần chứng chiếu
+A di đà Phật!
+Tôi đã đèn nhang xong, mời cô vào lễ Phật!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app200 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app200">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Trong khi Thị Mầu say mê vẻ đẹp của chú tiểu, lời nói bông đùa, tán tỉnh, thì Kính Tâm vẫn giữ thái độ điềm đạm, không lung lay. Thể hiện sự thuần khiết, một lòng hướng Phật của bậc tu hành.</Cheo:ED>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">553</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">532</Cheo:start>
+        <Cheo:subtitle>Niệm Nam Mô A Di Ðà Phật
+Niệm Nam Mô A Di Ðà Phật
+(Nền: Mầu ơi! Nhà mày mất bò rồi đấy!)
+(Thị Mầu: Mất bò ấy à, Nhà tao còn ối trâu!)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app201 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app201">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>“Ngẫm oan trái nhiều phen muốn khóc. Thấy nhân duyên nghĩ lại nực cười”Thị Kính thể hiện sự buồn bã và nỗi đau âm ỉ của người mang tiếng oan, bị đời hắt hủi phải che giấu thân phận nữ nhi. “À, thôi phải rồi! Hẳn vô tình thế mới trêu ngươi. Vì hữu ý nên rằng hoảng mắt. Chứ có biết đâu, tôi đây cũng chỉ là …” ngầm nói lên sự bốc đồng, nhất thời nhưng chân thật tự nhiên và đầy sức sống của cảm xúc Thị Mầu khi quá si mê chú tiểu Kính Tâm mà không nhận ra nàng là một cô gái.</Cheo:ED>
+        <Cheo:emotion>Sad</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">990</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">920</Cheo:start>
+        <Cheo:subtitle>Ngẫm oan trái nhiều phen muốn khóc
+Thấy nhân duyên nghĩ lại nực cười
+À, thôi phải rồi! Hẳn vô tình thế mới trêu ngươi
+Vì hữu ý nên rằng hoảng mắt
+Chứ có biết đâu, tôi đây cũng chỉ là…</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app202 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app202">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:emotion>Surprise</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">996</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">992</Cheo:start>
+        <Cheo:subtitle>Mô Phật!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app203 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app203">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1005</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">999</Cheo:start>
+        <Cheo:subtitle>A Di Đà Phật! Cô buông ra để tôi quét chùa kẻo sư phụ người quở chết!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app204 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app204">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu lên chùa khác với lệ thường, người ta lên chùa vào mười tư, rằm; còn Thị Mầu lên sớm hơn lẽ thường “từ mười ba” thể hiện tâm lý háo hức, rất mong ngóng ngày rằm.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">102</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</Cheo:start>
+        <Cheo:subtitle>Này chị em ơi! (Nền: Sao?)
+Nay mười tư mai đã là rằm
+Ai muốn ăn oản thì năng lên chùa.
+Các giả lên chùa từ bao giờ nhỉ? (Nền: Mười tư, rằm)
+=====================
+Ấy thế mà Mầu tôi mang tiếng lẳng lơ
+Đò đưa cấm gió …
+Tôi lên chùa từ mười ba
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app205 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app205">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu bông đùa, bỡn cợt. Chốn cửa chùa linh thiêng, thanh tịnh, nghiêm ngặt nhưng Thị Mầu nhìn người tu hành nào cũng thấy tuổi trẻ, tràn ngập tình yêu. Thể hiện tâm hồn tươi trẻ tràn đầy sức sống của Thị Mầu.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">290</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">103</Cheo:start>
+        <Cheo:subtitle>Này chị em ơi! (Nền: Sao?)
+Tôi lên chùa thấy tiểu mười ba
+Thấy sư mười bốn, … , vãi già mười lăm
+(Nhạc nền)
+===========
+Này chị em ơi! (Nền: Sao?)
+Tôi, tôi muốn cho một tháng
+Đôi rằm
+Ðể, để tôi trước vào lễ Phật
+Sau thăm vãi già.
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app206 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app206">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu đã tự tin xưng danh, không giấu giếm thân phận, thậm chí còn khoe vẻ giàu có, sang trọng (con gái phú ông, tiền cùng gạo lên chùa cúng tiến). Thể hiện tính cách cởi mở, hồn nhiên, thậm chí táo bạo – khác hẳn với khuôn mẫu “phụ nữ đoan trang” thời phong kiến.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">370</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">326</Cheo:start>
+        <Cheo:subtitle>A di đà Phật! … 
+Tôi Thị Mầu con gái phú ông
+Thầy mẹ tôi, tôn kính một lòng
+Tiền cùng gạo, tôi lên chùa tiến cúng.
+A di đà Phật!
+==================
+A di đà Phật!
+Bạch nhà sư trong ấy, cho chú tiểu ra nhận lễ, để cho tôi còn về nào.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app207 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app207">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu không quan tâm đến việc vào lễ Phật. Thị Mầu khen chú Tiểu: “Người đâu mà đẹp như sao băng thế nhỉ … Mầu thẳng thắn thể hiện sự yêu thích, say mê, và ngưỡng mộ của mình trước vẻ đẹp của chú tiểu Kính Tâm. Cách so sánh “đẹp như sao băng” là một hình ảnh mới lạ, đầy sức gợi, biểu hiện trí tưởng tượng phong phú và cảm xúc mãnh liệt của người con gái đang yêu.
+Hai hình ảnh “cổ cao ba ngấn” và “lông mày nét ngang” vốn là chuẩn mực dân gian để miêu tả người có vẻ đẹp thanh tú, phúc hậu. Khi đem những đặc điểm ấy áp vào chú tiểu, Thị Mầu đã vô tình “trần thế hóa” hình ảnh nhà sư, biến không gian chùa vốn thanh tịnh thành chốn tràn đầy sức sống, tình cảm. Chính sự “lẫn lộn” giữa vẻ đẹp tu hành – trần tục, nam – nữ ấy đã tạo nên chất hài chèo độc đáo và làm nổi bật tính cách hồn nhiên, táo bạo.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">530</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">430</Cheo:start>
+        <Cheo:subtitle>Mô Phật! 
+(Nhạc nền)
+Này chị em ơi! (Nền: Sao?) Người đâu đến tu chùa mà đẹp như sao băng thế nhỉ?
+(Nền: Ai lại khen chú tiểu đẹp thế Mầu ơi!)
+Ðẹp thì người ta khen chứ sao …
+Này chị em ơi! (Nền: Sao?)
+Người đâu đến ở chùa này
+Mà cổ kiêu ba ngấn, lông mày nét ngang
+Thầy tiểu y y ơi
+Ðến ở ấy mấy chùa
+Thế mà chùa này
+Người, người ở đâu
+Ðến ý ở ấy mấy chùa
+Thế mà chùa này
+Cổ y ý ý cao a thế mà này cổ ý cao ba ngấn ý
+Ơi y a Ơi y a Ơi y
+Ðể lông ừ mày chứ đôi lông mày nét ngang
+Ấy mấy thầy tiểu ơi!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app208 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app208">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lối nói ví von so sánh thể hiện khát khao yêu đương của Thị Mầu. “Thầy như táo rụng sân đình – Em như gái rở, đi rình của chua”. Cây táo mọc ở sân đình thường cao, sau mùa xuân chín rụng. Vì ít được chăm sóc lại già cỗi nên táo vừa chua, vừa chát. Người đàn bà ăn rở (nghén vì mang thai) mà gặp quả táo, hơn nữa lại là rụng mà rụng ở sân đình thì nỗi khát khao thèm muốn càng tăng thêm gấp bội. Nhặt quả táo lên chắc người con gái ăn dở ấy phải nhai nuốt ngấu nghiến. Việc Thị Mầu ví mình như gái rở, ví tiểu Kính như táo rụng sân đình thì hình ảnh vừa thật vừa rõ nét mà vừa dễ hiểu cho người xem.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">660</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">555</Cheo:start>
+        <Cheo:subtitle>Thầy tiểu ơi! Ra đây ăn với em một miếng trầu nào …
+(Thị Kính: Nam Mô A Di Đà Phật …)
+Này thầy tiểu ơi!
+Thầy như táo rụng sân đình
+Còn em như gái rở, đi rình của chua...
+Chứ thầy tiểu ơi!
+Táo rụng ấy mấy đình thế mà sân đình
+Thầy, thầy tiểu ơi!
+Táo rụng ấy mấy đình ấy mà sân đình
+Em ý như a thế mà này em như gái rở ơ ớ
+Em đi tìm ối y a
+Ối y để em đi tìm, chứ em đi tìm của chua
+Ấy mấy thầy, thầy tiểu ơi !
+(Thị Kính: Nam Mô A Di Đà Phật …)
+Chỉ Mô Phật mãi thôi!
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app209 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app209">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lời đối đáp giữa Thị Mầu và tiếng đế ngắn gọn nhưng đầy dí dỏm, phản ứng nhanh và thông minh, cho thấy Thị Mầu là người không hề bị động, biết tự bảo vệ mình và thậm chí biết đùa lại một cách khéo léo. Qua những lời đáp ấy, ta thấy Thị Mầu không hề xấu hổ hay sợ hãi trước dư luận. Nàng không quan tâm đến những quy tắc lễ giáo gò bó, cũng chẳng che giấu lòng mình — đó là biểu hiện của một người phụ nữ bản lĩnh, dám sống thật. Thái độ sống phóng khoáng, đi ngược định kiến xã hội của Thị Mầu.
+
+Hành động mời giầu: ăn với em miếng trầu đã nào – một nghi thức giao duyên, chủ động tỏ tình → Hành động vừa táo bạo vừa duyên dáng bộc lộ khao khát kết đôi của Thị Mầu.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">775</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">660</Cheo:start>
+        <Cheo:subtitle>(Nền: Mầu ơi! Nhà mày có mấy chị em?)
+Nhà tao có chín chị em
+(Nền: Thế có ai như mày không?)
+Chỉ có mỗi mình tao là chín chắn nhất nhà thôi đấy!
+(Nền: Ôi dào ơi!)
+Mặc kệ tao!
+Thầy tiểu ơi! Ra đây ăn với em miếng trầu đã nào…
+Này thầy tiểu ơi!
+Cau non em tiện chũm lòng đào
+Mà trầu têm cánh phượng để thiếp trao cho chàng
+Chứ thầy tiểu ơi!
+(Nhạc nền)
+(Thị Kính: Niệm Nam Mô A Di Ðà Phật …)
+Thầy tiểu ơi ! Bỏ mõ em gõ cho nào…
+(Thị Kính bỏ đi)
+Thầy tiểu, thầy tiểu…</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app210 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app210">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Tiếng gọi “thầy tiểu ơi!” lặp lại nhiều lần như buộc đối tượng phải quan tâm đến mình, quyết thực hiện bằng được khao khát tỏ bày tình cảm của mình. Tiếng gọi như muốn bộc bạch tất cả sự mê đắm, bật ra tất cả nỗi nhớ nhung, niềm khao khát.</Cheo:ED>
+        <Cheo:emotion>Sad</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">890</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">776</Cheo:start>
+        <Cheo:subtitle>Phải gió ở đâu ấy.
+Người đâu trông thấy gái lại cứ chạy. Chỉ Mô Phật mãi thôi!
+Này thầy tiểu ơi! Ra đây ăn với em một miếng trầu đã nào...
+Lại Mô Phật nữa đi nhớ (???)
+Này thầy tiểu ơi! Bỏ em đứng trước cửa chùa
+Em gọi thầy tiểu. Chả thưa, em buồn đấy Thầy tiểu ơi!
+=============
+Trúc xinh trúc mọc sân đình
+Em xinh em đứng một mình chẳng xinh!
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app211 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app211">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Khi phát hiện kinh mõ của chú tiểu còn để lại, Mầu lập tức suy đoán rằng Kính Tâm sẽ quay lại, và ngay lập tức nảy ra ý định lén đi nấp để tìm cách gặp gỡ. Hành động lén nấp chờ thể hiện sự chủ động và tinh nghịch, cho thấy Thị Mầu đang rất háo hức và nôn nóng muốn được tiếp cận người mình thích.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">920</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">893</Cheo:start>
+        <Cheo:subtitle>À, phải rồi! kinh mõ của Thầy tiểu còn bỏ đây, thể nào mà Thầy tiểu chẳng phải ra cất kinh cất mõ.
+Chi cho bằng …Tôi ra tìm chỗ nấp, tôi đợi thầy tiểu ra đây, tôi phải nắm được tận tay thầy tiểu thì tôi mới nghe!
+(Thị Mầu nấp)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app212 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app212">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Đòi quét sân chùa cho thầy tiểu, Thị Mầu lấy cớ làm việc giúp để hợp thức hóa mong muốn được tiếp xúc, được gần gũi người mình thương. Chuỗi hành động “nắm tận tay”, “quét sân chùa thay thầy tiểu”, “mời thầy tiểu ăn giầu” là sự táo bạo, sỗ sàng của người đang yêu thật lòng, khao khát được kết duyên.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1047</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">990</Cheo:start>
+        <Cheo:subtitle>Đây rồi đừng hòng trốn em nữa!
+(Thị Kính: Mô Phật!)
+Thôi, bỏ Mô Phật đi!
+(Thị Kính: A Di Đà Phật! Cô buông ra để tôi quét chùa kẻo sư phụ người quở chết!)
+Đưa chổi đây em quét rồi em nói chuyện này cho mà nghe!
+(Thị Kính: Mô Phật!)
+Này chú tiểu ơi! 
+Quét sao cho sách trần duyên
+Tu chi cho bận mầu thiền ai ơi !
+Tuổi xanh sao vội chán đời ?
+Thầy tiểu ! Thầy tiểu !
+(Thị Kính: buông chổi)
+Thầy tiểu ơi! Ăn với em một miếng chầu rồi!
+Đưa chổi em quét cho nào! Này!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app213 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app213">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu khi 5 lần 7 lượt bị từ chối, ả vừa giận dỗi, vừa nũng nịu, thể hiện sự thất vọng nhưng vẫn rất hóm hỉnh, duyên dáng.</Cheo:ED>
+        <Cheo:emotion>Angry</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1065</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1048</Cheo:start>
+        <Cheo:subtitle>(Thị Mầu quay mặt lại đã thấy Thị Kính bỏ đi. Thị Mầu tức giận ném chổi)
+Phải gió ở đâu ấy! Chạy từ bao giờ rồi ấy! Thế có tức không cơ chứ!
+Mình đã nắm được tận tay thầy tiểu rồi thế mà còn chạy được.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app214 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app214">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lời đáp lại tiếng đế của Thị Mầu là sự tung hê những thứ khuôn phép đạo đức “chính chuyên” luôn được “sơn son để thờ” và “tuyên bố” quyền được sống, quyền được yêu bằng cả phần hồn, phần xác của người phụ nữ. Thị Mầu bộc lộ suy nghĩ tự nhiên, bản năng sống chất phác, khoẻ khoắn của mình.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1133</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1065</Cheo:start>
+        <Cheo:subtitle>Này thầy tiểu ơi!
+Muốn rằng cây cải cho xanh
+Thài lài, rau rệu, tám thành bờ tre
+Lắng tai tôi nói cho mà nghe…
+Tri âm chưa tỏ tri âm
+Để tôi mong vụng nhớ thầm sầu riêng!
+====================
+(Nền: Lẳng lơ mặt dạn mày dày. Ði đêm rồi cũng có ngày gặp ma đấy Mầu ơi!)
+Đây cũng chẳng mòn lẳng lơ
+Chính chuyên cũng chẳng sơn son để thờ.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app215 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app215">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Kính Tâm thể hiện sự thành tâm và chuyên chú trong việc tu hành, đối lập với tính cách táo bạo, trần tục của Thị Mầu trong phần đối thoại kế tiếp.</Cheo:ED>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">435</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">359</Cheo:start>
+        <Cheo:subtitle>Mô Phật! A di đà Phật!
+Tam Bảo Như Lai của ai phúc nấy
+A di đà Phật!
+(Thị Mầu: A di đà…. Phật)
+=======================
+Khấn nguyện thập phương 
+Kính trình tam bảo
+Lòng người có đạo
+Đem của cúng dường
+Trăm nén cũng biên
+Một đồng cũng kể
+Tuy vân bạc lễ
+Đãn kiến thành tâm
+Phật Tổ giáng lâm
+Quỷ thần chứng chiếu
+A di đà Phật!
+Tôi đã đèn nhang xong, mời cô vào lễ Phật!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app216 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app216">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Niệm Nam Mô A Di Ðà Phật
+Niệm Nam Mô A Di Ðà Phật
+(Nền: Mầu ơi! Nhà mày mất bò rồi đấy!)
+(Thị Mầu: Mất bò ấy à, Nhà tao còn ối trâu!)</Cheo:ED>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">575</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">545</Cheo:start>
+        <Cheo:subtitle>Trong khi Thị Mầu say mê vẻ đẹp của chú tiểu, lời nói bông đùa, tán tỉnh, thì Kính Tâm vẫn giữ thái độ điềm đạm, không lung lay. Thể hiện sự thuần khiết, một lòng hướng Phật của bậc tu hành.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app217 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app217">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>“Ngẫm oan trái nhiều phen muốn khóc. Thấy nhân duyên nghĩ lại nực cười”Thị Kính thể hiện sự buồn bã và nỗi đau âm ỉ của người mang tiếng oan, bị đời hắt hủi phải che giấu thân phận nữ nhi. “À, thôi phải rồi! Hẳn vô tình thế mới trêu ngươi. Vì hữu ý nên rằng hoảng mắt. Chứ có biết đâu, tôi đây cũng chỉ là …” ngầm nói lên sự bốc đồng, nhất thời nhưng chân thật tự nhiên và đầy sức sống của cảm xúc Thị Mầu khi quá si mê chú tiểu Kính Tâm mà không nhận ra nàng là một cô gái.</Cheo:ED>
+        <Cheo:emotion>Sad</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1083</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1027</Cheo:start>
+        <Cheo:subtitle>Ngẫm oan trái nhiều phen muốn khóc
+Thấy nhân duyên nghĩ lại nực cười
+À, thôi phải rồi! Hẳn vô tình thế mới trêu ngươi
+Vì hữu ý nên rằng hoảng mắt
+Chứ có biết đâu, tôi đây cũng chỉ là…</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app218 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app218">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:emotion>Surprise</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1088</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1086</Cheo:start>
+        <Cheo:subtitle>Mô Phật!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app219 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app219">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:emotion>Other</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1099</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1093</Cheo:start>
+        <Cheo:subtitle>A Di Đà Phật! Cô buông ra để tôi quét chùa kẻo sư phụ người quở chết!</Cheo:subtitle>
     </owl:NamedIndividual>
     
 
@@ -1795,6 +2587,238 @@
     
 
 
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app220 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app220">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu lên chùa khác với lệ thường, người ta lên chùa vào mười tư, rằm; còn Thị Mầu lên sớm hơn lẽ thường “từ mười ba” thể hiện tâm lý háo hức, rất mong ngóng ngày rằm.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">82</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13</Cheo:start>
+        <Cheo:subtitle>Này chị em ơi! (Nền: Sao?)
+Nay mười tư mai đã là rằm
+Ai muốn ăn oản thì năng lên chùa.
+Các giả lên chùa từ bao giờ nhỉ? (Nền: Mười tư, rằm)
+=====================
+Ấy thế mà Mầu tôi mang tiếng lẳng lơ
+Đò đưa cấm gió …
+Tôi lên chùa từ mười ba
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app221 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app221">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu bông đùa, bỡn cợt. Chốn cửa chùa linh thiêng, thanh tịnh, nghiêm ngặt nhưng Thị Mầu nhìn người tu hành nào cũng thấy tuổi trẻ, tràn ngập tình yêu. Thể hiện tâm hồn tươi trẻ tràn đầy sức sống của Thị Mầu.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">290</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">85</Cheo:start>
+        <Cheo:subtitle>Này chị em ơi! (Nền: Sao?)
+Tôi lên chùa thấy tiểu mười ba
+Thấy sư mười bốn, … , vãi già mười lăm
+(Nhạc nền)
+===========
+Này chị em ơi! (Nền: Sao?)
+Tôi, tôi muốn cho một tháng
+Đôi rằm
+Ðể, để tôi trước vào lễ Phật
+Sau thăm vãi già.
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app222 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app222">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu đã tự tin xưng danh, không giấu giếm thân phận, thậm chí còn khoe vẻ giàu có, sang trọng (con gái phú ông, tiền cùng gạo lên chùa cúng tiến). Thể hiện tính cách cởi mở, hồn nhiên, thậm chí táo bạo – khác hẳn với khuôn mẫu “phụ nữ đoan trang” thời phong kiến.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">359</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">297</Cheo:start>
+        <Cheo:subtitle>A di đà Phật! … 
+Tôi Thị Mầu con gái phú ông
+Thầy mẹ tôi, tôn kính một lòng
+Tiền cùng gạo, tôi lên chùa tiến cúng.
+A di đà Phật!
+==================
+A di đà Phật!
+Bạch nhà sư trong ấy, cho chú tiểu ra nhận lễ, để cho tôi còn về nào.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app223 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app223">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu không quan tâm đến việc vào lễ Phật. Thị Mầu khen chú Tiểu: “Người đâu mà đẹp như sao băng thế nhỉ … Mầu thẳng thắn thể hiện sự yêu thích, say mê, và ngưỡng mộ của mình trước vẻ đẹp của chú tiểu Kính Tâm. Cách so sánh “đẹp như sao băng” là một hình ảnh mới lạ, đầy sức gợi, biểu hiện trí tưởng tượng phong phú và cảm xúc mãnh liệt của người con gái đang yêu.
+Hai hình ảnh “cổ cao ba ngấn” và “lông mày nét ngang” vốn là chuẩn mực dân gian để miêu tả người có vẻ đẹp thanh tú, phúc hậu. Khi đem những đặc điểm ấy áp vào chú tiểu, Thị Mầu đã vô tình “trần thế hóa” hình ảnh nhà sư, biến không gian chùa vốn thanh tịnh thành chốn tràn đầy sức sống, tình cảm. Chính sự “lẫn lộn” giữa vẻ đẹp tu hành – trần tục, nam – nữ ấy đã tạo nên chất hài chèo độc đáo và làm nổi bật tính cách hồn nhiên, táo bạo.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">545</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">436</Cheo:start>
+        <Cheo:subtitle>Mô Phật! 
+(Nhạc nền)
+Này chị em ơi! (Nền: Sao?) Người đâu đến tu chùa mà đẹp như sao băng thế nhỉ?
+(Nền: Ai lại khen chú tiểu đẹp thế Mầu ơi!)
+Ðẹp thì người ta khen chứ sao …
+Này chị em ơi! (Nền: Sao?)
+Người đâu đến ở chùa này
+Mà cổ kiêu ba ngấn, lông mày nét ngang
+Thầy tiểu y y ơi
+Ðến ở ấy mấy chùa
+Thế mà chùa này
+Người, người ở đâu
+Ðến ý ở ấy mấy chùa
+Thế mà chùa này
+Cổ y ý ý cao a thế mà này cổ ý cao ba ngấn ý
+Ơi y a Ơi y a Ơi y
+Ðể lông ừ mày chứ đôi lông mày nét ngang
+Ấy mấy thầy tiểu ơi!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app224 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app224">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lối nói ví von so sánh thể hiện khát khao yêu đương của Thị Mầu. “Thầy như táo rụng sân đình – Em như gái rở, đi rình của chua”. Cây táo mọc ở sân đình thường cao, sau mùa xuân chín rụng. Vì ít được chăm sóc lại già cỗi nên táo vừa chua, vừa chát. Người đàn bà ăn rở (nghén vì mang thai) mà gặp quả táo, hơn nữa lại là rụng mà rụng ở sân đình thì nỗi khát khao thèm muốn càng tăng thêm gấp bội. Nhặt quả táo lên chắc người con gái ăn dở ấy phải nhai nuốt ngấu nghiến. Việc Thị Mầu ví mình như gái rở, ví tiểu Kính như táo rụng sân đình thì hình ảnh vừa thật vừa rõ nét mà vừa dễ hiểu cho người xem.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">699</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">577</Cheo:start>
+        <Cheo:subtitle>Thầy tiểu ơi! Ra đây ăn với em một miếng trầu nào …
+(Thị Kính: Nam Mô A Di Đà Phật …)
+Này thầy tiểu ơi!
+Thầy như táo rụng sân đình
+Còn em như gái rở, đi rình của chua...
+Chứ thầy tiểu ơi!
+Táo rụng ấy mấy đình thế mà sân đình
+Thầy, thầy tiểu ơi!
+Táo rụng ấy mấy đình ấy mà sân đình
+Em ý như a thế mà này em như gái rở ơ ớ
+Em đi tìm ối y a
+Ối y để em đi tìm, chứ em đi tìm của chua
+Ấy mấy thầy, thầy tiểu ơi !
+(Thị Kính: Nam Mô A Di Đà Phật …)
+Chỉ Mô Phật mãi thôi!
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app225 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app225">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lời đối đáp giữa Thị Mầu và tiếng đế ngắn gọn nhưng đầy dí dỏm, phản ứng nhanh và thông minh, cho thấy Thị Mầu là người không hề bị động, biết tự bảo vệ mình và thậm chí biết đùa lại một cách khéo léo. Qua những lời đáp ấy, ta thấy Thị Mầu không hề xấu hổ hay sợ hãi trước dư luận. Nàng không quan tâm đến những quy tắc lễ giáo gò bó, cũng chẳng che giấu lòng mình — đó là biểu hiện của một người phụ nữ bản lĩnh, dám sống thật. Thái độ sống phóng khoáng, đi ngược định kiến xã hội của Thị Mầu.
+
+Hành động mời giầu: ăn với em miếng trầu đã nào – một nghi thức giao duyên, chủ động tỏ tình → Hành động vừa táo bạo vừa duyên dáng bộc lộ khao khát kết đôi của Thị Mầu.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">835</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">700</Cheo:start>
+        <Cheo:subtitle>(Nền: Mầu ơi! Nhà mày có mấy chị em?)
+Nhà tao có chín chị em
+(Nền: Thế có ai như mày không?)
+Chỉ có mỗi mình tao là chín chắn nhất nhà thôi đấy!
+(Nền: Ôi dào ơi!)
+Mặc kệ tao!
+Thầy tiểu ơi! Ra đây ăn với em miếng trầu đã nào…
+Rồi…rồi bỏ mõ đấy, em gõ cho nào.
+Này thầy tiểu ơi!
+Cau non em tiện chũm lòng đào
+Mà trầu têm cánh phượng để thiếp trao cho chàng
+Chứ thầy tiểu ơi!
+(Nhạc nền)
+(Thị Kính: Niệm Nam Mô A Di Ðà Phật …)
+Ra đây ăn với em một miếng trầu, rồi… rồi bỏ mõ đấy em gõ cho nào!
+(Thị Kính bỏ đi)
+Thầy tiểu, thầy tiểu…</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app226 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app226">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Tiếng gọi “thầy tiểu ơi!” lặp lại nhiều lần như buộc đối tượng phải quan tâm đến mình, quyết thực hiện bằng được khao khát tỏ bày tình cảm của mình. Tiếng gọi như muốn bộc bạch tất cả sự mê đắm, bật ra tất cả nỗi nhớ nhung, niềm khao khát.</Cheo:ED>
+        <Cheo:emotion>Sad</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">983</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">838</Cheo:start>
+        <Cheo:subtitle>Phải gió ở đâu ấy.
+Người đâu trông thấy gái lại cứ chạy. Chỉ Mô Phật mãi thôi!
+Này thầy tiểu ơi! Ra đây ăn với em một miếng trầu đã nào...
+Lại Mô Phật nữa đi nhớ (???)
+Này thầy tiểu ơi! Bỏ em đứng trước cửa chùa
+Em gọi thầy tiểu. Chả thưa, em buồn đấy Thầy tiểu ơi!
+=============
+Trúc xinh trúc mọc sân đình
+Em xinh em đứng một mình chẳng xinh!
+(Nhạc nền)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app227 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app227">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Khi phát hiện kinh mõ của chú tiểu còn để lại, Mầu lập tức suy đoán rằng Kính Tâm sẽ quay lại, và ngay lập tức nảy ra ý định lén đi nấp để tìm cách gặp gỡ. Hành động lén nấp chờ thể hiện sự chủ động và tinh nghịch, cho thấy Thị Mầu đang rất háo hức và nôn nóng muốn được tiếp cận người mình thích.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1024</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">986</Cheo:start>
+        <Cheo:subtitle>À, phải rồi! kinh mõ của Thầy tiểu còn bỏ đây, thể nào mà Thầy tiểu chẳng phải ra cất kinh cất mõ.
+Chi cho bằng …Tôi ra tìm chỗ nấp, tôi đợi thầy tiểu ra đây, tôi phải nắm được tận tay thầy tiểu thì tôi mới nghe!
+(Thị Mầu nấp)</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app228 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app228">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Đòi quét sân chùa cho thầy tiểu, Thị Mầu lấy cớ làm việc giúp để hợp thức hóa mong muốn được tiếp xúc, được gần gũi người mình thương. Chuỗi hành động “nắm tận tay”, “quét sân chùa thay thầy tiểu”, “mời thầy tiểu ăn giầu” là sự táo bạo, sỗ sàng của người đang yêu thật lòng, khao khát được kết duyên.</Cheo:ED>
+        <Cheo:emotion>Excited</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1150</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1084</Cheo:start>
+        <Cheo:subtitle>Đây rồi đừng hòng trốn em nữa!
+(Thị Kính: Mô Phật!)
+Thôi, bỏ Mô Phật đi!
+(Thị Kính: A Di Đà Phật! Cô buông ra để tôi quét chùa kẻo sư phụ người quở chết!)
+Đưa chổi đây em quét rồi em nói chuyện này cho mà nghe!
+(Thị Kính: Mô Phật!)
+Này chú tiểu ơi! 
+Quét sao cho sách trần duyên
+Tu chi cho bận mầu thiền ai ơi !
+Tuổi xanh sao vội chán đời ?
+Thầy tiểu ! Thầy tiểu !
+(Thị Kính: buông chổi)
+Thầy tiểu ơi! Ăn với em một miếng chầu rồi!
+Đưa chổi em quét cho nào! Này!</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app229 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app229">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Thị Mầu khi 5 lần 7 lượt bị từ chối, ả vừa giận dỗi, vừa nũng nịu, thể hiện sự thất vọng nhưng vẫn rất hóm hỉnh, duyên dáng.</Cheo:ED>
+        <Cheo:emotion>Angry</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1168</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1152</Cheo:start>
+        <Cheo:subtitle>(Thị Mầu quay mặt lại đã thấy Thị Kính bỏ đi. Thị Mầu tức giận ném chổi)
+Phải gió ở đâu ấy! Chạy từ bao giờ rồi ấy! Thế có tức không cơ chứ!
+Mình đã nắm được tận tay thầy tiểu rồi thế mà còn chạy được.</Cheo:subtitle>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app23 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app23">
@@ -1802,6 +2826,34 @@
         <Cheo:emotion>Happy</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1556</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">515</Cheo:start>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app230 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app230">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
+        <Cheo:ED>Lời đáp lại tiếng đế của Thị Mầu là sự tung hê những thứ khuôn phép đạo đức “chính chuyên” luôn được “sơn son để thờ” và “tuyên bố” quyền được sống, quyền được yêu bằng cả phần hồn, phần xác của người phụ nữ. Thị Mầu bộc lộ suy nghĩ tự nhiên, bản năng sống chất phác, khoẻ khoắn của mình.</Cheo:ED>
+        <Cheo:emotion>Happy</Cheo:emotion>
+        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1261</Cheo:end>
+        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1169</Cheo:start>
+        <Cheo:subtitle>Này thầy tiểu ơi!
+Muốn rằng cây cải cho xanh
+Thài lài, rau rệu, tám thành bờ tre
+Lắng tai tôi nói cho mà nghe…
+Tri âm chưa tỏ tri âm
+Để tôi mong vụng nhớ thầm sầu riêng!
+====================
+À, thôi phải rồi, chi cho bằng
+Trâu ta ăn cỏ đồng ta
+Chứ ai lại hoài thóc ta cho gà người bới
+Nhà tôi có anh Nô là người ở
+Tôi mà về phen này, Nô đừng hòng thoát khỏi tay tôi
+(Nền: Sao lẳng lơ thế Mầu ơi)
+Lẳng lơ ấy à,
+Đây cũng chẳng mòn lẳng lơ
+Chính chuyên cũng chẳng sơn son để thờ.</Cheo:subtitle>
     </owl:NamedIndividual>
     
 
@@ -1890,61 +2942,6 @@
         <Cheo:emotion>Excited</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1556</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">885</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app34 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app34">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>...</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">309</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app35 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app35">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Excited</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1031</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">335</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app36 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app36">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Happy</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1240</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1079</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app37 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app37">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Happy</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">856</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">405</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app38 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app38">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>Anxious</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1151</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1035</Cheo:start>
     </owl:NamedIndividual>
     
 
@@ -2319,61 +3316,6 @@
         <Cheo:emotion>...</Cheo:emotion>
         <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">729</Cheo:end>
         <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">142</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app79 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app79">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>...</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">292</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">78</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app80 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app80">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>...</Cheo:emotion>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">317</Cheo:start>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">920</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app81 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app81">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>...</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1129</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">970</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app82 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app82">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>...</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">772</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">370</Cheo:start>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app83 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app83">
-        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Appearance"/>
-        <Cheo:emotion>...</Cheo:emotion>
-        <Cheo:end rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1031</Cheo:end>
-        <Cheo:start rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">920</Cheo:start>
     </owl:NamedIndividual>
     
 
@@ -2984,6 +3926,7 @@
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_SuyVan"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_TranPhuong"/>
         <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(MQTP)"/>
+        <Cheo:hasCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_He(TPVC)"/>
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_MuQuanTranPhuong"/>
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_PhuThuySoMa"/>
         <Cheo:hasScene rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#scene_SuyVanGiaDai"/>
@@ -3782,8 +4725,11 @@ Thương thay cảnh mẹ già dắt con trẻ. Các nàng Tiên hạ phàm dạ
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.01_ThiKinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
         <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiKinh"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app37"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app38"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app183"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app184"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app185"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app186"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app187"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_1"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_ThaoHien"/>
     </owl:NamedIndividual>
@@ -3795,9 +4741,17 @@ Thương thay cảnh mẹ già dắt con trẻ. Các nàng Tiên hạ phàm dạ
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.01_ThiMau">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
         <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiMau"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app34"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app35"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app36"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app188"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app189"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app190"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app191"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app192"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app193"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app194"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app195"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app196"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app197"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app198"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_1"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.AnChinh"/>
     </owl:NamedIndividual>
@@ -3809,8 +4763,11 @@ Thương thay cảnh mẹ già dắt con trẻ. Các nàng Tiên hạ phàm dạ
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.02_ThiKinh">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
         <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiKinh"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app82"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app83"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app199"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app200"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app201"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app202"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app203"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_2"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThuyNgan"/>
     </owl:NamedIndividual>
@@ -3822,11 +4779,57 @@ Thương thay cảnh mẹ già dắt con trẻ. Các nàng Tiên hạ phàm dạ
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.02_ThiMau">
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
         <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiMau"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app79"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app80"/>
-        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app81"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app204"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app205"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app206"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app207"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app208"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app209"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app210"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app211"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app212"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app213"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app214"/>
         <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_2"/>
         <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.VanQuyen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.03_ThiKinh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.03_ThiKinh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiKinh"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app215"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app216"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app217"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app218"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app219"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_3"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NS.HongTham"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.03_ThiMau -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ra_QATK.TMLC.03_ThiMau">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#RoleAssignment"/>
+        <Cheo:forCharacter rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#char_ThiMau"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app220"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app221"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app222"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app223"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app224"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app225"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app226"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app227"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app228"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app229"/>
+        <Cheo:hasAppearance rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#app230"/>
+        <Cheo:inVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_3"/>
+        <Cheo:performedBy rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#act_NSUT.ThuHuyen"/>
     </owl:NamedIndividual>
     
 
@@ -4123,9 +5126,10 @@ Thương thay cảnh mẹ già dắt con trẻ. Các nàng Tiên hạ phàm dạ
         <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Scene"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_1"/>
         <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_2"/>
+        <Cheo:hasVersion rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_3"/>
         <Cheo:sceneName>Thị Mầu lên chùa</Cheo:sceneName>
         <Cheo:sceneSummary>Trích đoạn &quot;Thị Màu lên chùa&quot; trong vở chèo &quot;Quan Âm Thị Kính&quot; là sự tiếp nối nỗi bi kịch của Thị Kính sau khi lên chùa tu tập. Tại đây, Thị Màu, con gái Phú ông lên chùa và đem lòng si mê Kính Tâm. Ả tìm mọi cách dụ dỗ nhưng bị cự tuyệt.</Cheo:sceneSummary>
-        <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Cheo:versionNumber>
+        <Cheo:versionNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3</Cheo:versionNumber>
     </owl:NamedIndividual>
     
 
@@ -4435,6 +5439,19 @@ Thương thay cảnh mẹ già dắt con trẻ. Các nàng Tiên hạ phàm dạ
         <Cheo:showDate>6/6/2013</Cheo:showDate>
         <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
         <Cheo:vidVersion>https://drive.google.com/file/d/1dpIK-ELX8nVrGNtyN2QVJyPfpa219QuL/view?usp=drive_link</Cheo:vidVersion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#ver_TMLC_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/asus/ontologies/2025/5/Cheo#Version"/>
+        <Cheo:ID>QATK.TMLC.03</Cheo:ID>
+        <Cheo:endTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1265</Cheo:endTime>
+        <Cheo:showDate rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2012</Cheo:showDate>
+        <Cheo:startTime rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</Cheo:startTime>
+        <Cheo:vidVersion>https://drive.google.com/file/d/1RVL2ivnzaQBu8H7Nu-UQvhxoa6rqtlQe/view?usp=drive_link</Cheo:vidVersion>
     </owl:NamedIndividual>
     
 

@@ -2,7 +2,7 @@ import { QueryEngine } from "@comunica/query-sparql-file";
 import * as path from "path";
 import * as fs from "fs";
 
-const OWL_FILE_PATH = path.join(__dirname, "../db/OntologyCheoFinal.owl");
+const OWL_FILE_PATH = path.join(__dirname, "../db/OntologyCheo1.owl");
 
 const queryEngine = new QueryEngine();
 
