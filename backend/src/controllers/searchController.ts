@@ -148,6 +148,10 @@ const searchController = {
         ?emotion            # Biểu cảm
         ?actorName          # Diễn viên
         ?appearance         # Cá thể Appearance
+        ?versionID          # ID phiên bản (VD: QATK.CR.01)
+        ?showDate           # Ngày diễn
+        ?start              # Thời điểm bắt đầu
+        ?end                # Thời điểm kết thúc
       WHERE {
         # ---- Tham số ----
         BIND(<${character}> AS ?char)       # URI nhân vật
@@ -180,8 +184,15 @@ const searchController = {
         # Actor
         { ?ra cheo:performedBy ?actor } UNION { ?ra cheo:performBy ?actor }
         OPTIONAL { ?actor cheo:actorName ?actorName }
+
+        OPTIONAL { ?ver cheo:ID ?versionID }
+        OPTIONAL { ?ver cheo:showDate ?showDate }
+
+        # Appearance timeline
+        OPTIONAL { ?appearance cheo:start ?start }
+        OPTIONAL { ?appearance cheo:end ?end }
       }
-      ORDER BY ?sceneName ?actorName ?appearance
+      ORDER BY ?versionID ?start
 `;
 
     try {
@@ -194,6 +205,10 @@ const searchController = {
         actor: result.actorName.value,
         emotion: result.emotion.value,
         appearance: result.appearance.value,
+        versionID: result.versionID?.value || "",
+        showDate: result.showDate?.value || "",
+        start: result.start?.value || "",
+        end: result.end?.value || "",
       }));
       res.json(characterStates);
     } catch (error) {
@@ -383,6 +398,8 @@ const searchController = {
         ?start
         ?end
         ?emotion
+        ?subtitle
+        ?ED
         (STR(?vidLink) AS ?vidVersion)
       WHERE {
         # ---- Tham số ----
@@ -414,9 +431,11 @@ const searchController = {
         FILTER( ?appearance = <${uri}> )
 
         # Thuộc tính
-        OPTIONAL { ?appearance cheo:start   ?start }
-        OPTIONAL { ?appearance cheo:end     ?end }
-        OPTIONAL { ?appearance cheo:emotion ?emotion }
+        OPTIONAL { ?appearance cheo:start    ?start }
+        OPTIONAL { ?appearance cheo:end      ?end }
+        OPTIONAL { ?appearance cheo:emotion  ?emotion }
+        OPTIONAL { ?appearance cheo:subtitle ?subtitle }
+        OPTIONAL { ?appearance cheo:ED       ?ED }
       }
       ORDER BY ?appearance
     `;
@@ -427,6 +446,8 @@ const searchController = {
         start: result.start?.value || "",
         end: result.end?.value || "",
         emotion: result.emotion?.value || "",
+        subtitle: result.subtitle?.value || "",
+        ED: result.ED?.value || "",
         vidVersion: result.vidVersion?.value || "",
       }));
       res.json(appearances);

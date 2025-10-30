@@ -36,6 +36,8 @@ export interface Appearance {
   end: string;
   emotion: string;
   vidVersion: string;
+  ED: string;
+  subtitle: string;
 }
 
 export type Appearances = Appearance[];

@@ -6,6 +6,10 @@ export interface CharacterState {
   actor: string;
   emotion: string;
   appearance: string;
+  versionID: string;
+  showDate: string;
+  start: string;
+  end: string;
 }
 
 export type CharacterStates = CharacterState[];
