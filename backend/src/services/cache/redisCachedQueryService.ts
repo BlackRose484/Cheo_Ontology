@@ -182,7 +182,7 @@ export class RedisCachedQueryService {
         BIND(<${sceneURI}> AS ?scene)
 
         OPTIONAL { ?scene cheo:sceneName    ?sceneName    FILTER(STR(?sceneName)    != "...") }
-
+        OPTIONAL { ?scene cheo:sceneSummary ?sceneSummary FILTER(STR(?sceneSummary) != "...") }
         ?play cheo:hasScene ?scene .
         OPTIONAL { ?play cheo:title ?playTitle FILTER(STR(?playTitle) != "...") }
 

@@ -152,8 +152,6 @@ const ViewController = {
         allActors: formatStringtoArray(result?.allActors?.value) || [],
       };
 
-      console.log(result);
-
       res.json(sceneInfo);
     } catch (error) {
       const errorResponse = createErrorResponse(
